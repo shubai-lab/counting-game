@@ -261,6 +261,45 @@
             .tile img { width: 54px; height: 61px; }
             .menu-title { font-size: 28px; }
         }
+
+        /* 手机适配：基于 1334x750 设计稿缩放 */
+        @media (max-width: 750px) {
+            .map-area {
+                align-items: flex-start;
+                padding-top: 5px;
+            }
+            .map-container {
+                width: calc(1334px * (100vw / 1334)) !important;
+                min-width: calc(1334px * (100vw / 1334));
+                max-width: 100vw;
+                transform-origin: top center;
+            }
+            .tile {
+                width: calc(81px * (100vw / 1334)) !important;
+                height: calc(90px * (100vw / 1334)) !important;
+            }
+            .tile img {
+                width: calc(81px * (100vw / 1334)) !important;
+                height: calc(90px * (100vw / 1334)) !important;
+            }
+            .collect-grid {
+                gap: 4px;
+            }
+            .collect-slot {
+                min-width: 0;
+            }
+        }
+
+        /* 小屏手机额外适配 */
+        @media (max-width: 380px) {
+            .map-container {
+                transform: scale(0.9);
+            }
+            .collect-grid {
+                gap: 3px;
+                padding: 8px;
+            }
+        }
     </style>
 </head>
 <body>
