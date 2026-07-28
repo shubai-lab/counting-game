@@ -366,10 +366,10 @@
                     <span>移出</span>
                     <span class="count" id="propCount">3</span>
                 </button>
-                <button class="prop-btn" id="btnHint">
-                    <span>💡</span>
-                    <span>提示</span>
-                    <span class="count" id="hintCount">5</span>
+                <button class="prop-btn" id="btnUndo">
+                    <span>↩️</span>
+                    <span>撤销</span>
+                    <span class="count" id="undoCount">3</span>
                 </button>
                 <button class="prop-btn" id="btnShuffle">
                     <span>🔀</span>
@@ -839,11 +839,12 @@
         collect: [],
         propCount: 3,
         shuffleCount: 3,
-        hintCount: 5,
+        undoCount: 3,
         startTime: null,
         isPlaying: false,
         soundEnabled: true
     };
+    var history = [];  // 操作历史记录
     var $ = {};
 
     function init() {
@@ -862,8 +863,8 @@
         $.totalWins = document.getElementById('totalWins');
         $.propCount = document.getElementById('propCount');
         $.btnProp = document.getElementById('btnProp');
-        $.btnHint = document.getElementById('btnHint');
-        $.hintCount = document.getElementById('hintCount');
+        $.btnUndo = document.getElementById('btnUndo');
+        $.undoCount = document.getElementById('undoCount');
         $.shuffleCount = document.getElementById('shuffleCount');
         $.btnShuffle = document.getElementById('btnShuffle');
         $.btnBack = document.getElementById('btnBack');
@@ -902,7 +903,7 @@
         $.btnBack.addEventListener('click', backToMenu);
         $.btnGameSettings.addEventListener('click', showSettings);
         $.btnProp.addEventListener('click', useProp);
-        $.btnHint.addEventListener('click', useHint);
+        $.btnUndo.addEventListener('click', useUndo);
         $.btnShuffle.addEventListener('click', useShuffle);
         $.btnGiveUp.addEventListener('click', giveUp);
         $.btnWinRestart.addEventListener('click', nextLevel);
@@ -1428,6 +1429,14 @@
 
         playSound('click');
 
+        // 保存当前状态到历史记录
+        var historyRecord = {
+            cards: JSON.parse(JSON.stringify(state.cards)),
+            collect: state.collect.slice()
+        };
+        history.push(historyRecord);
+        if (history.length > 3) history.shift();  // 最多保存3步
+
         var clickedType = card.type;
         var affectedCards = moveToCollection(card);
         moveToInvalid(card);
@@ -1448,15 +1457,16 @@
         state.isPlaying = true;
         state.propCount = 3;
         state.shuffleCount = 3;
-        state.hintCount = 5;
+        state.undoCount = 3;
         state.collect = [];
+        history = [];
         state.startTime = Date.now();
         $.propCount.textContent = state.propCount;
         $.shuffleCount.textContent = state.shuffleCount;
-        $.hintCount.textContent = state.hintCount;
+        $.undoCount.textContent = state.undoCount;
         $.btnProp.disabled = false;
         $.btnShuffle.disabled = false;
-        $.btnHint.disabled = false;
+        $.btnUndo.disabled = false;
         state.cards = generateLevel(state.level, state.difficulty);
         renderGame();
         showScreen('game');
@@ -1848,93 +1858,23 @@
         $.hintBar.classList.add('hidden');
     }
 
-    function useHint() {
-        if (!state.isPlaying || state.hintCount <= 0) return;
-        // 先找收集区有没有可消除的
-        var collectPair = null;
-        var typeCount = {};
-        for (var i = 0; i < state.collect.length; i++) {
-            if (state.collect[i]) {
-                var type = state.collect[i].type;
-                if (!typeCount[type]) typeCount[type] = [];
-                typeCount[type].push({ source: 'collect', index: i });
-            }
-        }
-        // 收集区有相同类型的一对
-        for (var type in typeCount) {
-            if (typeCount[type].length >= 2) {
-                collectPair = typeCount[type].slice(0, 2);
-                break;
-            }
-        }
-
-        // 如果收集区没有，找场地中可消除的一对
-        var fieldPair = null;
-        if (!collectPair) {
-            var fieldTypes = {};
-            for (var li = 0; li < state.cards.length; li++) {
-                var layer = state.cards[li];
-                if (!layer) continue;
-                for (var gi = 0; gi < layer.length; gi++) {
-                    var card = layer[gi];
-                    if (card && card.area === AREA.OPERATION && card.status === STATUS.ENABLE) {
-                        if (!fieldTypes[card.type]) fieldTypes[card.type] = [];
-                        fieldTypes[card.type].push(card);
-                    }
-                }
-            }
-            for (var type in fieldTypes) {
-                if (fieldTypes[type].length >= 2) {
-                    fieldPair = fieldTypes[type].slice(0, 2);
-                    break;
-                }
-            }
-        }
-
-        if (!collectPair && !fieldPair) return;
+    // ============== 【撤销功能】 ==============
+    function useUndo() {
+        if (!state.isPlaying || state.undoCount <= 0 || history.length === 0) return;
 
         playSound('click');
-        state.hintCount--;
-        $.hintCount.textContent = state.hintCount;
-        $.btnHint.disabled = state.hintCount <= 0;
+        state.undoCount--;
+        $.undoCount.textContent = state.undoCount;
+        $.btnUndo.disabled = state.undoCount <= 0;
 
-        // 高亮提示的方块
-        var tiles = $.mapContainer.querySelectorAll('.tile');
-        var cardsToHighlight = [];
+        // 恢复上一次状态
+        var lastState = history.pop();
+        state.cards = lastState.cards;
+        state.collect = lastState.collect;
 
-        if (collectPair) {
-            // 高亮收集区的卡牌
-            var slots = $.collectGrid.querySelectorAll('.tile');
-            collectPair.forEach(function(item) {
-                cardsToHighlight.push({ type: 'collect', index: item.index });
-            });
-        } else if (fieldPair) {
-            // 高亮场地中的卡牌
-            fieldPair.forEach(function(card) {
-                cardsToHighlight.push({ type: 'field', card: card });
-            });
-        }
-
-        tiles.forEach(function(tile) {
-            var left = parseInt(tile.style.left);
-            var top = parseInt(tile.style.top);
-            cardsToHighlight.forEach(function(item) {
-                if (item.type === 'field' && left === item.card.x && top === item.card.y && !tile.classList.contains('disabled')) {
-                    tile.style.animation = 'hintGlow 0.5s ease-in-out 3';
-                }
-            });
-        });
-
-        // 高亮收集区的卡牌
-        if (collectPair) {
-            var slots = $.collectGrid.children;
-            collectPair.forEach(function(item) {
-                if (slots[item.index]) {
-                    var tile = slots[item.index].querySelector('.tile');
-                    if (tile) tile.style.animation = 'hintGlow 0.5s ease-in-out 3';
-                }
-            });
-        }
+        updateCardStatus();
+        renderGame();
+        checkAvailableMoves();
     }
 
     if (document.readyState === 'loading') {
