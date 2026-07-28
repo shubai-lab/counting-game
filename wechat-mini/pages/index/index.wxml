@@ -1,0 +1,72 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="title-wrap">
+      <view class="title">合成大正鹅</view>
+      <view class="subtitle">合并正鹅的角色寻找最后真正的鹅</view>
+    </view>
+    <view class="scores">
+      <view class="score-box">
+        <view class="score-label">分数</view>
+        <view class="score-value {{scorePop ? 'pop' : ''}}">{{score}}</view>
+      </view>
+      <view class="score-box">
+        <view class="score-label">最高</view>
+        <view class="score-value">{{best}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="controls">
+    <button class="btn btn-new" bindtap="restart">新游戏</button>
+    <button class="btn" bindtap="undo">撤销</button>
+  </view>
+
+  <!-- 游戏棋盘 -->
+  <view class="game-board" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    <!-- 背景格子 -->
+    <view class="grid-background">
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+      <view class="grid-cell"></view>
+    </view>
+
+    <!-- 方块层 -->
+    <view class="tiles-layer">
+      <block wx:for="{{tiles}}" wx:for-index="idx" wx:key="idx">
+        <view
+          class="tile tile-{{item.value}} {{item.isNew ? 'tile-new' : ''}} {{item.isMerged ? 'tile-merged' : ''}}"
+          style="grid-row: {{item.r + 1}}; grid-column: {{item.c + 1}};"
+        >
+          <image src="/2048-assets/{{item.value}}.png" mode="aspectFit" />
+        </view>
+      </block>
+    </view>
+
+    <!-- 游戏结束遮罩 -->
+    <view class="overlay {{showOverlay ? 'active' : ''}}">
+      <view class="overlay-title {{isWin ? 'win' : ''}}">{{overlayTitle}}</view>
+      <view class="overlay-subtitle">{{overlaySubtitle}}</view>
+      <button class="btn btn-new" bindtap="restart">再玩一次</button>
+    </view>
+  </view>
+
+  <!-- 游戏说明 -->
+  <view class="instructions">
+    <text><strong>玩法：</strong>滑动屏幕移动正鹅，相同正鹅碰撞会合并，目标是合成<strong>最大的正鹅</strong>！</text>
+  </view>
+</view>

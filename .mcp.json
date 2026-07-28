@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "TalkToFigma": {
+      "command": "bunx",
+      "args": [
+        "cursor-talk-to-figma-mcp@latest"
+      ]
+    },
+    "openclaw-weixin": {
+      "command": "node",
+      "args": ["src/index.js"],
+      "cwd": "c:/Users/zhangfan/my-openspec-project/openclaw-weixin-mcp"
+    }
+  }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型D：步骤引导式</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a2e; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .phone-frame { width: 1334px; height: 750px; background: linear-gradient(180deg, #3c271c, #6a3c22); border-radius: 40px; overflow: hidden; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+
+    .layout-tag { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5); color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 14px; z-index: 100; }
+
+    /* 步骤引导布局 */
+    .step-guide { position: absolute; inset: 0; display: flex; flex-direction: column; }
+
+    /* 顶部 */
+    .guide-header { padding: 30px 40px; text-align: center; }
+    .guide-title { font-size: 38px; color: #ead0a3; font-weight: bold; }
+
+    /* 步骤进度 */
+    .step-progress { display: flex; justify-content: center; align-items: center; padding: 0 80px; margin-bottom: 30px; }
+    .step-item { display: flex; flex-direction: column; align-items: center; }
+    .step-circle { width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 3px solid rgba(234,208,163,0.4); display: flex; align-items: center; justify-content: center; color: rgba(234,208,163,0.4); font-size: 28px; font-weight: bold; }
+    .step-item.active .step-circle { background: #ead0a3; border-color: #ead0a3; color: #3c271c; }
+    .step-item.done .step-circle { background: rgba(234,208,163,0.4); border-color: rgba(234,208,163,0.4); color: #ead0a3; }
+    .step-name { font-size: 16px; color: rgba(234,208,163,0.6); margin-top: 8px; }
+    .step-item.active .step-name { color: #ead0a3; font-weight: bold; }
+    .step-line { width: 100px; height: 4px; background: rgba(234,208,163,0.4); margin: 0 15px; margin-bottom: 25px; }
+    .step-line.done { background: rgba(234,208,163,0.4); }
+
+    /* 内容区 */
+    .guide-content { flex: 1; padding: 0 60px; display: flex; flex-direction: column; align-items: center; }
+
+    /* 武将卡片 */
+    .hero-card { width: 100%; background: linear-gradient(135deg, #ead0a3, #d4c4a3); border-radius: 24px; padding: 30px; display: flex; align-items: center; gap: 30px; border: 3px solid #ead0a3; }
+    .hero-img { width: 160px; height: 200px; background: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 90px; }
+    .hero-detail { flex: 1; }
+    .hero-day { background: #6a3c22; color: #ead0a3; padding: 6px 16px; border-radius: 15px; font-size: 16px; display: inline-block; margin-bottom: 10px; }
+    .hero-name { font-size: 44px; color: #3c271c; font-weight: bold; }
+    .hero-quality { font-size: 22px; color: #6a3c22; margin-top: 6px; }
+    .hero-duration { font-size: 20px; color: #6a3c22; background: rgba(255,255,255,0.5); padding: 8px 18px; border-radius: 10px; display: inline-block; margin-top: 12px; }
+
+    /* 明日预告 */
+    .next-preview { width: 100%; margin-top: 20px; display: flex; gap: 15px; }
+    .next-card { flex: 1; background: rgba(255,255,255,0.1); border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(234,208,163,0.3); }
+    .next-img { width: 50px; height: 65px; background: rgba(234,208,163,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+    .next-info {}
+    .next-day { font-size: 14px; color: #ead0a3; opacity: 0.6; }
+    .next-name { font-size: 20px; color: #ead0a3; font-weight: bold; margin-top: 4px; }
+
+    /* 任务提示 */
+    .task-tip { width: 100%; background: rgba(255,255,255,0.1); border-radius: 16px; padding: 20px 25px; margin-top: 20px; display: flex; align-items: center; gap: 15px; }
+    .tip-icon { font-size: 28px; }
+    .tip-text { font-size: 22px; color: #ead0a3; }
+    .tip-btn { margin-left: auto; padding: 10px 20px; background: #ead0a3; color: #3c271c; border-radius: 10px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; }
+
+    /* 底部按钮 */
+    .guide-footer { padding: 25px 60px 45px; }
+    .action-btn { width: 100%; padding: 22px; background: linear-gradient(180deg, #ead0a3, #d4c4a3); color: #3c271c; border-radius: 16px; font-size: 32px; font-weight: bold; border: 3px solid #ead0a3; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="layout-tag">原型D：步骤引导式</div>
+
+    <div class="step-guide">
+      <div class="guide-header">
+        <div class="guide-title">武将体验卡 · 召回活动</div>
+      </div>
+
+      <div class="step-progress">
+        <div class="step-item done">
+          <div class="step-circle">✓</div>
+          <div class="step-name">登录</div>
+        </div>
+        <div class="step-line done"></div>
+        <div class="step-item active">
+          <div class="step-circle">2</div>
+          <div class="step-name">领卡</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <div class="step-name">对局</div>
+        </div>
+      </div>
+
+      <div class="guide-content">
+        <div class="hero-card">
+          <div class="hero-img">🎴</div>
+          <div class="hero-detail">
+            <div class="hero-day">Day 1 · 今日</div>
+            <div class="hero-name">界钟会</div>
+            <div class="hero-quality">传说品质</div>
+            <div class="hero-duration">有效期：7天</div>
+          </div>
+        </div>
+
+        <div class="next-preview">
+          <div class="next-card">
+            <div class="next-img">🎴</div>
+            <div class="next-info">
+              <div class="next-day">Day 2</div>
+              <div class="next-name">尹夫人</div>
+            </div>
+          </div>
+          <div class="next-card">
+            <div class="next-img">🎴</div>
+            <div class="next-info">
+              <div class="next-day">Day 3</div>
+              <div class="next-name">牛辅</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-tip">
+          <div class="tip-icon">🎮</div>
+          <div class="tip-text">完成任务后即可领取武将卡</div>
+          <button class="tip-btn">去完成</button>
+        </div>
+      </div>
+
+      <div class="guide-footer">
+        <button class="action-btn">领取武将卡</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

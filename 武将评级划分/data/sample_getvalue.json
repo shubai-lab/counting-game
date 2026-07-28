@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "nan刘备",
+    "lamp_type": "主",
+    "get_value": "获取途径:1 获取价值:10",
+    "in_rule_type": "身份规则;欢乐规则"
+  },
+  {
+    "id": 2,
+    "name": "nan关羽",
+    "lamp_type": "虎",
+    "get_value": "获取途径:1 获取价值:10",
+    "in_rule_type": "身份规则;欢乐规则"
+  },
+  {
+    "id": 27,
+    "name": "nan黄忠",
+    "lamp_type": "风",
+    "get_value": "获取途径:1 获取价值:60;获取途径:2 获取价值:59;获取途径:11 获取价值:60",
+    "in_rule_type": "身份规则;欢乐规则"
+  },
+  {
+    "id": 500,
+    "name": "nan关索",
+    "lamp_type": "祈福",
+    "get_value": "获取途径:2 获取价值:9999;获取途径:11 获取价值:10000",
+    "in_rule_type": "身份规则;欢乐规则"
+  },
+  {
+    "id": 501,
+    "name": "nan赵襄",
+    "lamp_type": "祈福",
+    "get_value": "获取途径:2 获取价值:9999;获取途径:11 获取价值:10000",
+    "in_rule_type": "身份规则;欢乐规则"
+  },
+  {
+    "id": 201,
+    "name": "nan神关羽",
+    "lamp_type": "神",
+    "get_value": "获取途径:12 获取价值:10",
+    "in_rule_type": "身份规则;欢乐规则"
+  },
+  {
+    "id": 202,
+    "name": "nan神吕蒙",
+    "lamp_type": "神",
+    "get_value": "nan",
+    "in_rule_type": "身份规则;欢乐规则"
+  },
+  {
+    "id": 203,
+    "name": "nan神周瑜",
+    "lamp_type": "神",
+    "get_value": "nan",
+    "in_rule_type": "身份规则;欢乐规则"
+  }
+]

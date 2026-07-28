@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test A：武将体验推送 交互原型</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 游戏规范字体 - 盛世楷书 */
+    .font-kai-title { font-family: 'FZShengShiKaiShuS-B-GB', 'FZBeiWeiKaiShu-S19_GBK', serif; }
+    .font-kai-btn { font-family: 'FZShengShiKaiShuS-DB-GB', serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+
+    /* 按钮样式 - 金棕色规范 */
+    .btn-primary {
+      background: linear-gradient(180deg, #ead0a3 0%, #d4b88a 100%);
+      color: #6a3c22;
+      border: 2px solid #af936c;
+      font-family: 'FZShengShiKaiShuS-DB-GB', serif;
+      font-size: 28px;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+    }
+    .btn-primary:active {
+      background: linear-gradient(180deg, #d4b88a 0%, #c9a876 100%);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #777777;
+      border: 2px solid #dddddd;
+      font-family: 'FZShengShiKaiShuS-DB-GB', serif;
+      font-size: 24px;
+      padding: 12px 24px;
+      border-radius: 8px;
+    }
+
+    /* 弹窗样式 - 亮底规范 */
+    .popup-bg {
+      background: #fff9f0;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    .popup-title {
+      color: #3c271c;
+      font-family: 'FZBeiWeiKaiShu-S19_GBK', serif;
+      font-size: 30px;
+    }
+    .popup-content {
+      color: #454545;
+      font-family: 'FZShengShiKaiShuS-DB-GB', serif;
+      font-size: 28px;
+    }
+    .popup-desc {
+      color: #777777;
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+    }
+
+    /* 动效 */
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .animate-slide-up { animation: slideUp 0.3s ease-out; }
+    .animate-fade-in { animation: fadeIn 0.25s ease-out; }
+    .animate-scale-in { animation: scaleIn 0.25s ease-out; }
+
+    /* 手机边框 */
+    .phone-frame {
+      width: 375px;
+      height: 812px;
+      border-radius: 40px;
+      background: #1a1a2e;
+      padding: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      background: #fff9f0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 状态标签 */
+    .status-tag {
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 18px;
+    }
+    .status-new { background: rgba(78, 177, 255, 0.15); color: #4eb1ff; }
+    .status-active { background: rgba(232, 208, 163, 0.5); color: #6a3c22; }
+    .status-pending { background: rgba(200, 200, 200, 0.3); color: #777777; }
+    .status-done { background: rgba(139, 69, 19, 0.15); color: #8B4513; }
+
+    /* 品质色 */
+    .quality-common { color: #ffffff; }
+    .quality-rare { color: #4eb1ff; }
+    .quality-epic { color: #c845ff; }
+    .quality-legend { color: #ff9c00; }
+
+    /* 武将卡片 */
+    .general-card {
+      background: #fff;
+      border: 2px solid #ead0a3;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .general-card-selected {
+      background: linear-gradient(135deg, #fff9f0 0%, #f5e6d3 100%);
+      border: 3px solid #ead0a3;
+      box-shadow: 0 4px 12px rgba(234, 208, 163, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 min-h-screen py-10">
+
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-center text-2xl font-kai-title text-amber-700 mb-2">Test A：武将体验推送</h1>
+    <p class="text-center text-gray-400 mb-10 font-inter">系统推送 · 武将体验卡 · 简单直接</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
+
+      <!-- ========== Screen 1: 弹窗全貌 ========== -->
+      <div>
+        <h2 class="text-center text-white mb-4 font-kai-btn text-lg">Screen 1: 武将体验推送</h2>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="relative h-full flex flex-col animate-scale-in">
+              <!-- 顶部标签 -->
+              <div class="pt-6 px-5 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <span class="text-blue-500 text-lg">🎁</span>
+                  </div>
+                  <span class="popup-title text-blue-600 tracking-wider">武将体验</span>
+                </div>
+                <span class="status-tag status-new">NEW</span>
+              </div>
+
+              <!-- 主内容区 -->
+              <div class="flex-1 px-5 pt-6">
+                <!-- 武将卡片 -->
+                <div class="general-card mb-4">
+                  <div class="flex items-center gap-4">
+                    <!-- 武将头像 -->
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center border-2 border-blue-300 shadow">
+                      <span class="text-4xl">⚔️</span>
+                    </div>
+                    <!-- 武将信息 -->
+                    <div class="flex-1">
+                      <div class="popup-title text-gray-800 text-xl mb-1">张角</div>
+                      <div class="popup-desc text-sm mb-2">史诗级武将</div>
+                      <div class="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded text-sm border border-blue-200">
+                        <span>✨</span>
+                        <span class="font-inter">胜率+15%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 体验信息 -->
+                <div class="bg-white rounded-xl p-4 mb-4 shadow-sm border border-gray-200">
+                  <div class="flex justify-between items-center mb-3">
+                    <span class="popup-desc text-gray-500">体验时间</span>
+                    <span class="popup-content text-amber-700 font-semibold">3天</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="popup-desc text-gray-500">体验次数</span>
+                    <span class="popup-content text-amber-700 font-semibold">不限次数</span>
+                  </div>
+                </div>
+
+                <!-- 提示信息 -->
+                <div class="bg-blue-50 rounded-lg p-3 mb-4 border border-blue-200">
+                  <div class="flex items-start gap-2">
+                    <span class="text-blue-500 text-sm">💡</span>
+                    <div class="popup-desc text-gray-600 leading-relaxed text-sm">
+                      使用此武将体验卡进行对局，武将将100%出现在您的推将列表中
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 奖励预览 -->
+                <div class="popup-desc text-gray-500 mb-3 text-sm">体验奖励</div>
+                <div class="flex gap-3">
+                  <div class="flex-1 bg-white rounded-lg p-3 text-center shadow-sm border border-gray-200">
+                    <div class="text-2xl mb-1">⚔️</div>
+                    <div class="popup-desc text-xs text-gray-500">武将试用</div>
+                    <div class="popup-content text-amber-600 text-sm">×3天</div>
+                  </div>
+                  <div class="flex-1 bg-white rounded-lg p-3 text-center shadow-sm border border-gray-200">
+                    <div class="text-2xl mb-1">📊</div>
+                    <div class="popup-desc text-xs text-gray-500">胜率加成</div>
+                    <div class="popup-content text-amber-600 text-sm">+15%</div>
+                  </div>
+                  <div class="flex-1 bg-white rounded-lg p-3 text-center shadow-sm border border-gray-200">
+                    <div class="text-2xl mb-1">🏆</div>
+                    <div class="popup-desc text-xs text-gray-500">首局出现</div>
+                    <div class="popup-content text-amber-600 text-sm">100%</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 底部按钮 -->
+              <div class="px-5 pb-8 space-y-3">
+                <button class="w-full btn-primary animate-pulse">
+                  立即体验
+                </button>
+                <button class="w-full btn-secondary">
+                  稍后再说
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-3">系统直接推送武将体验卡</p>
+      </div>
+
+      <!-- ========== Screen 2: 已领取 ========== -->
+      <div>
+        <h2 class="text-center text-white mb-4 font-kai-btn text-lg">Screen 2: 已领取状态</h2>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="relative h-full flex flex-col animate-scale-in">
+              <!-- 顶部标签 -->
+              <div class="pt-6 px-5 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                    <span class="text-green-500 text-lg">✓</span>
+                  </div>
+                  <span class="popup-title text-green-600 tracking-wider">武将体验</span>
+                </div>
+                <span class="status-tag status-done">已领取</span>
+              </div>
+
+              <!-- 主内容区 -->
+              <div class="flex-1 px-5 pt-6">
+                <!-- 武将卡片 -->
+                <div class="general-card mb-4">
+                  <div class="flex items-center gap-4">
+                    <!-- 武将头像 -->
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center border-2 border-green-300 shadow">
+                      <span class="text-4xl">⚔️</span>
+                    </div>
+                    <!-- 武将信息 -->
+                    <div class="flex-1">
+                      <div class="popup-title text-gray-800 text-xl mb-1">张角</div>
+                      <div class="popup-desc text-sm mb-2">史诗级武将</div>
+                      <div class="inline-flex items-center gap-1 bg-green-50 text-green-600 px-2 py-1 rounded text-sm border border-green-200">
+                        <span>✓</span>
+                        <span>已激活</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 体验信息 -->
+                <div class="bg-white rounded-xl p-4 mb-4 shadow-sm border border-gray-200">
+                  <div class="flex justify-between items-center mb-3">
+                    <span class="popup-desc text-gray-500">剩余时间</span>
+                    <span class="popup-content text-green-600 font-semibold">2天 23小时</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="popup-desc text-gray-500">使用次数</span>
+                    <span class="popup-desc text-gray-600">不限次数</span>
+                  </div>
+                </div>
+
+                <!-- 使用记录 -->
+                <div class="popup-desc text-gray-500 mb-3 text-sm">最近使用</div>
+                <div class="bg-white rounded-lg p-3 mb-4 shadow-sm border border-gray-200">
+                  <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                      <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center text-sm">⚔️</div>
+                      <div>
+                        <div class="popup-content text-gray-700 text-sm">张角体验</div>
+                        <div class="popup-desc text-xs text-gray-400">2小时前</div>
+                      </div>
+                    </div>
+                    <span class="text-xs text-green-600 font-semibold">✓ 胜利</span>
+                  </div>
+                </div>
+
+                <!-- 状态提示 -->
+                <div class="bg-green-50 rounded-lg p-3 border border-green-200">
+                  <div class="flex items-start gap-2">
+                    <span class="text-green-500 text-sm">✨</span>
+                    <div class="popup-desc text-gray-600 leading-relaxed text-sm">
+                      武将体验卡已激活，在任意对局中张角将100%出现在您的推将列表中
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 底部按钮 -->
+              <div class="px-5 pb-8 space-y-3">
+                <button class="w-full btn-primary">
+                  开始对局
+                </button>
+                <button class="w-full btn-secondary">
+                  查看详情
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-3">已领取，显示剩余时间</p>
+      </div>
+
+      <!-- ========== Screen 3: 对局中 ========== -->
+      <div>
+        <h2 class="text-center text-white mb-4 font-kai-btn text-lg">Screen 3: 对局中（推将列表）</h2>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="relative h-full flex flex-col">
+              <!-- 顶部标签 -->
+              <div class="pt-6 px-5 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
+                    <span class="text-amber-600 text-lg">🎯</span>
+                  </div>
+                  <span class="popup-title text-amber-700 tracking-wider">推将列表</span>
+                </div>
+                <span class="status-tag status-active">体验中</span>
+              </div>
+
+              <!-- 主内容区 -->
+              <div class="flex-1 px-5 pt-4">
+                <!-- 提示信息 -->
+                <div class="bg-amber-50 rounded-lg p-2 mb-4 border border-amber-200">
+                  <div class="flex items-center gap-2 text-sm text-amber-700">
+                    <span>✨</span>
+                    <span class="popup-content text-sm">武将体验卡生效中，张角100%出现</span>
+                  </div>
+                </div>
+
+                <!-- 武将列表 -->
+                <div class="space-y-3">
+                  <!-- 武将1 - 体验武将 -->
+                  <div class="general-card-selected rounded-xl p-4 relative">
+                    <div class="absolute -top-2 left-3 bg-amber-500 text-white text-xs px-2 py-0.5 rounded font-kai-btn">体验</div>
+                    <div class="flex items-center gap-3 pt-2">
+                      <div class="w-14 h-14 bg-gradient-to-br from-amber-100 to-amber-200 rounded-lg flex items-center justify-center border-2 border-amber-400 shadow">
+                        <span class="text-3xl">⚔️</span>
+                      </div>
+                      <div class="flex-1">
+                        <div class="popup-title text-amber-800 font-semibold">张角</div>
+                        <div class="popup-desc text-xs text-gray-500">史诗 · 限定体验</div>
+                      </div>
+                      <div class="text-right">
+                        <div class="popup-desc text-xs text-amber-600">胜率+15%</div>
+                        <div class="text-xs text-green-600 font-semibold">推荐</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 武将2 -->
+                  <div class="general-card rounded-xl p-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-14 h-14 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center border border-gray-300">
+                        <span class="text-3xl">🛡️</span>
+                      </div>
+                      <div class="flex-1">
+                        <div class="popup-content text-gray-700">司马懿</div>
+                        <div class="popup-desc text-xs text-gray-500">史诗</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 武将3 -->
+                  <div class="general-card rounded-xl p-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-14 h-14 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center border border-gray-300">
+                        <span class="text-3xl">⚡</span>
+                      </div>
+                      <div class="flex-1">
+                        <div class="popup-content text-gray-700">诸葛亮</div>
+                        <div class="popup-desc text-xs text-gray-500">传说</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 武将4 -->
+                  <div class="general-card rounded-xl p-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-14 h-14 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center border border-gray-300">
+                        <span class="text-3xl">🔥</span>
+                      </div>
+                      <div class="flex-1">
+                        <div class="popup-content text-gray-700">关羽</div>
+                        <div class="popup-desc text-xs text-gray-500">精品</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 底部按钮 -->
+              <div class="px-5 pb-8 pt-4">
+                <button class="w-full btn-primary animate-pulse">
+                  选择张角
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-3">体验武将100%出现在推将列表首位</p>
+      </div>
+
+      <!-- ========== Screen 4: 对局结果 ========== -->
+      <div>
+        <h2 class="text-center text-white mb-4 font-kai-btn text-lg">Screen 4: 对局结果</h2>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="relative h-full flex flex-col">
+              <!-- 主内容区 -->
+              <div class="flex-1 flex flex-col items-center justify-center px-5">
+                <!-- 结果图标 -->
+                <div class="text-6xl mb-4 animate-bounce">🎉</div>
+                <div class="popup-title text-2xl text-amber-700 mb-2">胜利！</div>
+                <div class="popup-desc text-gray-500 mb-6">使用张角（体验）获得胜利</div>
+
+                <!-- 战绩统计 -->
+                <div class="w-full bg-white rounded-xl p-4 mb-4 shadow-sm border border-gray-200">
+                  <div class="flex justify-between mb-3">
+                    <span class="popup-desc text-gray-500">对局时长</span>
+                    <span class="popup-content text-gray-700">12分32秒</span>
+                  </div>
+                  <div class="flex justify-between mb-3">
+                    <span class="popup-desc text-gray-500">使用武将</span>
+                    <span class="popup-content text-amber-700">张角（体验）</span>
+                  </div>
+                  <div class="flex justify-between mb-3">
+                    <span class="popup-desc text-gray-500">战绩</span>
+                    <span class="popup-content text-green-600">胜利</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="popup-desc text-gray-500">获得奖励</span>
+                    <span class="popup-content text-amber-700">+120 经验</span>
+                  </div>
+                </div>
+
+                <!-- 体验反馈 -->
+                <div class="w-full bg-amber-50 rounded-xl p-4 mb-4 border border-amber-200">
+                  <div class="popup-content text-amber-700 mb-2 text-sm">✨ 武将体验反馈</div>
+                  <div class="popup-content text-gray-700 mb-3">这把体验如何？</div>
+                  <div class="flex gap-2">
+                    <button class="flex-1 py-2 bg-green-50 text-green-600 rounded-lg text-sm border border-green-200 font-semibold">很棒！</button>
+                    <button class="flex-1 py-2 bg-gray-100 text-gray-500 rounded-lg text-sm border border-gray-200">一般</button>
+                    <button class="flex-1 py-2 bg-gray-100 text-gray-500 rounded-lg text-sm border border-gray-200">不好</button>
+                  </div>
+                </div>
+
+                <!-- 继续提示 -->
+                <div class="popup-desc text-xs text-gray-400 text-center">
+                  武将体验卡剩余 2天22小时
+                </div>
+              </div>
+
+              <!-- 底部按钮 -->
+              <div class="px-5 pb-8 pt-4 space-y-3">
+                <button class="w-full btn-primary">
+                  再来一局
+                </button>
+                <button class="w-full btn-secondary">
+                  查看详情
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-3">对局胜利，体验反馈收集</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 按钮点击效果
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.style.transform = 'scale(0.98)';
+        this.style.transition = 'transform 0.1s';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 100);
+      });
+    });
+  </script>
+
+</body>
+</html>

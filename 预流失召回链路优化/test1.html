@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <h3>测试1: 最简单</h3>
+  <div class="mermaid">
+graph LR
+    A --> B
+  </div>
+
+  <h3>测试2: subgraph</h3>
+  <div class="mermaid">
+flowchart LR
+    subgraph S
+        A --> B
+    end
+  </div>
+
+  <h3>测试3: 菱形</h3>
+  <div class="mermaid">
+flowchart LR
+    A --> B{测试}
+  </div>
+
+  <h3>测试4: 带文字的边</h3>
+  <div class="mermaid">
+flowchart LR
+    A -->|是| B
+  </div>
+
+  <h3>测试5: style</h3>
+  <div class="mermaid">
+flowchart LR
+    A --> B
+    style A fill:#f00
+  </div>
+
+  <script>
+    mermaid.initialize({startOnLoad: true});
+  </script>
+</body>
+</html>

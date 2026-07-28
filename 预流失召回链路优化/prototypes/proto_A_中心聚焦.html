@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型A：中心聚焦式</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a2e; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .phone-frame { width: 1334px; height: 750px; background: linear-gradient(180deg, #3c271c, #6a3c22); border-radius: 40px; overflow: hidden; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+
+    .layout-tag { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5); color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 14px; z-index: 100; }
+
+    /* 中心聚焦布局 */
+    .center-focus { position: absolute; inset: 0; display: flex; flex-direction: column; }
+
+    /* 顶部标题 */
+    .top-bar { height: 80px; display: flex; align-items: center; justify-content: center; }
+    .top-title { font-size: 36px; color: #ead0a3; font-weight: bold; }
+
+    /* 进度条 */
+    .progress-bar { padding: 0 60px; margin-bottom: 20px; }
+    .bar-track { height: 10px; background: rgba(255,255,255,0.2); border-radius: 5px; position: relative; }
+    .bar-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 33%; background: #ead0a3; border-radius: 5px; }
+    .bar-labels { display: flex; justify-content: space-between; margin-top: 10px; }
+    .bar-label { font-size: 18px; color: #ead0a3; opacity: 0.6; }
+    .bar-label.active { opacity: 1; font-weight: bold; }
+
+    /* 中心武将卡 */
+    .center-card { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 60px; }
+    .hero-wrap { position: relative; }
+    .hero-circle { width: 280px; height: 280px; background: linear-gradient(135deg, #ead0a3, #d4c4a3); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 6px solid #ead0a3; box-shadow: 0 0 40px rgba(234,208,163,0.5); }
+    .hero-emoji { font-size: 140px; }
+    .hero-badge { position: absolute; top: -10px; right: -10px; background: #6a3c22; color: #ead0a3; padding: 8px 16px; border-radius: 20px; font-size: 16px; }
+    .hero-name { font-size: 44px; color: #ead0a3; font-weight: bold; margin-top: 20px; text-align: center; }
+    .hero-info { font-size: 22px; color: #ead0a3; opacity: 0.7; margin-top: 8px; text-align: center; }
+
+    /* 任务列表 */
+    .task-area { padding: 0 60px; }
+    .task-row { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.1); border-radius: 16px; padding: 20px 25px; margin-bottom: 12px; }
+    .task-left { display: flex; align-items: center; gap: 18px; }
+    .task-icon { font-size: 28px; }
+    .task-text { font-size: 24px; color: #ead0a3; }
+    .task-btn { padding: 10px 20px; background: #ead0a3; color: #3c271c; border-radius: 10px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; }
+
+    /* 底部按钮 */
+    .bottom-btn { padding: 30px 60px 50px; }
+    .main-action { width: 100%; padding: 22px; background: linear-gradient(180deg, #ead0a3, #d4c4a3); color: #3c271c; border-radius: 16px; font-size: 32px; font-weight: bold; border: 3px solid #ead0a3; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="layout-tag">原型A：中心聚焦式</div>
+
+    <div class="center-focus">
+      <div class="top-bar">
+        <div class="top-title">武将体验卡 · 召回活动</div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="bar-track">
+          <div class="bar-fill"></div>
+        </div>
+        <div class="bar-labels">
+          <span class="bar-label active">Day1</span>
+          <span class="bar-label">Day2</span>
+          <span class="bar-label">Day3</span>
+        </div>
+      </div>
+
+      <div class="center-card">
+        <div class="hero-wrap">
+          <div class="hero-circle">
+            <div class="hero-emoji">🎴</div>
+          </div>
+          <div class="hero-badge">今日</div>
+        </div>
+        <div class="hero-name">界钟会</div>
+        <div class="hero-info">传说品质 · 有效期7天</div>
+      </div>
+
+      <div class="task-area">
+        <div class="task-row">
+          <div class="task-left">
+            <div class="task-icon">✓</div>
+            <div class="task-text">登录游戏</div>
+          </div>
+          <button class="task-btn">已完成</button>
+        </div>
+        <div class="task-row">
+          <div class="task-left">
+            <div class="task-icon">🎮</div>
+            <div class="task-text">完成任意对局1次</div>
+          </div>
+          <button class="task-btn">去完成</button>
+        </div>
+      </div>
+
+      <div class="bottom-btn">
+        <button class="main-action">领取武将卡</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

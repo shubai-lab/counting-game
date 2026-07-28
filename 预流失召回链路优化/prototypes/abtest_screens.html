@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预流失ABTest 分屏预览</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .font-kai { font-family: 'FZShengShiKaiShuS-DB-GB', 'FZBeiWeiKaiShu-S19_GBK', serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-900 min-h-screen py-8">
+
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-center text-2xl font-kai text-amber-400 mb-2">预流失ABTest 分屏预览</h1>
+    <p class="text-center text-gray-400 mb-8 font-inter text-sm">图片切分测试 - 点击按钮查看各个屏幕</p>
+
+    <!-- 切分按钮 -->
+    <div class="flex justify-center gap-4 mb-8">
+      <div class="bg-gray-800 rounded-xl p-4">
+        <div class="text-white font-kai mb-2">Test A</div>
+        <div class="flex flex-wrap gap-2" id="btns-a"></div>
+      </div>
+      <div class="bg-gray-800 rounded-xl p-4">
+        <div class="text-white font-kai mb-2">Test B</div>
+        <div class="flex flex-wrap gap-2" id="btns-b"></div>
+      </div>
+      <div class="bg-gray-800 rounded-xl p-4">
+        <div class="text-white font-kai mb-2">Test C</div>
+        <div class="flex flex-wrap gap-2" id="btns-c"></div>
+      </div>
+    </div>
+
+    <!-- 预览区 -->
+    <div class="flex justify-center">
+      <div class="bg-gray-800 rounded-2xl p-6">
+        <canvas id="preview" width="1334" height="750" class="rounded-lg shadow-lg"></canvas>
+        <div class="text-center mt-4">
+          <span id="screen-label" class="text-gray-400 font-inter">点击上方按钮切换屏幕</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 屏幕索引信息 -->
+    <div class="mt-8 text-center text-gray-500 text-sm">
+      <p>提示：每张长图切分为多个1334×750的屏幕</p>
+    </div>
+  </div>
+
+  <script>
+    // 图片配置
+    const configs = {
+      a: { file: 'test a.png', width: 12036, height: 1128, screens: 9 },
+      b: { file: 'TEST b.png', width: 7314, height: 1299, screens: 5 },
+      c: { file: 'TEST c.png', width: 10114, height: 1299, screens: 7 }
+    };
+
+    const canvas = document.getElementById('preview');
+    const ctx = canvas.getContext('2d');
+    const loadedImages = {};
+
+    // 加载图片
+    async function loadImage(key) {
+      if (loadedImages[key]) return loadedImages[key];
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          loadedImages[key] = img;
+          resolve(img);
+        };
+        img.onerror = reject;
+        img.src = configs[key].file;
+      });
+    }
+
+    // 绘制屏幕
+    async function drawScreen(key, screenIndex) {
+      const config = configs[key];
+      const img = await loadImage(key);
+
+      const screenWidth = 1334;
+      const screenHeight = 750;
+
+      // 计算每个屏幕在原图中的位置（按比例）
+      const scaleX = img.width / (config.screens * screenWidth);
+      const scaleY = img.height / screenHeight;
+      const scale = Math.max(scaleX, scaleY);
+
+      const srcX = screenIndex * screenWidth * scale;
+      const srcY = 0;
+      const srcW = screenWidth * scale;
+      const srcH = img.height;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, canvas.width, canvas.height);
+
+      document.getElementById('screen-label').textContent = `Test ${key.toUpperCase()} - 屏幕 ${screenIndex + 1} / ${config.screens}`;
+    }
+
+    // 生成按钮
+    async function init() {
+      for (const key of ['a', 'b', 'c']) {
+        const config = configs[key];
+        const container = document.getElementById(`btns-${key}`);
+
+        for (let i = 0; i < config.screens; i++) {
+          const btn = document.createElement('button');
+          btn.className = 'px-3 py-1 bg-amber-500 text-gray-900 rounded font-kai text-sm hover:bg-amber-400';
+          btn.textContent = i + 1;
+          btn.onclick = () => drawScreen(key, i);
+          container.appendChild(btn);
+        }
+      }
+
+      // 默认显示第一个
+      drawScreen('a', 0);
+    }
+
+    init();
+  </script>
+
+</body>
+</html>

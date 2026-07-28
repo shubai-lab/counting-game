@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>布局8：大弹窗布局 - 居中弹窗</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a2e; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .phone-frame { width: 1334px; height: 750px; background: #fff9f0; border-radius: 40px; overflow: hidden; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+    /* 背景 */
+    .bg-content { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .bg-text { font-size: 28px; color: #6a3c22; opacity: 0.4; }
+
+    /* 遮罩 70px */
+    .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
+
+    /* 大弹窗 1084×582px */
+    .dialog { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1084px; height: 582px; background: #fff; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); overflow: hidden; display: flex; flex-direction: column; }
+
+    /* 弹窗头部 */
+    .dialog-header { height: 80px; background: linear-gradient(135deg, #ead0a3, #d4c4a3); padding: 0 30px; display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #6a3c22; }
+    .dialog-title { font-size: 36px; color: #3c271c; font-weight: bold; }
+    .close-btn { width: 50px; height: 50px; background: #6a3c22; color: #ead0a3; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; border: none; }
+
+    /* Tab导航 */
+    .dialog-tabs { display: flex; background: #fff9f0; border-bottom: 2px solid #ead0a3; }
+    .dialog-tab { flex: 1; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #6a3c22; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
+    .dialog-tab.active { color: #3c271c; border-bottom-color: #6a3c22; background: #fff; }
+
+    /* 弹窗内容 */
+    .dialog-body { flex: 1; display: flex; overflow: hidden; }
+
+    /* 左侧武将区 */
+    .hero-panel { width: 400px; background: linear-gradient(180deg, #fff9f0, #fff); padding: 30px; display: flex; flex-direction: column; border-right: 2px solid #ead0a3; }
+    .hero-display { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .hero-img-large { width: 200px; height: 250px; background: linear-gradient(135deg, #ead0a3, #d4c4a3); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 140px; margin-bottom: 20px; border: 3px solid #6a3c22; }
+    .hero-name-lg { font-size: 40px; color: #3c271c; font-weight: bold; text-align: center; }
+    .hero-quality-lg { font-size: 24px; color: #6a3c22; text-align: center; margin-top: 10px; }
+
+    /* 右侧任务区 */
+    .task-panel { flex: 1; padding: 30px; overflow-y: auto; }
+    .task-title { font-size: 28px; color: #3c271c; font-weight: bold; margin-bottom: 20px; }
+    .task-item { background: #fff; border-radius: 16px; padding: 20px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; border: 2px solid #ead0a3; }
+    .task-left { display: flex; align-items: center; gap: 18px; }
+    .task-icon { width: 55px; height: 55px; background: #fff9f0; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+    .task-info {}
+    .task-name { font-size: 26px; color: #3c271c; font-weight: bold; }
+    .task-desc { font-size: 18px; color: #6a3c22; margin-top: 4px; }
+    .task-btn { padding: 14px 28px; background: #6a3c22; color: #ead0a3; border-radius: 10px; font-size: 22px; border: none; cursor: pointer; }
+    .task-btn.done { background: #ead0a3; color: #6a3c22; }
+
+    /* 弹窗底部 */
+    .dialog-footer { height: 90px; padding: 0 30px; background: #fff; border-top: 2px solid #ead0a3; display: flex; align-items: center; justify-content: center; }
+    .claim-btn { padding: 18px 80px; background: linear-gradient(180deg, #ead0a3, #d4c4a3); color: #3c271c; border-radius: 16px; font-size: 32px; font-weight: bold; cursor: pointer; border: 3px solid #6a3c22; }
+
+    .layout-label { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 14px; z-index: 100; }
+  </style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="layout-label">布局8：大弹窗布局 - 居中弹窗（1084×582px，背景遮罩70px）</div>
+
+    <div class="bg-content">
+      <div class="bg-text">点击打开领取弹窗</div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- 大弹窗 -->
+    <div class="dialog">
+      <div class="dialog-header">
+        <div class="dialog-title">预流失召回 · 武将体验</div>
+        <button class="close-btn">×</button>
+      </div>
+
+      <div class="dialog-tabs">
+        <div class="dialog-tab active">武将卡</div>
+        <div class="dialog-tab">任务</div>
+        <div class="dialog-tab">规则</div>
+      </div>
+
+      <div class="dialog-body">
+        <!-- 左侧武将 -->
+        <div class="hero-panel">
+          <div class="hero-display">
+            <div class="hero-img-large">🎴</div>
+            <div class="hero-name-lg">界钟会</div>
+            <div class="hero-quality-lg">传说品质 · 7天有效期</div>
+          </div>
+        </div>
+
+        <!-- 右侧任务 -->
+        <div class="task-panel">
+          <div class="task-title">领取条件</div>
+          <div class="task-item">
+            <div class="task-left">
+              <div class="task-icon">✓</div>
+              <div class="task-info">
+                <div class="task-name">登录游戏</div>
+                <div class="task-desc">已登录</div>
+              </div>
+            </div>
+            <button class="task-btn done">✓</button>
+          </div>
+          <div class="task-item">
+            <div class="task-left">
+              <div class="task-icon">🎮</div>
+              <div class="task-info">
+                <div class="task-name">完成任意对局1次</div>
+                <div class="task-desc">0/1</div>
+              </div>
+            </div>
+            <button class="task-btn">去完成</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dialog-footer">
+        <button class="claim-btn">领取武将卡</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,4040 @@
+[
+  {
+    "general_id": 1,
+    "name": "刘备",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 2,
+    "name": "关羽",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 3,
+    "name": "张飞",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 4,
+    "name": "诸葛亮",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 5,
+    "name": "赵云",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 6,
+    "name": "马超",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 7,
+    "name": "黄月英",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 8,
+    "name": "孙权",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 9,
+    "name": "甘宁",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 10,
+    "name": "吕蒙",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 11,
+    "name": "黄盖",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 12,
+    "name": "周瑜",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 13,
+    "name": "大乔",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 14,
+    "name": "陆逊",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 15,
+    "name": "孙尚香",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 16,
+    "name": "曹操",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 17,
+    "name": "司马懿",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 18,
+    "name": "夏侯惇",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 19,
+    "name": "张辽",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 20,
+    "name": "许褚",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 21,
+    "name": "郭嘉",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 22,
+    "name": "甄姬",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 23,
+    "name": "华佗",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 24,
+    "name": "吕布",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 25,
+    "name": "貂蝉",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 26,
+    "name": "华雄",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 27,
+    "name": "黄忠",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 28,
+    "name": "魏延",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 29,
+    "name": "夏侯渊",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 30,
+    "name": "曹仁",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 31,
+    "name": "小乔",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 32,
+    "name": "周泰",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 33,
+    "name": "张角",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 34,
+    "name": "于吉",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 35,
+    "name": "典韦",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 36,
+    "name": "荀彧",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 37,
+    "name": "庞统",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 38,
+    "name": "卧龙诸葛",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 39,
+    "name": "太史慈",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 40,
+    "name": "庞德",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 41,
+    "name": "颜良文丑",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 42,
+    "name": "袁绍",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 43,
+    "name": "徐晃",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 44,
+    "name": "曹丕",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 45,
+    "name": "孙坚",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 46,
+    "name": "董卓",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 47,
+    "name": "祝融",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 48,
+    "name": "孟获",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 49,
+    "name": "贾诩",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 50,
+    "name": "鲁肃",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 51,
+    "name": "张郃",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 52,
+    "name": "邓艾",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 53,
+    "name": "姜维",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 54,
+    "name": "刘禅",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 55,
+    "name": "孙策",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 56,
+    "name": "张昭张纮",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 57,
+    "name": "左慈",
+    "tier": "待手动确认",
+    "reason": "ways=[21]"
+  },
+  {
+    "general_id": 58,
+    "name": "蔡文姬",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 90,
+    "name": "严颜",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 91,
+    "name": "王平",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 92,
+    "name": "陆绩",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 93,
+    "name": "孙亮",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 94,
+    "name": "王基",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 95,
+    "name": "蒯良蒯越",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 96,
+    "name": "许攸",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 97,
+    "name": "卢植",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 98,
+    "name": "陈到",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 99,
+    "name": "诸葛瞻",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 100,
+    "name": "周妃",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 101,
+    "name": "陆抗",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 102,
+    "name": "郝昭",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 103,
+    "name": "毌丘俭",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 104,
+    "name": "袁术",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 105,
+    "name": "张绣",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 201,
+    "name": "神关羽",
+    "tier": "待手动确认",
+    "reason": "ways=[12]"
+  },
+  {
+    "general_id": 202,
+    "name": "神吕蒙",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 203,
+    "name": "神周瑜",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 204,
+    "name": "神诸葛亮",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 205,
+    "name": "神曹操",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 206,
+    "name": "神吕布",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 207,
+    "name": "神赵云",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 208,
+    "name": "神司马懿",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 209,
+    "name": "神刘备",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 210,
+    "name": "神陆逊",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 211,
+    "name": "神张辽",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 212,
+    "name": "神甘宁",
+    "tier": "史诗",
+    "reason": "神将任务(5002)"
+  },
+  {
+    "general_id": 213,
+    "name": "神姜维",
+    "tier": "待手动确认",
+    "reason": "ways=[27]"
+  },
+  {
+    "general_id": 214,
+    "name": "神马超",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 215,
+    "name": "神张飞",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 216,
+    "name": "神张角",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 217,
+    "name": "神邓艾",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 230,
+    "name": "武诸葛亮",
+    "tier": "限定",
+    "reason": "武庙珍藏(1102)"
+  },
+  {
+    "general_id": 288,
+    "name": "法正",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 289,
+    "name": "马谡",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 290,
+    "name": "徐庶",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 291,
+    "name": "吴国太",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 292,
+    "name": "凌统",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 293,
+    "name": "徐盛",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 294,
+    "name": "曹植",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 295,
+    "name": "张春华",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 296,
+    "name": "于禁",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 297,
+    "name": "陈宫",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 298,
+    "name": "高顺",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 299,
+    "name": "关兴张苞",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 300,
+    "name": "廖化",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 301,
+    "name": "马岱",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 302,
+    "name": "步练师",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 303,
+    "name": "程普",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 304,
+    "name": "韩当",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 305,
+    "name": "荀攸",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 306,
+    "name": "王异",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 307,
+    "name": "曹彰",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 308,
+    "name": "钟会",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 309,
+    "name": "刘表",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 310,
+    "name": "曹冲",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 311,
+    "name": "郭淮",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 312,
+    "name": "满宠",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 313,
+    "name": "关平",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 314,
+    "name": "简雍",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 315,
+    "name": "刘封",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 316,
+    "name": "潘璋马忠",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 317,
+    "name": "虞翻",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 318,
+    "name": "朱然",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 319,
+    "name": "伏皇后",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 320,
+    "name": "李儒",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 321,
+    "name": "曹真",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 322,
+    "name": "韩浩史涣",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 323,
+    "name": "陈群",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 324,
+    "name": "吴懿",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 325,
+    "name": "周仓",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 326,
+    "name": "张松",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 327,
+    "name": "孙鲁班",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 328,
+    "name": "朱桓",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 329,
+    "name": "顾雍",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 330,
+    "name": "沮授",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 331,
+    "name": "蔡夫人",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 332,
+    "name": "曹叡",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 333,
+    "name": "曹休",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 334,
+    "name": "钟繇",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 335,
+    "name": "刘谌",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 336,
+    "name": "夏侯氏",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 337,
+    "name": "张嶷",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 338,
+    "name": "孙休",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 339,
+    "name": "朱治",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 340,
+    "name": "全琮",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 341,
+    "name": "公孙渊",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 342,
+    "name": "郭图逢纪",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 400,
+    "name": "张星彩",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 401,
+    "name": "吴苋",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 402,
+    "name": "孙登",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 403,
+    "name": "步骘",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 404,
+    "name": "曹昂",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 405,
+    "name": "诸葛诞",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 406,
+    "name": "刘协",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 407,
+    "name": "曹节",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 408,
+    "name": "董允",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 409,
+    "name": "诸葛瑾",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 410,
+    "name": "严畯",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 411,
+    "name": "李典",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 412,
+    "name": "司马朗",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 413,
+    "name": "杜畿",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 414,
+    "name": "刘焉",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 415,
+    "name": "张鲁",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 416,
+    "name": "孙乾",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 417,
+    "name": "秦宓",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 418,
+    "name": "薛综",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 419,
+    "name": "潘濬",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 420,
+    "name": "戏志才",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 421,
+    "name": "郭皇后",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 422,
+    "name": "王粲",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 423,
+    "name": "蔡邕",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 424,
+    "name": "SP孙尚香",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 425,
+    "name": "SP徐庶",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 426,
+    "name": "SP庞统",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 427,
+    "name": "SP庞德",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 428,
+    "name": "SP蔡文姬",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 429,
+    "name": "SP姜维",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 430,
+    "name": "SP黄月英",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 431,
+    "name": "SP太史慈",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 432,
+    "name": "李严",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 433,
+    "name": "糜竺",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 434,
+    "name": "马忠",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 435,
+    "name": "周鲂",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 436,
+    "name": "贺齐",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 437,
+    "name": "文聘",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 438,
+    "name": "吕岱",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 439,
+    "name": "刘繇",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 440,
+    "name": "马云騄",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 441,
+    "name": "关银屏",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 442,
+    "name": "祖茂",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 443,
+    "name": "徐氏",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 444,
+    "name": "吕虔",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 445,
+    "name": "张梁",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 446,
+    "name": "蹋顿",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 447,
+    "name": "公孙瓒",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 500,
+    "name": "关索",
+    "tier": "传说",
+    "reason": "jiangxing_price:10000"
+  },
+  {
+    "general_id": 501,
+    "name": "赵襄",
+    "tier": "传说",
+    "reason": "jiangxing_price:10000"
+  },
+  {
+    "general_id": 502,
+    "name": "诸葛果",
+    "tier": "待手动确认",
+    "reason": "ways=[23]"
+  },
+  {
+    "general_id": 503,
+    "name": "孙皓",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 504,
+    "name": "诸葛恪",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 505,
+    "name": "程昱",
+    "tier": "传说",
+    "reason": "jiangxing_price:10000"
+  },
+  {
+    "general_id": 506,
+    "name": "陈琳",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 507,
+    "name": "杨修",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 508,
+    "name": "王朗",
+    "tier": "待手动确认",
+    "reason": "ways=[14]"
+  },
+  {
+    "general_id": 509,
+    "name": "兀突骨",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 510,
+    "name": "士燮",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 511,
+    "name": "张宝",
+    "tier": "待手动确认",
+    "reason": "ways=[5003]"
+  },
+  {
+    "general_id": 512,
+    "name": "灵雎",
+    "tier": "待手动确认",
+    "reason": "ways=[2004]"
+  },
+  {
+    "general_id": 513,
+    "name": "王允",
+    "tier": "待手动确认",
+    "reason": "ways=[21]"
+  },
+  {
+    "general_id": 514,
+    "name": "司马徽",
+    "tier": "传说",
+    "reason": "jiangxing_price:10000"
+  },
+  {
+    "general_id": 515,
+    "name": "鲍三娘",
+    "tier": "传说",
+    "reason": "jiangxing_price:10000"
+  },
+  {
+    "general_id": 516,
+    "name": "徐荣",
+    "tier": "传说",
+    "reason": "jiangxing_price:10000"
+  },
+  {
+    "general_id": 517,
+    "name": "大乔小乔",
+    "tier": "待手动确认",
+    "reason": "ways=[2004]"
+  },
+  {
+    "general_id": 518,
+    "name": "曹婴",
+    "tier": "传说",
+    "reason": "jiangxing_price:10000"
+  },
+  {
+    "general_id": 519,
+    "name": "SP马超",
+    "tier": "待手动确认",
+    "reason": "ways=[2004]"
+  },
+  {
+    "general_id": 520,
+    "name": "曹纯",
+    "tier": "传说",
+    "reason": "jiangxing_price:10000"
+  },
+  {
+    "general_id": 521,
+    "name": "蒋干",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1500"
+  },
+  {
+    "general_id": 522,
+    "name": "文鸯",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 523,
+    "name": "夏侯霸",
+    "tier": "待手动确认",
+    "reason": "ways=[5003]"
+  },
+  {
+    "general_id": 524,
+    "name": "SP赵云",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 525,
+    "name": "花鬘",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 526,
+    "name": "皇甫嵩",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 527,
+    "name": "刘琦",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 528,
+    "name": "辛宪英",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 529,
+    "name": "王双",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 530,
+    "name": "留赞",
+    "tier": "史诗",
+    "reason": "jiangxing_price:6000"
+  },
+  {
+    "general_id": 532,
+    "name": "SP关羽",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 533,
+    "name": "张让",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 534,
+    "name": "韩遂",
+    "tier": "待手动确认",
+    "reason": "ways=[103]"
+  },
+  {
+    "general_id": 535,
+    "name": "何进",
+    "tier": "稀有",
+    "reason": "jiangxing_price:180"
+  },
+  {
+    "general_id": 536,
+    "name": "刘宏",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 537,
+    "name": "朱儁",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 538,
+    "name": "郭照",
+    "tier": "史诗",
+    "reason": "jiangxing_price:5000"
+  },
+  {
+    "general_id": 539,
+    "name": "董白",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 540,
+    "name": "樊玉凤",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 541,
+    "name": "阮瑀",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 542,
+    "name": "陆郁生",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 543,
+    "name": "杨婉",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 544,
+    "name": "何晏",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1500"
+  },
+  {
+    "general_id": 545,
+    "name": "张虎",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 546,
+    "name": "潘淑",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 547,
+    "name": "杜夫人",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 548,
+    "name": "阚泽",
+    "tier": "稀有",
+    "reason": "jiangxing_price:180"
+  },
+  {
+    "general_id": 549,
+    "name": "吕玲绮",
+    "tier": "史诗",
+    "reason": "jiangxing_price:6000"
+  },
+  {
+    "general_id": 550,
+    "name": "周夷",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 551,
+    "name": "南华老仙",
+    "tier": "史诗",
+    "reason": "jiangxing_price:6000"
+  },
+  {
+    "general_id": 552,
+    "name": "童渊",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 553,
+    "name": "张宁",
+    "tier": "待手动确认",
+    "reason": "ways=[101]"
+  },
+  {
+    "general_id": 554,
+    "name": "刘永",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 555,
+    "name": "曹金玉",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 556,
+    "name": "庞德公",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 557,
+    "name": "SP贾诩",
+    "tier": "待手动确认",
+    "reason": "ways=[2, 11]"
+  },
+  {
+    "general_id": 558,
+    "name": "祢衡",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 559,
+    "name": "孙翊",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 560,
+    "name": "冯妤",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 561,
+    "name": "曹髦",
+    "tier": "待手动确认",
+    "reason": "ways=[26]"
+  },
+  {
+    "general_id": 562,
+    "name": "来莺儿",
+    "tier": "待手动确认",
+    "reason": "ways=[25]"
+  },
+  {
+    "general_id": 563,
+    "name": "吉平",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 564,
+    "name": "曹华",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 565,
+    "name": "刘徽",
+    "tier": "待手动确认",
+    "reason": "ways=[14]"
+  },
+  {
+    "general_id": 566,
+    "name": "卢弈",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 567,
+    "name": "孙翎鸾",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 600,
+    "name": "李傕",
+    "tier": "稀有",
+    "reason": "jiangxing_price:140"
+  },
+  {
+    "general_id": 601,
+    "name": "郭汜",
+    "tier": "稀有",
+    "reason": "jiangxing_price:100"
+  },
+  {
+    "general_id": 602,
+    "name": "樊稠",
+    "tier": "稀有",
+    "reason": "jiangxing_price:120"
+  },
+  {
+    "general_id": 603,
+    "name": "张济",
+    "tier": "普通",
+    "reason": "jiangxing_price:80"
+  },
+  {
+    "general_id": 604,
+    "name": "梁兴",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 605,
+    "name": "唐姬",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 607,
+    "name": "段煨",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 608,
+    "name": "张横",
+    "tier": "待手动确认",
+    "reason": "ways=[12]"
+  },
+  {
+    "general_id": 609,
+    "name": "冯方",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1500"
+  },
+  {
+    "general_id": 610,
+    "name": "牛辅",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 611,
+    "name": "董翓",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 650,
+    "name": "沙摩柯",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 651,
+    "name": "忙牙长",
+    "tier": "稀有",
+    "reason": "jiangxing_price:180"
+  },
+  {
+    "general_id": 652,
+    "name": "许贡",
+    "tier": "稀有",
+    "reason": "jiangxing_price:180"
+  },
+  {
+    "general_id": 653,
+    "name": "张昌蒲",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 700,
+    "name": "张恭",
+    "tier": "待手动确认",
+    "reason": "ways=[28]"
+  },
+  {
+    "general_id": 701,
+    "name": "吕凯",
+    "tier": "待手动确认",
+    "reason": "ways=[28]"
+  },
+  {
+    "general_id": 702,
+    "name": "卫温诸葛直",
+    "tier": "待手动确认",
+    "reason": "ways=[28]"
+  },
+  {
+    "general_id": 703,
+    "name": "卑弥呼",
+    "tier": "待手动确认",
+    "reason": "ways=[28]"
+  },
+  {
+    "general_id": 704,
+    "name": "张琪瑛",
+    "tier": "传说",
+    "reason": "jiangxing_price:10000"
+  },
+  {
+    "general_id": 801,
+    "name": "蒲元",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1500"
+  },
+  {
+    "general_id": 802,
+    "name": "管辂",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 803,
+    "name": "葛玄",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 804,
+    "name": "许劭",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 805,
+    "name": "杜夔",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 806,
+    "name": "朱建平",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 850,
+    "name": "辛毗",
+    "tier": "待手动确认",
+    "reason": "ways=[12]"
+  },
+  {
+    "general_id": 851,
+    "name": "伊籍",
+    "tier": "待手动确认",
+    "reason": "ways=[12]"
+  },
+  {
+    "general_id": 852,
+    "name": "张温",
+    "tier": "待手动确认",
+    "reason": "ways=[12]"
+  },
+  {
+    "general_id": 853,
+    "name": "李肃",
+    "tier": "待手动确认",
+    "reason": "ways=[12]"
+  },
+  {
+    "general_id": 951,
+    "name": "邢道荣",
+    "tier": "待手动确认",
+    "reason": "ways=[3002]"
+  },
+  {
+    "general_id": 952,
+    "name": "曹性",
+    "tier": "待手动确认",
+    "reason": "ways=[3002]"
+  },
+  {
+    "general_id": 953,
+    "name": "淳于琼",
+    "tier": "待手动确认",
+    "reason": "ways=[3002]"
+  },
+  {
+    "general_id": 954,
+    "name": "夏侯杰",
+    "tier": "待手动确认",
+    "reason": "ways=[3002]"
+  },
+  {
+    "general_id": 955,
+    "name": "蔡阳",
+    "tier": "待手动确认",
+    "reason": "ways=[3002]"
+  },
+  {
+    "general_id": 956,
+    "name": "周善",
+    "tier": "待手动确认",
+    "reason": "ways=[3002]"
+  },
+  {
+    "general_id": 980,
+    "name": "雷铜",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 981,
+    "name": "吴兰",
+    "tier": "待手动确认",
+    "reason": "ways=[13]"
+  },
+  {
+    "general_id": 1000,
+    "name": "孙鲁育",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1004,
+    "name": "万年公主",
+    "tier": "待手动确认",
+    "reason": "ways=[5007]"
+  },
+  {
+    "general_id": 1005,
+    "name": "荀谌",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1006,
+    "name": "陈登",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1007,
+    "name": "滕公主",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 1008,
+    "name": "黄皓",
+    "tier": "待手动确认",
+    "reason": "ways=[5006]"
+  },
+  {
+    "general_id": 1009,
+    "name": "蔡瑁张允",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1010,
+    "name": "王桃",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1011,
+    "name": "王悦",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1012,
+    "name": "赵嫣",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1500"
+  },
+  {
+    "general_id": 1013,
+    "name": "冯熙",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1014,
+    "name": "邓芝",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1015,
+    "name": "高览",
+    "tier": "待手动确认",
+    "reason": "ways=[24]"
+  },
+  {
+    "general_id": 1016,
+    "name": "滕胤",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1017,
+    "name": "张嫙",
+    "tier": "史诗",
+    "reason": "jiangxing_price:5000"
+  },
+  {
+    "general_id": 1018,
+    "name": "夏侯令女",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1019,
+    "name": "孙茹",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1031,
+    "name": "尹夫人",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1032,
+    "name": "吕旷吕翔",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1033,
+    "name": "陈珪",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1034,
+    "name": "陈矫",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1035,
+    "name": "秦朗",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1050,
+    "name": "刘辩",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 1051,
+    "name": "丁原",
+    "tier": "待手动确认",
+    "reason": "ways=[103]"
+  },
+  {
+    "general_id": 1052,
+    "name": "王荣",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1053,
+    "name": "麴义",
+    "tier": "稀有",
+    "reason": "jiangxing_price:180"
+  },
+  {
+    "general_id": 1054,
+    "name": "韩馥",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1055,
+    "name": "陶谦",
+    "tier": "稀有",
+    "reason": "jiangxing_price:180"
+  },
+  {
+    "general_id": 1056,
+    "name": "曹嵩",
+    "tier": "待手动确认",
+    "reason": "ways=[103]"
+  },
+  {
+    "general_id": 1057,
+    "name": "赵忠",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 1058,
+    "name": "张邈",
+    "tier": "稀有",
+    "reason": "jiangxing_price:180"
+  },
+  {
+    "general_id": 1059,
+    "name": "牛金",
+    "tier": "待手动确认",
+    "reason": "ways=[102]"
+  },
+  {
+    "general_id": 1060,
+    "name": "董承",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1061,
+    "name": "胡车儿",
+    "tier": "待手动确认",
+    "reason": "ways=[103]"
+  },
+  {
+    "general_id": 1062,
+    "name": "糜芳傅士仁",
+    "tier": "待手动确认",
+    "reason": "ways=[102]"
+  },
+  {
+    "general_id": 1065,
+    "name": "丘力居",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1071,
+    "name": "曹安民",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1500"
+  },
+  {
+    "general_id": 1072,
+    "name": "李采薇",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1073,
+    "name": "吴范",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1074,
+    "name": "郝萌",
+    "tier": "待手动确认",
+    "reason": "ways=[103]"
+  },
+  {
+    "general_id": 1075,
+    "name": "严夫人",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1076,
+    "name": "朱灵",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1077,
+    "name": "阎柔",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1078,
+    "name": "赵俨",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1079,
+    "name": "王威",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1080,
+    "name": "穆顺",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1081,
+    "name": "李异谢旌",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1082,
+    "name": "伏完",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1083,
+    "name": "孙桓",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1084,
+    "name": "孟达",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1085,
+    "name": "是仪",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1086,
+    "name": "孙狼",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1087,
+    "name": "赵直",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1088,
+    "name": "周宣",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1089,
+    "name": "笮融",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1090,
+    "name": "骆统",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1091,
+    "name": "王昶",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1092,
+    "name": "程秉",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1093,
+    "name": "杨彪",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1094,
+    "name": "阮籍",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1100,
+    "name": "张媱",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1101,
+    "name": "刘虞",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1102,
+    "name": "全惠解",
+    "tier": "传说",
+    "reason": "baoyu_price:100000"
+  },
+  {
+    "general_id": 1103,
+    "name": "丁尚涴",
+    "tier": "传说",
+    "reason": "baoyu_price:100000"
+  },
+  {
+    "general_id": 1104,
+    "name": "袁姬",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1105,
+    "name": "谢灵毓",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1107,
+    "name": "甘夫人糜夫人",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1110,
+    "name": "刘巴",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1111,
+    "name": "杨仪",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1112,
+    "name": "黄权",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1113,
+    "name": "吴班",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1114,
+    "name": "霍峻",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1115,
+    "name": "傅肜傅佥",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1116,
+    "name": "向朗",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1117,
+    "name": "高翔",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1120,
+    "name": "秦宜禄",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1121,
+    "name": "卞喜",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1122,
+    "name": "胡班",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1500"
+  },
+  {
+    "general_id": 1123,
+    "name": "胡金定",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1124,
+    "name": "关宁",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1130,
+    "name": "黄祖",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1134,
+    "name": "王濬",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1135,
+    "name": "杜预",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1140,
+    "name": "赵昂",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1141,
+    "name": "刘晔",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1142,
+    "name": "杨弘",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1150,
+    "name": "陆凯",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1151,
+    "name": "李婉",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1152,
+    "name": "轲比能",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1153,
+    "name": "诸葛尚",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1154,
+    "name": "武安国",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1155,
+    "name": "韩龙",
+    "tier": "传说",
+    "reason": "baoyu_price:100000"
+  },
+  {
+    "general_id": 1160,
+    "name": "张奋",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1180,
+    "name": "管亥",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1181,
+    "name": "张闿",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1182,
+    "name": "刘辟",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1183,
+    "name": "裴元绍",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1184,
+    "name": "张楚",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1185,
+    "name": "张曼成",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1190,
+    "name": "公孙度",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1205,
+    "name": "孙资刘放",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1206,
+    "name": "岑昏",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1221,
+    "name": "庞会",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1222,
+    "name": "赵统赵广",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1223,
+    "name": "袁谭袁尚袁熙",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1225,
+    "name": "凌操",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1231,
+    "name": "董贵人",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1232,
+    "name": "滕芳兰",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1233,
+    "name": "张瑾云",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1241,
+    "name": "薛灵芸",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1243,
+    "name": "段巧笑",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1244,
+    "name": "田尚衣",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1245,
+    "name": "柏灵筠",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1251,
+    "name": "唐咨",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1261,
+    "name": "孙寒华",
+    "tier": "待手动确认",
+    "reason": "ways=[2001]"
+  },
+  {
+    "general_id": 1262,
+    "name": "郑浑",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1301,
+    "name": "羊祜",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1330,
+    "name": "乐蔡文姬",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1900,
+    "name": "马日磾",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1901,
+    "name": "张勋",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 1903,
+    "name": "雷薄",
+    "tier": "稀有",
+    "reason": "jiangxing_price:500"
+  },
+  {
+    "general_id": 1904,
+    "name": "乐就",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1905,
+    "name": "桥蕤",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1906,
+    "name": "董绾",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1907,
+    "name": "袁胤",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1950,
+    "name": "管宁",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1951,
+    "name": "黄承彦",
+    "tier": "史诗",
+    "reason": "jiangxing_price:3000"
+  },
+  {
+    "general_id": 1952,
+    "name": "胡昭",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 1953,
+    "name": "王烈",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1954,
+    "name": "孟节",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 2014,
+    "name": "乐进",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2029,
+    "name": "甘夫人",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 2044,
+    "name": "丁奉",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 2054,
+    "name": "马腾",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 2055,
+    "name": "孔融",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 2056,
+    "name": "纪灵",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2057,
+    "name": "田丰",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 2058,
+    "name": "潘凤",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2059,
+    "name": "邹氏",
+    "tier": "普通",
+    "reason": "普通招募"
+  },
+  {
+    "general_id": 2060,
+    "name": "何太后",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2061,
+    "name": "蒋琬费祎",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 2069,
+    "name": "臧霸",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2070,
+    "name": "糜夫人",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2071,
+    "name": "陈武董袭",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2072,
+    "name": "张任",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2073,
+    "name": "曹洪",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2074,
+    "name": "蒋钦",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2079,
+    "name": "李傕郭汜",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 2082,
+    "name": "卞夫人",
+    "tier": "普通",
+    "reason": "jiangxing_price:20"
+  },
+  {
+    "general_id": 2084,
+    "name": "吕范",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 2086,
+    "name": "华歆",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 2089,
+    "name": "宗预",
+    "tier": "稀有",
+    "reason": "jiangxing_price:360"
+  },
+  {
+    "general_id": 2090,
+    "name": "崔琰毛玠",
+    "tier": "普通",
+    "reason": "jiangxing_price:60"
+  },
+  {
+    "general_id": 1106,
+    "name": "孙瑜",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1133,
+    "name": "陈泰",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1143,
+    "name": "桓范",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1144,
+    "name": "郤正",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1191,
+    "name": "孟优",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1207,
+    "name": "孙綝",
+    "tier": "史诗",
+    "reason": "jiangxing_price:2000"
+  },
+  {
+    "general_id": 1224,
+    "name": "乐綝",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1242,
+    "name": "芮姬",
+    "tier": "待手动确认",
+    "reason": "ways=[2001]"
+  },
+  {
+    "general_id": 1263,
+    "name": "刘宠骆俊",
+    "tier": "待手动确认",
+    "reason": "ways=[2001]"
+  },
+  {
+    "general_id": 1350,
+    "name": "严白虎",
+    "tier": "待手动确认",
+    "reason": "ways=[103]"
+  },
+  {
+    "general_id": 1234,
+    "name": "周不疑",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1136,
+    "name": "文钦",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1108,
+    "name": "清河公主",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1161,
+    "name": "诸葛梦雪",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1162,
+    "name": "诸葛若雪",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1353,
+    "name": "马铁",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1351,
+    "name": "车胄",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1352,
+    "name": "韩嵩",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1331,
+    "name": "乐周妃",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1036,
+    "name": "董昭",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1208,
+    "name": "贾充",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1246,
+    "name": "马伶俐",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1020,
+    "name": "蒯祺",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1021,
+    "name": "庞山民",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1333,
+    "name": "乐蔡邕",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1332,
+    "name": "乐诸葛果",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1156,
+    "name": "苏飞",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1334,
+    "name": "乐祢衡",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 218,
+    "name": "神典韦",
+    "tier": "待手动确认",
+    "reason": "ways=[5006]"
+  },
+  {
+    "general_id": 1600,
+    "name": "星曹仁",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1192,
+    "name": "SP孟获",
+    "tier": "待手动确认",
+    "reason": "ways=[2, 11]"
+  },
+  {
+    "general_id": 1235,
+    "name": "许靖",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1193,
+    "name": "SP祝融",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 231,
+    "name": "武陆逊",
+    "tier": "限定",
+    "reason": "武庙珍藏(1102)"
+  },
+  {
+    "general_id": 1157,
+    "name": "谯周",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 568,
+    "name": "曹轶",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1171,
+    "name": "费曜",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1159,
+    "name": "陈式",
+    "tier": "史诗",
+    "reason": "baoyu_price:50000"
+  },
+  {
+    "general_id": 580,
+    "name": "SP甄姬",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1601,
+    "name": "星董卓",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1158,
+    "name": "孙礼",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1602,
+    "name": "星袁术",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1172,
+    "name": "夏侯楙",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1335,
+    "name": "乐大乔",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1336,
+    "name": "乐小乔",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1630,
+    "name": "谋周瑜",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1631,
+    "name": "谋鲁肃",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1163,
+    "name": "曹宪",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1603,
+    "name": "星张昭",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1604,
+    "name": "星袁绍",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1605,
+    "name": "星张春华",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1226,
+    "name": "刘理",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1118,
+    "name": "李丰",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 219,
+    "name": "神许褚",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 1137,
+    "name": "胡遵",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1194,
+    "name": "公孙修",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1632,
+    "name": "谋司马懿",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1640,
+    "name": "谋蒋济",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1641,
+    "name": "谋王凌",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1642,
+    "name": "谋司马师",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1643,
+    "name": "谋曹爽",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1620,
+    "name": "SP孙策",
+    "tier": "待手动确认",
+    "reason": "ways=[13]"
+  },
+  {
+    "general_id": 1109,
+    "name": "曹芳",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 232,
+    "name": "武关羽",
+    "tier": "限定",
+    "reason": "武庙珍藏(1102)"
+  },
+  {
+    "general_id": 220,
+    "name": "神华佗",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 1670,
+    "name": "星孙坚",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1264,
+    "name": "吴普",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1633,
+    "name": "谋诸葛瑾",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1634,
+    "name": "谋贾诩",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1236,
+    "name": "关樾",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1500,
+    "name": "朱佩兰",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1650,
+    "name": "谋关平",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1337,
+    "name": "乐邹氏",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1690,
+    "name": "徐琨",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1661,
+    "name": "谋张绣",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1660,
+    "name": "谋曹昂",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1691,
+    "name": "司马孚",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1186,
+    "name": "柳婒",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1662,
+    "name": "谋典韦",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1663,
+    "name": "谋胡车儿",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1501,
+    "name": "卞玥",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1692,
+    "name": "令狐愚",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1681,
+    "name": "谋程昱",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1671,
+    "name": "星孙尚香",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1700,
+    "name": "谋沮授",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 221,
+    "name": "神黄忠",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 1701,
+    "name": "谋陈琳",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1606,
+    "name": "星法正",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 999,
+    "name": "黄舞蝶",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1187,
+    "name": "文鸳",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1237,
+    "name": "诸葛京",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1635,
+    "name": "谋郭嘉",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1693,
+    "name": "宣公主",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1119,
+    "name": "向宠",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 233,
+    "name": "武皇甫嵩",
+    "tier": "限定",
+    "reason": "武庙珍藏(1102)"
+  },
+  {
+    "general_id": 581,
+    "name": "庞凤衣",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1247,
+    "name": "莫琼树",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1607,
+    "name": "星荀彧",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1682,
+    "name": "谋黄盖",
+    "tier": "待手动确认",
+    "reason": "ways=[5006]"
+  },
+  {
+    "general_id": 1672,
+    "name": "星丁奉",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1694,
+    "name": "奇巧马钧",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1695,
+    "name": "传械马钧",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1188,
+    "name": "张怀",
+    "tier": "待手动确认",
+    "reason": "ways=[2001]"
+  },
+  {
+    "general_id": 1696,
+    "name": "马钧",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1338,
+    "name": "乐貂蝉",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2200,
+    "name": "威张辽",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1711,
+    "name": "吕据",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1227,
+    "name": "庞宏",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2201,
+    "name": "威孙权",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1339,
+    "name": "乐周瑜",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1502,
+    "name": "徐馨",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1503,
+    "name": "孙霸",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2202,
+    "name": "威吕布",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 234,
+    "name": "武陆抗",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1698,
+    "name": "裴秀",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 2300,
+    "name": "谋董承",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1636,
+    "name": "谋荀彧",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 2203,
+    "name": "威曹丕",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1248,
+    "name": "曹媛",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1209,
+    "name": "侯成",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1608,
+    "name": "星张让",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1504,
+    "name": "刘衿刘佩",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 2301,
+    "name": "谋曹洪",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 222,
+    "name": "神庞统",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 1609,
+    "name": "星文丑",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2204,
+    "name": "威董卓",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1531,
+    "name": "张翼",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1022,
+    "name": "夏侯玄",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1505,
+    "name": "夏侯徽",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1095,
+    "name": "钟毓",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1096,
+    "name": "吴质",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 223,
+    "name": "神钟会",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 2302,
+    "name": "谋刘协",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1097,
+    "name": "朱铄",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1532,
+    "name": "诸葛均",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1722,
+    "name": "张燕",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1724,
+    "name": "伍孚",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1228,
+    "name": "吉邈吉穆",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1249,
+    "name": "崔令仪",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1637,
+    "name": "谋姜维",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1238,
+    "name": "任婉",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1741,
+    "name": "谋胡烈",
+    "tier": "待手动确认",
+    "reason": "ways=[1002]"
+  },
+  {
+    "general_id": 1740,
+    "name": "谋邓艾",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2205,
+    "name": "威马超",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1725,
+    "name": "张奂",
+    "tier": "传说",
+    "reason": "baoyu_price:100000"
+  },
+  {
+    "general_id": 1638,
+    "name": "谋陆逊",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1189,
+    "name": "董絮",
+    "tier": "待手动确认",
+    "reason": "ways=[2001]"
+  },
+  {
+    "general_id": 1673,
+    "name": "星太史慈",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1781,
+    "name": "谋骆统",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1782,
+    "name": "谋黄权",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1791,
+    "name": "星蒋琬",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 582,
+    "name": "郭缇萦",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1911,
+    "name": "苏越",
+    "tier": "待手动确认",
+    "reason": "ways=[5005]"
+  },
+  {
+    "general_id": 2222,
+    "name": "威曹操",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1098,
+    "name": "桓阶",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1250,
+    "name": "徐妏",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1712,
+    "name": "陶璜",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1783,
+    "name": "谋朱然",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2236,
+    "name": "威孙尚香",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1126,
+    "name": "凌烈",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2223,
+    "name": "威孙策",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 1674,
+    "name": "星颜良",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1955,
+    "name": "田畴",
+    "tier": "稀有",
+    "reason": "jiangxing_price:1000"
+  },
+  {
+    "general_id": 654,
+    "name": "崔烈",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 224,
+    "name": "神孙权",
+    "tier": "限定",
+    "reason": "baoyu_price:200000"
+  },
+  {
+    "general_id": 1850,
+    "name": "刘懿君",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2400,
+    "name": "侯昭宁",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1956,
+    "name": "张世平",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1037,
+    "name": "马邈",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1651,
+    "name": "谋吕蒙",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1702,
+    "name": "谋许攸",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1639,
+    "name": "谋庞统",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 2316,
+    "name": "谋法正",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2317,
+    "name": "谋吴懿",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1354,
+    "name": "阎象",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1703,
+    "name": "谋淳于琼",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1683,
+    "name": "谋蒋干",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1792,
+    "name": "星张郃",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2411,
+    "name": "星张松",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2319,
+    "name": "谋刘璋",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 2224,
+    "name": "威刘备",
+    "tier": "待手动确认",
+    "reason": "ways=[1003, 1101]"
+  },
+  {
+    "general_id": 2206,
+    "name": "威公孙瓒",
+    "tier": "传说",
+    "reason": "祈福(1004)"
+  },
+  {
+    "general_id": 1210,
+    "name": "魏讽",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1912,
+    "name": "张裕",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 2237,
+    "name": "威关银屏",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1340,
+    "name": "乐曹植",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1742,
+    "name": "谋卫瓘",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1066,
+    "name": "曹豹",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 1853,
+    "name": "崔芷",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1675,
+    "name": "星夏侯霸",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2521,
+    "name": "谋诸葛亮",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1196,
+    "name": "木鹿大王",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1610,
+    "name": "星董允",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2500,
+    "name": "谋马谡",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2501,
+    "name": "谋王平",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2208,
+    "name": "威曹彰",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1507,
+    "name": "孙和",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2531,
+    "name": "陆文漪",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1684,
+    "name": "谋程普",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2412,
+    "name": "星诸葛瑾",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1704,
+    "name": "谋杨奉",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1621,
+    "name": "SP张郃",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1506,
+    "name": "刘璿",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1784,
+    "name": "谋徐盛",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1099,
+    "name": "陈祇",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2319,
+    "name": "谋刘璋",
+    "tier": "史诗",
+    "reason": "纳贤(1001)"
+  },
+  {
+    "general_id": 1066,
+    "name": "曹豹",
+    "tier": "史诗",
+    "reason": "首充/充值奖励/累充/山河令/星河宝箱"
+  },
+  {
+    "general_id": 2238,
+    "name": "威张星彩",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2318,
+    "name": "谋张任",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1913,
+    "name": "史阿",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1914,
+    "name": "王越",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 235,
+    "name": "武张飞",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1652,
+    "name": "谋关羽",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1341,
+    "name": "乐曹植",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1851,
+    "name": "邓晚棠",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 226,
+    "name": "神曹丕",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1852,
+    "name": "李昭仪",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2207,
+    "name": "威马腾",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 1508,
+    "name": "环怀瑾",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  },
+  {
+    "general_id": 2331,
+    "name": "傅干",
+    "tier": "待手动确认",
+    "reason": "ways=[]"
+  }
+]

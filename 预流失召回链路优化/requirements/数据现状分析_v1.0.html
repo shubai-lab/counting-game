@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据现状分析 v1.0 - 预流失召回链路优化</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <div class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+
+    <!-- 顶部标题 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h1 class="text-2xl font-bold text-gray-800 mb-2">预流失数据分析</h1>
+      <p class="text-sm text-gray-500">预流失召回链路优化 · 数据现状分析</p>
+    </div>
+
+    <!-- 核心结论 -->
+    <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl shadow-sm p-6 border-l-4 border-green-400">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">核心结论</h2>
+      <div class="bg-white rounded-xl p-6 border-2 border-green-300">
+        <h3 class="font-bold text-green-700 text-lg mb-4">预流失用户的核心特征：低活跃 + 排位依赖 + 官阶两极化</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <span class="text-green-500 text-xl mt-0">✓</span>
+            <div><p class="font-medium text-gray-800">真实流失用户核心特征是<strong class="text-red-600">"低活跃"</strong>——周均仅10.39局（未流失组60.23局）</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-green-500 text-xl mt-0">✓</span>
+            <div><p class="font-medium text-gray-800">排位玩家真实流失率（6.1%）确实高于棋类（5.1%）和斗地主（3.4%），流失的排位用户更依赖单一模式</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-green-500 text-xl mt-0">✓</span>
+            <div><p class="font-medium text-gray-800">官阶呈两极化：<strong class="text-red-600">骁卒+校尉</strong>（低官阶）占29.9%但次留率最低（30-36%），<strong class="text-green-600">郎将</strong>次留率最高（52.35%）</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-green-500 text-xl mt-0">✓</span>
+            <div><p class="font-medium text-gray-800"><strong class="text-blue-600">偏将军</strong>是最大群体（44.5%），是任务简化方案的主要受益群体；国护军次留率最低（19.52%）</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-green-500 text-xl mt-0">✓</span>
+            <div><p class="font-medium text-gray-800">85%以上用户未被有效触达，登录转化率仅12%（算法组32%但留存质量低）</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 一、漏斗概览 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">一、干预链路漏斗概览</h2>
+      <p class="text-xs text-gray-400 mb-4">数据来源：预流失标签表 + logout表 + sgsnew_task_his（taskid 1311331-1311348）</p>
+
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 text-left">
+              <th class="border border-gray-200 px-3 py-2 font-medium">组别</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">圈选用户</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">登录用户</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">登录转化率</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">完成任务</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">任务完成率</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">次留率</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-blue-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">数据部实验组</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">341,530</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">41,356</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-amber-700 font-semibold">12.1%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">23,087</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-amber-700 font-semibold">55.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-amber-700 font-semibold">40.3%</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-semibold">对照组</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">102,930</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">12,131</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">11.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">40.3%</td>
+            </tr>
+            <tr class="bg-green-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">算法实验组</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">61,372</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">19,905</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-green-600 font-semibold">32.4%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">6,805</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">34.2%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-red-500">39.1%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p class="text-sm text-amber-800">
+          <strong>关键发现：</strong>算法实验组登录率32.4%最高，但次留率39.1%最低——原因：算法圈选了近期活跃下降用户，本身更易触达，但触达后留存质量低。数据部实验组/对照组登录率仅~12%，说明85%以上用户未被有效触达。
+        </p>
+      </div>
+    </div>
+
+    <!-- 二、预流失用户 vs 大盘用户 模式分布 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">二、预流失用户 vs 大盘用户 模式分布</h2>
+      <p class="text-xs text-gray-400 mb-4">对比预流失用户与大盘用户在各游戏模式上的分布差异</p>
+
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 text-left">
+              <th class="border border-gray-200 px-3 py-2 font-medium">模式</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">预流失用户占比</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">大盘用户占比</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">差异</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">预流失用户人均局数</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">大盘用户人均局数</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">预流失用户胜率</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">大盘用户胜率</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">预流失用户巅峰场次</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">大盘用户巅峰场次</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-red-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">2v2排位(m8)</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-red-600 font-semibold">32.3%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">26.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-red-500 font-semibold">+5.5%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">21.67</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">20.27</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">45.3%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">44.2%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">5.62</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">4.64</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-medium">欢乐斗地主(m6)</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">16.5%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">22.7%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-green-600">-6.2%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">17.49</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">19.58</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">47.7%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">46.1%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">0.48</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">0.67</td>
+            </tr>
+            <tr class="bg-blue-50">
+              <td class="border border-gray-200 px-3 py-2 font-medium">上林出猎(m7)</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">4.6%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">13.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-green-600">-9.2%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">4.58</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">12.79</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">0.27</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">0.57</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-medium">自走棋(m11)</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">8.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">8.0%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-gray-500">+0.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">6.88</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">6.58</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-red-500">27.7%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">30.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-medium">其他模式</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">37.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">28.7%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-red-500">+9.1%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+            </tr>
+            <tr class="bg-gray-100 font-semibold">
+              <td class="border border-gray-200 px-3 py-2">合计</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">548,883</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p class="text-sm text-amber-800">
+          <strong>关键发现：</strong>
+        </p>
+        <ul class="text-sm text-amber-800 space-y-1 mt-2">
+          <li>1. <strong>2v2排位占比偏高</strong>：预流失用户占32.3%，比大盘高5.5%，是最集中的模式</li>
+          <li>2. <strong>斗地主/上林出猎占比偏低</strong>：预流失用户比大盘分别低6.2%、9.2%，他们不偏好这类模式</li>
+          <li>3. <strong>自走棋胜率异常低</strong>：仅27.7%，可能是流失原因之一</li>
+          <li>4. <strong>2v2巅峰人均反而更高</strong>：预流失用户比大盘多0.98场，存在"秀操作"心理</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 三、真实流失分组分析 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">三、真实流失分组分析</h2>
+
+      <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg mb-4">
+        <p class="text-sm text-blue-800">
+          <strong>真实数据标签：</strong>完全不依赖策略+算法预测，以<strong>"4/29-5/5七天内无任何登录"</strong>作为真实流失标签
+        </p>
+      </div>
+
+      <!-- 数据说明1 -->
+      <div class="mb-6">
+        <h3 class="font-semibold text-gray-700 mb-3">数据说明1：全量用户口径</h3>
+
+        <div class="overflow-x-auto mb-4">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-50 text-left">
+                <th class="border border-gray-200 px-3 py-2 font-medium">用户分层</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">样本数</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">排位占比(总量)</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">排位占比(人均)</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">排位占比(中位数)</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">周均对局数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-red-50">
+                <td class="border border-gray-200 px-3 py-2 font-semibold text-red-700">真实流失用户</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">1,015</td>
+                <td class="border border-gray-200 px-3 py-2 text-right font-semibold text-red-600">47.2%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-green-600">24.5%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-green-600">0%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-red-600 font-semibold">10.39局</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-semibold">未流失用户</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">13,869</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">40.2%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-red-600">27.7%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-red-600">6%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-green-600">60.23局</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+            <h4 class="font-semibold text-amber-700 mb-2">矛盾现象：三种口径结论相反</h4>
+            <div class="space-y-1 text-sm">
+              <div><strong>总量口径：</strong>流失组 47.2% vs 未流失 40.2% <span class="text-red-500">↑</span></div>
+              <div><strong>人均口径：</strong>流失组 24.5% vs 未流失 27.7% <span class="text-green-500">↓</span></div>
+              <div><strong>中位数口径：</strong>流失组 0% vs 未流失 6%</div>
+            </div>
+          </div>
+          <div class="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <h4 class="font-semibold text-gray-700 mb-2">口径选择</h4>
+            <p class="text-sm text-gray-600">真实流失用户中，少数排位重度用户拉高了总量占比，但大多数真实流失用户并非排位偏好用户。</p>
+            <p class="text-sm text-gray-600 mt-2"><strong>结论：</strong>人均口径更能反映个体偏好分布，真实流失用户的排位偏好比大盘更低。</p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <p class="text-blue-800 font-medium">
+            <strong>核心发现：</strong>真实流失用户的核心特征是<strong class="text-red-600">"低活跃"</strong>
+          </p>
+          <div class="mt-2 flex gap-8 text-sm">
+            <div><span class="text-red-600 font-bold">10.39局</span> <span class="text-gray-500">流失组周均</span></div>
+            <div><span class="text-green-600 font-bold">60.23局</span> <span class="text-gray-500">未流失组周均</span></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">各模式绝对局数都远低于未流失用户</p>
+        </div>
+      </div>
+
+      <!-- 分割线 -->
+      <div class="border-t border-dashed border-gray-300 my-6"></div>
+
+      <!-- 数据说明2 -->
+      <div>
+        <h3 class="font-semibold text-gray-700 mb-3">数据说明2：筛选近一周有对局行为用户</h3>
+
+        <p class="text-sm text-gray-500 mb-4">
+          中位数占比大部分为0，说明大量流失用户的游戏特征为空，筛选近一周有对局行为/有排位对局行为的用户进一步分析：
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- 有对局行为用户 -->
+          <div class="bg-white border-2 border-gray-200 rounded-lg p-4">
+            <h4 class="font-semibold text-gray-700 mb-2">全量用户（有对局行为）</h4>
+            <p class="text-xs text-gray-500 mb-3">排位偏好 ≠ 流失风险</p>
+            <div class="text-sm">
+              <div class="flex justify-between mb-1">
+                <span>流失组排位占比</span>
+                <span class="font-semibold text-red-600">34.6%</span>
+              </div>
+              <div class="flex justify-between">
+                <span>未流失组排位占比</span>
+                <span class="font-semibold text-green-600">35.4%</span>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400 mt-2">差异很小</p>
+          </div>
+
+          <!-- 排位玩家子群体 -->
+          <div class="bg-white border-2 border-red-300 rounded-lg p-4">
+            <h4 class="font-semibold text-red-700 mb-2">排位玩家子群体（有排位对局）</h4>
+            <p class="text-xs text-gray-500 mb-3">排位依赖（模式单一性）= 流失风险</p>
+            <div class="text-sm">
+              <div class="flex justify-between mb-1">
+                <span>流失组排位占比</span>
+                <span class="font-semibold text-red-600">69.4%</span>
+              </div>
+              <div class="flex justify-between">
+                <span>未流失组排位占比</span>
+                <span class="font-semibold text-green-600">51.3%</span>
+              </div>
+            </div>
+            <p class="text-xs text-red-500 mt-2 font-medium">流失的排位用户更依赖单一模式</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 四、分模式对比 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">四、分模式对比</h2>
+
+      <p class="text-sm text-gray-600 mb-4">
+        方法：按用户最常玩模式分组，计算各模式下的预测流失、实际流失。<br>
+        <strong>模式偏好定义：</strong>历史30天内对局数量最多的模式；
+      </p>
+
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 text-left">
+              <th class="border border-gray-200 px-3 py-2 font-medium">模式偏好</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">真实流失率</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-center">相对风险</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-red-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold text-red-700">排位玩家</td>
+              <td class="border border-gray-200 px-3 py-2 text-right font-bold text-red-600">6.1%</td>
+              <td class="border border-gray-200 px-3 py-2 text-center"><span class="text-red-500 text-xl">▲▲▲</span></td>
+            </tr>
+            <tr class="bg-orange-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">自走棋类玩家</td>
+              <td class="border border-gray-200 px-3 py-2 text-right font-medium">5.1%</td>
+              <td class="border border-gray-200 px-3 py-2 text-center"><span class="text-orange-400 text-xl">▲▲</span></td>
+            </tr>
+            <tr class="bg-green-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">斗地主玩家</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-green-600 font-medium">3.4%</td>
+              <td class="border border-gray-200 px-3 py-2 text-center"><span class="text-green-400 text-xl">▲</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <p class="text-amber-800 font-medium">
+          <strong>结论：</strong>排位玩家的真实流失率（6.1%）确实高于自走棋类（5.1%）和斗地主（3.4%）
+        </p>
+        <p class="text-sm text-amber-700 mt-2">
+          <strong>排位偏好玩家确实更容易流失</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- 五、各官阶用户分布与次留率 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">五、各官阶用户分布与次留率</h2>
+
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 text-left">
+              <th class="border border-gray-200 px-3 py-2 font-medium">官阶</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">人数</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">占比</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">次留率</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium">优先级</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-red-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">骁卒</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">4,447</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">8.6%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-red-500">35.96%</td>
+              <td class="border border-gray-200 px-3 py-2 text-red-500">★★★</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-semibold">校尉</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">2,326</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">4.5%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-red-500">30.14%</td>
+              <td class="border border-gray-200 px-3 py-2 text-red-500">★★★</td>
+            </tr>
+            <tr class="bg-orange-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">郎将</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">5,337</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">10.3%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-green-600">52.35%</td>
+              <td class="border border-gray-200 px-3 py-2 text-orange-500">★★★★</td>
+            </tr>
+            <tr class="bg-green-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">偏将军</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">23,034</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">44.5%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-green-600">43.64%</td>
+              <td class="border border-gray-200 px-3 py-2 text-green-600">★★★★★</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-semibold">将军</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">9,240</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">17.9%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">47.86%</td>
+              <td class="border border-gray-200 px-3 py-2 text-gray-400">★★</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-semibold">国护军</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">1,424</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">2.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-red-600">19.52%</td>
+              <td class="border border-gray-200 px-3 py-2 text-red-600">★★★</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+        <p class="text-sm text-gray-600">
+          <strong>用户结构洞察：</strong>偏将军23,034人（44.5%）是最大群体，次留率43.64%；
+          骁卒+校尉合计占圈选29.9%（数据部实验组口径），但次留率最低（30-36%），是任务简化方案的主要受益群体。
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "官阶": {
+    "用户官阶": "e794a8e688b7e5ae98e998b6",
+    "郎将及以下": "e9838ee5b086e58f8ae4bba5e4b88b",
+    "偏将军": "e5818fe5b086e5869b",
+    "将军及以上": "e5b086e5869be58f8ae4bba5e4b88a"
+  },
+  "任务天数": {
+    "任务天数": "e4bbbbe58aa1e5a4a9e695b0",
+    "第1天": "e7acac31e5a4a9",
+    "第2天": "e7acac32e5a4a9",
+    "第3天": "e7acac33e5a4a9"
+  },
+  "任务名称": {
+    "taskname": "7461736b6e616d65",
+    "每日登录": "e6af8fe697a5e799bbe5bd95",
+    "任意模式完成一次对局": "e4bbbbe6848fe6a8a1e5bc8fe5ae8ce68890e4b880e6aca1e5afb9e5b180"
+  }
+}

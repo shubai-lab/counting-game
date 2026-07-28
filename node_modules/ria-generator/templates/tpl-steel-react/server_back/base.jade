@@ -1,0 +1,30 @@
+doctype html
+html
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+        meta(content='telephone=no', name='format-detection')
+        meta(name='viewport', content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1')
+        title Hello
+        block baseCss
+            link(href='http://res.test.cn/lib/base.css', type='text/css', rel='stylesheet')
+        
+        script.
+            $CONFIG = {};
+            $CONFIG['uid'] = '1820868023';
+            $CONFIG['oid'] = '1820868023';
+            $CONFIG['nick']='Finrila'; 
+            $CONFIG['domain']='finrila'; 
+            $CONFIG['islogin']='1';  
+            $CONFIG['timeDiff']=(new Date() - 1430296560000); 
+            $CONFIG['servertime']='1430296560'; 
+            $CONFIG['resPath']='http://res.test.cn/'; 
+            $CONFIG['version']='e5cb1de8f4df303e';
+    body
+    block body
+        script(src="http://res.test.cn/lib/lib.js")
+        script(src="http://res.test.cn/app.js")
+        script.
+            window['adaptive'].desinWidth = 640;
+            window['adaptive'].baseFont = 18;
+            window['adaptive'].init();
+            steel.boot('app');

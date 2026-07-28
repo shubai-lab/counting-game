@@ -1,0 +1,232 @@
+.container {
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.title-wrap {
+  flex: 1;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #5a4a7a;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #5a4a7a;
+  font-size: 13px;
+}
+
+.scores {
+  display: flex;
+  gap: 8px;
+}
+
+.score-box {
+  background: #8B77B9;
+  border-radius: 6px;
+  padding: 6px 12px;
+  text-align: center;
+  min-width: 65px;
+}
+
+.score-label {
+  font-size: 10px;
+  color: #e8e0f0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.score-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.score-value.pop {
+  animation: scorePop 0.2s ease-out;
+}
+
+@keyframes scorePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); color: #5a4a7a; }
+  100% { transform: scale(1); }
+}
+
+.controls {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  flex: 1;
+  background: #8B77B9;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.btn::after {
+  border: none;
+}
+
+.btn-hover {
+  opacity: 0.9;
+}
+
+.btn-new {
+  background: #6b5b95;
+}
+
+.game-board {
+  width: 340px;
+  height: 340px;
+  background: #8B77B9;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8px;
+  touch-action: none;
+}
+
+.grid-background {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.grid-cell {
+  background: rgba(201, 183, 226, 0.6);
+  border-radius: 6px;
+}
+
+.tiles-layer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tile image {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+
+.tile-new {
+  animation: tileAppear 0.2s ease-out;
+}
+
+.tile-merged {
+  animation: tileMerge 0.2s ease-out;
+}
+
+@keyframes tileAppear {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes tileMerge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(220, 221, 246, 0.95);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #5a4a7a;
+  margin-bottom: 8px;
+}
+
+.overlay-title.win {
+  color: #6b5b95;
+}
+
+.overlay-subtitle {
+  font-size: 14px;
+  color: #5a4a7a;
+  margin-bottom: 15px;
+}
+
+.overlay .btn {
+  min-width: 120px;
+}
+
+.instructions {
+  width: 100%;
+  max-width: 380px;
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(139, 119, 185, 0.3);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #5a4a7a;
+  line-height: 1.6;
+}
+
+.instructions strong {
+  color: #6b5b95;
+}

@@ -1,0 +1,6 @@
+/* 全局样式 */
+page {
+  background: linear-gradient(135deg, #DCDDF6 0%, #c8c6e8 100%);
+  min-height: 100vh;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}

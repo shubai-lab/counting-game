@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test C：奇遇包装 交互原型</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* 设计规范字体 */
+    .font-serif-cn { font-family: 'Noto Serif SC', serif; }
+
+    /* 弹窗动效 */
+    @keyframes slideIn {
+      from { transform: translateX(50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes floatIn {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(201, 162, 39, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(201, 162, 39, 0.5); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .animate-slide-in { animation: slideIn 0.5s ease-out; }
+    .animate-fade-in { animation: fadeIn 0.3s ease-out; }
+    .animate-float-in { animation: floatIn 0.4s ease-out 0.3s both; }
+    .animate-glow { animation: glow 2s infinite; }
+    .animate-pulse { animation: pulse 2s infinite; }
+
+    /* 手机边框 */
+    .phone-frame {
+      width: 375px;
+      height: 812px;
+      border-radius: 40px;
+      background: #1a1a2e;
+      padding: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      background: linear-gradient(180deg, #1a0a0a 0%, #0d0505 50%, #0a0508 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 状态标签 */
+    .status-tag {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+    }
+    .status-active { background: rgba(201, 162, 39, 0.2); color: #c9a227; }
+    .status-pending { background: rgba(138, 116, 32, 0.2); color: #8a7420; }
+    .status-done { background: rgba(201, 162, 39, 0.3); color: #c9a227; }
+
+    /* 装饰边框 */
+    .gold-border {
+      border: 2px solid #c9a227;
+      box-shadow: 0 0 15px rgba(201, 162, 39, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 min-h-screen py-10">
+
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-center text-2xl font-serif-cn text-amber-500 mb-2">Test C：奇遇包装</h1>
+    <p class="text-center text-gray-400 mb-10">武将来找玩家 · 皮肤体验卡 · 情感羁绊</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
+
+      <!-- ========== Screen 1: 武将来找 ========== -->
+      <div>
+        <h2 class="text-center text-white mb-4 font-medium">Screen 1: 武将来找（主弹窗）</h2>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <!-- 背景装饰 -->
+            <div class="absolute inset-0">
+              <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-amber-900/10 to-transparent"></div>
+              <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-amber-900/5 to-transparent"></div>
+            </div>
+
+            <div class="relative h-full flex flex-col">
+              <!-- 顶部标题 -->
+              <div class="pt-6 px-5 text-center">
+                <div class="font-serif-cn text-lg text-amber-500 tracking-widest">奇 遇</div>
+                <div class="text-xs text-amber-700/60 mt-1">ENCOUNTER</div>
+              </div>
+
+              <!-- 武將立绘區域 -->
+              <div class="flex-1 flex items-center justify-center px-5">
+                <div class="relative">
+                  <!-- 武將頭像框 -->
+                  <div class="w-32 h-32 rounded-full gold-border bg-gradient-to-br from-amber-900/30 to-black/50 flex items-center justify-center animate-glow">
+                    <span class="text-6xl">⚔️</span>
+                  </div>
+                  <!-- 武將名稱 -->
+                  <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-amber-500 text-black px-4 py-1 rounded text-sm font-serif-cn font-bold whitespace-nowrap">
+                    张角
+                  </div>
+                </div>
+              </div>
+
+              <!-- 對話框 -->
+              <div class="px-5 animate-float-in">
+                <div class="bg-black/40 rounded-xl p-4 mb-4 border border-amber-900/30">
+                  <div class="font-serif-cn text-gray-200 leading-relaxed italic">
+                    "将军，好久不见。<br><br>
+                    我注意到您最近的战绩有些波动...<br><br>
+                    但我相信，将军的实力从未离开。"
+                  </div>
+                  <div class="text-xs text-amber-700/80 mt-3 text-right">— 天公将军</div>
+                </div>
+              </div>
+
+              <!-- 禮物預覽 -->
+              <div class="px-5 mb-4 animate-fade-in">
+                <div class="text-xs text-amber-700/60 text-center mb-2 tracking-widest">张角的礼物</div>
+                <div class="flex justify-center gap-4">
+                  <div class="text-center">
+                    <div class="w-10 h-10 bg-black/40 rounded-lg border border-amber-900/50 flex items-center justify-center text-xl mb-1">
+                      👑
+                    </div>
+                    <div class="text-xs text-amber-700/60">限定皮肤</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-10 h-10 bg-black/40 rounded-lg border border-amber-900/50 flex items-center justify-center text-xl mb-1">
+                      ⚔️
+                    </div>
+                    <div class="text-xs text-amber-700/60">武将试用</div>
+                  </div>
+                  <div class="text-center">
+                    <div class="w-10 h-10 bg-black/40 rounded-lg border border-amber-900/50 flex items-center justify-center text-xl mb-1">
+                      🪙
+                    </div>
+                    <div class="text-xs text-amber-700/60">金豆</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 按鈕 -->
+              <div class="px-5 pb-8 space-y-3">
+                <button class="w-full py-3 bg-gradient-to-b from-amber-500 to-amber-700 text-black font-medium rounded-lg shadow-lg animate-pulse">
+                  我愿意
+                </button>
+                <button class="w-full py-2 text-amber-700/60 text-sm border border-amber-900/50 rounded-lg">
+                  稍后再说
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-3">武将主动出现，武将立绘发光效果</p>
+      </div>
+
+      <!-- ========== Screen 2: 对话界面 ========== -->
+      <div>
+        <h2 class="text-center text-white mb-4 font-medium">Screen 2: 武将对话</h2>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="relative h-full flex flex-col">
+              <!-- 顶部标题 -->
+              <div class="pt-6 px-5 flex justify-between items-center border-b border-amber-900/20 pb-4">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 bg-amber-600/50 rounded-full flex items-center justify-center">
+                    <span class="text-amber-400 text-xs">💬</span>
+                  </div>
+                  <span class="font-serif-cn text-amber-500 text-sm">武将对话</span>
+                </div>
+                <span class="status-tag status-active animate-pulse">进行中</span>
+              </div>
+
+              <!-- 武將頭像 -->
+              <div class="px-5 pt-4 flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full gold-border bg-gradient-to-br from-amber-900/30 to-black/50 flex items-center justify-center">
+                  <span class="text-3xl">⚔️</span>
+                </div>
+                <div>
+                  <div class="font-serif-cn text-amber-500 text-sm">张角</div>
+                  <div class="text-xs text-amber-700/60">天公将军</div>
+                </div>
+              </div>
+
+              <!-- 對話內容 -->
+              <div class="flex-1 px-5 py-4 overflow-y-auto space-y-4">
+                <!-- 武將對話 -->
+                <div class="flex gap-2">
+                  <div class="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center flex-shrink-0">
+                    <span class="text-lg">⚔️</span>
+                  </div>
+                  <div class="bg-black/40 rounded-lg rounded-tl-none p-3 max-w-[75%]">
+                    <div class="font-serif-cn text-gray-200 text-sm leading-relaxed">
+                      "战场上每一位将军都会有疲惫的时候，<br><br>
+                      但真正的将军，从不会被疲惫打败。"
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 武將對話 -->
+                <div class="flex gap-2">
+                  <div class="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center flex-shrink-0">
+                    <span class="text-lg">⚔️</span>
+                  </div>
+                  <div class="bg-black/40 rounded-lg rounded-tl-none p-3 max-w-[75%]">
+                    <div class="font-serif-cn text-gray-200 text-sm leading-relaxed">
+                      "我为您准备了一份心意，<br><br>
+                      希望能助您重燃战火！"
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 武將對話 - 禮物預覽 -->
+                <div class="flex gap-2">
+                  <div class="w-8 h-8 rounded-full bg-amber-900/30 flex items-center justify-center flex-shrink-0">
+                    <span class="text-lg">⚔️</span>
+                  </div>
+                  <div class="bg-amber-900/20 rounded-lg rounded-tl-none p-3 max-w-[80%] border border-amber-900/30">
+                    <div class="text-xs text-amber-500 mb-2">🎁 张角的礼物</div>
+                    <div class="grid grid-cols-3 gap-2">
+                      <div class="bg-black/40 rounded p-2 text-center">
+                        <div class="text-lg">👑</div>
+                        <div class="text-xs text-amber-700/80">限定皮肤</div>
+                      </div>
+                      <div class="bg-black/40 rounded p-2 text-center">
+                        <div class="text-lg">⚔️</div>
+                        <div class="text-xs text-amber-700/80">武将试用</div>
+                      </div>
+                      <div class="bg-black/40 rounded p-2 text-center">
+                        <div class="text-lg">🪙</div>
+                        <div class="text-xs text-amber-700/80">金豆</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 按鈕 -->
+              <div class="px-5 pb-8 space-y-3">
+                <button class="w-full py-3 bg-gradient-to-b from-amber-500 to-amber-700 text-black font-medium rounded-lg shadow-lg">
+                  接受邀请
+                </button>
+                <button class="w-full py-2 text-amber-700/60 text-sm border border-amber-900/50 rounded-lg">
+                  了解详情
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-3">武将与玩家对话，展示礼物预览</p>
+      </div>
+
+      <!-- ========== Screen 3: 任务列表 ========== -->
+      <div>
+        <h2 class="text-center text-white mb-4 font-medium">Screen 3: 任务列表</h2>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="relative h-full flex flex-col">
+              <!-- 顶部标题 -->
+              <div class="pt-6 px-5 flex justify-between items-center">
+                <div class="font-serif-cn text-amber-500 tracking-widest">重 燃 战 火</div>
+                <div class="text-xs text-amber-700/60">0/3 完成</div>
+              </div>
+
+              <!-- 武將頭像 -->
+              <div class="px-5 py-3 flex items-center gap-2 bg-black/20">
+                <div class="w-8 h-8 rounded-full border border-amber-700/50 bg-gradient-to-br from-amber-900/30 to-black/50 flex items-center justify-center">
+                  <span class="text-lg">⚔️</span>
+                </div>
+                <div class="text-sm text-gray-300">张角的礼物</div>
+              </div>
+
+              <!-- 任努列表 -->
+              <div class="flex-1 px-5 py-4 space-y-3 overflow-y-auto">
+                <!-- 任努1 -->
+                <div class="bg-black/40 rounded-lg p-3 border border-gray-800">
+                  <div class="flex justify-between items-start mb-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 border-2 border-gray-600 rounded flex items-center justify-center text-gray-600">
+                        <span class="text-xs">☐</span>
+                      </div>
+                      <span class="text-gray-300 text-sm">使用张角完成1局</span>
+                    </div>
+                    <span class="status-tag status-pending">未开始</span>
+                  </div>
+                  <div class="text-xs text-gray-500 ml-7 mb-2">"和我一起完成1局战斗"</div>
+                  <div class="flex items-center gap-1 text-amber-500 text-xs ml-7">
+                    <span>⚔️</span>
+                    <span>武将试用 ×1天</span>
+                  </div>
+                </div>
+
+                <!-- 任努2 -->
+                <div class="bg-black/40 rounded-lg p-3 border border-gray-800">
+                  <div class="flex justify-between items-start mb-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 border-2 border-gray-600 rounded flex items-center justify-center text-gray-600">
+                        <span class="text-xs">☐</span>
+                      </div>
+                      <span class="text-gray-300 text-sm">连胜2局</span>
+                    </div>
+                    <span class="status-tag status-pending">未开始</span>
+                  </div>
+                  <div class="text-xs text-gray-500 ml-7 mb-2">"连胜2局，证明将军还在"</div>
+                  <div class="flex items-center gap-1 text-amber-500 text-xs ml-7">
+                    <span>🪙</span>
+                    <span>将魂 ×30</span>
+                  </div>
+                </div>
+
+                <!-- 任努3 -->
+                <div class="bg-black/40 rounded-lg p-3 border border-gray-800">
+                  <div class="flex justify-between items-start mb-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 border-2 border-gray-600 rounded flex items-center justify-center text-gray-600">
+                        <span class="text-xs">☐</span>
+                      </div>
+                      <span class="text-gray-300 text-sm">收下礼物</span>
+                    </div>
+                    <span class="status-tag status-pending">未开始</span>
+                  </div>
+                  <div class="text-xs text-gray-500 ml-7 mb-2">"收下我的心意"</div>
+                  <div class="flex items-center gap-2 text-amber-500 text-xs ml-7">
+                    <span class="flex items-center gap-1"><span>👑</span><span>限定皮肤 ×7天</span></span>
+                    <span class="flex items-center gap-1"><span>🪙</span><span>金豆 ×30000</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 提示 -->
+              <div class="px-5 py-3 bg-amber-900/10 border-t border-amber-900/20">
+                <p class="text-xs text-amber-700/60 text-center">完成所有任努可领取完整奖励</p>
+              </div>
+
+              <!-- 按鈕 -->
+              <div class="px-5 pb-8 pt-3">
+                <button class="w-full py-3 bg-gradient-to-b from-amber-500 to-amber-700 text-black font-medium rounded-lg shadow-lg">
+                  开始挑战
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-3">3个任努，完成后解锁奖励</p>
+      </div>
+
+      <!-- ========== Screen 4: 奖励领取 ========== -->
+      <div>
+        <h2 class="text-center text-white mb-4 font-medium">Screen 4: 奖励领取</h2>
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="relative h-full flex flex-col">
+              <!-- 顶部标题 -->
+              <div class="pt-6 px-5 text-center">
+                <div class="text-5xl mb-2">🎁</div>
+                <div class="font-serif-cn text-lg text-amber-500">礼物已到账</div>
+              </div>
+
+              <!-- 武將頭像 -->
+              <div class="px-5 py-4 flex items-center justify-center gap-3">
+                <div class="w-10 h-10 rounded-full gold-border bg-gradient-to-br from-amber-900/30 to-black/50 flex items-center justify-center">
+                  <span class="text-2xl">⚔️</span>
+                </div>
+                <div class="font-serif-cn text-amber-500 text-sm">张角</div>
+              </div>
+
+              <!-- 奖励列表 -->
+              <div class="flex-1 px-5 overflow-y-auto">
+                <div class="space-y-3">
+                  <!-- 奖励1 -->
+                  <div class="bg-gradient-to-r from-amber-900/20 to-black/40 rounded-lg p-4 border border-amber-700/30 animate-fade-in">
+                    <div class="flex items-center gap-3 mb-2">
+                      <div class="w-12 h-12 bg-black/40 rounded-lg flex items-center justify-center text-2xl">
+                        👑
+                      </div>
+                      <div class="flex-1">
+                        <div class="text-gray-200 text-sm font-medium">限定皮肤：天公将军</div>
+                        <div class="text-xs text-amber-700/60">7天体验权限</div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-green-400">
+                      <span>✓</span>
+                      <span>已激活</span>
+                    </div>
+                  </div>
+
+                  <!-- 奖励2 -->
+                  <div class="bg-gradient-to-r from-amber-900/20 to-black/40 rounded-lg p-4 border border-amber-700/30 animate-fade-in" style="animation-delay: 0.1s">
+                    <div class="flex items-center gap-3 mb-2">
+                      <div class="w-12 h-12 bg-black/40 rounded-lg flex items-center justify-center text-2xl">
+                        ⚔️
+                      </div>
+                      <div class="flex-1">
+                        <div class="text-gray-200 text-sm font-medium">武将试用：张角</div>
+                        <div class="text-xs text-amber-700/60">3天 · 胜率+15%</div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-green-400">
+                      <span>✓</span>
+                      <span>已激活</span>
+                    </div>
+                  </div>
+
+                  <!-- 奖励3 -->
+                  <div class="bg-gradient-to-r from-amber-900/20 to-black/40 rounded-lg p-4 border border-amber-700/30 animate-fade-in" style="animation-delay: 0.2s">
+                    <div class="flex items-center gap-3 mb-2">
+                      <div class="w-12 h-12 bg-black/40 rounded-lg flex items-center justify-center text-2xl">
+                        🪙
+                      </div>
+                      <div class="flex-1">
+                        <div class="text-gray-200 text-sm font-medium">金豆</div>
+                        <div class="text-xs text-amber-700/60">×30,000</div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-green-400">
+                      <span>✓</span>
+                      <span>已到账</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 武將寄语 -->
+                <div class="mt-4 p-4 bg-black/30 rounded-lg border border-amber-900/20">
+                  <div class="font-serif-cn text-gray-300 text-sm italic text-center">
+                    "谢谢将军，让我们一起重燃战火！"
+                  </div>
+                  <div class="text-xs text-amber-700/60 text-right mt-2">— 张角</div>
+                </div>
+              </div>
+
+              <!-- 按鈕 -->
+              <div class="px-5 pb-8 pt-4">
+                <button class="w-full py-3 bg-gradient-to-b from-amber-500 to-amber-700 text-black font-medium rounded-lg shadow-lg">
+                  开始使用
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-gray-500 text-xs mt-3">奖励已发放，武将告别</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 简单的状态切换演示
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+          btn.style.transform = 'scale(1)';
+        }, 100);
+      });
+    });
+  </script>
+
+</body>
+</html>

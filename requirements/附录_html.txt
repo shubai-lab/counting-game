@@ -1,0 +1,709 @@
+
+        <!-- 六、附录：武将名单 -->
+        <div class="section" id="appendix">
+            <h2 class="section-title">六、附录：武将名单（v22，共673个）</h2>
+
+            <h3 style="color:#ff4d4f;margin-top:24px;">限定（31个）</h3>
+            <table class="detail-table">
+                <thead><tr><th>序号</th><th>武将名称</th><th>划分依据</th><th>获取途径</th></tr></thead>
+                <tbody>
+<tr><td>1</td><td>神马超</td><td>珍宝>=20万</td><td>[1101]</td></tr>
+<tr><td>2</td><td>神张飞</td><td>珍宝>=20万</td><td>[1101]</td></tr>
+<tr><td>3</td><td>神张角</td><td>珍宝>=20万</td><td>[1101]</td></tr>
+<tr><td>4</td><td>神邓艾</td><td>珍宝>=20万</td><td>[1101]</td></tr>
+<tr><td>5</td><td>神许褚</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>6</td><td>神华佗</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>7</td><td>神黄忠</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>8</td><td>神庞统</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>9</td><td>神钟会</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>10</td><td>神孙权</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>11</td><td>武诸葛亮</td><td>武庙</td><td>[1003, 1102]</td></tr>
+<tr><td>12</td><td>武陆逊</td><td>武庙</td><td>[1003, 1102]</td></tr>
+<tr><td>13</td><td>武关羽</td><td>武庙</td><td>[1003, 1102]</td></tr>
+<tr><td>14</td><td>武皇甫嵩</td><td>武庙</td><td>[1003, 1102]</td></tr>
+<tr><td>15</td><td>王朗</td><td>高山仰止</td><td>[14]</td></tr>
+<tr><td>16</td><td>刘徽</td><td>高山仰止</td><td>[14]</td></tr>
+<tr><td>17</td><td>谋周瑜</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>18</td><td>谋司马懿</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>19</td><td>谋贾诩</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>20</td><td>谋郭嘉</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>21</td><td>谋荀彧</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>22</td><td>谋姜维</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>23</td><td>谋陆逊</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>24</td><td>谋庞统</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>25</td><td>威张辽</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>26</td><td>威吕布</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>27</td><td>威曹丕</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>28</td><td>威董卓</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>29</td><td>威曹操</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>30</td><td>威孙策</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+<tr><td>31</td><td>威刘备</td><td>珍宝>=20万</td><td>[1003, 1101]</td></tr>
+</tbody></table>
+
+            <h3 style="color:#faad14;margin-top:24px;">传说（27个）</h3>
+            <table class="detail-table">
+                <thead><tr><th>序号</th><th>武将名称</th><th>划分依据</th><th>获取途径</th></tr></thead>
+                <tbody>
+<tr><td>1</td><td>周夷</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>2</td><td>曹金玉</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>3</td><td>孙翊</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>4</td><td>冯妤</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>5</td><td>曹华</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>6</td><td>卢弈</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>7</td><td>孙翎鸾</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>8</td><td>曹轶</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>9</td><td>庞凤衣</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>10</td><td>郭缇萦</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>11</td><td>夏侯玄</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>12</td><td>曹芳</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>13</td><td>张奋</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>14</td><td>柳婒</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>15</td><td>董贵人</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>16</td><td>滕芳兰</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>17</td><td>张瑾云</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>18</td><td>许靖</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>19</td><td>关樾</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>20</td><td>诸葛京</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>21</td><td>任婉</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>22</td><td>柏灵筠</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>23</td><td>刘衿刘佩</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>24</td><td>威孙权</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>25</td><td>威马超</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>26</td><td>威公孙瓒</td><td>祈福</td><td>[1004]</td></tr>
+<tr><td>27</td><td>威孙尚香</td><td>祈福</td><td>[1004]</td></tr>
+</tbody></table>
+
+            <h3 style="color:#667eea;margin-top:24px;">史诗（160个）</h3>
+            <table class="detail-table">
+                <thead><tr><th>序号</th><th>武将名称</th><th>划分依据</th><th>获取途径</th></tr></thead>
+                <tbody>
+<tr><td>1</td><td>神吕蒙</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>2</td><td>神周瑜</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>3</td><td>神诸葛亮</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>4</td><td>神曹操</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>5</td><td>神吕布</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>6</td><td>神赵云</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>7</td><td>神司马懿</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>8</td><td>神刘备</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>9</td><td>神陆逊</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>10</td><td>神张辽</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>11</td><td>神甘宁</td><td>神将任务</td><td>[5002]</td></tr>
+<tr><td>12</td><td>关索</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>13</td><td>赵襄</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>14</td><td>程昱</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>15</td><td>陈琳</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>16</td><td>杨修</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>17</td><td>士燮</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>18</td><td>司马徽</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>19</td><td>鲍三娘</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>20</td><td>徐荣</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>21</td><td>曹婴</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>22</td><td>曹纯</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>23</td><td>文鸯</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>24</td><td>花鬘</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>25</td><td>留赞</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>26</td><td>郭照</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>27</td><td>樊玉凤</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>28</td><td>阮瑀</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>29</td><td>庞德公</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>30</td><td>SP甄姬</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>31</td><td>董翓</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>32</td><td>张琪瑛</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>33</td><td>朱建平</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>34</td><td>黄舞蝶</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>35</td><td>蒯祺</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>36</td><td>庞山民</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>37</td><td>陈矫</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>38</td><td>秦朗</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>39</td><td>董昭</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>40</td><td>刘辩</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>41</td><td>赵俨</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>42</td><td>赵直</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>43</td><td>周宣</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>44</td><td>笮融</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>45</td><td>骆统</td><td>珍宝10~20万</td><td>[2002, 1101]</td></tr>
+<tr><td>46</td><td>杨彪</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>47</td><td>阮籍</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>48</td><td>钟毓</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>49</td><td>吴质</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>50</td><td>朱铄</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>51</td><td>桓阶</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>52</td><td>全惠解</td><td>珍宝10~20万</td><td>[2001, 1101]</td></tr>
+<tr><td>53</td><td>丁尚涴</td><td>珍宝10~20万</td><td>[2001, 1101]</td></tr>
+<tr><td>54</td><td>谢灵毓</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>55</td><td>孙瑜</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>56</td><td>甘夫人糜夫人</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>57</td><td>霍峻</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>58</td><td>向朗</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>59</td><td>李丰</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>60</td><td>凌烈</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>61</td><td>陈泰</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>62</td><td>王濬</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>63</td><td>杜预</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>64</td><td>刘晔</td><td>珍宝10~20万</td><td>[1001, 1101]</td></tr>
+<tr><td>65</td><td>杨弘</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>66</td><td>郤正</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>67</td><td>韩龙</td><td>珍宝10~20万</td><td>[1101]</td></tr>
+<tr><td>68</td><td>诸葛梦雪</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>69</td><td>诸葛若雪</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>70</td><td>曹宪</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>71</td><td>张楚</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>72</td><td>张曼成</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>73</td><td>文鸳</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>74</td><td>孟优</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>75</td><td>SP祝融</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>76</td><td>公孙修</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>77</td><td>赵统赵广</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>78</td><td>袁谭袁尚袁熙</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>79</td><td>乐綝</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>80</td><td>凌操</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>81</td><td>刘理</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>82</td><td>庞宏</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>83</td><td>吉邈吉穆</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>84</td><td>薛灵芸</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>85</td><td>段巧笑</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>86</td><td>田尚衣</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>87</td><td>马伶俐</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>88</td><td>莫琼树</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>89</td><td>曹媛</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>90</td><td>崔令仪</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>91</td><td>徐妏</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>92</td><td>郑浑</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>93</td><td>吴普</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>94</td><td>乐蔡文姬</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>95</td><td>乐周妃</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>96</td><td>乐诸葛果</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>97</td><td>乐蔡邕</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>98</td><td>乐祢衡</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>99</td><td>乐大乔</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>100</td><td>乐小乔</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>101</td><td>乐邹氏</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>102</td><td>乐貂蝉</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>103</td><td>乐周瑜</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>104</td><td>马铁</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>105</td><td>朱佩兰</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>106</td><td>卞玥</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>107</td><td>徐馨</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>108</td><td>孙霸</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>109</td><td>夏侯徽</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>110</td><td>诸葛均</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>111</td><td>星曹仁</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>112</td><td>星董卓</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>113</td><td>星袁术</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>114</td><td>星张昭</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>115</td><td>星袁绍</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>116</td><td>星张春华</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>117</td><td>星法正</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>118</td><td>星荀彧</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>119</td><td>星张让</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>120</td><td>星文丑</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>121</td><td>谋鲁肃</td><td>珍宝10~20万</td><td>[1003, 1101]</td></tr>
+<tr><td>122</td><td>谋诸葛瑾</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>123</td><td>谋蒋济</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>124</td><td>谋司马师</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>125</td><td>谋曹爽</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>126</td><td>谋关平</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>127</td><td>谋吕蒙</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>128</td><td>谋张绣</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>129</td><td>谋典韦</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>130</td><td>谋胡车儿</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>131</td><td>星孙坚</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>132</td><td>星孙尚香</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>133</td><td>星丁奉</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>134</td><td>星太史慈</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>135</td><td>星颜良</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>136</td><td>谋程昱</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>137</td><td>谋蒋干</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>138</td><td>宣公主</td><td>珍宝10~20万</td><td>[2002, 1101]</td></tr>
+<tr><td>139</td><td>谋沮授</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>140</td><td>谋陈琳</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>141</td><td>谋许攸</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>142</td><td>张燕</td><td>珍宝10~20万</td><td>[2002, 1101]</td></tr>
+<tr><td>143</td><td>张奂</td><td>珍宝10~20万</td><td>[1101]</td></tr>
+<tr><td>144</td><td>谋邓艾</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>145</td><td>谋黄权</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>146</td><td>谋朱然</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>147</td><td>星蒋琬</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>148</td><td>星张郃</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+<tr><td>149</td><td>刘懿君</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>150</td><td>董绾</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>151</td><td>袁胤</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>152</td><td>黄承彦</td><td>将星2000~9999</td><td>[2, 11]</td></tr>
+<tr><td>153</td><td>张世平</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>154</td><td>谋曹洪</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>155</td><td>谋刘协</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>156</td><td>谋吴懿</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>157</td><td>谋刘璋</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>158</td><td>谋刘璋</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>159</td><td>侯昭宁</td><td>纳贤</td><td>[1001]</td></tr>
+<tr><td>160</td><td>星张松</td><td>纳贤</td><td>[1001, 1005]</td></tr>
+</tbody></table>
+
+            <h3 style="color:#52c41a;margin-top:24px;">稀有（87个）</h3>
+            <table class="detail-table">
+                <thead><tr><th>序号</th><th>武将名称</th><th>划分依据</th><th>获取途径</th></tr></thead>
+                <tbody>
+<tr><td>1</td><td>孙皓</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>2</td><td>兀突骨</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>3</td><td>蒋干</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>4</td><td>皇甫嵩</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>5</td><td>刘琦</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>6</td><td>辛宪英</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>7</td><td>王双</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>8</td><td>张让</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>9</td><td>何进</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>10</td><td>刘宏</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>11</td><td>陆郁生</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>12</td><td>何晏</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>13</td><td>张虎</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>14</td><td>杜夫人</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>15</td><td>阚泽</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>16</td><td>童渊</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>17</td><td>刘永</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>18</td><td>祢衡</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>19</td><td>吉平</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>20</td><td>李傕</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>21</td><td>樊稠</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>22</td><td>梁兴</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>23</td><td>唐姬</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>24</td><td>段煨</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>25</td><td>冯方</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>26</td><td>沙摩柯</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>27</td><td>忙牙长</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>28</td><td>许贡</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>29</td><td>张昌蒲</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>30</td><td>蒲元</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>31</td><td>管辂</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>32</td><td>葛玄</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>33</td><td>雷铜</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>34</td><td>孙鲁育</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>35</td><td>荀谌</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>36</td><td>陈登</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>37</td><td>蔡瑁张允</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>38</td><td>王桃</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>39</td><td>王悦</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>40</td><td>赵嫣</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>41</td><td>冯熙</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>42</td><td>邓芝</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>43</td><td>滕胤</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>44</td><td>夏侯令女</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>45</td><td>王荣</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>46</td><td>麴义</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>47</td><td>韩馥</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>48</td><td>陶谦</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>49</td><td>张邈</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>50</td><td>董承</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>51</td><td>丘力居</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>52</td><td>曹安民</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>53</td><td>李采薇</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>54</td><td>吴范</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>55</td><td>严夫人</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>56</td><td>朱灵</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>57</td><td>阎柔</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>58</td><td>王昶</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>59</td><td>张媱</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>60</td><td>刘虞</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>61</td><td>刘巴</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>62</td><td>杨仪</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>63</td><td>秦宜禄</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>64</td><td>卞喜</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>65</td><td>黄祖</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>66</td><td>赵昂</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>67</td><td>李婉</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>68</td><td>武安国</td><td>珍宝<5万</td><td>[2002, 1101]</td></tr>
+<tr><td>69</td><td>苏飞</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>70</td><td>谯周</td><td>珍宝<5万</td><td>[2002, 1101]</td></tr>
+<tr><td>71</td><td>孙礼</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>72</td><td>陈式</td><td>珍宝5~10万</td><td>[1101]</td></tr>
+<tr><td>73</td><td>费曜</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>74</td><td>夏侯楙</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>75</td><td>SP孟获</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>76</td><td>孙綝</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>77</td><td>羊祜</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>78</td><td>徐琨</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>79</td><td>司马孚</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>80</td><td>令狐愚</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>81</td><td>马钧</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>82</td><td>裴秀</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>83</td><td>伍孚</td><td>珍宝5~10万</td><td>[2002, 1101]</td></tr>
+<tr><td>84</td><td>马日磾</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>85</td><td>张勋</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>86</td><td>华歆</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+<tr><td>87</td><td>宗预</td><td>将星100~2000</td><td>[2, 11]</td></tr>
+</tbody></table>
+
+            <h3 style="color:#8c8c8c;margin-top:24px;">普通（368个）</h3>
+            <table class="detail-table">
+                <thead><tr><th>序号</th><th>武将名称</th><th>划分依据</th><th>获取途径</th></tr></thead>
+                <tbody>
+<tr><td>1</td><td>刘备</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>2</td><td>关羽</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>3</td><td>张飞</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>4</td><td>诸葛亮</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>5</td><td>赵云</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>6</td><td>马超</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>7</td><td>黄月英</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>8</td><td>孙权</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>9</td><td>甘宁</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>10</td><td>吕蒙</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>11</td><td>黄盖</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>12</td><td>周瑜</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>13</td><td>大乔</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>14</td><td>陆逊</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>15</td><td>孙尚香</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>16</td><td>曹操</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>17</td><td>司马懿</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>18</td><td>夏侯惇</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>19</td><td>张辽</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>20</td><td>许褚</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>21</td><td>郭嘉</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>22</td><td>甄姬</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>23</td><td>华佗</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>24</td><td>吕布</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>25</td><td>貂蝉</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>26</td><td>华雄</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>27</td><td>黄忠</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>28</td><td>魏延</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>29</td><td>夏侯渊</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>30</td><td>曹仁</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>31</td><td>小乔</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>32</td><td>周泰</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>33</td><td>张角</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>34</td><td>于吉</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>35</td><td>典韦</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>36</td><td>荀彧</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>37</td><td>庞统</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>38</td><td>卧龙诸葛</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>39</td><td>太史慈</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>40</td><td>庞德</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>41</td><td>颜良文丑</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>42</td><td>袁绍</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>43</td><td>徐晃</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>44</td><td>曹丕</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>45</td><td>孙坚</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>46</td><td>董卓</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>47</td><td>祝融</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>48</td><td>孟获</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>49</td><td>贾诩</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>50</td><td>鲁肃</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>51</td><td>张郃</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>52</td><td>邓艾</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>53</td><td>姜维</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>54</td><td>刘禅</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>55</td><td>孙策</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>56</td><td>张昭张纮</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>57</td><td>左慈</td><td>目标投放</td><td>[21]</td></tr>
+<tr><td>58</td><td>蔡文姬</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>59</td><td>严颜</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>60</td><td>王平</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>61</td><td>陆绩</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>62</td><td>孙亮</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>63</td><td>王基</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>64</td><td>蒯良蒯越</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>65</td><td>许攸</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>66</td><td>卢植</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>67</td><td>陈到</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>68</td><td>诸葛瞻</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>69</td><td>周妃</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>70</td><td>陆抗</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>71</td><td>郝昭</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>72</td><td>毌丘俭</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>73</td><td>袁术</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>74</td><td>张绣</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>75</td><td>神关羽</td><td>目标投放</td><td>[12]</td></tr>
+<tr><td>76</td><td>神姜维</td><td>其他</td><td>[27]</td></tr>
+<tr><td>77</td><td>神典韦</td><td>目标投放</td><td>[5006]</td></tr>
+<tr><td>78</td><td>神曹丕</td><td>其他</td><td>[]</td></tr>
+<tr><td>79</td><td>武陆抗</td><td>其他</td><td>[]</td></tr>
+<tr><td>80</td><td>武张飞</td><td>其他</td><td>[]</td></tr>
+<tr><td>81</td><td>法正</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>82</td><td>马谡</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>83</td><td>徐庶</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>84</td><td>吴国太</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>85</td><td>凌统</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>86</td><td>徐盛</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>87</td><td>曹植</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>88</td><td>张春华</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>89</td><td>于禁</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>90</td><td>陈宫</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>91</td><td>高顺</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>92</td><td>关兴张苞</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>93</td><td>廖化</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>94</td><td>马岱</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>95</td><td>步练师</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>96</td><td>程普</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>97</td><td>韩当</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>98</td><td>荀攸</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>99</td><td>王异</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>100</td><td>曹彰</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>101</td><td>钟会</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>102</td><td>刘表</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>103</td><td>曹冲</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>104</td><td>郭淮</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>105</td><td>满宠</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>106</td><td>关平</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>107</td><td>简雍</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>108</td><td>刘封</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>109</td><td>潘璋马忠</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>110</td><td>虞翻</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>111</td><td>朱然</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>112</td><td>伏皇后</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>113</td><td>李儒</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>114</td><td>曹真</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>115</td><td>韩浩史涣</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>116</td><td>陈群</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>117</td><td>吴懿</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>118</td><td>周仓</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>119</td><td>张松</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>120</td><td>孙鲁班</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>121</td><td>朱桓</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>122</td><td>顾雍</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>123</td><td>沮授</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>124</td><td>蔡夫人</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>125</td><td>曹叡</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>126</td><td>曹休</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>127</td><td>钟繇</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>128</td><td>刘谌</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>129</td><td>夏侯氏</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>130</td><td>张嶷</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>131</td><td>孙休</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>132</td><td>朱治</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>133</td><td>全琮</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>134</td><td>公孙渊</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>135</td><td>郭图逢纪</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>136</td><td>张星彩</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>137</td><td>吴苋</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>138</td><td>孙登</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>139</td><td>步骘</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>140</td><td>曹昂</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>141</td><td>诸葛诞</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>142</td><td>刘协</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>143</td><td>曹节</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>144</td><td>董允</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>145</td><td>诸葛瑾</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>146</td><td>严畯</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>147</td><td>李典</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>148</td><td>司马朗</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>149</td><td>杜畿</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>150</td><td>刘焉</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>151</td><td>张鲁</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>152</td><td>孙乾</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>153</td><td>秦宓</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>154</td><td>薛综</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>155</td><td>潘濬</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>156</td><td>戏志才</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>157</td><td>郭皇后</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>158</td><td>王粲</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>159</td><td>蔡邕</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>160</td><td>SP孙尚香</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>161</td><td>SP徐庶</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>162</td><td>SP庞统</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>163</td><td>SP庞德</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>164</td><td>SP蔡文姬</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>165</td><td>SP姜维</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>166</td><td>SP黄月英</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>167</td><td>SP太史慈</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>168</td><td>李严</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>169</td><td>糜竺</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>170</td><td>马忠</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>171</td><td>周鲂</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>172</td><td>贺齐</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>173</td><td>文聘</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>174</td><td>吕岱</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>175</td><td>刘繇</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>176</td><td>马云騄</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>177</td><td>关银屏</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>178</td><td>祖茂</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>179</td><td>徐氏</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>180</td><td>吕虔</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>181</td><td>张梁</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>182</td><td>蹋顿</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>183</td><td>公孙瓒</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>184</td><td>诸葛果</td><td>其他</td><td>[23]</td></tr>
+<tr><td>185</td><td>诸葛恪</td><td>其他</td><td>[2003]</td></tr>
+<tr><td>186</td><td>张宝</td><td>其他</td><td>[5003]</td></tr>
+<tr><td>187</td><td>灵雎</td><td>运营<1000</td><td>[2004]</td></tr>
+<tr><td>188</td><td>王允</td><td>目标投放</td><td>[21]</td></tr>
+<tr><td>189</td><td>大乔小乔</td><td>运营<1000</td><td>[2004]</td></tr>
+<tr><td>190</td><td>SP马超</td><td>运营<1000</td><td>[2004]</td></tr>
+<tr><td>191</td><td>夏侯霸</td><td>其他</td><td>[5003]</td></tr>
+<tr><td>192</td><td>SP赵云</td><td>其他</td><td>[2000]</td></tr>
+<tr><td>193</td><td>SP关羽</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>194</td><td>韩遂</td><td>目标投放</td><td>[103]</td></tr>
+<tr><td>195</td><td>朱儁</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>196</td><td>董白</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>197</td><td>杨婉</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>198</td><td>潘淑</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>199</td><td>吕玲绮</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>200</td><td>南华老仙</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>201</td><td>张宁</td><td>其他</td><td>[101]</td></tr>
+<tr><td>202</td><td>SP贾诩</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>203</td><td>曹髦</td><td>其他</td><td>[26]</td></tr>
+<tr><td>204</td><td>来莺儿</td><td>其他</td><td>[25]</td></tr>
+<tr><td>205</td><td>郭汜</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>206</td><td>张济</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>207</td><td>张横</td><td>目标投放</td><td>[12]</td></tr>
+<tr><td>208</td><td>牛辅</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>209</td><td>崔烈</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>210</td><td>张恭</td><td>目标投放</td><td>[28]</td></tr>
+<tr><td>211</td><td>吕凯</td><td>目标投放</td><td>[28]</td></tr>
+<tr><td>212</td><td>卫温诸葛直</td><td>目标投放</td><td>[28]</td></tr>
+<tr><td>213</td><td>卑弥呼</td><td>目标投放</td><td>[28]</td></tr>
+<tr><td>214</td><td>许劭</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>215</td><td>杜夔</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>216</td><td>辛毗</td><td>目标投放</td><td>[12]</td></tr>
+<tr><td>217</td><td>伊籍</td><td>目标投放</td><td>[12]</td></tr>
+<tr><td>218</td><td>张温</td><td>目标投放</td><td>[12]</td></tr>
+<tr><td>219</td><td>李肃</td><td>目标投放</td><td>[12]</td></tr>
+<tr><td>220</td><td>邢道荣</td><td>目标投放</td><td>[3002]</td></tr>
+<tr><td>221</td><td>曹性</td><td>目标投放</td><td>[3002]</td></tr>
+<tr><td>222</td><td>淳于琼</td><td>目标投放</td><td>[3002]</td></tr>
+<tr><td>223</td><td>夏侯杰</td><td>目标投放</td><td>[3002]</td></tr>
+<tr><td>224</td><td>蔡阳</td><td>目标投放</td><td>[3002]</td></tr>
+<tr><td>225</td><td>周善</td><td>目标投放</td><td>[3002]</td></tr>
+<tr><td>226</td><td>吴兰</td><td>其他</td><td>[13]</td></tr>
+<tr><td>227</td><td>万年公主</td><td>其他</td><td>[5007]</td></tr>
+<tr><td>228</td><td>滕公主</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>229</td><td>黄皓</td><td>目标投放</td><td>[5006]</td></tr>
+<tr><td>230</td><td>高览</td><td>其他</td><td>[24]</td></tr>
+<tr><td>231</td><td>张嫙</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>232</td><td>孙茹</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>233</td><td>尹夫人</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>234</td><td>吕旷吕翔</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>235</td><td>陈珪</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>236</td><td>马邈</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>237</td><td>丁原</td><td>目标投放</td><td>[103]</td></tr>
+<tr><td>238</td><td>曹嵩</td><td>目标投放</td><td>[103]</td></tr>
+<tr><td>239</td><td>赵忠</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>240</td><td>牛金</td><td>其他</td><td>[102]</td></tr>
+<tr><td>241</td><td>胡车儿</td><td>目标投放</td><td>[103]</td></tr>
+<tr><td>242</td><td>糜芳傅士仁</td><td>其他</td><td>[102]</td></tr>
+<tr><td>243</td><td>曹豹</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>244</td><td>曹豹</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>245</td><td>郝萌</td><td>目标投放</td><td>[103]</td></tr>
+<tr><td>246</td><td>王威</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>247</td><td>穆顺</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>248</td><td>李异谢旌</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>249</td><td>伏完</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>250</td><td>孙桓</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>251</td><td>孟达</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>252</td><td>是仪</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>253</td><td>孙狼</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>254</td><td>程秉</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>255</td><td>陈祇</td><td>其他</td><td>[]</td></tr>
+<tr><td>256</td><td>袁姬</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>257</td><td>清河公主</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>258</td><td>黄权</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>259</td><td>吴班</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>260</td><td>傅肜傅佥</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>261</td><td>高翔</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>262</td><td>向宠</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>263</td><td>胡班</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>264</td><td>胡金定</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>265</td><td>关宁</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>266</td><td>文钦</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>267</td><td>胡遵</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>268</td><td>桓范</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>269</td><td>陆凯</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>270</td><td>轲比能</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>271</td><td>诸葛尚</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>272</td><td>管亥</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>273</td><td>张闿</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>274</td><td>刘辟</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>275</td><td>裴元绍</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>276</td><td>张怀</td><td>运营<1000</td><td>[2001]</td></tr>
+<tr><td>277</td><td>董絮</td><td>运营<1000</td><td>[2001]</td></tr>
+<tr><td>278</td><td>公孙度</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>279</td><td>木鹿大王</td><td>其他</td><td>[]</td></tr>
+<tr><td>280</td><td>孙资刘放</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>281</td><td>岑昏</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>282</td><td>贾充</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>283</td><td>侯成</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>284</td><td>魏讽</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>285</td><td>庞会</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>286</td><td>周不疑</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>287</td><td>芮姬</td><td>运营<1000</td><td>[2001]</td></tr>
+<tr><td>288</td><td>唐咨</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>289</td><td>孙寒华</td><td>运营<1000</td><td>[2001]</td></tr>
+<tr><td>290</td><td>刘宠骆俊</td><td>运营<1000</td><td>[2001]</td></tr>
+<tr><td>291</td><td>乐曹植</td><td>其他</td><td>[]</td></tr>
+<tr><td>292</td><td>乐曹植</td><td>其他</td><td>[]</td></tr>
+<tr><td>293</td><td>严白虎</td><td>目标投放</td><td>[103]</td></tr>
+<tr><td>294</td><td>车胄</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>295</td><td>韩嵩</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>296</td><td>阎象</td><td>其他</td><td>[]</td></tr>
+<tr><td>297</td><td>刘璿</td><td>其他</td><td>[]</td></tr>
+<tr><td>298</td><td>孙和</td><td>其他</td><td>[]</td></tr>
+<tr><td>299</td><td>环怀瑾</td><td>其他</td><td>[]</td></tr>
+<tr><td>300</td><td>张翼</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>301</td><td>星董允</td><td>其他</td><td>[]</td></tr>
+<tr><td>302</td><td>SP孙策</td><td>其他</td><td>[13]</td></tr>
+<tr><td>303</td><td>SP张郃</td><td>其他</td><td>[]</td></tr>
+<tr><td>304</td><td>谋王凌</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>305</td><td>谋关羽</td><td>其他</td><td>[]</td></tr>
+<tr><td>306</td><td>谋曹昂</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>307</td><td>星夏侯霸</td><td>其他</td><td>[]</td></tr>
+<tr><td>308</td><td>谋黄盖</td><td>目标投放</td><td>[5006]</td></tr>
+<tr><td>309</td><td>谋程普</td><td>其他</td><td>[]</td></tr>
+<tr><td>310</td><td>奇巧马钧</td><td>其他</td><td>[]</td></tr>
+<tr><td>311</td><td>传械马钧</td><td>其他</td><td>[]</td></tr>
+<tr><td>312</td><td>谋淳于琼</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>313</td><td>谋杨奉</td><td>其他</td><td>[]</td></tr>
+<tr><td>314</td><td>吕据</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>315</td><td>陶璜</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>316</td><td>谋胡烈</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>317</td><td>谋卫瓘</td><td>其他</td><td>[]</td></tr>
+<tr><td>318</td><td>谋骆统</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>319</td><td>谋徐盛</td><td>其他</td><td>[]</td></tr>
+<tr><td>320</td><td>邓晚棠</td><td>其他</td><td>[]</td></tr>
+<tr><td>321</td><td>李昭仪</td><td>其他</td><td>[]</td></tr>
+<tr><td>322</td><td>崔芷</td><td>其他</td><td>[]</td></tr>
+<tr><td>323</td><td>雷薄</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>324</td><td>乐就</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>325</td><td>桥蕤</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>326</td><td>苏越</td><td>其他</td><td>[5005]</td></tr>
+<tr><td>327</td><td>张裕</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>328</td><td>史阿</td><td>其他</td><td>[]</td></tr>
+<tr><td>329</td><td>王越</td><td>其他</td><td>[]</td></tr>
+<tr><td>330</td><td>管宁</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>331</td><td>胡昭</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>332</td><td>王烈</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>333</td><td>孟节</td><td>运营<1000</td><td>[2002]</td></tr>
+<tr><td>334</td><td>田畴</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>335</td><td>乐进</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>336</td><td>甘夫人</td><td>将星<100</td><td>[1, 12]</td></tr>
+<tr><td>337</td><td>丁奉</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>338</td><td>马腾</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>339</td><td>孔融</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>340</td><td>纪灵</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>341</td><td>田丰</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>342</td><td>潘凤</td><td>其他</td><td>[]</td></tr>
+<tr><td>343</td><td>邹氏</td><td>将星<100</td><td>[1]</td></tr>
+<tr><td>344</td><td>何太后</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>345</td><td>蒋琬费祎</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>346</td><td>臧霸</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>347</td><td>糜夫人</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>348</td><td>陈武董袭</td><td>将星<100</td><td>[1, 2, 11]</td></tr>
+<tr><td>349</td><td>张任</td><td>将星<100</td><td>[1, 2, 11, 12]</td></tr>
+<tr><td>350</td><td>曹洪</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>351</td><td>蒋钦</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>352</td><td>李傕郭汜</td><td>将星<100</td><td>[1, 2, 11, 12]</td></tr>
+<tr><td>353</td><td>卞夫人</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>354</td><td>吕范</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>355</td><td>崔琰毛玠</td><td>将星<100</td><td>[2, 11]</td></tr>
+<tr><td>356</td><td>威马腾</td><td>其他</td><td>[]</td></tr>
+<tr><td>357</td><td>威曹彰</td><td>其他</td><td>[]</td></tr>
+<tr><td>358</td><td>威关银屏</td><td>其他</td><td>[]</td></tr>
+<tr><td>359</td><td>威张星彩</td><td>其他</td><td>[]</td></tr>
+<tr><td>360</td><td>谋董承</td><td>其他</td><td>[1002]</td></tr>
+<tr><td>361</td><td>谋法正</td><td>其他</td><td>[]</td></tr>
+<tr><td>362</td><td>谋张任</td><td>其他</td><td>[]</td></tr>
+<tr><td>363</td><td>傅干</td><td>其他</td><td>[]</td></tr>
+<tr><td>364</td><td>星诸葛瑾</td><td>其他</td><td>[]</td></tr>
+<tr><td>365</td><td>谋马谡</td><td>其他</td><td>[]</td></tr>
+<tr><td>366</td><td>谋王平</td><td>其他</td><td>[]</td></tr>
+<tr><td>367</td><td>谋诸葛亮</td><td>其他</td><td>[]</td></tr>
+<tr><td>368</td><td>陆文漪</td><td>其他</td><td>[]</td></tr>
+</tbody></table>
+</div>
+

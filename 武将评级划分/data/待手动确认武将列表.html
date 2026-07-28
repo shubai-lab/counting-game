@@ -1,0 +1,2490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待手动确认武将列表</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 20px; }
+        .header h1 { font-size: 24px; margin-bottom: 10px; }
+        .header .count { font-size: 14px; opacity: 0.9; }
+        .filter-bar { text-align: center; margin: 20px 0; padding: 16px; background: white; border-radius: 8px; }
+        .filter-btn { padding: 8px 16px; margin: 5px; border: 2px solid #ff9800; border-radius: 20px; cursor: pointer; background: white; color: #ff9800; font-weight: 500; transition: all 0.2s; }
+        .filter-btn:hover { background: #ff9800; color: white; }
+        .filter-btn.active { background: #ff9800; color: white; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        th { background: #ff9800; color: white; padding: 12px 16px; text-align: left; font-weight: 500; }
+        td { padding: 10px 16px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #fff8f0; }
+        .input-tier { padding: 6px 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; width: 100px; }
+        .row-index { color: #999; font-size: 12px; width: 50px; text-align: center; }
+        .general-id { font-family: monospace; color: #666; }
+        .reason { color: #888; font-size: 12px; }
+        .checkbox { width: 40px; text-align: center; }
+        input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+        .footer { text-align: center; padding: 20px; color: #999; font-size: 13px; }
+        .action-bar { background: white; padding: 16px; border-radius: 8px; margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .action-btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; }
+        .btn-primary { background: #ff9800; color: white; }
+        .btn-success { background: #52c41a; color: white; }
+        .btn-secondary { background: #666; color: white; }
+        .suggestion-epic { color: #722ed1; font-weight: 500; }
+        .suggestion-legend { color: #fa8c16; font-weight: 500; }
+        .suggestion-rare { color: #52c41a; font-weight: 500; }
+        .suggestion-pending { color: #999; }
+        .price { font-family: monospace; color: #1890ff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>待手动确认武将列表</h1>
+            <div class="count">共 121 个武将需要确认档位</div>
+        </div>
+
+        <div class="filter-bar">
+            <span style="margin-right: 20px;">快速定位：</span>
+            <button class="filter-btn active" onclick="filterLamp('')">全部</button>
+            <button class="filter-btn" onclick="filterLamp('逐鹿')">逐鹿</button>
+            <button class="filter-btn" onclick="filterLamp('上兵伐谋')">上兵伐谋</button>
+            <button class="filter-btn" onclick="filterLamp('黄巾之乱')">黄巾之乱</button>
+            <button class="filter-btn" onclick="filterLamp('锦瑟良缘')">锦瑟良缘</button>
+            <button class="filter-btn" onclick="filterLamp('皇家贵胄')">皇家贵胄</button>
+            <button class="filter-btn" onclick="filterLamp('往者可谏')">往者可谏</button>
+            <button class="filter-btn" onclick="filterLamp('正音雅乐')">正音雅乐</button>
+            <button class="filter-btn" onclick="filterLamp('谋')">谋系列</button>
+            <button class="filter-btn" onclick="filterLamp('其他')">其他</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="row-index">#</th>
+                    <th class="checkbox"><input type="checkbox" id="selectAll" onchange="toggleAll(this)"></th>
+                    <th>武将ID</th>
+                    <th>武将名称</th>
+                    <th>LampType</th>
+                    <th>原分类依据</th>
+                    <th>定价(元)</th>
+                    <th>建议档位</th>
+                    <th>确认档位</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr data-lamp="山">
+                    <td class="row-index">1</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">57</td>
+                    <td><strong>左慈</strong></td>
+                    <td>山</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="豆蔻梢头">
+                    <td class="row-index">2</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">502</td>
+                    <td><strong>诸葛果</strong></td>
+                    <td>豆蔻梢头</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">652,800</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="笔舌如椽">
+                    <td class="row-index">3</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">504</td>
+                    <td><strong>诸葛恪</strong></td>
+                    <td>笔舌如椽</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="奇人异士">
+                    <td class="row-index">4</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">511</td>
+                    <td><strong>张宝</strong></td>
+                    <td>奇人异士</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="豆蔻梢头">
+                    <td class="row-index">5</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">512</td>
+                    <td><strong>灵雎</strong></td>
+                    <td>豆蔻梢头</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">652,800</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="计将安出">
+                    <td class="row-index">6</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">513</td>
+                    <td><strong>王允</strong></td>
+                    <td>计将安出</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="往者可谏">
+                    <td class="row-index">7</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">517</td>
+                    <td><strong>大乔小乔</strong></td>
+                    <td>往者可谏</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="往者可谏">
+                    <td class="row-index">8</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">519</td>
+                    <td><strong>SP马超</strong></td>
+                    <td>往者可谏</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">1,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="百战虎贲">
+                    <td class="row-index">9</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">523</td>
+                    <td><strong>夏侯霸</strong></td>
+                    <td>百战虎贲</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="往者可谏">
+                    <td class="row-index">10</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">524</td>
+                    <td><strong>SP赵云</strong></td>
+                    <td>往者可谏</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">1,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="千里单骑">
+                    <td class="row-index">11</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">532</td>
+                    <td><strong>SP关羽</strong></td>
+                    <td>千里单骑</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">1,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="黄巾之乱">
+                    <td class="row-index">12</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">534</td>
+                    <td><strong>韩遂</strong></td>
+                    <td>黄巾之乱</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="烽火连天">
+                    <td class="row-index">13</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">553</td>
+                    <td><strong>张宁</strong></td>
+                    <td>烽火连天</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="皇家贵胄">
+                    <td class="row-index">14</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">561</td>
+                    <td><strong>曹髦</strong></td>
+                    <td>皇家贵胄</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="锦瑟良缘">
+                    <td class="row-index">15</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">562</td>
+                    <td><strong>来莺儿</strong></td>
+                    <td>锦瑟良缘</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="乱武">
+                    <td class="row-index">16</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">608</td>
+                    <td><strong>张横</strong></td>
+                    <td>乱武</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="食禄尽忠">
+                    <td class="row-index">17</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">654</td>
+                    <td><strong>崔烈</strong></td>
+                    <td>食禄尽忠</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="逐鹿">
+                    <td class="row-index">18</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">700</td>
+                    <td><strong>张恭</strong></td>
+                    <td>逐鹿</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="逐鹿">
+                    <td class="row-index">19</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">701</td>
+                    <td><strong>吕凯</strong></td>
+                    <td>逐鹿</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="逐鹿">
+                    <td class="row-index">20</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">702</td>
+                    <td><strong>卫温诸葛直</strong></td>
+                    <td>逐鹿</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="逐鹿">
+                    <td class="row-index">21</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">703</td>
+                    <td><strong>卑弥呼</strong></td>
+                    <td>逐鹿</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="黄巾之乱">
+                    <td class="row-index">22</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">804</td>
+                    <td><strong>许劭</strong></td>
+                    <td>黄巾之乱</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="上兵伐谋">
+                    <td class="row-index">23</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">850</td>
+                    <td><strong>辛毗</strong></td>
+                    <td>上兵伐谋</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="上兵伐谋">
+                    <td class="row-index">24</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">851</td>
+                    <td><strong>伊籍</strong></td>
+                    <td>上兵伐谋</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="上兵伐谋">
+                    <td class="row-index">25</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">852</td>
+                    <td><strong>张温</strong></td>
+                    <td>上兵伐谋</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="上兵伐谋">
+                    <td class="row-index">26</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">853</td>
+                    <td><strong>李肃</strong></td>
+                    <td>上兵伐谋</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="百战虎贲">
+                    <td class="row-index">27</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">981</td>
+                    <td><strong>吴兰</strong></td>
+                    <td>百战虎贲</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">10,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="芝兰玉树">
+                    <td class="row-index">28</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1004</td>
+                    <td><strong>万年公主</strong></td>
+                    <td>芝兰玉树</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="绕庭之鸦">
+                    <td class="row-index">29</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1008</td>
+                    <td><strong>黄皓</strong></td>
+                    <td>绕庭之鸦</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">36,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="天下归心">
+                    <td class="row-index">30</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1015</td>
+                    <td><strong>高览</strong></td>
+                    <td>天下归心</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="天下归心">
+                    <td class="row-index">31</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1037</td>
+                    <td><strong>马邈</strong></td>
+                    <td>天下归心</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="诸侯伐董">
+                    <td class="row-index">32</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1051</td>
+                    <td><strong>丁原</strong></td>
+                    <td>诸侯伐董</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="徐州风云">
+                    <td class="row-index">33</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1056</td>
+                    <td><strong>曹嵩</strong></td>
+                    <td>徐州风云</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="兵临城下">
+                    <td class="row-index">34</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1059</td>
+                    <td><strong>牛金</strong></td>
+                    <td>兵临城下</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="中原狼烟">
+                    <td class="row-index">35</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1061</td>
+                    <td><strong>胡车儿</strong></td>
+                    <td>中原狼烟</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="兵临城下">
+                    <td class="row-index">36</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1062</td>
+                    <td><strong>糜芳傅士仁</strong></td>
+                    <td>兵临城下</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="徐州风云">
+                    <td class="row-index">37</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1066</td>
+                    <td><strong>曹豹</strong></td>
+                    <td>徐州风云</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="虓虎悲歌">
+                    <td class="row-index">38</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1074</td>
+                    <td><strong>郝萌</strong></td>
+                    <td>虓虎悲歌</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="兵临城下">
+                    <td class="row-index">39</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1081</td>
+                    <td><strong>李异谢旌</strong></td>
+                    <td>兵临城下</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="戚宦之争">
+                    <td class="row-index">40</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1082</td>
+                    <td><strong>伏完</strong></td>
+                    <td>戚宦之争</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">36,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="兵临城下">
+                    <td class="row-index">41</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1083</td>
+                    <td><strong>孙桓</strong></td>
+                    <td>兵临城下</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">500</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="兵临城下">
+                    <td class="row-index">42</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1084</td>
+                    <td><strong>孟达</strong></td>
+                    <td>兵临城下</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="兵临城下">
+                    <td class="row-index">43</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1085</td>
+                    <td><strong>是仪</strong></td>
+                    <td>兵临城下</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="兵临城下">
+                    <td class="row-index">44</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1086</td>
+                    <td><strong>孙狼</strong></td>
+                    <td>兵临城下</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="笔舌如椽">
+                    <td class="row-index">45</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1092</td>
+                    <td><strong>程秉</strong></td>
+                    <td>笔舌如椽</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="笔舌如椽">
+                    <td class="row-index">46</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1099</td>
+                    <td><strong>陈祇</strong></td>
+                    <td>笔舌如椽</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="皇家贵胄">
+                    <td class="row-index">47</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1104</td>
+                    <td><strong>袁姬</strong></td>
+                    <td>皇家贵胄</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="皇家贵胄">
+                    <td class="row-index">48</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1108</td>
+                    <td><strong>清河公主</strong></td>
+                    <td>皇家贵胄</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">200,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="匡鼎炎汉">
+                    <td class="row-index">49</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1113</td>
+                    <td><strong>吴班</strong></td>
+                    <td>匡鼎炎汉</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="匡鼎炎汉">
+                    <td class="row-index">50</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1115</td>
+                    <td><strong>傅肜傅佥</strong></td>
+                    <td>匡鼎炎汉</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="匡鼎炎汉">
+                    <td class="row-index">51</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1117</td>
+                    <td><strong>高翔</strong></td>
+                    <td>匡鼎炎汉</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="匡鼎炎汉">
+                    <td class="row-index">52</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1119</td>
+                    <td><strong>向宠</strong></td>
+                    <td>匡鼎炎汉</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="千里单骑">
+                    <td class="row-index">53</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1124</td>
+                    <td><strong>关宁</strong></td>
+                    <td>千里单骑</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">200,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="百战虎贲">
+                    <td class="row-index">54</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1136</td>
+                    <td><strong>文钦</strong></td>
+                    <td>百战虎贲</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="百战虎贲">
+                    <td class="row-index">55</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1137</td>
+                    <td><strong>胡遵</strong></td>
+                    <td>百战虎贲</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="计将安出">
+                    <td class="row-index">56</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1143</td>
+                    <td><strong>桓范</strong></td>
+                    <td>计将安出</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="太平甲子">
+                    <td class="row-index">57</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1181</td>
+                    <td><strong>张闿</strong></td>
+                    <td>太平甲子</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="太平甲子">
+                    <td class="row-index">58</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1182</td>
+                    <td><strong>刘辟</strong></td>
+                    <td>太平甲子</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="太平甲子">
+                    <td class="row-index">59</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1183</td>
+                    <td><strong>裴元绍</strong></td>
+                    <td>太平甲子</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="锦瑟良缘">
+                    <td class="row-index">60</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1188</td>
+                    <td><strong>张怀</strong></td>
+                    <td>锦瑟良缘</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="锦瑟良缘">
+                    <td class="row-index">61</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1189</td>
+                    <td><strong>董絮</strong></td>
+                    <td>锦瑟良缘</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="异军突起">
+                    <td class="row-index">62</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1196</td>
+                    <td><strong>木鹿大王</strong></td>
+                    <td>异军突起</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="绕庭之鸦">
+                    <td class="row-index">63</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1205</td>
+                    <td><strong>孙资刘放</strong></td>
+                    <td>绕庭之鸦</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="绕庭之鸦">
+                    <td class="row-index">64</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1206</td>
+                    <td><strong>岑昏</strong></td>
+                    <td>绕庭之鸦</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="绕庭之鸦">
+                    <td class="row-index">65</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1208</td>
+                    <td><strong>贾充</strong></td>
+                    <td>绕庭之鸦</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="天下归心">
+                    <td class="row-index">66</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1209</td>
+                    <td><strong>侯成</strong></td>
+                    <td>天下归心</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="绕庭之鸦">
+                    <td class="row-index">67</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1210</td>
+                    <td><strong>魏讽</strong></td>
+                    <td>绕庭之鸦</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="芝兰玉树">
+                    <td class="row-index">68</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1221</td>
+                    <td><strong>庞会</strong></td>
+                    <td>芝兰玉树</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="钟灵毓秀">
+                    <td class="row-index">69</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1234</td>
+                    <td><strong>周不疑</strong></td>
+                    <td>钟灵毓秀</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-legend">传说</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="豆蔻梢头">
+                    <td class="row-index">70</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1242</td>
+                    <td><strong>芮姬</strong></td>
+                    <td>豆蔻梢头</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">200,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="天下归心">
+                    <td class="row-index">71</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1251</td>
+                    <td><strong>唐咨</strong></td>
+                    <td>天下归心</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="悬壶济世">
+                    <td class="row-index">72</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1261</td>
+                    <td><strong>孙寒华</strong></td>
+                    <td>悬壶济世</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">200,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="悬壶济世">
+                    <td class="row-index">73</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1263</td>
+                    <td><strong>刘宠骆俊</strong></td>
+                    <td>悬壶济世</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="正音雅乐">
+                    <td class="row-index">74</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1340</td>
+                    <td><strong>乐曹植</strong></td>
+                    <td>正音雅乐</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">120,000</td>
+                    <td><span class="suggestion-epic">史诗</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="正音雅乐">
+                    <td class="row-index">75</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1341</td>
+                    <td><strong>乐曹植</strong></td>
+                    <td>正音雅乐</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-epic">史诗</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="群雄伺动">
+                    <td class="row-index">76</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1350</td>
+                    <td><strong>严白虎</strong></td>
+                    <td>群雄伺动</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="群雄伺动">
+                    <td class="row-index">77</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1351</td>
+                    <td><strong>车胄</strong></td>
+                    <td>群雄伺动</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="群雄伺动">
+                    <td class="row-index">78</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1352</td>
+                    <td><strong>韩嵩</strong></td>
+                    <td>群雄伺动</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="群雄伺动">
+                    <td class="row-index">79</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1354</td>
+                    <td><strong>阎象</strong></td>
+                    <td>群雄伺动</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="皇家贵胄">
+                    <td class="row-index">80</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1506</td>
+                    <td><strong>刘璿</strong></td>
+                    <td>皇家贵胄</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="皇家贵胄">
+                    <td class="row-index">81</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1507</td>
+                    <td><strong>孙和</strong></td>
+                    <td>皇家贵胄</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="皇家贵胄">
+                    <td class="row-index">82</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1508</td>
+                    <td><strong>环怀瑾</strong></td>
+                    <td>皇家贵胄</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="匡鼎炎汉">
+                    <td class="row-index">83</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1531</td>
+                    <td><strong>张翼</strong></td>
+                    <td>匡鼎炎汉</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="玉衡">
+                    <td class="row-index">84</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1610</td>
+                    <td><strong>星董允</strong></td>
+                    <td>玉衡</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="往者可谏">
+                    <td class="row-index">85</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1620</td>
+                    <td><strong>SP孙策</strong></td>
+                    <td>往者可谏</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="往者可谏">
+                    <td class="row-index">86</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1621</td>
+                    <td><strong>SP张郃</strong></td>
+                    <td>往者可谏</td>
+                    <td class="reason">普通招募(标签)</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="冢虎狼顾">
+                    <td class="row-index">87</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1641</td>
+                    <td><strong>谋王凌</strong></td>
+                    <td>冢虎狼顾</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="子敬邀刀">
+                    <td class="row-index">88</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1652</td>
+                    <td><strong>谋关羽</strong></td>
+                    <td>子敬邀刀</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="毒士鸩计">
+                    <td class="row-index">89</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1660</td>
+                    <td><strong>谋曹昂</strong></td>
+                    <td>毒士鸩计</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="开阳">
+                    <td class="row-index">90</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1675</td>
+                    <td><strong>星夏侯霸</strong></td>
+                    <td>开阳</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="周郎将计">
+                    <td class="row-index">91</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1684</td>
+                    <td><strong>谋程普</strong></td>
+                    <td>周郎将计</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="一将成名2023">
+                    <td class="row-index">92</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1694</td>
+                    <td><strong>奇巧马钧</strong></td>
+                    <td>一将成名2023</td>
+                    <td class="reason">普通招募(标签)</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="一将成名2023">
+                    <td class="row-index">93</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1695</td>
+                    <td><strong>传械马钧</strong></td>
+                    <td>一将成名2023</td>
+                    <td class="reason">普通招募(标签)</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="奇佐论胜">
+                    <td class="row-index">94</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1703</td>
+                    <td><strong>谋淳于琼</strong></td>
+                    <td>奇佐论胜</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="奇佐论胜">
+                    <td class="row-index">95</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1704</td>
+                    <td><strong>谋杨奉</strong></td>
+                    <td>奇佐论胜</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="百战虎贲">
+                    <td class="row-index">96</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1711</td>
+                    <td><strong>吕据</strong></td>
+                    <td>百战虎贲</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="百战虎贲">
+                    <td class="row-index">97</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1712</td>
+                    <td><strong>陶璜</strong></td>
+                    <td>百战虎贲</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="幼麟绝战">
+                    <td class="row-index">98</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1741</td>
+                    <td><strong>谋胡烈</strong></td>
+                    <td>幼麟绝战</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="幼麟绝战">
+                    <td class="row-index">99</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1742</td>
+                    <td><strong>谋卫瓘</strong></td>
+                    <td>幼麟绝战</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="伯言绽火">
+                    <td class="row-index">100</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1781</td>
+                    <td><strong>谋骆统</strong></td>
+                    <td>伯言绽火</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="伯言绽火">
+                    <td class="row-index">101</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1784</td>
+                    <td><strong>谋徐盛</strong></td>
+                    <td>伯言绽火</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="锦瑟良缘">
+                    <td class="row-index">102</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1851</td>
+                    <td><strong>邓晚棠</strong></td>
+                    <td>锦瑟良缘</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="锦瑟良缘">
+                    <td class="row-index">103</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1852</td>
+                    <td><strong>李昭仪</strong></td>
+                    <td>锦瑟良缘</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="锦瑟良缘">
+                    <td class="row-index">104</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1853</td>
+                    <td><strong>崔芷</strong></td>
+                    <td>锦瑟良缘</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="代汉涂高">
+                    <td class="row-index">105</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1904</td>
+                    <td><strong>乐就</strong></td>
+                    <td>代汉涂高</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">50,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="代汉涂高">
+                    <td class="row-index">106</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1905</td>
+                    <td><strong>桥蕤</strong></td>
+                    <td>代汉涂高</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="奇人异士">
+                    <td class="row-index">107</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1911</td>
+                    <td><strong>苏越</strong></td>
+                    <td>奇人异士</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="奇人异士">
+                    <td class="row-index">108</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1912</td>
+                    <td><strong>张裕</strong></td>
+                    <td>奇人异士</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="奇人异士">
+                    <td class="row-index">109</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1913</td>
+                    <td><strong>史阿</strong></td>
+                    <td>奇人异士</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="奇人异士">
+                    <td class="row-index">110</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1914</td>
+                    <td><strong>王越</strong></td>
+                    <td>奇人异士</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="江湖之远">
+                    <td class="row-index">111</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1950</td>
+                    <td><strong>管宁</strong></td>
+                    <td>江湖之远</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="江湖之远">
+                    <td class="row-index">112</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">1954</td>
+                    <td><strong>孟节</strong></td>
+                    <td>江湖之远</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="皇家贵胄">
+                    <td class="row-index">113</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">2029</td>
+                    <td><strong>甘夫人</strong></td>
+                    <td>皇家贵胄</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">-</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="王佐倡义">
+                    <td class="row-index">114</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">2300</td>
+                    <td><strong>谋董承</strong></td>
+                    <td>王佐倡义</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="凤雏溯攻">
+                    <td class="row-index">115</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">2316</td>
+                    <td><strong>谋法正</strong></td>
+                    <td>凤雏溯攻</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="凤雏溯攻">
+                    <td class="row-index">116</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">2318</td>
+                    <td><strong>谋张任</strong></td>
+                    <td>凤雏溯攻</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="笔舌如椽">
+                    <td class="row-index">117</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">2331</td>
+                    <td><strong>傅干</strong></td>
+                    <td>笔舌如椽</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="天璇">
+                    <td class="row-index">118</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">2412</td>
+                    <td><strong>星诸葛瑾</strong></td>
+                    <td>天璇</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-pending">待确认</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="武侯定南">
+                    <td class="row-index">119</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">2500</td>
+                    <td><strong>谋马谡</strong></td>
+                    <td>武侯定南</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="武侯定南">
+                    <td class="row-index">120</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">2501</td>
+                    <td><strong>谋王平</strong></td>
+                    <td>武侯定南</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">100,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+                <tr data-lamp="豆蔻梢头">
+                    <td class="row-index">121</td>
+                    <td class="checkbox"><input type="checkbox" class="row-checkbox"></td>
+                    <td class="general-id">2531</td>
+                    <td><strong>陆文漪</strong></td>
+                    <td>豆蔻梢头</td>
+                    <td class="reason">无匹配途径</td>
+                    <td class="price">120,000</td>
+                    <td><span class="suggestion-稀有">稀有</span></td>
+                    <td><select class="input-tier" onchange="highlight(this)">
+                        <option value="">--</option>
+                        <option value="限定">限定</option>
+                        <option value="传说">传说</option>
+                        <option value="史诗">史诗</option>
+                        <option value="稀有">稀有</option>
+                        <option value="普通">普通</option>
+                    </select></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="action-bar">
+            <button class="action-btn btn-success" onclick="exportSelected()">导出已选择</button>
+            <button class="action-btn btn-primary" onclick="exportAll()">导出全部</button>
+            <button class="action-btn btn-secondary" onclick="clearAll()">清空选择</button>
+            <span style="margin-left: auto; align-self: center; color: #666;">
+                已选择 <span id="selectedCount">0</span> 个武将
+            </span>
+        </div>
+
+        <div class="footer">
+            <p>武将品质体系 v4.3 | 疏白 | 2026-06-12</p>
+        </div>
+    </div>
+
+    <script>
+        function filterLamp(lamp) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            const rows = document.querySelectorAll('tbody tr');
+            const shownLamps = ['逐鹿', '上兵伐谋', '黄巾之乱', '锦瑟良缘', '皇家贵胄', '往者可谏', '正音雅乐'];
+            rows.forEach(row => {
+                if (!lamp) {
+                    row.style.display = '';
+                } else if (lamp === '其他') {
+                    row.style.display = shownLamps.some(l => row.dataset.lamp.includes(l)) ? 'none' : '';
+                } else if (lamp === '谋') {
+                    row.style.display = row.dataset.lamp.includes('谋') ? '' : 'none';
+                } else {
+                    row.style.display = row.dataset.lamp.includes(lamp) ? '' : 'none';
+                }
+            });
+        }
+
+        function toggleAll(checkbox) {
+            document.querySelectorAll('.row-checkbox').forEach(cb => cb.checked = checkbox.checked);
+            updateCount();
+        }
+
+        function updateCount() {
+            const count = document.querySelectorAll('.row-checkbox:checked').length;
+            document.getElementById('selectedCount').textContent = count;
+        }
+
+        document.querySelectorAll('.row-checkbox').forEach(cb => cb.addEventListener('change', updateCount));
+
+        function highlight(select) {
+            if (select.value) {
+                select.style.background = '#e8f5e9';
+                select.style.borderColor = '#4caf50';
+            } else {
+                select.style.background = '';
+                select.style.borderColor = '#ddd';
+            }
+        }
+
+        function clearAll() {
+            document.querySelectorAll('.row-checkbox').forEach(cb => cb.checked = false);
+            document.querySelectorAll('.input-tier').forEach(sel => {
+                sel.value = '';
+                sel.style.background = '';
+                sel.style.borderColor = '#ddd';
+            });
+            updateCount();
+        }
+
+        function exportSelected() {
+            const rows = [];
+            document.querySelectorAll('.row-checkbox:checked').forEach(cb => {
+                const tr = cb.closest('tr');
+                const cells = tr.querySelectorAll('td');
+                const select = tr.querySelector('select');
+                rows.push({
+                    id: parseInt(cells[2].textContent.trim()),
+                    name: cells[3].textContent.trim(),
+                    lamp_type: tr.dataset.lamp,
+                    item_price: cells[6].textContent.trim(),
+                    tier: select.value || '待手动确认'
+                });
+            });
+            if (rows.length === 0) { alert('请先选择武将'); return; }
+            downloadJSON(rows, 'selected_generals.json');
+        }
+
+        function exportAll() {
+            const rows = [];
+            document.querySelectorAll('tbody tr').forEach(tr => {
+                const cells = tr.querySelectorAll('td');
+                const select = tr.querySelector('select');
+                rows.push({
+                    id: parseInt(cells[2].textContent.trim()),
+                    name: cells[3].textContent.trim(),
+                    lamp_type: tr.dataset.lamp,
+                    item_price: cells[6].textContent.trim(),
+                    tier: select.value || '待手动确认'
+                });
+            });
+            downloadJSON(rows, 'all_pending_generals.json');
+        }
+
+        function downloadJSON(data, filename) {
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

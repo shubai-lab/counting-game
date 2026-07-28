@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <h3>测试: subgraph + 中文</h3>
+  <pre>
+问题1: subgraph 标题用中文 ["一、xxx"]
+问题2: 节点用中文 ["中文文字"]
+问题3: 带文字的边 |是|
+  </pre>
+  <div class="mermaid">
+flowchart TD
+    A["中文节点"] --> B["另一个中文"]
+    A --> C{是否?}
+    C -->|"是"| D
+    C -->|"否"| E
+  </div>
+</body>
+<script>
+mermaid.initialize({startOnLoad: true});
+</script>
+</html>

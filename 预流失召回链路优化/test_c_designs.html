@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test C：奇遇包装 效果图</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .container { max-width: 1400px; margin: 0 auto; }
+
+    h1 {
+      text-align: center;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 36px;
+      color: #c9a227;
+      margin-bottom: 60px;
+      letter-spacing: 8px;
+    }
+
+    h2 {
+      font-family: 'Noto Serif SC', serif;
+      color: #c9a227;
+      font-size: 18px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .version-section {
+      margin-bottom: 80px;
+    }
+
+    .version-title {
+      font-family: 'Noto Serif SC', serif;
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #333;
+    }
+
+    .screens-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .screen-card {
+      background: #151520;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #2a2a3a;
+    }
+
+    .screen-preview {
+      aspect-ratio: 9/16;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .screen-label {
+      background: #1a1a25;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #888;
+      border-top: 1px solid #2a2a3a;
+    }
+
+    /* ========== Version 1: 古典仪式风 ========== */
+    .v1-bg {
+      background: linear-gradient(180deg, #1a0a0a 0%, #0d0505 50%, #0a0508 100%);
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .v1-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.15) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='none' stroke='%23c9a22710' stroke-width='0.5'/%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .v1-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* V1 Header */
+    .v1-header {
+      background: linear-gradient(180deg, rgba(201, 162, 39, 0.2) 0%, transparent 100%);
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+    }
+
+    .v1-header-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px;
+      color: #c9a227;
+      letter-spacing: 4px;
+    }
+
+    .v1-header-sub {
+      font-size: 11px;
+      color: #8a7420;
+      margin-top: 4px;
+      letter-spacing: 2px;
+    }
+
+    /* V1 Hero Section */
+    .v1-hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .v1-avatar-frame {
+      width: 140px;
+      height: 140px;
+      border: 3px solid #c9a227;
+      border-radius: 50%;
+      position: relative;
+      background: linear-gradient(135deg, #2a1a0a, #1a0a05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 30px rgba(201, 162, 39, 0.3),
+        inset 0 0 20px rgba(201, 162, 39, 0.1);
+    }
+
+    .v1-avatar-frame::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      border-radius: 50%;
+    }
+
+    .v1-avatar-icon {
+      font-size: 60px;
+    }
+
+    .v1-avatar-name {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #c9a227;
+      color: #0a0505;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 4px 20px;
+      border-radius: 2px;
+    }
+
+    .v1-dialogue {
+      margin-top: 60px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .v1-dialogue-text {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 15px;
+      color: #d4c4a0;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .v1-dialogue-name {
+      font-size: 12px;
+      color: #8a7420;
+      margin-top: 10px;
+    }
+
+    /* V1 Reward Section */
+    .v1-rewards {
+      background: rgba(0,0,0,0.3);
+      padding: 20px;
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    .v1-rewards-title {
+      font-size: 12px;
+      color: #c9a227;
+      margin-bottom: 12px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .v1-reward-list {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .v1-reward-item {
+      text-align: center;
+    }
+
+    .v1-reward-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #2a1a0a, #1a0a05);
+      border: 1px solid #c9a227;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin: 0 auto 6px;
+    }
+
+    .v1-reward-label {
+      font-size: 10px;
+      color: #8a7420;
+    }
+
+    /* V1 Buttons */
+    .v1-buttons {
+      padding: 16px 20px;
+      display: flex;
+      gap: 12px;
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    .v1-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    .v1-btn-primary {
+      background: linear-gradient(180deg, #c9a227 0%, #a08020 100%);
+      color: #0a0505;
+    }
+
+    .v1-btn-primary:hover {
+      background: linear-gradient(180deg, #d4b230 0%, #b89025 100%);
+    }
+
+    .v1-btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      color: #8a7420;
+    }
+
+    .v1-btn-secondary:hover {
+      border-color: #c9a227;
+      color: #c9a227;
+    }
+
+    /* ========== Version 2: 战场风云风 ========== */
+    .v2-bg {
+      background: linear-gradient(180deg, #0a0a12 0%, #050508 100%);
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .v2-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        linear-gradient(180deg, rgba(201, 162, 39, 0.05) 0%, transparent 30%),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 40px,
+          rgba(201, 162, 39, 0.03) 40px,
+          rgba(201, 162, 39, 0.03) 41px
+        );
+    }
+
+    .v2-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* V2 Header */
+    .v2-header {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    .v2-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .v2-header-icon {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #c9a227, #806010);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+
+    .v2-header-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 16px;
+      color: #c9a227;
+      letter-spacing: 3px;
+    }
+
+    .v2-header-tag {
+      background: rgba(201, 162, 39, 0.1);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      padding: 4px 10px;
+      font-size: 10px;
+      color: #c9a227;
+      border-radius: 2px;
+    }
+
+    /* V2 Hero */
+    .v2-hero {
+      flex: 1;
+      display: flex;
+      padding: 20px;
+      gap: 16px;
+    }
+
+    .v2-avatar-section {
+      flex: 0 0 100px;
+    }
+
+    .v2-avatar-frame {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #1a1520, #0d0a12);
+      border: 2px solid #c9a227;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .v2-avatar-icon {
+      font-size: 48px;
+    }
+
+    .v2-avatar-name {
+      text-align: center;
+      margin-top: 8px;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 14px;
+      color: #c9a227;
+    }
+
+    .v2-dialogue-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .v2-dialogue-box {
+      flex: 1;
+      background: rgba(201, 162, 39, 0.05);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      border-left: 3px solid #c9a227;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .v2-dialogue-text {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 14px;
+      color: #d4c4a0;
+      line-height: 1.7;
+    }
+
+    .v2-dialogue-meta {
+      font-size: 11px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    .v2-rewards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .v2-reward-item {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      padding: 12px 8px;
+      text-align: center;
+    }
+
+    .v2-reward-icon {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .v2-reward-value {
+      font-size: 12px;
+      color: #c9a227;
+      font-weight: 500;
+    }
+
+    .v2-reward-label {
+      font-size: 10px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    /* V2 Buttons */
+    .v2-buttons {
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .v2-btn {
+      padding: 14px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    .v2-btn-primary {
+      background: linear-gradient(180deg, #c9a227 0%, #8a6a10 100%);
+      color: #0a0505;
+      grid-column: span 2;
+    }
+
+    .v2-btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      color: #8a7420;
+    }
+
+    /* ========== Version 3: 水墨古风 ========== */
+    .v3-bg {
+      background: linear-gradient(180deg, #12120f 0%, #0a0a08 100%);
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .v3-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(201, 162, 39, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 80%, rgba(201, 162, 39, 0.05) 0%, transparent 40%);
+    }
+
+    .v3-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* V3 Header */
+    .v3-header {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+      position: relative;
+    }
+
+    .v3-header::after {
+      content: '奇遇';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0a0a08;
+      padding: 0 20px;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 12px;
+      color: #8a7420;
+      letter-spacing: 4px;
+    }
+
+    .v3-header-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 22px;
+      color: #c9a227;
+      letter-spacing: 6px;
+    }
+
+    /* V3 Hero */
+    .v3-hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 24px;
+    }
+
+    .v3-avatar-container {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .v3-avatar-frame {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #1a1510, #0d0a08);
+      border: 2px solid #c9a227;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(201, 162, 39, 0.15);
+    }
+
+    .v3-avatar-icon {
+      font-size: 56px;
+    }
+
+    .v3-avatar-name {
+      text-align: center;
+      margin-top: 12px;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18px;
+      color: #c9a227;
+      letter-spacing: 4px;
+    }
+
+    .v3-dialogue {
+      text-align: center;
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(201, 162, 39, 0.03);
+      border-radius: 8px;
+    }
+
+    .v3-dialogue-text {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 15px;
+      color: #a09070;
+      line-height: 1.9;
+    }
+
+    .v3-dialogue-sender {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #6a5a40;
+    }
+
+    /* V3 Rewards */
+    .v3-rewards {
+      padding: 20px 24px;
+      border-top: 1px solid rgba(201, 162, 39, 0.1);
+    }
+
+    .v3-rewards-title {
+      text-align: center;
+      font-size: 11px;
+      color: #6a5a40;
+      margin-bottom: 16px;
+      letter-spacing: 3px;
+    }
+
+    .v3-reward-list {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .v3-reward-item {
+      text-align: center;
+    }
+
+    .v3-reward-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #1a1510, #0d0a08);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin: 0 auto 8px;
+    }
+
+    .v3-reward-name {
+      font-size: 11px;
+      color: #8a7420;
+    }
+
+    /* V3 Buttons */
+    .v3-buttons {
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+    }
+
+    .v3-btn {
+      flex: 1;
+      padding: 14px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    .v3-btn-primary {
+      background: #c9a227;
+      color: #0a0505;
+    }
+
+    .v3-btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      color: #6a5a40;
+    }
+
+    /* Task List Screen */
+    .task-bg {
+      background: linear-gradient(180deg, #1a0a0a 0%, #0d0505 100%);
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .task-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .task-header {
+      padding: 16px 20px;
+      background: rgba(201, 162, 39, 0.1);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .task-header-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 16px;
+      color: #c9a227;
+      letter-spacing: 2px;
+    }
+
+    .task-header-progress {
+      font-size: 12px;
+      color: #8a7420;
+    }
+
+    .task-list {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .task-item {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .task-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .task-item-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .task-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(201, 162, 39, 0.5);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .task-item-name {
+      font-size: 14px;
+      color: #d4c4a0;
+    }
+
+    .task-item-status {
+      font-size: 11px;
+      color: #8a7420;
+      background: rgba(201, 162, 39, 0.1);
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    .task-item-desc {
+      font-size: 12px;
+      color: #6a5a40;
+      margin-left: 30px;
+      margin-bottom: 10px;
+    }
+
+    .task-item-reward {
+      margin-left: 30px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #c9a227;
+    }
+
+    .task-item-reward-icon {
+      font-size: 14px;
+    }
+
+    .task-footer {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    .task-footer-info {
+      text-align: center;
+      font-size: 12px;
+      color: #6a5a40;
+      margin-bottom: 12px;
+    }
+
+    .task-footer-btn {
+      width: 100%;
+      padding: 14px;
+      background: #c9a227;
+      color: #0a0505;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: 'Noto Sans SC', sans-serif;
+      cursor: pointer;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 24px; letter-spacing: 4px; }
+      h2 { font-size: 16px; }
+      .version-title { font-size: 20px; }
+      .screens-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>奇遇包装 效果图设计</h1>
+
+  <!-- Version 1: 古典仪式风 -->
+  <div class="version-section">
+    <h2 class="version-title">版本一：古典仪式风</h2>
+    <div class="screens-row">
+
+      <!-- Screen 1: 武将弹窗全貌 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v1-bg">
+            <div class="v1-content">
+              <div class="v1-header">
+                <div class="v1-header-title">武 将 来 访</div>
+                <div class="v1-header-sub">ENCOUNTER</div>
+              </div>
+              <div class="v1-hero">
+                <div class="v1-avatar-frame">
+                  <span class="v1-avatar-icon">⚔️</span>
+                  <div class="v1-avatar-name">张角</div>
+                </div>
+                <div class="v1-dialogue">
+                  <div class="v1-dialogue-text">"将军，好久不见。<br><br>我注意到您最近的战绩有些波动...<br><br>但我相信，将军的实力从未离开。"</div>
+                  <div class="v1-dialogue-name">— 张角</div>
+                </div>
+              </div>
+              <div class="v1-rewards">
+                <div class="v1-rewards-title">🎁 张角的礼物</div>
+                <div class="v1-reward-list">
+                  <div class="v1-reward-item">
+                    <div class="v1-reward-icon">👑</div>
+                    <div class="v1-reward-label">限定皮肤</div>
+                  </div>
+                  <div class="v1-reward-item">
+                    <div class="v1-reward-icon">⚔️</div>
+                    <div class="v1-reward-label">武将试用</div>
+                  </div>
+                  <div class="v1-reward-item">
+                    <div class="v1-reward-icon">🪙</div>
+                    <div class="v1-reward-label">金豆</div>
+                  </div>
+                </div>
+              </div>
+              <div class="v1-buttons">
+                <button class="v1-btn v1-btn-primary">我愿意</button>
+                <button class="v1-btn v1-btn-secondary">稍后再说</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图1：武将弹窗全貌 - 古典仪式风格</div>
+      </div>
+
+      <!-- Screen 2: 对话界面 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v1-bg">
+            <div class="v1-content">
+              <div class="v1-header">
+                <div class="v1-header-title">武 将 对 话</div>
+                <div class="v1-header-sub">DIALOGUE</div>
+              </div>
+              <div class="v1-hero">
+                <div class="v1-avatar-frame" style="width: 100px; height: 100px;">
+                  <span class="v1-avatar-icon" style="font-size: 40px;">⚔️</span>
+                </div>
+                <div class="v1-dialogue" style="margin-top: 40px;">
+                  <div class="v1-dialogue-text" style="font-size: 16px; color: #e8d8b0;">"将军，您最近是不是有些疲惫？<br><br>我知道战场上的挑战越来越难了，<br>但每一位将军都会有疲惫的时候..."</div>
+                  <div class="v1-dialogue-name">— 张角 · 天公将军</div>
+                </div>
+              </div>
+              <div class="v1-buttons">
+                <button class="v1-btn v1-btn-primary">继续对话</button>
+                <button class="v1-btn v1-btn-secondary">查看礼物</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图2：对话界面 - 武将关心玩家</div>
+      </div>
+
+      <!-- Screen 3: 奖励展示界面 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v1-bg">
+            <div class="v1-content">
+              <div class="v1-header">
+                <div class="v1-header-title">礼 物 清 单</div>
+                <div class="v1-header-sub">REWARDS</div>
+              </div>
+              <div class="v1-hero" style="padding: 10px;">
+                <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                  <div class="v1-avatar-frame" style="width: 80px; height: 80px; margin-bottom: 16px;">
+                    <span class="v1-avatar-icon" style="font-size: 36px;">🎁</span>
+                  </div>
+                  <div style="font-family: 'Noto Serif SC', serif; color: #c9a227; font-size: 16px; margin-bottom: 20px; letter-spacing: 3px;">张角的礼物</div>
+
+                  <div style="width: 100%; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(201, 162, 39, 0.1);">
+                      <div style="font-size: 28px; margin-right: 12px;">👑</div>
+                      <div>
+                        <div style="color: #d4c4a0; font-size: 14px;">限定皮肤：天公将军</div>
+                        <div style="color: #8a7420; font-size: 11px;">限时7天体验</div>
+                      </div>
+                    </div>
+                    <div style="display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(201, 162, 39, 0.1);">
+                      <div style="font-size: 28px; margin-right: 12px;">⚔️</div>
+                      <div>
+                        <div style="color: #d4c4a0; font-size: 14px;">武将试用：张角</div>
+                        <div style="color: #8a7420; font-size: 11px;">限时3天</div>
+                      </div>
+                    </div>
+                    <div style="display: flex; align-items: center; padding: 12px 0;">
+                      <div style="font-size: 28px; margin-right: 12px;">🪙</div>
+                      <div>
+                        <div style="color: #d4c4a0; font-size: 14px;">金豆 ×30,000</div>
+                        <div style="color: #8a7420; font-size: 11px;">游戏货币</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="v1-buttons">
+                <button class="v1-btn v1-btn-primary" style="grid-column: span 2;">收下礼物</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图3：奖励展示界面 - 礼物清单</div>
+      </div>
+
+      <!-- Screen 4: 任务列表界面 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="task-bg">
+            <div class="task-content">
+              <div class="task-header">
+                <div class="task-header-title">重 燃 战 火</div>
+                <div class="task-header-progress">0/3 完成</div>
+              </div>
+              <div class="task-list">
+                <div class="task-item">
+                  <div class="task-item-header">
+                    <div class="task-item-title">
+                      <div class="task-checkbox">☐</div>
+                      <div class="task-item-name">使用张角完成1局</div>
+                    </div>
+                    <div class="task-item-status">进行中</div>
+                  </div>
+                  <div class="task-item-desc">"和我一起完成1局战斗"</div>
+                  <div class="task-item-reward">
+                    <span class="task-item-reward-icon">⚔️</span>
+                    <span>武将试用 ×1天</span>
+                  </div>
+                </div>
+                <div class="task-item">
+                  <div class="task-item-header">
+                    <div class="task-item-title">
+                      <div class="task-checkbox">☐</div>
+                      <div class="task-item-name">连胜2局</div>
+                    </div>
+                    <div class="task-item-status">未开始</div>
+                  </div>
+                  <div class="task-item-desc">"连胜2局，证明将军还在"</div>
+                  <div class="task-item-reward">
+                    <span class="task-item-reward-icon">🪙</span>
+                    <span>将魂 ×30</span>
+                  </div>
+                </div>
+                <div class="task-item">
+                  <div class="task-item-header">
+                    <div class="task-item-title">
+                      <div class="task-checkbox">☐</div>
+                      <div class="task-item-name">收下礼物</div>
+                    </div>
+                    <div class="task-item-status">未开始</div>
+                  </div>
+                  <div class="task-item-desc">"收下我的心意"</div>
+                  <div class="task-item-reward">
+                    <span class="task-item-reward-icon">👑</span>
+                    <span>限定皮肤 ×7天 + 金豆 ×30000</span>
+                  </div>
+                </div>
+              </div>
+              <div class="task-footer">
+                <div class="task-footer-info">完成所有任务可领取完整奖励</div>
+                <button class="task-footer-btn">开始挑战</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图4：任务列表界面 - 挑战任务</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Version 2: 战场风云风 -->
+  <div class="version-section">
+    <h2 class="version-title">版本二：战场风云风</h2>
+    <div class="screens-row">
+
+      <!-- Screen 1: 武将弹窗全貌 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v2-bg">
+            <div class="v2-content">
+              <div class="v2-header">
+                <div class="v2-header-left">
+                  <div class="v2-header-icon"></div>
+                  <div class="v2-header-title">奇遇</div>
+                </div>
+                <div class="v2-header-tag">限时</div>
+              </div>
+              <div class="v2-hero">
+                <div class="v2-avatar-section">
+                  <div class="v2-avatar-frame">
+                    <span class="v2-avatar-icon">⚔️</span>
+                  </div>
+                  <div class="v2-avatar-name">张角</div>
+                </div>
+                <div class="v2-dialogue-section">
+                  <div class="v2-dialogue-box">
+                    <div class="v2-dialogue-text">"将军，好久不见。我注意到您最近的战绩有些波动...但我相信，将军的实力从未离开。如果您愿意，我准备了一份礼物送给您。"</div>
+                    <div class="v2-dialogue-meta">— 天公将军 · 张角</div>
+                  </div>
+                  <div class="v2-rewards">
+                    <div class="v2-reward-item">
+                      <div class="v2-reward-icon">👑</div>
+                      <div class="v2-reward-value">限定皮肤</div>
+                      <div class="v2-reward-label">7天体验</div>
+                    </div>
+                    <div class="v2-reward-item">
+                      <div class="v2-reward-icon">⚔️</div>
+                      <div class="v2-reward-value">武将试用</div>
+                      <div class="v2-reward-label">3天</div>
+                    </div>
+                    <div class="v2-reward-item">
+                      <div class="v2-reward-icon">🪙</div>
+                      <div class="v2-reward-value">30000</div>
+                      <div class="v2-reward-label">金豆</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="v2-buttons">
+                <button class="v2-btn v2-btn-primary">我愿意</button>
+                <button class="v2-btn v2-btn-secondary">稍后</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图1：武将弹窗全貌 - 战场风格</div>
+      </div>
+
+      <!-- Screen 2: 对话界面 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v2-bg">
+            <div class="v2-content">
+              <div class="v2-header">
+                <div class="v2-header-left">
+                  <div class="v2-header-icon"></div>
+                  <div class="v2-header-title">武将对话</div>
+                </div>
+                <div class="v2-header-tag">进行中</div>
+              </div>
+              <div class="v2-hero">
+                <div class="v2-avatar-section">
+                  <div class="v2-avatar-frame" style="width: 80px; height: 80px;">
+                    <span class="v2-avatar-icon" style="font-size: 36px;">⚔️</span>
+                  </div>
+                  <div class="v2-avatar-name">张角</div>
+                </div>
+                <div class="v2-dialogue-section">
+                  <div class="v2-dialogue-box" style="flex: 1;">
+                    <div class="v2-dialogue-text" style="font-size: 15px; color: #e8d8b0;">"战场上少了一位将军的英姿，<br>但我们一直在等待您的归来。<br><br>这是我能为您准备的一切，<br>愿将军重燃战火！" — 张角</div>
+                  </div>
+                  <div class="v2-rewards" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="v2-reward-item">
+                      <div class="v2-reward-icon">👑</div>
+                      <div class="v2-reward-value">限定皮肤</div>
+                    </div>
+                    <div class="v2-reward-item">
+                      <div class="v2-reward-icon">⚔️</div>
+                      <div class="v2-reward-value">武将试用</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="v2-buttons">
+                <button class="v2-btn v2-btn-primary">接受邀请</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图2：对话界面 - 武将邀请</div>
+      </div>
+
+      <!-- Screen 3: 奖励展示界面 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v2-bg">
+            <div class="v2-content">
+              <div class="v2-header">
+                <div class="v2-header-left">
+                  <div class="v2-header-icon"></div>
+                  <div class="v2-header-title">奖励详情</div>
+                </div>
+                <div class="v2-header-tag">3件</div>
+              </div>
+              <div class="v2-hero" style="flex-direction: column; padding: 20px;">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #2a1a0a, #1a0a05); border: 2px solid #c9a227; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 16px;">🎁</div>
+                <div style="font-family: 'Noto Serif SC', serif; color: #c9a227; font-size: 16px; margin-bottom: 20px; letter-spacing: 2px;">武将礼包</div>
+                <div style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(201, 162, 39, 0.2);">
+                  <div style="display: flex; align-items: center; padding: 14px; border-bottom: 1px solid rgba(201, 162, 39, 0.1);">
+                    <div style="font-size: 24px; margin-right: 12px;">👑</div>
+                    <div style="flex: 1;">
+                      <div style="color: #d4c4a0; font-size: 14px;">限定皮肤：天公将军</div>
+                      <div style="color: #8a7420; font-size: 11px;">7天体验 · 史诗品质</div>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; padding: 14px; border-bottom: 1px solid rgba(201, 162, 39, 0.1);">
+                    <div style="font-size: 24px; margin-right: 12px;">⚔️</div>
+                    <div style="flex: 1;">
+                      <div style="color: #d4c4a0; font-size: 14px;">武将试用：张角</div>
+                      <div style="color: #8a7420; font-size: 11px;">3天 · 胜率+15%</div>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; padding: 14px;">
+                    <div style="font-size: 24px; margin-right: 12px;">🪙</div>
+                    <div style="flex: 1;">
+                      <div style="color: #d4c4a0; font-size: 14px;">金豆</div>
+                      <div style="color: #8a7420; font-size: 11px;">×30,000</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="v2-buttons">
+                <button class="v2-btn v2-btn-primary">立即领取</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图3：奖励展示界面 - 奖励详情</div>
+      </div>
+
+      <!-- Screen 4: 任务列表界面 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v2-bg">
+            <div class="v2-content">
+              <div class="task-header">
+                <div class="task-header-title">重燃战火挑战</div>
+                <div class="task-header-progress">1/3</div>
+              </div>
+              <div class="task-list">
+                <div class="task-item" style="border-color: rgba(201, 162, 39, 0.5);">
+                  <div class="task-item-header">
+                    <div class="task-item-title">
+                      <div class="task-checkbox" style="background: #c9a227; color: #0a0505;">✓</div>
+                      <div class="task-item-name" style="color: #c9a227;">使用张角完成1局</div>
+                    </div>
+                    <div class="task-item-status" style="background: rgba(201, 162, 39, 0.2); color: #c9a227;">已完成</div>
+                  </div>
+                </div>
+                <div class="task-item">
+                  <div class="task-item-header">
+                    <div class="task-item-title">
+                      <div class="task-checkbox">☐</div>
+                      <div class="task-item-name">连胜2局</div>
+                    </div>
+                    <div class="task-item-status">进行中</div>
+                  </div>
+                  <div class="task-item-desc">证明将军还在</div>
+                  <div class="task-item-reward">将魂 ×30</div>
+                </div>
+                <div class="task-item">
+                  <div class="task-item-header">
+                    <div class="task-item-title">
+                      <div class="task-checkbox">☐</div>
+                      <div class="task-item-name">收下礼物</div>
+                    </div>
+                    <div class="task-item-status">未开始</div>
+                  </div>
+                  <div class="task-item-desc">收下我的心意</div>
+                  <div class="task-item-reward">限定皮肤 ×7天 + 金豆 ×30000</div>
+                </div>
+              </div>
+              <div class="task-footer">
+                <div class="task-footer-info">继续完成挑战，解锁全部奖励</div>
+                <button class="task-footer-btn">继续挑战</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图4：任务列表界面 - 进度追踪</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Version 3: 水墨古风 -->
+  <div class="version-section">
+    <h2 class="version-title">版本三：水墨古风</h2>
+    <div class="screens-row">
+
+      <!-- Screen 1: 武将弹窗全貌 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v3-bg">
+            <div class="v3-content">
+              <div class="v3-header">
+                <div class="v3-header-title">武 将 奇 遇</div>
+              </div>
+              <div class="v3-hero">
+                <div class="v3-avatar-container">
+                  <div class="v3-avatar-frame">
+                    <span class="v3-avatar-icon">⚔️</span>
+                  </div>
+                </div>
+                <div class="v3-avatar-name">张角</div>
+                <div class="v3-dialogue">
+                  <div class="v3-dialogue-text">"将军，好久不见。<br><br>我注意到您最近的战绩有些波动...<br><br>但我相信，将军的实力从未离开。"</div>
+                  <div class="v3-dialogue-sender">— 天公将军</div>
+                </div>
+              </div>
+              <div class="v3-rewards">
+                <div class="v3-rewards-title">礼物清单</div>
+                <div class="v3-reward-list">
+                  <div class="v3-reward-item">
+                    <div class="v3-reward-icon">👑</div>
+                    <div class="v3-reward-name">限定皮肤</div>
+                  </div>
+                  <div class="v3-reward-item">
+                    <div class="v3-reward-icon">⚔️</div>
+                    <div class="v3-reward-name">武将试用</div>
+                  </div>
+                  <div class="v3-reward-item">
+                    <div class="v3-reward-icon">🪙</div>
+                    <div class="v3-reward-name">金豆</div>
+                  </div>
+                </div>
+              </div>
+              <div class="v3-buttons">
+                <button class="v3-btn v3-btn-primary">我愿意</button>
+                <button class="v3-btn v3-btn-secondary">稍后再说</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图1：武将弹窗全貌 - 水墨风格</div>
+      </div>
+
+      <!-- Screen 2: 对话界面 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v3-bg">
+            <div class="v3-content">
+              <div class="v3-header">
+                <div class="v3-header-title">武 将 对 话</div>
+              </div>
+              <div class="v3-hero">
+                <div class="v3-avatar-container">
+                  <div class="v3-avatar-frame" style="width: 100px; height: 100px;">
+                    <span class="v3-avatar-icon" style="font-size: 48px;">⚔️</span>
+                  </div>
+                </div>
+                <div class="v3-avatar-name" style="font-size: 16px;">张角 · 天公将军</div>
+                <div class="v3-dialogue">
+                  <div class="v3-dialogue-text" style="color: #a09070;">"战场上每一位将军都会有疲惫的时候，<br>但真正的将军，<br>从不会被疲惫打败。<br><br>我们为您准备了一份心意，<br>愿能助您重燃战火。"</div>
+                  <div class="v3-dialogue-sender">— 张角</div>
+                </div>
+              </div>
+              <div class="v3-buttons">
+                <button class="v3-btn v3-btn-primary">接受</button>
+                <button class="v3-btn v3-btn-secondary">了解详情</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图2：对话界面 - 武将关怀</div>
+      </div>
+
+      <!-- Screen 3: 奖励展示界面 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v3-bg">
+            <div class="v3-content">
+              <div class="v3-header">
+                <div class="v3-header-title">礼 物</div>
+              </div>
+              <div class="v3-hero" style="padding: 20px;">
+                <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                  <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #1a1510, #0d0a08); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px;">🎁</div>
+                  <div style="font-family: 'Noto Serif SC', serif; color: #c9a227; font-size: 18px; letter-spacing: 4px; margin-bottom: 24px;">张角的礼物</div>
+
+                  <div style="width: 100%; background: rgba(0,0,0,0.2); border-radius: 8px; overflow: hidden;">
+                    <div style="display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid rgba(201, 162, 39, 0.1);">
+                      <div style="font-size: 24px; margin-right: 14px;">👑</div>
+                      <div>
+                        <div style="color: #d4c4a0; font-size: 14px;">限定皮肤：天公将军</div>
+                        <div style="color: #6a5a40; font-size: 11px;">7天体验权限</div>
+                      </div>
+                    </div>
+                    <div style="display: flex; align-items: center; padding: 14px 16px; border-bottom: 1px solid rgba(201, 162, 39, 0.1);">
+                      <div style="font-size: 24px; margin-right: 14px;">⚔️</div>
+                      <div>
+                        <div style="color: #d4c4a0; font-size: 14px;">武将试用：张角</div>
+                        <div style="color: #6a5a40; font-size: 11px;">3天 · 胜率提升</div>
+                      </div>
+                    </div>
+                    <div style="display: flex; align-items: center; padding: 14px 16px;">
+                      <div style="font-size: 24px; margin-right: 14px;">🪙</div>
+                      <div>
+                        <div style="color: #d4c4a0; font-size: 14px;">金豆 ×30,000</div>
+                        <div style="color: #6a5a40; font-size: 11px;">游戏货币</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="v3-buttons">
+                <button class="v3-btn v3-btn-primary">收下</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图3：奖励展示界面 - 礼物清单</div>
+      </div>
+
+      <!-- Screen 4: 任务列表界面 -->
+      <div class="screen-card">
+        <div class="screen-preview">
+          <div class="v3-bg" style="background: linear-gradient(180deg, #12120f 0%, #0a0a08 100%);">
+            <div class="task-content">
+              <div class="v3-header" style="padding: 14px 20px; background: rgba(201, 162, 39, 0.05);">
+                <div class="v3-header-title" style="font-size: 16px; letter-spacing: 3px;">挑战任务</div>
+              </div>
+              <div class="task-header" style="background: rgba(0,0,0,0.2); padding: 10px 20px;">
+                <div class="task-header-title" style="font-size: 14px;">重燃战火</div>
+                <div class="task-header-progress" style="color: #6a5a40;">2/3</div>
+              </div>
+              <div class="task-list">
+                <div class="task-item" style="border-color: rgba(201, 162, 39, 0.5); background: rgba(201, 162, 39, 0.03);">
+                  <div class="task-item-header">
+                    <div class="task-item-title">
+                      <div class="task-checkbox" style="background: #c9a227; color: #0a0505;">✓</div>
+                      <div class="task-item-name" style="color: #a08050;">使用张角完成1局</div>
+                    </div>
+                    <div class="task-item-status" style="background: rgba(201, 162, 39, 0.15); color: #a08050;">已完成</div>
+                  </div>
+                </div>
+                <div class="task-item" style="border-color: rgba(201, 162, 39, 0.5); background: rgba(201, 162, 39, 0.03);">
+                  <div class="task-item-header">
+                    <div class="task-item-title">
+                      <div class="task-checkbox" style="background: #c9a227; color: #0a0505;">✓</div>
+                      <div class="task-item-name" style="color: #a08050;">连胜2局</div>
+                    </div>
+                    <div class="task-item-status" style="background: rgba(201, 162, 39, 0.15); color: #a08050;">已完成</div>
+                  </div>
+                </div>
+                <div class="task-item">
+                  <div class="task-item-header">
+                    <div class="task-item-title">
+                      <div class="task-checkbox">☐</div>
+                      <div class="task-item-name">收下礼物</div>
+                    </div>
+                    <div class="task-item-status">进行中</div>
+                  </div>
+                  <div class="task-item-desc" style="color: #5a4a30;">收下我的心意</div>
+                  <div class="task-item-reward" style="color: #8a7420;">
+                    <span class="task-item-reward-icon">👑</span>
+                    <span>限定皮肤 ×7天</span>
+                  </div>
+                </div>
+              </div>
+              <div class="task-footer" style="padding: 16px;">
+                <div class="task-footer-info" style="color: #5a4a30;">即将完成全部任务</div>
+                <button class="task-footer-btn" style="background: linear-gradient(180deg, #a08020, #806010);">领取奖励</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-label">图4：任务列表界面 - 即将完成</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

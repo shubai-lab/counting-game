@@ -1,0 +1,26 @@
+[
+  {
+    "GeneralID": 611,
+    "Name": "董翓",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": "荟萃",
+    "LevelTwoGeneralLampType": "乱武",
+    "InRuleType": "身份规则;欢乐规则"
+  },
+  {
+    "GeneralID": 803,
+    "Name": "葛玄",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": "荟萃",
+    "LevelTwoGeneralLampType": "奇人异士",
+    "InRuleType": "身份规则;欢乐规则"
+  },
+  {
+    "GeneralID": 806,
+    "Name": "朱建平",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": "荟萃",
+    "LevelTwoGeneralLampType": "奇人异士",
+    "InRuleType": "身份规则;欢乐规则"
+  }
+]

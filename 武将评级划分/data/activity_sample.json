@@ -1,0 +1,56 @@
+[
+  [
+    "int32",
+    "string",
+    "repeated GetGeneralOperateInfo",
+    "repeated GetGeneralSpecialOperateInfo"
+  ],
+  [
+    "RepeatCheck:true MakeIndex:true",
+    null,
+    "OutTags:\"c\" ListSpliter: \";\"",
+    null
+  ],
+  [
+    "武将唯一ID",
+    "武将名称（备注用",
+    "\t武将运营活动获取途径",
+    null
+  ],
+  [
+    202,
+    "神吕蒙",
+    "获取途径:5002 获取价值:10",
+    null
+  ],
+  [
+    203,
+    "神周瑜",
+    "获取途径:5002 获取价值:10",
+    null
+  ],
+  [
+    204,
+    "神诸葛亮",
+    "获取途径:5002 获取价值:10",
+    null
+  ],
+  [
+    205,
+    "神曹操",
+    "获取途径:5002 获取价值:10",
+    null
+  ],
+  [
+    206,
+    "神吕布",
+    "获取途径:5002 获取价值:10",
+    null
+  ],
+  [
+    207,
+    "神赵云",
+    "获取途径:5002 获取价值:10",
+    null
+  ]
+]

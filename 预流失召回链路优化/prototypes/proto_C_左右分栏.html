@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型C：左右分栏式</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a2e; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .phone-frame { width: 1334px; height: 750px; background: linear-gradient(180deg, #3c271c, #6a3c22); border-radius: 40px; overflow: hidden; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+
+    .layout-tag { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5); color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 14px; z-index: 100; }
+
+    /* 左右分栏布局 */
+    .split-layout { position: absolute; inset: 0; display: flex; }
+
+    /* 左侧 - 武将区 */
+    .left-panel { width: 45%; padding: 40px 30px; display: flex; flex-direction: column; }
+    .left-title { font-size: 28px; color: #ead0a3; font-weight: bold; margin-bottom: 20px; }
+    .left-card { flex: 1; background: linear-gradient(135deg, #ead0a3, #d4c4a3); border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border: 4px solid #ead0a3; }
+    .left-badge { background: #6a3c22; color: #ead0a3; padding: 8px 20px; border-radius: 20px; font-size: 16px; margin-bottom: 20px; }
+    .left-avatar { width: 200px; height: 250px; background: #fff; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 120px; margin-bottom: 20px; }
+    .left-name { font-size: 42px; color: #3c271c; font-weight: bold; }
+    .left-quality { font-size: 22px; color: #6a3c22; margin-top: 8px; }
+
+    /* 右侧 - 任务区 */
+    .right-panel { width: 55%; padding: 40px 40px; display: flex; flex-direction: column; }
+    .right-header { margin-bottom: 25px; }
+    .right-title { font-size: 32px; color: #ead0a3; font-weight: bold; }
+    .right-sub { font-size: 18px; color: #ead0a3; opacity: 0.6; margin-top: 6px; }
+
+    /* 进度指示 */
+    .day-indicators { display: flex; gap: 15px; margin-bottom: 30px; }
+    .day-dot { width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 3px solid #ead0a3; display: flex; align-items: center; justify-content: center; color: #ead0a3; font-size: 20px; font-weight: bold; }
+    .day-dot.active { background: #ead0a3; color: #3c271c; }
+
+    /* 任务列表 */
+    .task-list { flex: 1; }
+    .task-card { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 25px; margin-bottom: 15px; }
+    .task-row { display: flex; align-items: center; justify-content: space-between; }
+    .task-left { display: flex; align-items: center; gap: 18px; }
+    .task-icon { width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; }
+    .task-name { font-size: 24px; color: #ead0a3; font-weight: bold; }
+    .task-status { font-size: 18px; color: #ead0a3; opacity: 0.6; margin-top: 4px; }
+    .task-btn { padding: 12px 24px; background: #ead0a3; color: #3c271c; border-radius: 12px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; }
+
+    /* 领取按钮 */
+    .claim-area { margin-top: auto; padding-top: 20px; }
+    .claim-btn { width: 100%; padding: 22px; background: linear-gradient(180deg, #ead0a3, #d4c4a3); color: #3c271c; border-radius: 16px; font-size: 30px; font-weight: bold; border: 3px solid #ead0a3; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="layout-tag">原型C：左右分栏式</div>
+
+    <div class="split-layout">
+      <!-- 左侧武将 -->
+      <div class="left-panel">
+        <div class="left-title">今日武将</div>
+        <div class="left-card">
+          <div class="left-badge">今日可领取</div>
+          <div class="left-avatar">🎴</div>
+          <div class="left-name">界钟会</div>
+          <div class="left-quality">传说品质 · 7天有效期</div>
+        </div>
+      </div>
+
+      <!-- 右侧任务 -->
+      <div class="right-panel">
+        <div class="right-header">
+          <div class="right-title">召回任务</div>
+          <div class="right-sub">预流失召回 · 连续3日领取</div>
+        </div>
+
+        <div class="day-indicators">
+          <div class="day-dot active">1</div>
+          <div class="day-dot">2</div>
+          <div class="day-dot">3</div>
+        </div>
+
+        <div class="task-list">
+          <div class="task-card">
+            <div class="task-row">
+              <div class="task-left">
+                <div class="task-icon">✓</div>
+                <div class="task-info">
+                  <div class="task-name">登录游戏</div>
+                  <div class="task-status">已完成</div>
+                </div>
+              </div>
+              <button class="task-btn">✓</button>
+            </div>
+          </div>
+          <div class="task-card">
+            <div class="task-row">
+              <div class="task-left">
+                <div class="task-icon">🎮</div>
+                <div class="task-info">
+                  <div class="task-name">完成任意对局1次</div>
+                  <div class="task-status">进行中</div>
+                </div>
+              </div>
+              <button class="task-btn">去完成</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="claim-area">
+          <button class="claim-btn">领取武将卡</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeChat Login - Claude Code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 420px;
+            width: 100%;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0 10px;
+            font-size: 24px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .qr-container {
+            background: #fafafa;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .qrcode {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 20px;
+        }
+        .qrcode img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .qrcode-placeholder {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 20px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #ddd;
+            border-top-color: #07c160;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .status {
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .status.waiting {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .status.scaned {
+            background: #cce5ff;
+            color: #004085;
+        }
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status.hidden {
+            display: none;
+        }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(7,193,96,0.4);
+        }
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+            margin-top: 10px;
+        }
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        .account-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+        .account-info h3 {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .account-info p {
+            font-size: 12px;
+            color: #999;
+            word-break: break-all;
+        }
+        .message-form {
+            margin-top: 20px;
+            display: none;
+        }
+        .message-form.active {
+            display: block;
+        }
+        .message-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            resize: none;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .message-form button {
+            width: 100%;
+            padding: 12px;
+            background: #07c160;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .message-form button:hover {
+            background: #06ad56;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f9ff;
+            border-radius: 10px;
+            display: none;
+        }
+        .response.active {
+            display: block;
+        }
+        .response pre {
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-icon">💬</div>
+        </div>
+        <h1>WeChat Login</h1>
+        <p class="subtitle">Claude Code WeChat Integration</p>
+
+        <div class="qr-container">
+            <div id="qrcode" class="qrcode-placeholder">
+                <div class="spinner"></div>
+                <span>Loading...</span>
+            </div>
+        </div>
+
+        <div id="status" class="status hidden"></div>
+
+        <button id="getQrBtn" class="btn btn-primary">Get QR Code</button>
+        <button id="pollBtn" class="btn btn-secondary" style="display:none;">Check Login Status</button>
+
+        <div id="accountInfo" class="account-info" style="display:none;">
+            <h3>✅ Connected Account</h3>
+            <p id="accountId"></p>
+            <p id="userId"></p>
+        </div>
+
+        <div id="messageForm" class="message-form">
+            <h3 style="margin-bottom:10px;color:#333;">Send Test Message</h3>
+            <textarea id="messageText" placeholder="Enter message to send..."></textarea>
+            <button id="sendBtn">Send Message</button>
+        </div>
+
+        <div id="response" class="response">
+            <h4 style="margin-bottom:10px;color:#666;">Server Response:</h4>
+            <pre id="responseText"></pre>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3100/mcp';
+        let currentQrcodeId = null;
+        let pollInterval = null;
+        let currentAccount = null;
+
+        async function callMcp(method, params) {
+            const response = await fetch(API_BASE, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    jsonrpc: '2.0',
+                    id: Date.now(),
+                    method,
+                    params
+                })
+            });
+            return response.json();
+        }
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            status.style.display = 'block';
+        }
+
+        function hideStatus() {
+            document.getElementById('status').style.display = 'none';
+        }
+
+        function showResponse(data) {
+            const response = document.getElementById('response');
+            document.getElementById('responseText').textContent = JSON.stringify(data, null, 2);
+            response.classList.add('active');
+        }
+
+        async function getQrCode() {
+            const btn = document.getElementById('getQrBtn');
+            btn.disabled = true;
+            btn.textContent = 'Loading...';
+
+            const qrContainer = document.getElementById('qrcode');
+            qrContainer.innerHTML = '<div class="spinner"></div><span>Getting QR Code...</span>';
+
+            try {
+                const result = await callMcp('tools/call', {
+                    name: 'wechat_get_qrcode',
+                    arguments: {}
+                });
+
+                if (result.error) {
+                    showStatus('Error: ' + result.error.message, 'error');
+                    btn.disabled = false;
+                    btn.textContent = 'Retry';
+                    return;
+                }
+
+                const data = result.result;
+                currentQrcodeId = data.qrcode_id;
+
+                qrContainer.innerHTML = `<img src="${data.qrcode_base64}" alt="QR Code">`;
+                showStatus('请用手机微信扫描此二维码', 'waiting');
+
+                btn.style.display = 'none';
+                document.getElementById('pollBtn').style.display = 'block';
+
+            } catch (err) {
+                showStatus('Connection failed: ' + err.message, 'error');
+                btn.disabled = false;
+                btn.textContent = 'Retry';
+            }
+        }
+
+        async function checkLoginStatus() {
+            if (!currentQrcodeId) {
+                showStatus('Please get QR code first', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('pollBtn');
+            btn.disabled = true;
+            btn.textContent = 'Checking...';
+
+            try {
+                const result = await callMcp('tools/call', {
+                    name: 'wechat_poll_login_status',
+                    arguments: { qrcode: currentQrcodeId }
+                });
+
+                showResponse(result);
+
+                if (result.error) {
+                    showStatus('Error: ' + result.error.message, 'error');
+                    btn.disabled = false;
+                    btn.textContent = 'Retry';
+                    return;
+                }
+
+                const data = result.result;
+
+                switch (data.status) {
+                    case 'waiting':
+                        showStatus('请用手机微信扫描此二维码', 'waiting');
+                        btn.disabled = false;
+                        btn.textContent = 'Check Again';
+                        break;
+
+                    case 'scaned':
+                        showStatus('✅ 已扫描，请在手机微信中点击确认', 'scaned');
+                        btn.disabled = false;
+                        btn.textContent = 'Check Again';
+                        break;
+
+                    case 'connected':
+                        showStatus('🎉 已成功连接到微信！', 'connected');
+                        btn.style.display = 'none';
+                        currentAccount = data;
+
+                        document.getElementById('accountInfo').style.display = 'block';
+                        document.getElementById('accountId').textContent = 'Account: ' + data.accountId;
+                        document.getElementById('userId').textContent = 'User: ' + data.userId;
+                        document.getElementById('messageForm').classList.add('active');
+                        break;
+
+                    case 'expired':
+                        showStatus('⚠️ 二维码已过期，请重新获取', 'error');
+                        btn.style.display = 'none';
+                        document.getElementById('getQrBtn').style.display = 'block';
+                        document.getElementById('getQrBtn').disabled = false;
+                        document.getElementById('getQrBtn').textContent = 'Get New QR Code';
+                        currentQrcodeId = null;
+                        break;
+
+                    default:
+                        showStatus('Status: ' + JSON.stringify(data), 'waiting');
+                        btn.disabled = false;
+                        btn.textContent = 'Check Again';
+                }
+
+            } catch (err) {
+                showStatus('Connection failed: ' + err.message, 'error');
+                btn.disabled = false;
+                btn.textContent = 'Retry';
+            }
+        }
+
+        async function sendMessage() {
+            const text = document.getElementById('messageText').value.trim();
+            if (!text) {
+                alert('Please enter a message');
+                return;
+            }
+
+            if (!currentAccount) {
+                alert('Not connected to WeChat');
+                return;
+            }
+
+            const btn = document.getElementById('sendBtn');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+
+            try {
+                const result = await callMcp('tools/call', {
+                    name: 'wechat_send_message',
+                    arguments: {
+                        to: currentAccount.userId,
+                        text: text
+                    }
+                });
+
+                showResponse(result);
+
+                if (result.error) {
+                    showStatus('Send failed: ' + result.error.message, 'error');
+                } else if (result.result.success) {
+                    showStatus('✅ Message sent successfully!', 'connected');
+                    document.getElementById('messageText').value = '';
+                }
+
+            } catch (err) {
+                showStatus('Send failed: ' + err.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Send Message';
+            }
+        }
+
+        // Event listeners
+        document.getElementById('getQrBtn').addEventListener('click', getQrCode);
+        document.getElementById('pollBtn').addEventListener('click', checkLoginStatus);
+        document.getElementById('sendBtn').addEventListener('click', sendMessage);
+
+        // Auto-load accounts on page load
+        (async () => {
+            try {
+                const result = await callMcp('tools/call', {
+                    name: 'wechat_get_accounts',
+                    arguments: {}
+                });
+                if (result.result?.accounts?.length > 0) {
+                    currentAccount = result.result.accounts[0];
+                    showStatus('✅ Already connected', 'connected');
+                    document.getElementById('accountInfo').style.display = 'block';
+                    document.getElementById('accountId').textContent = 'Account: ' + currentAccount.accountId;
+                    document.getElementById('userId').textContent = 'User: ' + currentAccount.userId;
+                    document.getElementById('messageForm').classList.add('active');
+                }
+            } catch (err) {
+                console.log('No existing connection');
+            }
+        })();
+    </script>
+</body>
+</html>

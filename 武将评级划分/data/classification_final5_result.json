@@ -1,0 +1,4713 @@
+[
+  {
+    "general_id": 1,
+    "name": "nan刘备",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2,
+    "name": "nan关羽",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 3,
+    "name": "nan张飞",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 4,
+    "name": "nan诸葛亮",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 5,
+    "name": "nan赵云",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 6,
+    "name": "nan马超",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 7,
+    "name": "nan黄月英",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 8,
+    "name": "nan孙权",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 9,
+    "name": "nan甘宁",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 10,
+    "name": "nan吕蒙",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 11,
+    "name": "nan黄盖",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 12,
+    "name": "nan周瑜",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 13,
+    "name": "nan大乔",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 14,
+    "name": "nan陆逊",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 15,
+    "name": "nan孙尚香",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 16,
+    "name": "nan曹操",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 17,
+    "name": "nan司马懿",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 18,
+    "name": "nan夏侯惇",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 19,
+    "name": "nan张辽",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 20,
+    "name": "nan许褚",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 21,
+    "name": "nan郭嘉",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 22,
+    "name": "nan甄姬",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 23,
+    "name": "nan华佗",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 24,
+    "name": "nan吕布",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 25,
+    "name": "nan貂蝉",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 26,
+    "name": "nan华雄",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 27,
+    "name": "nan黄忠",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 28,
+    "name": "nan魏延",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 29,
+    "name": "nan夏侯渊",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 30,
+    "name": "nan曹仁",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 31,
+    "name": "nan小乔",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 32,
+    "name": "nan周泰",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 33,
+    "name": "nan张角",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 34,
+    "name": "nan于吉",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 35,
+    "name": "nan典韦",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 36,
+    "name": "nan荀彧",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 37,
+    "name": "nan庞统",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 38,
+    "name": "nan卧龙诸葛",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 39,
+    "name": "nan太史慈",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 40,
+    "name": "nan庞德",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 41,
+    "name": "nan颜良文丑",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 42,
+    "name": "nan袁绍",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 43,
+    "name": "nan徐晃",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 44,
+    "name": "nan曹丕",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 45,
+    "name": "nan孙坚",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 46,
+    "name": "nan董卓",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 47,
+    "name": "nan祝融",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 48,
+    "name": "nan孟获",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 49,
+    "name": "nan贾诩",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 50,
+    "name": "nan鲁肃",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 51,
+    "name": "nan张郃",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 52,
+    "name": "nan邓艾",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 53,
+    "name": "nan姜维",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 54,
+    "name": "nan刘禅",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 55,
+    "name": "nan孙策",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 56,
+    "name": "nan张昭张纮",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 57,
+    "name": "nan左慈",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 58,
+    "name": "nan蔡文姬",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 90,
+    "name": "nan严颜",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 91,
+    "name": "nan王平",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 92,
+    "name": "nan陆绩",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 93,
+    "name": "nan孙亮",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 94,
+    "name": "nan王基",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 95,
+    "name": "nan蒯良蒯越",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 96,
+    "name": "nan许攸",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 97,
+    "name": "nan卢植",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 98,
+    "name": "nan陈到",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 99,
+    "name": "nan诸葛瞻",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 100,
+    "name": "nan周妃",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 101,
+    "name": "nan陆抗",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 102,
+    "name": "nan郝昭",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 103,
+    "name": "nan毌丘俭",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 104,
+    "name": "nan袁术",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 105,
+    "name": "nan张绣",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 201,
+    "name": "nan神关羽",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 202,
+    "name": "nan神吕蒙",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 203,
+    "name": "nan神周瑜",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 204,
+    "name": "nan神诸葛亮",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 205,
+    "name": "nan神曹操",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 206,
+    "name": "nan神吕布",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 207,
+    "name": "nan神赵云",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 208,
+    "name": "nan神司马懿",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 209,
+    "name": "nan神刘备",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 210,
+    "name": "nan神陆逊",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 211,
+    "name": "nan神张辽",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 212,
+    "name": "nan神甘宁",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 213,
+    "name": "nan神姜维",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 214,
+    "name": "nan神马超",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 215,
+    "name": "nan神张飞",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 216,
+    "name": "nan神张角",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 217,
+    "name": "nan神邓艾",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 230,
+    "name": "武诸葛亮",
+    "tier": "限定",
+    "reason": "武庙/高山仰止",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 288,
+    "name": "nan法正",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 289,
+    "name": "nan马谡",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 290,
+    "name": "nan徐庶",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 291,
+    "name": "nan吴国太",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 292,
+    "name": "nan凌统",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 293,
+    "name": "nan徐盛",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 294,
+    "name": "nan曹植",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 295,
+    "name": "nan张春华",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 296,
+    "name": "nan于禁",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 297,
+    "name": "nan陈宫",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 298,
+    "name": "nan高顺",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 299,
+    "name": "nan关兴张苞",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 300,
+    "name": "nan廖化",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 301,
+    "name": "nan马岱",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 302,
+    "name": "nan步练师",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 303,
+    "name": "nan程普",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 304,
+    "name": "nan韩当",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 305,
+    "name": "nan荀攸",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 306,
+    "name": "nan王异",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 307,
+    "name": "nan曹彰",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 308,
+    "name": "nan钟会",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 309,
+    "name": "nan刘表",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 310,
+    "name": "nan曹冲",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 311,
+    "name": "nan郭淮",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 312,
+    "name": "nan满宠",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 313,
+    "name": "nan关平",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 314,
+    "name": "nan简雍",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 315,
+    "name": "nan刘封",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 316,
+    "name": "nan潘璋马忠",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 317,
+    "name": "nan虞翻",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 318,
+    "name": "nan朱然",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 319,
+    "name": "nan伏皇后",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 320,
+    "name": "nan李儒",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 321,
+    "name": "nan曹真",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 322,
+    "name": "nan韩浩史涣",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 323,
+    "name": "nan陈群",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 324,
+    "name": "nan吴懿",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 325,
+    "name": "nan周仓",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 326,
+    "name": "nan张松",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 327,
+    "name": "nan孙鲁班",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 328,
+    "name": "nan朱桓",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 329,
+    "name": "nan顾雍",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 330,
+    "name": "nan沮授",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 331,
+    "name": "nan蔡夫人",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 332,
+    "name": "nan曹叡",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 333,
+    "name": "nan曹休",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 334,
+    "name": "nan钟繇",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 335,
+    "name": "nan刘谌",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 336,
+    "name": "nan夏侯氏",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 337,
+    "name": "nan张嶷",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 338,
+    "name": "nan孙休",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 339,
+    "name": "nan朱治",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 340,
+    "name": "nan全琮",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 341,
+    "name": "nan公孙渊",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 342,
+    "name": "nan郭图逢纪",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 400,
+    "name": "nan张星彩",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 401,
+    "name": "nan吴苋",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 402,
+    "name": "nan孙登",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 403,
+    "name": "nan步骘",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 404,
+    "name": "nan曹昂",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 405,
+    "name": "nan诸葛诞",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 406,
+    "name": "nan刘协",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 407,
+    "name": "nan曹节",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 408,
+    "name": "nan董允",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 409,
+    "name": "nan诸葛瑾",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 410,
+    "name": "nan严畯",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 411,
+    "name": "nan李典",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 412,
+    "name": "nan司马朗",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 413,
+    "name": "nan杜畿",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 414,
+    "name": "nan刘焉",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 415,
+    "name": "nan张鲁",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 416,
+    "name": "nan孙乾",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 417,
+    "name": "nan秦宓",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 418,
+    "name": "nan薛综",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 419,
+    "name": "nan潘濬",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 420,
+    "name": "nan戏志才",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 421,
+    "name": "nan郭皇后",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 422,
+    "name": "nan王粲",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 423,
+    "name": "nan蔡邕",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 424,
+    "name": "SP孙尚香",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 425,
+    "name": "SP徐庶",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 426,
+    "name": "SP庞统",
+    "tier": "普通",
+    "reason": "将星价格:20",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 427,
+    "name": "SP庞德",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 428,
+    "name": "SP蔡文姬",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 429,
+    "name": "SP姜维",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 430,
+    "name": "SP黄月英",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 431,
+    "name": "SP太史慈",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 432,
+    "name": "nan李严",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 433,
+    "name": "nan糜竺",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 434,
+    "name": "nan马忠",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 435,
+    "name": "nan周鲂",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 436,
+    "name": "nan贺齐",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 437,
+    "name": "nan文聘",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 438,
+    "name": "nan吕岱",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 439,
+    "name": "nan刘繇",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 440,
+    "name": "nan马云騄",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 441,
+    "name": "nan关银屏",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 442,
+    "name": "nan祖茂",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 443,
+    "name": "nan徐氏",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 444,
+    "name": "nan吕虔",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 445,
+    "name": "nan张梁",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 446,
+    "name": "nan蹋顿",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 447,
+    "name": "nan公孙瓒",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 500,
+    "name": "nan关索",
+    "tier": "传说",
+    "reason": "将星价格:9999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 501,
+    "name": "nan赵襄",
+    "tier": "传说",
+    "reason": "将星价格:9999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 502,
+    "name": "nan诸葛果",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 503,
+    "name": "nan孙皓",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 504,
+    "name": "nan诸葛恪",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 505,
+    "name": "nan程昱",
+    "tier": "传说",
+    "reason": "将星价格:9999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 506,
+    "name": "nan陈琳",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 507,
+    "name": "nan杨修",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 508,
+    "name": "nan王朗",
+    "tier": "限定",
+    "reason": "武庙/高山仰止",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 509,
+    "name": "nan兀突骨",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 510,
+    "name": "nan士燮",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 511,
+    "name": "nan张宝",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 512,
+    "name": "nan灵雎",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 513,
+    "name": "nan王允",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 514,
+    "name": "nan司马徽",
+    "tier": "传说",
+    "reason": "将星价格:9999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 515,
+    "name": "nan鲍三娘",
+    "tier": "传说",
+    "reason": "将星价格:9999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 516,
+    "name": "nan徐荣",
+    "tier": "传说",
+    "reason": "将星价格:9999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 517,
+    "name": "nan大乔小乔",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 518,
+    "name": "nan曹婴",
+    "tier": "传说",
+    "reason": "将星价格:9999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 519,
+    "name": "SP马超",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 520,
+    "name": "nan曹纯",
+    "tier": "传说",
+    "reason": "将星价格:9999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 521,
+    "name": "nan蒋干",
+    "tier": "稀有",
+    "reason": "将星价格:1499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 522,
+    "name": "nan文鸯",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 523,
+    "name": "nan夏侯霸",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 524,
+    "name": "SP赵云",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 525,
+    "name": "nan花鬘",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 526,
+    "name": "nan皇甫嵩",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 527,
+    "name": "nan刘琦",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 528,
+    "name": "nan辛宪英",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 529,
+    "name": "nan王双",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 530,
+    "name": "nan留赞",
+    "tier": "史诗",
+    "reason": "将星价格:5900",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 532,
+    "name": "SP关羽",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 533,
+    "name": "nan张让",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 534,
+    "name": "nan韩遂",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 535,
+    "name": "nan何进",
+    "tier": "稀有",
+    "reason": "将星价格:179",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 536,
+    "name": "nan刘宏",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 537,
+    "name": "nan朱儁",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 538,
+    "name": "nan郭照",
+    "tier": "史诗",
+    "reason": "将星价格:4990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 539,
+    "name": "nan董白",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 540,
+    "name": "nan樊玉凤",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 541,
+    "name": "nan阮瑀",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 542,
+    "name": "nan陆郁生",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 543,
+    "name": "nan杨婉",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 544,
+    "name": "nan何晏",
+    "tier": "稀有",
+    "reason": "将星价格:1499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 545,
+    "name": "nan张虎",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 546,
+    "name": "nan潘淑",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 547,
+    "name": "nan杜夫人",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 548,
+    "name": "nan阚泽",
+    "tier": "稀有",
+    "reason": "将星价格:179",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 549,
+    "name": "nan吕玲绮",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 550,
+    "name": "nan周夷",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 551,
+    "name": "nan南华老仙",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 552,
+    "name": "nan童渊",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 553,
+    "name": "nan张宁",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 554,
+    "name": "nan刘永",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 555,
+    "name": "nan曹金玉",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 556,
+    "name": "nan庞德公",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 557,
+    "name": "SP贾诩",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 558,
+    "name": "nan祢衡",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 559,
+    "name": "nan孙翊",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 560,
+    "name": "nan冯妤",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 561,
+    "name": "nan曹髦",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 562,
+    "name": "nan来莺儿",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 563,
+    "name": "nan吉平",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 564,
+    "name": "nan曹华",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 565,
+    "name": "nan刘徽",
+    "tier": "限定",
+    "reason": "武庙/高山仰止",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 566,
+    "name": "nan卢弈",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 567,
+    "name": "nan孙翎鸾",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 600,
+    "name": "nan李傕",
+    "tier": "稀有",
+    "reason": "将星价格:139",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 601,
+    "name": "nan郭汜",
+    "tier": "普通",
+    "reason": "将星价格:99",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 602,
+    "name": "nan樊稠",
+    "tier": "稀有",
+    "reason": "将星价格:119",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 603,
+    "name": "nan张济",
+    "tier": "普通",
+    "reason": "将星价格:79",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 604,
+    "name": "nan梁兴",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 605,
+    "name": "nan唐姬",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 607,
+    "name": "nan段煨",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 608,
+    "name": "nan张横",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 609,
+    "name": "nan冯方",
+    "tier": "稀有",
+    "reason": "将星价格:1499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 610,
+    "name": "nan牛辅",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 611,
+    "name": "nan董翓",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 650,
+    "name": "nan沙摩柯",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 651,
+    "name": "nan忙牙长",
+    "tier": "稀有",
+    "reason": "将星价格:179",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 652,
+    "name": "nan许贡",
+    "tier": "稀有",
+    "reason": "将星价格:179",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 653,
+    "name": "nan张昌蒲",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 700,
+    "name": "nan张恭",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 701,
+    "name": "nan吕凯",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 702,
+    "name": "nan卫温诸葛直",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 703,
+    "name": "nan卑弥呼",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 704,
+    "name": "nan张琪瑛",
+    "tier": "传说",
+    "reason": "将星价格:9999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 801,
+    "name": "nan蒲元",
+    "tier": "稀有",
+    "reason": "将星价格:1499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 802,
+    "name": "nan管辂",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 803,
+    "name": "nan葛玄",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 804,
+    "name": "nan许劭",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 805,
+    "name": "nan杜夔",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 806,
+    "name": "nan朱建平",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 850,
+    "name": "nan辛毗",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 851,
+    "name": "nan伊籍",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 852,
+    "name": "nan张温",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 853,
+    "name": "nan李肃",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 951,
+    "name": "nan邢道荣",
+    "tier": "史诗",
+    "reason": "无双上将",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 952,
+    "name": "nan曹性",
+    "tier": "史诗",
+    "reason": "无双上将",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 953,
+    "name": "nan淳于琼",
+    "tier": "史诗",
+    "reason": "无双上将",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 954,
+    "name": "nan夏侯杰",
+    "tier": "史诗",
+    "reason": "无双上将",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 955,
+    "name": "nan蔡阳",
+    "tier": "史诗",
+    "reason": "无双上将",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 956,
+    "name": "nan周善",
+    "tier": "史诗",
+    "reason": "无双上将",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 980,
+    "name": "nan雷铜",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 981,
+    "name": "nan吴兰",
+    "tier": "稀有",
+    "reason": "珍宝价格:10,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1000,
+    "name": "nan孙鲁育",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1004,
+    "name": "nan万年公主",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1005,
+    "name": "nan荀谌",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1006,
+    "name": "nan陈登",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1007,
+    "name": "nan滕公主",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1008,
+    "name": "nan黄皓",
+    "tier": "稀有",
+    "reason": "珍宝价格:36,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1009,
+    "name": "nan蔡瑁张允",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1010,
+    "name": "nan王桃",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1011,
+    "name": "nan王悦",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1012,
+    "name": "nan赵嫣",
+    "tier": "稀有",
+    "reason": "将星价格:1499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1013,
+    "name": "nan冯熙",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1014,
+    "name": "nan邓芝",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1015,
+    "name": "nan高览",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 1016,
+    "name": "nan滕胤",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1017,
+    "name": "nan张嫙",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1018,
+    "name": "nan夏侯令女",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1019,
+    "name": "nan孙茹",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1031,
+    "name": "nan尹夫人",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1032,
+    "name": "nan吕旷吕翔",
+    "tier": "稀有",
+    "reason": "珍宝价格:18,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1033,
+    "name": "nan陈珪",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1034,
+    "name": "nan陈矫",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1035,
+    "name": "nan秦朗",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1050,
+    "name": "nan刘辩",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1051,
+    "name": "nan丁原",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 1052,
+    "name": "nan王荣",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1053,
+    "name": "nan麴义",
+    "tier": "稀有",
+    "reason": "将星价格:179",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1054,
+    "name": "nan韩馥",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1055,
+    "name": "nan陶谦",
+    "tier": "稀有",
+    "reason": "将星价格:179",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1056,
+    "name": "nan曹嵩",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 1057,
+    "name": "nan赵忠",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1058,
+    "name": "nan张邈",
+    "tier": "稀有",
+    "reason": "将星价格:179",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1059,
+    "name": "nan牛金",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 1060,
+    "name": "nan董承",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1061,
+    "name": "nan胡车儿",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 1062,
+    "name": "nan糜芳傅士仁",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 1065,
+    "name": "nan丘力居",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1071,
+    "name": "nan曹安民",
+    "tier": "稀有",
+    "reason": "将星价格:1499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1072,
+    "name": "nan李采薇",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1073,
+    "name": "nan吴范",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1074,
+    "name": "nan郝萌",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 1075,
+    "name": "nan严夫人",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1076,
+    "name": "nan朱灵",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1077,
+    "name": "nan阎柔",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1078,
+    "name": "nan赵俨",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1079,
+    "name": "nan王威",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1080,
+    "name": "nan穆顺",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1081,
+    "name": "nan李异谢旌",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1082,
+    "name": "nan伏完",
+    "tier": "稀有",
+    "reason": "珍宝价格:36,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1083,
+    "name": "nan孙桓",
+    "tier": "普通",
+    "reason": "珍宝价格:500",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1084,
+    "name": "nan孟达",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1085,
+    "name": "nan是仪",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1086,
+    "name": "nan孙狼",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1087,
+    "name": "nan赵直",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1088,
+    "name": "nan周宣",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1089,
+    "name": "nan笮融",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1090,
+    "name": "nan骆统",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1091,
+    "name": "nan王昶",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1092,
+    "name": "nan程秉",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1093,
+    "name": "nan杨彪",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1094,
+    "name": "nan阮籍",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1100,
+    "name": "nan张媱",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1101,
+    "name": "nan刘虞",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1102,
+    "name": "nan全惠解",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1103,
+    "name": "nan丁尚涴",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1104,
+    "name": "nan袁姬",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1105,
+    "name": "nan谢灵毓",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1107,
+    "name": "nan甘夫人糜夫人",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1110,
+    "name": "nan刘巴",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1111,
+    "name": "nan杨仪",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1112,
+    "name": "nan黄权",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1113,
+    "name": "nan吴班",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1114,
+    "name": "nan霍峻",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1115,
+    "name": "nan傅肜傅佥",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1116,
+    "name": "nan向朗",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1117,
+    "name": "nan高翔",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1120,
+    "name": "nan秦宜禄",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1121,
+    "name": "nan卞喜",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1122,
+    "name": "nan胡班",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1123,
+    "name": "nan胡金定",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1124,
+    "name": "nan关宁",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1130,
+    "name": "nan黄祖",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1134,
+    "name": "nan王濬",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1135,
+    "name": "nan杜预",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1140,
+    "name": "nan赵昂",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1141,
+    "name": "nan刘晔",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1142,
+    "name": "nan杨弘",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1150,
+    "name": "nan陆凯",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1151,
+    "name": "nan李婉",
+    "tier": "稀有",
+    "reason": "将星价格:499",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1152,
+    "name": "nan轲比能",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1153,
+    "name": "nan诸葛尚",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1154,
+    "name": "nan武安国",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1155,
+    "name": "nan韩龙",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1160,
+    "name": "nan张奋",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1180,
+    "name": "nan管亥",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1181,
+    "name": "nan张闿",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1182,
+    "name": "nan刘辟",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1183,
+    "name": "nan裴元绍",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1184,
+    "name": "nan张楚",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1185,
+    "name": "nan张曼成",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1190,
+    "name": "nan公孙度",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1205,
+    "name": "nan孙资刘放",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1206,
+    "name": "nan岑昏",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1221,
+    "name": "nan庞会",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1222,
+    "name": "nan赵统赵广",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1223,
+    "name": "nan袁谭袁尚袁熙",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1225,
+    "name": "nan凌操",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1231,
+    "name": "nan董贵人",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1232,
+    "name": "nan滕芳兰",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1233,
+    "name": "nan张瑾云",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1241,
+    "name": "nan薛灵芸",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1243,
+    "name": "nan段巧笑",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1244,
+    "name": "nan田尚衣",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1245,
+    "name": "nan柏灵筠",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1251,
+    "name": "nan唐咨",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1261,
+    "name": "nan孙寒华",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1262,
+    "name": "nan郑浑",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1301,
+    "name": "nan羊祜",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1330,
+    "name": "乐蔡文姬",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1900,
+    "name": "nan马日磾",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1901,
+    "name": "nan张勋",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1903,
+    "name": "nan雷薄",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1904,
+    "name": "nan乐就",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1905,
+    "name": "nan桥蕤",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1906,
+    "name": "nan董绾",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1907,
+    "name": "nan袁胤",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1950,
+    "name": "nan管宁",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1951,
+    "name": "nan黄承彦",
+    "tier": "史诗",
+    "reason": "将星价格:2999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1952,
+    "name": "nan胡昭",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1953,
+    "name": "nan王烈",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1954,
+    "name": "nan孟节",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2014,
+    "name": "nan乐进",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2029,
+    "name": "nan甘夫人",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2044,
+    "name": "nan丁奉",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2054,
+    "name": "nan马腾",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2055,
+    "name": "nan孔融",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2056,
+    "name": "nan纪灵",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2057,
+    "name": "nan田丰",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2058,
+    "name": "nan潘凤",
+    "tier": "史诗",
+    "reason": "无双上将",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 2059,
+    "name": "nan邹氏",
+    "tier": "普通",
+    "reason": "珍宝价格:1,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2060,
+    "name": "nan何太后",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2061,
+    "name": "nan蒋琬费祎",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2069,
+    "name": "nan臧霸",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2070,
+    "name": "nan糜夫人",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2071,
+    "name": "nan陈武董袭",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2072,
+    "name": "nan张任",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2073,
+    "name": "nan曹洪",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2074,
+    "name": "nan蒋钦",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2079,
+    "name": "nan李傕郭汜",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2082,
+    "name": "nan卞夫人",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2084,
+    "name": "nan吕范",
+    "tier": "普通",
+    "reason": "将星价格:19",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2086,
+    "name": "nan华歆",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2089,
+    "name": "nan宗预",
+    "tier": "稀有",
+    "reason": "将星价格:359",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 2090,
+    "name": "nan崔琰毛玠",
+    "tier": "普通",
+    "reason": "将星价格:59",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1106,
+    "name": "nan孙瑜",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1133,
+    "name": "nan陈泰",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1143,
+    "name": "nan桓范",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1144,
+    "name": "nan郤正",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1191,
+    "name": "nan孟优",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1207,
+    "name": "nan孙綝",
+    "tier": "稀有",
+    "reason": "将星价格:1999",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1224,
+    "name": "nan乐綝",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1242,
+    "name": "nan芮姬",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1263,
+    "name": "nan刘宠骆俊",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1350,
+    "name": "nan严白虎",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 1234,
+    "name": "nan周不疑",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1136,
+    "name": "nan文钦",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1108,
+    "name": "nan清河公主",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1161,
+    "name": "nan诸葛梦雪",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1162,
+    "name": "nan诸葛若雪",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1353,
+    "name": "nan马铁",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1351,
+    "name": "nan车胄",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1352,
+    "name": "nan韩嵩",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1331,
+    "name": "乐周妃",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1036,
+    "name": "nan董昭",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1208,
+    "name": "nan贾充",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1246,
+    "name": "nan马伶俐",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1020,
+    "name": "nan蒯祺",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1021,
+    "name": "nan庞山民",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1333,
+    "name": "乐蔡邕",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1332,
+    "name": "乐诸葛果",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1156,
+    "name": "nan苏飞",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1334,
+    "name": "乐祢衡",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 218,
+    "name": "nan神典韦",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1600,
+    "name": "星曹仁",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1192,
+    "name": "SP孟获",
+    "tier": "稀有",
+    "reason": "将星价格:990",
+    "source": "jiangxing"
+  },
+  {
+    "general_id": 1235,
+    "name": "nan许靖",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1193,
+    "name": "SP祝融",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 231,
+    "name": "武陆逊",
+    "tier": "限定",
+    "reason": "武庙/高山仰止",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1157,
+    "name": "nan谯周",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 568,
+    "name": "nan曹轶",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1171,
+    "name": "nan费曜",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1159,
+    "name": "nan陈式",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 580,
+    "name": "SP甄姬",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1601,
+    "name": "星董卓",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1158,
+    "name": "nan孙礼",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1602,
+    "name": "星袁术",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1172,
+    "name": "nan夏侯楙",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1335,
+    "name": "乐大乔",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1336,
+    "name": "乐小乔",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1630,
+    "name": "谋周瑜",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1631,
+    "name": "谋鲁肃",
+    "tier": "传说",
+    "reason": "珍宝价格:160,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1163,
+    "name": "nan曹宪",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1603,
+    "name": "星张昭",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1604,
+    "name": "星袁绍",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1605,
+    "name": "星张春华",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1226,
+    "name": "nan刘理",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1118,
+    "name": "nan李丰",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 219,
+    "name": "nan神许褚",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1137,
+    "name": "nan胡遵",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1194,
+    "name": "nan公孙修",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1632,
+    "name": "谋司马懿",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1640,
+    "name": "谋蒋济",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1641,
+    "name": "谋王凌",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1642,
+    "name": "谋司马师",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1643,
+    "name": "谋曹爽",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1620,
+    "name": "SP孙策",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1109,
+    "name": "nan曹芳",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 232,
+    "name": "武关羽",
+    "tier": "限定",
+    "reason": "武庙/高山仰止",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 220,
+    "name": "nan神华佗",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1670,
+    "name": "星孙坚",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1264,
+    "name": "nan吴普",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1633,
+    "name": "谋诸葛瑾",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1634,
+    "name": "谋贾诩",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1236,
+    "name": "nan关樾",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1500,
+    "name": "nan朱佩兰",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1650,
+    "name": "谋关平",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1337,
+    "name": "乐邹氏",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1690,
+    "name": "nan徐琨",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1661,
+    "name": "谋张绣",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1660,
+    "name": "谋曹昂",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1691,
+    "name": "nan司马孚",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1186,
+    "name": "nan柳婒",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1662,
+    "name": "谋典韦",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1663,
+    "name": "谋胡车儿",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1501,
+    "name": "nan卞玥",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1692,
+    "name": "nan令狐愚",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1681,
+    "name": "谋程昱",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1671,
+    "name": "星孙尚香",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1700,
+    "name": "谋沮授",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 221,
+    "name": "nan神黄忠",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1701,
+    "name": "谋陈琳",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1606,
+    "name": "星法正",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 999,
+    "name": "nan黄舞蝶",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1187,
+    "name": "nan文鸳",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1237,
+    "name": "nan诸葛京",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1635,
+    "name": "谋郭嘉",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1693,
+    "name": "nan宣公主",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1119,
+    "name": "nan向宠",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 233,
+    "name": "武皇甫嵩",
+    "tier": "限定",
+    "reason": "武庙/高山仰止",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 581,
+    "name": "nan庞凤衣",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1247,
+    "name": "nan莫琼树",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1607,
+    "name": "星荀彧",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1682,
+    "name": "谋黄盖",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1672,
+    "name": "星丁奉",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1694,
+    "name": "nan奇巧马钧",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1695,
+    "name": "nan传械马钧",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1188,
+    "name": "nan张怀",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1696,
+    "name": "nan马钧",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1338,
+    "name": "乐貂蝉",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2200,
+    "name": "威张辽",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1711,
+    "name": "nan吕据",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1227,
+    "name": "nan庞宏",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2201,
+    "name": "威孙权",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1339,
+    "name": "乐周瑜",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1502,
+    "name": "nan徐馨",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1503,
+    "name": "nan孙霸",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2202,
+    "name": "威吕布",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 234,
+    "name": "武陆抗",
+    "tier": "限定",
+    "reason": "武庙/高山仰止",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1698,
+    "name": "nan裴秀",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2300,
+    "name": "谋董承",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1636,
+    "name": "谋荀彧",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2203,
+    "name": "威曹丕",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1248,
+    "name": "nan曹媛",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1209,
+    "name": "nan侯成",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1608,
+    "name": "星张让",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1504,
+    "name": "nan刘衿刘佩",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2301,
+    "name": "谋曹洪",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 222,
+    "name": "nan神庞统",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1609,
+    "name": "星文丑",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2204,
+    "name": "威董卓",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1531,
+    "name": "nan张翼",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1022,
+    "name": "nan夏侯玄",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1505,
+    "name": "nan夏侯徽",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1095,
+    "name": "nan钟毓",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1096,
+    "name": "nan吴质",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 223,
+    "name": "nan神钟会",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2302,
+    "name": "谋刘协",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1097,
+    "name": "nan朱铄",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1532,
+    "name": "nan诸葛均",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1722,
+    "name": "nan张燕",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1724,
+    "name": "nan伍孚",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1228,
+    "name": "nan吉邈吉穆",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1249,
+    "name": "nan崔令仪",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1637,
+    "name": "谋姜维",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1238,
+    "name": "nan任婉",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1741,
+    "name": "谋胡烈",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1740,
+    "name": "谋邓艾",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2205,
+    "name": "威马超",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1725,
+    "name": "nan张奂",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1638,
+    "name": "谋陆逊",
+    "tier": "限定",
+    "reason": "珍宝价格:250,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1189,
+    "name": "nan董絮",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1673,
+    "name": "星太史慈",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1781,
+    "name": "谋骆统",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1782,
+    "name": "谋黄权",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1791,
+    "name": "星蒋琬",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 582,
+    "name": "nan郭缇萦",
+    "tier": "限定",
+    "reason": "珍宝价格:300,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1911,
+    "name": "nan苏越",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2222,
+    "name": "威曹操",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1098,
+    "name": "nan桓阶",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1250,
+    "name": "nan徐妏",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1712,
+    "name": "nan陶璜",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1783,
+    "name": "谋朱然",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2236,
+    "name": "威孙尚香",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1126,
+    "name": "nan凌烈",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2223,
+    "name": "威孙策",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1674,
+    "name": "星颜良",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1955,
+    "name": "nan田畴",
+    "tier": "稀有",
+    "reason": "珍宝价格:50,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 654,
+    "name": "nan崔烈",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 224,
+    "name": "nan神孙权",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1850,
+    "name": "nan刘懿君",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2400,
+    "name": "nan侯昭宁",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1956,
+    "name": "nan张世平",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1037,
+    "name": "nan马邈",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1651,
+    "name": "谋吕蒙",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1702,
+    "name": "谋许攸",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1639,
+    "name": "谋庞统",
+    "tier": "限定",
+    "reason": "珍宝价格:250,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2316,
+    "name": "谋法正",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2317,
+    "name": "谋吴懿",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1354,
+    "name": "nan阎象",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1703,
+    "name": "谋淳于琼",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1683,
+    "name": "谋蒋干",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1792,
+    "name": "星张郃",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2411,
+    "name": "星张松",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2319,
+    "name": "谋刘璋",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2224,
+    "name": "威刘备",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 2206,
+    "name": "威公孙瓒",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1210,
+    "name": "nan魏讽",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1912,
+    "name": "nan张裕",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2237,
+    "name": "威关银屏",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1340,
+    "name": "乐曹植",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1742,
+    "name": "谋卫瓘",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1066,
+    "name": "nan曹豹",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1853,
+    "name": "nan崔芷",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1675,
+    "name": "星夏侯霸",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2521,
+    "name": "谋诸葛亮",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1196,
+    "name": "nan木鹿大王",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1610,
+    "name": "星董允",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2500,
+    "name": "谋马谡",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2501,
+    "name": "谋王平",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2208,
+    "name": "威曹彰",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1507,
+    "name": "nan孙和",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2531,
+    "name": "nan陆文漪",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1684,
+    "name": "谋程普",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2412,
+    "name": "星诸葛瑾",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1704,
+    "name": "谋杨奉",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1621,
+    "name": "SP张郃",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1506,
+    "name": "nan刘璿",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1784,
+    "name": "谋徐盛",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1099,
+    "name": "nan陈祇",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2319,
+    "name": "谋刘璋",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1066,
+    "name": "nan曹豹",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2238,
+    "name": "威张星彩",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 2318,
+    "name": "谋张任",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1913,
+    "name": "nan史阿",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1914,
+    "name": "nan王越",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 235,
+    "name": "武张飞",
+    "tier": "限定",
+    "reason": "武庙/高山仰止",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1652,
+    "name": "谋关羽",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1341,
+    "name": "乐曹植",
+    "tier": "史诗",
+    "reason": "珍宝价格:120,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1851,
+    "name": "nan邓晚棠",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 226,
+    "name": "nan神曹丕",
+    "tier": "传说",
+    "reason": "珍宝价格:200,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 1852,
+    "name": "nan李昭仪",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  },
+  {
+    "general_id": 2207,
+    "name": "威马腾",
+    "tier": "限定",
+    "reason": "威前缀",
+    "source": "lamp_type"
+  },
+  {
+    "general_id": 1508,
+    "name": "nan环怀瑾",
+    "tier": "普通",
+    "reason": "普通招募",
+    "source": "normal_recruit"
+  },
+  {
+    "general_id": 2331,
+    "name": "nan傅干",
+    "tier": "稀有",
+    "reason": "珍宝价格:100,000",
+    "source": "item_price"
+  }
+]

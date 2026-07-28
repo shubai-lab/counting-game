@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test C：奇遇包装 交互图</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a2e; color: #fff; padding: 20px; }
+    h1 { text-align: center; color: #ffd700; margin-bottom: 30px; }
+    .flow { display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto; }
+    .step { background: linear-gradient(135deg, #2d2d44, #1f1f35); border-radius: 16px; padding: 20px; border-left: 4px solid; }
+    .step-trigger { border-color: #ff6b6b; }
+    .step-dialogue { border-color: #4ecdc4; }
+    .step-task { border-color: #ffe66d; }
+    .step-reward { border-color: #95e1d3; }
+    .step-title { font-size: 18px; font-weight: bold; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+    .step-icon { font-size: 24px; }
+    .step-content { background: #252540; border-radius: 12px; padding: 16px; margin-top: 12px; }
+    .dialogue { font-style: italic; color: #b8b8d0; padding: 12px; background: #1f1f35; border-radius: 8px; margin: 8px 0; }
+    .reward-item { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
+    .reward-icon { width: 24px; text-align: center; }
+    .arrow { text-align: center; color: #666; font-size: 24px; }
+    .node { background: #3d3d5c; border-radius: 8px; padding: 12px; margin: 8px 0; }
+    .node-title { color: #ffd700; font-weight: bold; }
+    .node-content { color: #b8b8d0; font-size: 14px; margin-top: 4px; }
+    .button { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; margin: 4px; }
+    .button-secondary { background: #3d3d5c; }
+    .legend { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 8px; }
+    .legend-color { width: 16px; height: 16px; border-radius: 4px; }
+
+    /* 武将弹窗样式 */
+    .hero-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .hero-popup.active { display: flex; }
+    .popup-content {
+      background: linear-gradient(135deg, #2d2d44, #1f1f35);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      animation: popIn 0.5s ease;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .hero-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      animation: slideIn 0.5s ease;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    .hero-name { color: #ffd700; font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+    .hero-dialogue {
+      font-style: italic;
+      color: #b8b8d0;
+      background: #1f1f35;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      text-align: left;
+    }
+    .hero-reward {
+      background: #3d3d5c;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    .reward-title { color: #4ecdc4; font-weight: bold; margin-bottom: 10px; }
+    .btn-group { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+    .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; border: none; padding: 12px 30px; border-radius: 10px; cursor: pointer; font-size: 16px; }
+    .btn-secondary { background: #3d3d5c; color: #b8b8d0; border: none; padding: 12px 30px; border-radius: 10px; cursor: pointer; font-size: 16px; }
+  </style>
+</head>
+<body>
+
+<h1>🎮 Test C：奇遇包装 交互图</h1>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-color" style="background:#ff6b6b"></div> 触发</div>
+  <div class="legend-item"><div class="legend-color" style="background:#4ecdc4"></div> 对话</div>
+  <div class="legend-item"><div class="legend-color" style="background:#ffe66d"></div> 任务</div>
+  <div class="legend-item"><div class="legend-color" style="background:#95e1d3"></div> 奖励</div>
+</div>
+
+<div class="flow">
+
+  <!-- Step 1: 触发 -->
+  <div class="step step-trigger">
+    <div class="step-title">
+      <span class="step-icon">🎯</span>
+      <span>Step 1：触发条件</span>
+    </div>
+    <div class="step-content">
+      <div class="node">
+        <div class="node-title">触发时机</div>
+        <div class="node-content">用户登录游戏后自动触发</div>
+      </div>
+      <div class="node">
+        <div class="node-title">武将选择</div>
+        <div class="node-content">最近7日使用场次最多的武将（Top1），且该武将拥有皮肤</div>
+      </div>
+      <div class="node">
+        <div class="node-title">武将立绘</div>
+        <div class="node-content">武将立绘从右侧滑入动画（500ms）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- Step 2: 对话 -->
+  <div class="step step-dialogue">
+    <div class="step-title">
+      <span class="step-icon">💬</span>
+      <span>Step 2：武将对话</span>
+    </div>
+    <div class="step-content">
+      <div class="dialogue">"将军，好久不见。"</div>
+      <div class="node">
+        <div class="node-title">表达关心</div>
+        <div class="node-content">"我注意到您最近的战绩有些波动..."</div>
+      </div>
+      <div class="node">
+        <div class="node-title">提出礼物</div>
+        <div class="node-content">"如果您愿意，我准备了一份礼物送给您。"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- Step 3: 任务 -->
+  <div class="step step-task">
+    <div class="step-title">
+      <span class="step-icon">📋</span>
+      <span>Step 3：任务列表</span>
+    </div>
+    <div class="step-content">
+      <div class="node">
+        <div class="node-title">☐ 任务1：使用武将完成1局</div>
+        <div class="node-content">"和我一起完成1局战斗" → 奖励：武将试用×1天</div>
+      </div>
+      <div class="node">
+        <div class="node-title">☐ 任务2：连胜2局</div>
+        <div class="node-content">"连胜2局，证明将军还在" → 奖励：将魂×30</div>
+      </div>
+      <div class="node">
+        <div class="node-title">☐ 任务3：收下礼物</div>
+        <div class="node-content">"收下我的心意" → 奖励：皮肤体验卡×7天 + 金豆×30000</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- Step 4: 奖励 -->
+  <div class="step step-reward">
+    <div class="step-title">
+      <span class="step-icon">🎁</span>
+      <span>Step 4：奖励发放</span>
+    </div>
+    <div class="step-content">
+      <div class="reward-item"><span class="reward-icon">🎨</span> 限定皮肤：天公将军（7天体验）</div>
+      <div class="reward-item"><span class="reward-icon">⚔️</span> 武将试用：张角（3天）</div>
+      <div class="reward-item"><span class="reward-icon">🪙</span> 金豆×30000</div>
+    </div>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <!-- Step 5: 结束 -->
+  <div class="step step-trigger">
+    <div class="step-title">
+      <span class="step-icon">✨</span>
+      <span>Step 5：结束收尾</span>
+    </div>
+    <div class="step-content">
+      <div class="dialogue">"谢谢将军，让我们一起重燃战火！"</div>
+      <div class="node">
+        <div class="node-title">武将告别动画</div>
+        <div class="node-content">武将立绘渐隐，完成交互</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 示例弹窗 -->
+<div style="text-align: center; margin-top: 40px;">
+  <p style="color: #666; margin-bottom: 20px;">点击按钮查看弹窗示例：</p>
+  <button class="btn-primary" onclick="showPopup()">查看武将弹窗示例</button>
+</div>
+
+<!-- 弹窗 -->
+<div class="hero-popup" id="heroPopup">
+  <div class="popup-content">
+    <div class="hero-avatar">👤</div>
+    <div class="hero-name">张角</div>
+    <div class="hero-dialogue">
+      "将军，好久不见。<br><br>
+      我注意到您最近的战绩有些波动...<br><br>
+      但我相信，将军的实力从未离开。<br>
+      如果您愿意，我准备了一份礼物送给您。"
+    </div>
+    <div class="hero-reward">
+      <div class="reward-title">🎁 张角的礼物</div>
+      <div style="text-align: left; color: #b8b8d0;">
+        <div class="reward-item">🎨 限定皮肤：天公将军（7天体验）</div>
+        <div class="reward-item">⚔️ 武将试用：张角（3天）</div>
+        <div class="reward-item">🪙 金豆×30000</div>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn-primary" onclick="hidePopup()">我愿意</button>
+      <button class="btn-secondary" onclick="hidePopup()">稍后再说</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPopup() {
+  document.getElementById('heroPopup').classList.add('active');
+}
+function hidePopup() {
+  document.getElementById('heroPopup').classList.remove('active');
+}
+</script>
+
+</body>
+</html>

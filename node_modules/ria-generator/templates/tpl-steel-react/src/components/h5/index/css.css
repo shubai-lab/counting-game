@@ -1,0 +1,22 @@
+.wrapper{
+    text-align: center;
+    font-family: 'Microsoft YaHei';
+}
+
+#tipmsg {
+    font-size: 50px;
+    width: 100%;
+}
+
+#logicmsg {
+    font-size: 75px;    
+    width: 100%;
+    margin-top:50px
+}
+
+.banner {
+    margin-top: 30%;
+    width: 100%;
+    font-size: 100px;
+}
+

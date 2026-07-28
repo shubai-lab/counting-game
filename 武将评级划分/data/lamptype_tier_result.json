@@ -1,0 +1,212 @@
+[
+  {
+    "general_id": null,
+    "name": "诸葛亮",
+    "lamp_type": "武庙",
+    "tier": "限定",
+    "reason": "武庙/高山仰止关键词"
+  },
+  {
+    "general_id": null,
+    "name": "王朗",
+    "lamp_type": "高山仰止",
+    "tier": "限定",
+    "reason": "武庙/高山仰止关键词"
+  },
+  {
+    "general_id": null,
+    "name": "刘徽",
+    "lamp_type": "高山仰止",
+    "tier": "限定",
+    "reason": "武庙/高山仰止关键词"
+  },
+  {
+    "general_id": null,
+    "name": "邢道荣",
+    "lamp_type": "无双上将",
+    "tier": "史诗",
+    "reason": "无双上将关键词"
+  },
+  {
+    "general_id": null,
+    "name": "曹性",
+    "lamp_type": "无双上将",
+    "tier": "史诗",
+    "reason": "无双上将关键词"
+  },
+  {
+    "general_id": null,
+    "name": "淳于琼",
+    "lamp_type": "无双上将",
+    "tier": "史诗",
+    "reason": "无双上将关键词"
+  },
+  {
+    "general_id": null,
+    "name": "夏侯杰",
+    "lamp_type": "无双上将",
+    "tier": "史诗",
+    "reason": "无双上将关键词"
+  },
+  {
+    "general_id": null,
+    "name": "蔡阳",
+    "lamp_type": "无双上将",
+    "tier": "史诗",
+    "reason": "无双上将关键词"
+  },
+  {
+    "general_id": null,
+    "name": "周善",
+    "lamp_type": "无双上将",
+    "tier": "史诗",
+    "reason": "无双上将关键词"
+  },
+  {
+    "general_id": null,
+    "name": "潘凤",
+    "lamp_type": "无双上将",
+    "tier": "史诗",
+    "reason": "无双上将关键词"
+  },
+  {
+    "general_id": null,
+    "name": "陆逊",
+    "lamp_type": "武庙",
+    "tier": "限定",
+    "reason": "武庙/高山仰止关键词"
+  },
+  {
+    "general_id": null,
+    "name": "关羽",
+    "lamp_type": "武庙",
+    "tier": "限定",
+    "reason": "武庙/高山仰止关键词"
+  },
+  {
+    "general_id": null,
+    "name": "皇甫嵩",
+    "lamp_type": "武庙",
+    "tier": "限定",
+    "reason": "武庙/高山仰止关键词"
+  },
+  {
+    "general_id": null,
+    "name": "张辽",
+    "lamp_type": "威震天下",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "孙权",
+    "lamp_type": "君威盖世",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "吕布",
+    "lamp_type": "威震天下",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "陆抗",
+    "lamp_type": "武庙",
+    "tier": "限定",
+    "reason": "武庙/高山仰止关键词"
+  },
+  {
+    "general_id": null,
+    "name": "曹丕",
+    "lamp_type": "君威盖世",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "董卓",
+    "lamp_type": "威震天下",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "马超",
+    "lamp_type": "威震天下",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "曹操",
+    "lamp_type": "君威盖世",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "孙尚香",
+    "lamp_type": "片羽威凤",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "孙策",
+    "lamp_type": "君威盖世",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "刘备",
+    "lamp_type": "君威盖世",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "公孙瓒",
+    "lamp_type": "威震天下",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "关银屏",
+    "lamp_type": "片羽威凤",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "曹彰",
+    "lamp_type": "威震天下",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "张星彩",
+    "lamp_type": "片羽威凤",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  },
+  {
+    "general_id": null,
+    "name": "张飞",
+    "lamp_type": "武庙",
+    "tier": "限定",
+    "reason": "武庙/高山仰止关键词"
+  },
+  {
+    "general_id": null,
+    "name": "马腾",
+    "lamp_type": "威震天下",
+    "tier": "限定",
+    "reason": "威前缀关键词"
+  }
+]

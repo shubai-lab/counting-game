@@ -1,0 +1,106 @@
+[
+  {
+    "ItemID": 400300,
+    "ItemName": "曹仁",
+    "ItemType": "武将",
+    "GeneralID": 30,
+    "ValidPeriod": "否",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 405030,
+    "ItemName": "孙皓",
+    "ItemType": "武将",
+    "GeneralID": 503,
+    "ValidPeriod": "否",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 400302,
+    "ItemName": "曹仁(3天)",
+    "ItemType": "武将",
+    "GeneralID": 30,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 405032,
+    "ItemName": "孙皓(3天)",
+    "ItemType": "武将",
+    "GeneralID": 503,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 400303,
+    "ItemName": "曹仁(7天)",
+    "ItemType": "武将",
+    "GeneralID": 30,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 405033,
+    "ItemName": "孙皓(7天)",
+    "ItemType": "武将",
+    "GeneralID": 503,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 400304,
+    "ItemName": "曹仁(31天)",
+    "ItemType": "武将",
+    "GeneralID": 30,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 405034,
+    "ItemName": "孙皓(31天)",
+    "ItemType": "武将",
+    "GeneralID": 503,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": "400301",
+    "ItemName": "曹仁(1天)",
+    "ItemType": "武将",
+    "GeneralID": 30,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": "405031",
+    "ItemName": "孙皓(1天)",
+    "ItemType": "武将",
+    "GeneralID": 503,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 405270,
+    "ItemName": "刘琦",
+    "ItemType": "武将",
+    "GeneralID": 527,
+    "ValidPeriod": "否",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 405271,
+    "ItemName": "刘琦体验卡(10次)",
+    "ItemType": "武将",
+    "GeneralID": 527,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  },
+  {
+    "ItemID": 405272,
+    "ItemName": "刘琦体验卡(5次)",
+    "ItemType": "武将",
+    "GeneralID": 527,
+    "ValidPeriod": "是",
+    "ExpireTimeStr": null
+  }
+]

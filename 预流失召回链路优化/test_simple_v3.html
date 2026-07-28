@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预流失召回链路 · 简化版测试</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #111; overflow: hidden; }
+    .container { position: relative; width: 100vw; height: 56.25vw; max-height: 100vh; max-width: 177.78vh; margin: auto; overflow: hidden; }
+    .page { position: absolute; inset: 0; display: none; }
+    .page.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .page img { width: 100%; height: 100%; object-fit: contain; }
+    .btn { position: absolute; cursor: pointer; background: rgba(255,200,0,0.5); border: 2px solid yellow; border-radius: 8px; }
+    .overlay { position: absolute; inset: 0; cursor: pointer; background: transparent; }
+    .debug-btn { position: fixed; top: 10px; left: 10px; z-index: 1000; background: red; color: white; padding: 10px; }
+  </style>
+</head>
+<body>
+
+<button class="debug-btn" onclick="showPage(1)">重置</button>
+
+<div class="container">
+
+  <!-- 页面1: 预流失弹窗 -->
+  <div id="page1" class="page active">
+    <img src="预流失弹窗.jpg" alt="弹窗" />
+    <!-- 领取按钮 -->
+    <div class="btn" onclick="showPage(2)" style="bottom: 15%; left: 28%; width: 16%; height: 9%;">
+      <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:14px;">领取</span>
+    </div>
+  </div>
+
+  <!-- 页面2: 预流失领取界面 -->
+  <div id="page2" class="page">
+    <img src="预流失领取界面.jpg" alt="领取界面" />
+    <!-- 确认领取按钮 -->
+    <div class="btn" onclick="showPage(3)" style="bottom: 13%; left: calc(38% + 150px); width: 12%; height: 6%;">
+      <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-size:14px;">确认领取</span>
+    </div>
+  </div>
+
+  <!-- 页面3: 领取武将体验卡界面 -->
+  <div id="page3" class="page">
+    <img src="领取武将体验卡.jpg" alt="武将体验卡" />
+    <!-- 点击任意地方关闭 -->
+    <div class="overlay" onclick="showPage(4)"></div>
+  </div>
+
+  <!-- 页面4: 预流失任务界面 -->
+  <div id="page4" class="page">
+    <img src="预流失任务界面.jpg" alt="任务界面" />
+  </div>
+
+</div>
+
+<script>
+function showPage(num) {
+  console.log('切换到页面', num);
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + num).classList.add('active');
+}
+</script>
+
+</body>
+</html>

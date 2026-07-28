@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>流程图 v1.0 - 预流失召回链路优化</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .section-title { font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+    .mermaid { display: flex; justify-content: center; }
+    .mermaid svg { max-width: 100%; }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- 顶部导航 -->
+  <div class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div>
+        <h1 class="text-lg font-bold text-gray-800">预流失召回链路优化 · 流程图 v1.0</h1>
+        <p class="text-xs text-gray-400">方案A（扩大推送覆盖）+ 方案C（简化任务+武将体验卡激励）</p>
+      </div>
+      <div class="flex gap-2">
+        <a href="../requirements/prd_v1.0.html" target="_blank" class="px-3 py-1.5 border border-gray-300 text-gray-600 text-xs rounded hover:bg-gray-50 transition">返回PRD</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 py-6 space-y-8">
+
+    <!-- 流程图1：主流程 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="section-title text-base">图1：主流程 — 预流失召回链路</h2>
+      <div class="mermaid">
+flowchart TD
+    subgraph SG1["一、圈选阶段"]
+        A["数据系统标记预流失用户"] --> B["生成预流失用户名单"]
+        B --> C["每周滚动执行"]
+    end
+
+    subgraph SG2["二、触达阶段 - 方案A"]
+        C --> D["接入APP推送通道"]
+        D --> E{用户设备在线?}
+        E -->|是| F["推送触达用户"]
+        E -->|否| G["等待上线后再触达"]
+        F --> H["用户打开APP"]
+        G --> H
+    end
+
+    subgraph SG3["三、登录和领取武将卡 - 方案C"]
+        H --> I["用户登录成功"]
+        I --> J["进入活动界面"]
+        J --> K["系统判断当前为第几天"]
+        K --> L{Day1登录?}
+        L -->|是| M["领取武将试用卡1"]
+        L -->|否| N{Day2登录?}
+        N -->|是| O["领取武将试用卡2"]
+        N -->|否| P{Day3登录?}
+        P -->|是| Q["领取武将试用卡3"]
+        P -->|否| R["已是最后一天"]
+        M --> S["武将体验卡到账，有效期7天"]
+        O --> S
+        Q --> S
+        S --> T["体验卡可在任意时间使用"]
+    end
+
+    subgraph SG4["四、任务完成 - 方案C"]
+        T --> U["用户进入任意对局"]
+        U --> V{PVP还是PVE?}
+        V -->|PVE| W["首局100%出现武将体验卡弹窗"]
+        V -->|PVP| X["无武将体验卡弹窗"]
+        W --> Y["使用武将体验卡完成一局"]
+        X --> Z["仍算完成任意对局1次"]
+        Y --> Z
+        Z --> AA["任务完成计数+1"]
+        AA --> AB["回到活动界面"]
+        AB --> AC["手动领取牌局奖励"]
+        AC --> AD["牌局奖励到账"]
+    end
+
+    subgraph SG5["五、次留判断"]
+        AD --> AE{次日是否登录?}
+        AE -->|是| AF["次留成功"]
+        AE -->|否| AG["用户流失"]
+    end
+
+    style A fill:#fef3c7,stroke:#d97706
+    style H fill:#dbeafe,stroke:#2563eb
+    style M fill:#d1fae5,stroke:#059669
+    style Y fill:#d1fae5,stroke:#059669
+    style AC fill:#d1fae5,stroke:#059669
+    style AF fill:#059669,stroke:#065f46,color:#fff
+    style AG fill:#fee2e2,stroke:#dc2626
+      </div>
+    </div>
+
+    <!-- 流程图2：异常分支 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="section-title text-base">图2：异常分支 — 中断处理 / 有效期 / 等级段判断</h2>
+      <div class="mermaid">
+flowchart TD
+    subgraph SG6["中断处理"]
+        A1["Day1登录领取武将卡"] --> A2["未完成对局就退出"]
+        A2 --> A3["武将卡仍保留，有效期7天"]
+        A3 --> A4["Day2再次登录"]
+        A4 --> A5["可正常领取武将卡2"]
+        A5 --> A6["不要求先完成Day1任务"]
+    end
+
+    subgraph SG7["有效期处理"]
+        B1["武将体验卡有效期7天"] --> B2{到期前是否使用?}
+        B2 -->|未使用| B3["卡自动失效"]
+        B2 -->|已使用| B4["使用后卡消失，不占背包"]
+    end
+
+    subgraph SG8["等级段判断"]
+        C1["系统读取当前等级和官阶"] --> C2["匹配对应档位奖励"]
+        C2 --> C3{等级段是哪档?}
+        C3 -->|60级以下| C4["界钟会 / 尹夫人 / 牛辅"]
+        C3 -->|61-100级| C5["牛辅 / 赵嫣 / 王昶"]
+        C3 -->|101-150级| C6["王昶 / 滕公主 / 张嫙"]
+        C3 -->|151级以上| C7["郭照 / 张嫙 / 曹金玉"]
+        C3 -->|国护军| C8["马伶俐 / 庞凤衣 / 神庞统"]
+    end
+
+    style A3 fill:#fef9c3,stroke:#ca8a04
+    style B3 fill:#fee2e2,stroke:#dc2626
+    style C8 fill:#fdf4ff,stroke:#7c3aed
+      </div>
+    </div>
+
+    <!-- 节点说明 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="section-title text-base mb-4">流程节点说明</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 text-left">
+              <th class="border border-gray-200 px-3 py-2 font-medium">节点</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium">类型</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium">说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-medium">圈选阶段</td>
+              <td class="border border-gray-200 px-3 py-2 text-amber-600">自动</td>
+              <td class="border border-gray-200 px-3 py-2 text-gray-600">数据系统按规则标记预流失用户，每周滚动执行</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="border border-gray-200 px-3 py-2 font-medium">触达阶段</td>
+              <td class="border border-gray-200 px-3 py-2 text-blue-600">自动+手动</td>
+              <td class="border border-gray-200 px-3 py-2 text-gray-600">方案A：接入APP推送，覆盖50%用户</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-medium">登录领取</td>
+              <td class="border border-gray-200 px-3 py-2 text-green-600">手动</td>
+              <td class="border border-gray-200 px-3 py-2 text-gray-600">用户主动进入活动界面领取每日武将卡</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="border border-gray-200 px-3 py-2 font-medium">任务完成</td>
+              <td class="border border-gray-200 px-3 py-2 text-green-600">手动</td>
+              <td class="border border-gray-200 px-3 py-2 text-gray-600">方案C：只需完成任意对局1次（PVP/PVE均可）</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-medium">次留判断</td>
+              <td class="border border-gray-200 px-3 py-2 text-gray-600">自动</td>
+              <td class="border border-gray-200 px-3 py-2 text-gray-600">次日登录则视为留存用户</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 关键设计决策 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="section-title text-base mb-4">关键设计决策</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+          <div class="font-medium text-yellow-800 text-sm">中断友好</div>
+          <p class="text-xs text-yellow-700 mt-1">Day1未完成不影响Day2领取，避免用户因一日中断而彻底流失</p>
+        </div>
+        <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+          <div class="font-medium text-blue-800 text-sm">体验卡7天有效期</div>
+          <p class="text-xs text-blue-700 mt-1">给用户灵活空间，不强制当日使用</p>
+        </div>
+        <div class="p-3 bg-green-50 border border-green-200 rounded-lg">
+          <div class="font-medium text-green-800 text-sm">首局100%出现</div>
+          <p class="text-xs text-green-700 mt-1">针对PVE局，增加武将体验卡的曝光和使用率</p>
+        </div>
+        <div class="p-3 bg-purple-50 border border-purple-200 rounded-lg">
+          <div class="font-medium text-purple-800 text-sm">全员统一任务</div>
+          <p class="text-xs text-purple-700 mt-1">不分官阶，统一登录+任意对局1次，降低低官阶用户参与门槛</p>
+        </div>
+        <div class="p-3 bg-gray-50 border border-gray-200 rounded-lg md:col-span-2">
+          <div class="font-medium text-gray-800 text-sm">手动领取牌局奖励</div>
+          <p class="text-xs text-gray-600 mt-1">增加用户主动行为，提升参与感和仪式感</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#fef3c7',
+        primaryTextColor: '#92400e',
+        primaryBorderColor: '#d97706',
+        lineColor: '#9ca3af',
+        secondaryColor: '#dbeafe',
+        tertiaryColor: '#f3f4f6',
+      },
+      flowchart: { curve: 'basis', htmlLabels: true }
+    });
+  </script>
+</body>
+</html>

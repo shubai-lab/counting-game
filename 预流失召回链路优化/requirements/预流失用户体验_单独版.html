@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预流失用户体验 - 完整内容</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .iframe-wrap { display: block !important; }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <div class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+
+    <!-- 背景与问题 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">背景与问题</h2>
+      <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg mb-4">
+        <p class="text-sm text-amber-800 font-medium mb-2">核心问题：预流失用户中，2V2排位占比偏高</p>
+        <p class="text-sm text-amber-700">需要判断：这是 <span class="font-semibold">真实偏好</span>（排位用户确实更容易流失）还是 <span class="font-semibold">系统偏差</span>（业务策略+算法预测导致的假象）？</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- 一、真实流失分组分析 -->
+        <div class="border border-gray-200 rounded-lg p-4">
+          <h3 class="font-semibold text-gray-800 mb-3">一、真实流失分组分析</h3>
+          <p class="text-xs text-gray-500 mb-3">标签定义：以"4/29-5/5七天内无任何登录"作为真实流失标签（不依赖策略+算法预测）</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="bg-red-50 rounded-lg p-3 border border-red-200">
+              <div class="font-medium text-red-700 text-sm mb-2">矛盾现象</div>
+              <div class="text-xs text-gray-600 space-y-1">
+                <div>• <strong>总量口径</strong>：真实流失排位占比 47.2% vs 未流失 40.2% <span class="text-red-500">↑</span></div>
+                <div>• <strong>人均口径</strong>：真实流失排位占比 24.5% vs 未流失 27.7% <span class="text-green-500">↓</span></div>
+                <div>• <strong>中位数口径</strong>：真实流失排位占比中位数 0% vs 未流失 6%</div>
+              </div>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3 border border-gray-200">
+              <div class="font-medium text-gray-700 text-sm mb-2">结论</div>
+              <p class="text-xs text-gray-600">真实流失用户中，少数排位重度用户拉高了总量占比人均口径更能反映个体偏好：真实流失用户的排位偏好比大盘更低</p>
+            </div>
+          </div>
+
+          <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg mb-4">
+            <p class="text-sm text-blue-800">
+              <strong>核心发现：</strong>真实流失用户的核心特征是<span class="text-red-600 font-semibold">"低活跃"</span>——周均仅10.39局（未流失组60.23局），各模式绝对局数都远低于未流失用户
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <div class="font-medium text-gray-700 text-sm mb-3">进一步分析（筛选近一周有对局行为用户）</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <div class="text-xs text-gray-500 mb-2">全量用户：排位偏好 ≠ 流失风险</div>
+                <div class="bg-white rounded p-2 text-xs">
+                  流失组人均排位占比 <span class="text-red-600 font-semibold">34.6%</span><br>
+                  未流失组人均排位占比 <span class="text-green-600 font-semibold">35.4%</span><br>
+                  <span class="text-gray-400">差异很小</span>
+                </div>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-2">排位玩家子群体：排位依赖 = 流失风险</div>
+                <div class="bg-white rounded p-2 text-xs">
+                  流失组排位占比 <span class="text-red-600 font-semibold">69.4%</span><br>
+                  未流失组排位占比 <span class="text-green-600 font-semibold">51.3%</span><br>
+                  <span class="text-gray-400">流失的排位用户更依赖单一模式</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 二、分模式对比 -->
+        <div class="border border-gray-200 rounded-lg p-4">
+          <h3 class="font-semibold text-gray-800 mb-3">二、分模式对比</h3>
+          <p class="text-xs text-gray-500 mb-3">按用户历史30天内对局数量最多的模式分组，计算各模式下的真实流失率</p>
+
+          <div class="overflow-x-auto mb-4">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="bg-gray-50 text-left">
+                  <th class="border px-3 py-2 font-medium">模式偏好</th>
+                  <th class="border px-3 py-2 font-medium text-right">真实流失率</th>
+                  <th class="border px-3 py-2 font-medium text-center">对比</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-red-50">
+                  <td class="border px-3 py-2 font-semibold text-red-700">排位玩家</td>
+                  <td class="border px-3 py-2 text-right font-semibold text-red-600">6.1%</td>
+                  <td class="border px-3 py-2 text-center"><span class="text-red-500 text-lg">▲</span></td>
+                </tr>
+                <tr>
+                  <td class="border px-3 py-2 font-semibold">自走棋类玩家</td>
+                  <td class="border px-3 py-2 text-right">5.1%</td>
+                  <td class="border px-3 py-2 text-center"><span class="text-orange-400">△</span></td>
+                </tr>
+                <tr>
+                  <td class="border px-3 py-2 font-semibold">斗地主玩家</td>
+                  <td class="border px-3 py-2 text-right text-green-600">3.4%</td>
+                  <td class="border px-3 py-2 text-center"><span class="text-green-400">▼</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+            <p class="text-sm text-amber-800">
+              <strong>结论：</strong>排位玩家的真实流失率（6.1%）确实高于自走棋类（5.1%）和斗地主（3.4%）
+            </p>
+          </div>
+        </div>
+
+        <!-- 三、综合结论 -->
+        <div class="border-2 border-green-300 rounded-lg p-4 bg-gradient-to-r from-green-50 to-white">
+          <h3 class="font-semibold text-green-800 mb-3">三、综合结论</h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-2">
+              <span class="text-green-500 text-lg mt-0">✓</span>
+              <div class="text-sm text-gray-700">
+                <strong>结论1：</strong>重度排位玩家的流失率确实高于其他模式玩家
+                <div class="text-xs text-gray-500 mt-1">排位玩家真实流失率6.1% > 自走棋5.1% > 斗地主3.4%</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-green-500 text-lg mt-0">✓</span>
+              <div class="text-sm text-gray-700">
+                <strong>结论2：</strong>流失的排位用户更依赖单一模式
+                <div class="text-xs text-gray-500 mt-1">有排位对局的用户中，流失组排位占比均值和中位数远高于未流失组</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-green-500 text-lg mt-0">✓</span>
+              <div class="text-sm text-gray-700">
+                <strong>结论3：</strong>全量流失用户的核心特征仍是低活跃
+                <div class="text-xs text-gray-500 mt-1">周均对局数10.39局 vs 未流失组60.23局</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 核心矛盾 -->
+    <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl shadow-sm p-6 border-l-4 border-amber-400">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">预流失用户的核心矛盾</h2>
+      <div class="flex items-center justify-center gap-8 py-6 flex-wrap">
+        <div class="text-center">
+          <div class="text-5xl mb-2">🎮</div>
+          <div class="text-2xl font-bold text-amber-700">还在玩</div>
+          <p class="text-sm text-gray-500 mt-1">他们没有完全流失</p>
+        </div>
+        <div class="text-3xl text-gray-400">→</div>
+        <div class="text-center space-y-2">
+          <div class="text-red-500 font-semibold">但玩得少了</div>
+          <div class="text-orange-500 font-semibold">但不开心了</div>
+          <div class="text-yellow-600 font-semibold">但失去目标了</div>
+        </div>
+        <div class="text-3xl text-gray-400">→</div>
+        <div class="text-center">
+          <div class="text-5xl mb-2">😢</div>
+          <div class="text-2xl font-bold text-red-600">即将流失</div>
+          <p class="text-sm text-gray-500 mt-1">如不干预，将彻底流失</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 三体验模块 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-6">预流失用户体验体系</h2>
+      <div class="space-y-6">
+
+        <!-- 模式体验 -->
+        <div class="border-2 border-amber-300 rounded-xl p-6 bg-gradient-to-b from-amber-50 to-white">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">🎯</span>
+            <div>
+              <h3 class="font-bold text-xl text-amber-800">模式体验</h3>
+              <p class="text-sm text-gray-600">给用户新鲜感，打破当前疲惫感</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- 2V2排位 -->
+            <div class="bg-white rounded-lg p-4 border-2 border-red-200">
+              <div class="flex items-center justify-between mb-3">
+                <div class="font-semibold text-red-700">2V2排位</div>
+                <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded">P0 核心战场</span>
+              </div>
+              <p class="text-xs text-gray-500 mb-3">预流失占比最高（32.3%），核心干预对象</p>
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">武将体验卡激励</div>
+                    <div class="text-xs text-gray-500">首局100%出现，体验珍稀武将</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">匹配优化</div>
+                    <div class="text-xs text-gray-500">实力偏低对手，提升胜率体验</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">段位保护机制</div>
+                    <div class="text-xs text-gray-500">期间不掉星，快速提升段位</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">组队宽松</div>
+                    <div class="text-xs text-gray-500">2V2不限制组队，方便开黑</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 斗地主 -->
+            <div class="bg-white rounded-lg p-4 border-2 border-green-200">
+              <div class="flex items-center justify-between mb-3">
+                <div class="font-semibold text-green-700">斗地主</div>
+                <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">P1 逃离通道</span>
+              </div>
+              <p class="text-xs text-gray-500 mb-3">预流失用户占比较低（9.3%），引导2V2用户导入</p>
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">金豆激励</div>
+                    <div class="text-xs text-gray-500">登录即送金豆，连续登录递增</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">低门槛上手</div>
+                    <div class="text-xs text-gray-500">规则简单，快速进入状态</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">轻松过渡</div>
+                    <div class="text-xs text-gray-500">压力小，适合从2V2疲惫中恢复</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PVE模式 -->
+            <div class="bg-white rounded-lg p-4 border-2 border-blue-200">
+              <div class="flex items-center justify-between mb-3">
+                <div class="font-semibold text-blue-700">PVE模式（如将灵助战）</div>
+                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">P1 压力释放</span>
+              </div>
+              <p class="text-xs text-gray-500 mb-3">适合需要压力释放的预流失用户</p>
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">轻量对战</div>
+                    <div class="text-xs text-gray-500">人机对战，没有匹配压力</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">低挫败感</div>
+                    <div class="text-xs text-gray-500">AI难度可调，保证正向体验</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">武将试用</div>
+                    <div class="text-xs text-gray-500">可体验未拥有武将</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 自走棋 -->
+            <div class="bg-white rounded-lg p-4 border-2 border-purple-200">
+              <div class="flex items-center justify-between mb-3">
+                <div class="font-semibold text-purple-700">自走棋</div>
+                <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">P2 策略优选</span>
+              </div>
+              <p class="text-xs text-gray-500 mb-3">适合高段位策略型用户，预流失占比4.8%</p>
+              <div class="space-y-2">
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">保护机制</div>
+                    <div class="text-xs text-gray-500">不掉分，保护用户段位</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">段位保守策略</div>
+                    <div class="text-xs text-gray-500">降低排名压力</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">策略深度</div>
+                    <div class="text-xs text-gray-500">满足高端用户的策略需求</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 模式引导策略 -->
+          <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+            <p class="text-sm text-amber-800">
+              <strong>引导策略：</strong>核心矛盾是"还在玩但不开心"——干预重点是给新鲜感、优化2V2体验、引导至低压力模式。
+              2V2排位是主战场（预流失占比最高），但需要同时提供"逃离通道"（斗地主/PVE）让用户喘口气。
+            </p>
+          </div>
+        </div>
+
+        <!-- 目标体验 -->
+        <div class="border-2 border-green-300 rounded-xl p-6 bg-gradient-to-b from-green-50 to-white">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">🏆</span>
+            <div>
+              <h3 class="font-bold text-xl text-green-800">目标体验</h3>
+              <p class="text-sm text-gray-600">帮助用户重新找到游戏目标感</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- 战令任务优化 -->
+            <div class="bg-white rounded-lg p-4 border border-green-200">
+              <div class="font-semibold text-green-700 mb-3">战令任务优化</div>
+              <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">降低任务难度</div>
+                    <div class="text-xs text-gray-500">"胜利2场" → "完成2场"（含失败）</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">成就重置</div>
+                    <div class="text-xs text-gray-500">已完成成就清零，重新开始收集</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">赛季冲刺加速</div>
+                    <div class="text-xs text-gray-500">快速达成战令目标，获得满足感</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-green-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">战令经验加成</div>
+                    <div class="text-xs text-gray-500">期间战令经验翻倍，加速升级</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 局外目标 -->
+            <div class="bg-white rounded-lg p-4 border border-teal-200">
+              <div class="font-semibold text-teal-700 mb-3">局外目标</div>
+              <p class="text-xs text-gray-500 mb-3">长期激励目标，帮助用户建立新的追求</p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-teal-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">每日皮肤赠送</div>
+                    <div class="text-xs text-gray-500">连续登录领取珍稀皮肤</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-teal-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">收集成就系统</div>
+                    <div class="text-xs text-gray-500">解锁成就徽章，获得专属奖励</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-teal-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">武将图鉴进度</div>
+                    <div class="text-xs text-gray-500">展示武将收集进度，激励解锁</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-teal-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">称号系统</div>
+                    <div class="text-xs text-gray-500">达成条件获得专属称号</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 段位/等级目标 -->
+            <div class="bg-white rounded-lg p-4 border border-indigo-200">
+              <div class="font-semibold text-indigo-700 mb-3">段位/等级目标</div>
+              <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">段位展示优化</div>
+                    <div class="text-xs text-gray-500">突出显示当前段位，增加成就感</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">段位冲刺指引</div>
+                    <div class="text-xs text-gray-500">显示距离下一段位的场次/胜率要求</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">历史最高展示</div>
+                    <div class="text-xs text-gray-500">展示曾达到的最高段位</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 里程碑事件 -->
+            <div class="bg-white rounded-lg p-4 border border-rose-200">
+              <div class="font-semibold text-rose-700 mb-3">里程碑事件</div>
+              <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-rose-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">回归庆典</div>
+                    <div class="text-xs text-gray-500">登录即触发，展示专属庆祝动画</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-rose-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">回归礼包</div>
+                    <div class="text-xs text-gray-500">包含武将体验卡、金豆、牌局道具</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-rose-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">专属称号</div>
+                    <div class="text-xs text-gray-500">"回归老兵"等专属标识</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 社交体验 -->
+        <div class="border-2 border-blue-300 rounded-xl p-6 bg-gradient-to-b from-blue-50 to-white">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">👥</span>
+            <div>
+              <h3 class="font-bold text-xl text-blue-800">社交体验</h3>
+              <p class="text-sm text-gray-600">通过社交羁绊留住用户</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- 好友推荐 -->
+            <div class="bg-white rounded-lg p-4 border border-blue-200">
+              <div class="font-semibold text-blue-700 mb-3">好友推荐</div>
+              <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">高活好友优先推送</div>
+                    <div class="text-xs text-gray-500">展示最近活跃的好友动态</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">一起开黑邀请</div>
+                    <div class="text-xs text-gray-500">一键邀请在线好友组队</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">好友回归提醒</div>
+                    <div class="text-xs text-gray-500">好友登录时推送通知</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-blue-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">师徒组队优惠</div>
+                    <div class="text-xs text-gray-500">师徒组队额外奖励</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 师徒关系 -->
+            <div class="bg-white rounded-lg p-4 border border-indigo-200">
+              <div class="font-semibold text-indigo-700 mb-3">师徒关系</div>
+              <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">无师傅弱引导</div>
+                    <div class="text-xs text-gray-500">推送"寻找师父"入口</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">师徒任务</div>
+                    <div class="text-xs text-gray-500">专属师徒任务，完成得双倍奖励</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">成长激励</div>
+                    <div class="text-xs text-gray-500">徒弟升级，师傅获得奖励</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-indigo-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">徒弟保护期</div>
+                    <div class="text-xs text-gray-500">新徒弟期间匹配保护</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 公会引导 -->
+            <div class="bg-white rounded-lg p-4 border border-violet-200">
+              <div class="font-semibold text-violet-700 mb-3">公会引导</div>
+              <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-violet-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">无公会弱引导</div>
+                    <div class="text-xs text-gray-500">推送"加入公会"入口</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-violet-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">公会活动</div>
+                    <div class="text-xs text-gray-500">推送公会战、聚餐等活动通知</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-violet-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">社交归属</div>
+                    <div class="text-xs text-gray-500">公会成员在线状态、聊天互动</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-violet-500 mt-0.5">✓</span>
+                  <div>
+                    <div class="text-sm font-medium text-gray-700">公会福利</div>
+                    <div class="text-xs text-gray-500">公会签到、每日福利领取</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 社交策略说明 -->
+          <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+            <p class="text-sm text-blue-800">
+              <strong>社交策略：</strong>社交关系是防止流失的最强屏障。通过好友、师徒、公会三重社交链，
+              让预流失用户感受到"有人在等我一起玩"，从而提升回归动力。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 各模式特权对比表 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">各模式特权对比</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 text-left">
+              <th class="border border-gray-200 px-3 py-2 font-medium">模式</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">参与率</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium text-right">预流失占比</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium">推荐激励</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium">干预策略</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium">优先级</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-red-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">2v2排位</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">26.8%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-red-600">32.3%</td>
+              <td class="border border-gray-200 px-3 py-2">武将体验卡、段位保护、匹配优化</td>
+              <td class="border border-gray-200 px-3 py-2">优化体验 + 引导分流</td>
+              <td class="border border-gray-200 px-3 py-2 text-red-500 font-semibold">P0</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-semibold">斗地主</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">15.5%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right text-green-600">9.3%</td>
+              <td class="border border-gray-200 px-3 py-2">金豆激励、轻松过渡</td>
+              <td class="border border-gray-200 px-3 py-2">引导2V2用户导入</td>
+              <td class="border border-gray-200 px-3 py-2 text-green-600 font-semibold">P1</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2 font-semibold">自走棋</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">6.6%</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">4.8%</td>
+              <td class="border border-gray-200 px-3 py-2">保护机制、段位保守</td>
+              <td class="border border-gray-200 px-3 py-2">策略型用户优选</td>
+              <td class="border border-gray-200 px-3 py-2 text-purple-600 font-semibold">P2</td>
+            </tr>
+            <tr class="bg-blue-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">PVE</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+              <td class="border border-gray-200 px-3 py-2">轻量对战、低挫败感</td>
+              <td class="border border-gray-200 px-3 py-2">压力释放型用户</td>
+              <td class="border border-gray-200 px-3 py-2 text-blue-600 font-semibold">P1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 干预触发链路 -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">预流失干预触发链路</h2>
+      <div class="flex items-center justify-center gap-4 flex-wrap py-4">
+        <div class="text-center p-4 bg-amber-50 border-2 border-amber-300 rounded-xl">
+          <div class="text-2xl mb-1">📊</div>
+          <div class="font-semibold text-amber-800">识别时记录</div>
+          <div class="text-xs text-gray-500 mt-1">流天2.1.1每日12点更新</div>
+        </div>
+        <div class="text-3xl text-gray-400">→</div>
+        <div class="text-center p-4 bg-blue-50 border-2 border-blue-300 rounded-xl">
+          <div class="text-2xl mb-1">📱</div>
+          <div class="font-semibold text-blue-800">登录时呈现</div>
+          <div class="text-xs text-gray-500 mt-1">组合触发：识别时记录+登录时呈现</div>
+        </div>
+        <div class="text-3xl text-gray-400">→</div>
+        <div class="text-center p-4 bg-green-50 border-2 border-green-300 rounded-xl">
+          <div class="text-2xl mb-1">🎮</div>
+          <div class="font-semibold text-green-800">三体验干预</div>
+          <div class="text-xs text-gray-500 mt-1">模式/目标/社交</div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <div class="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+          <h4 class="font-semibold text-gray-700 mb-2">双模型筛选流程</h4>
+          <ol class="text-sm text-gray-600 space-y-1 list-decimal list-inside">
+            <li>人群A：活动度下降用户（流天模型圈选）</li>
+            <li>人群B：从活动增益值排行榜事件中过滤</li>
+            <li>双重筛选 → 精准预流失用户</li>
+          </ol>
+        </div>
+        <div class="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+          <h4 class="font-semibold text-gray-700 mb-2">体验模块优先级</h4>
+          <ol class="text-sm text-gray-600 space-y-1 list-decimal list-inside">
+            <li><span class="text-amber-700">模式体验</span> — 最直接，最快见效</li>
+            <li><span class="text-green-700">目标体验</span> — 中期留存锚点</li>
+            <li><span class="text-blue-700">社交体验</span> — 长期留存保障</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

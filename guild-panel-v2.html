@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公会主界面 - 十周年</title>
+  <style>
+    /* =============================================
+       十周年 交互设计规范
+       画布: 1750×750px (21:9长屏)
+       色彩: 金棕色 #987341 | 一级文字 #4f3427 | 二级文字 #734d1f
+       按钮: 一级 180×54px | 二级 152×48px
+       ============================================= */
+
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* 十周年规范色 */
+      --gold-brown:       #987341;   /* 默认组件色 */
+      --gold-brown-dark:  #7a5c32;   /* 按钮按压 */
+      --gold-brown-light: #b08b55;   /* 按钮悬停 */
+
+      --text-primary:     #4f3427;   /* 一级文字-暗底 */
+      --text-primary-l:    #fff0d5;  /* 一级文字-亮底 */
+      --text-secondary:   #734d1f;   /* 二级文字-暗底 */
+      --text-secondary-l:  #c1ae8e;  /* 二级文字-亮底 */
+      --text-muted:       #929292;   /* 次要色 */
+      --text-white:       #ffffff;
+
+      --accent:           #e76d01;   /* 强调色 */
+      --positive:         #27a700;   /* 正面信息 */
+      --negative:         #c80000;   /* 负面信息-暗底 */
+      --negative-l:       #e90f0f;   /* 负面信息-亮底 */
+
+      --legendary:        #ff2103;   /* 品质-传说 */
+      --epic:             #ff7d0a;   /* 品质-史诗 */
+      --rare:             #b11bf7;   /* 品质-稀有 */
+      --common:           #27a700;   /* 品质-普通 */
+
+      --panel-bg:         #faf3e3;   /* 面板背景-亮 */
+      --panel-dark:       #3d2817;   /* 面板背景-暗 */
+
+      /* 安全边距 */
+      --margin-v:         42px;      /* 上下安全区 */
+      --margin-h:         20px;      /* 侧边安全边距 */
+
+      /* Tab栏 */
+      --tab-width:        150px;     /* 一级Tab宽度 */
+
+      /* 按钮尺寸 */
+      --btn-primary-w:    180px;
+      --btn-primary-h:    54px;
+      --btn-secondary-w:  152px;
+      --btn-secondary-h:  48px;
+    }
+
+    body {
+      font-family: 'Noto Serif SC', 'SimSun', serif;
+      background: linear-gradient(135deg, #1a0e08 0%, #3d2817 50%, #2a1a0f 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* =============================================
+       画布主体 (1750×750)
+       ============================================= */
+    .canvas {
+      width: 1750px;
+      height: 750px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    }
+
+    /* 场景背景层 (层级1) */
+    .bg-layer {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(152,115,65,0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(90,60,30,0.15) 0%, transparent 50%),
+        linear-gradient(180deg, #2a1a0f 0%, #4a3020 40%, #3d2817 100%);
+      z-index: 0;
+    }
+
+    /* 公会旗帜背景装饰 */
+    .banner-deco {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 700px;
+      height: 750px;
+      background:
+        radial-gradient(ellipse at 90% 50%, rgba(152,115,65,0.15) 0%, transparent 60%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* =============================================
+       顶部安全区 (层级3 UI层)
+       ============================================= */
+    .top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--margin-v);
+      background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 100%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 var(--margin-h);
+    }
+
+    .currency-bar {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .currency-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--text-primary-l);
+    }
+
+    .currency-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* =============================================
+       左侧一级Tab栏
+       ============================================= */
+    .tab-nav {
+      position: absolute;
+      top: var(--margin-v);
+      left: 0;
+      width: var(--tab-width);
+      bottom: var(--margin-v);
+      background: linear-gradient(90deg, rgba(152,115,65,0.15) 0%, rgba(152,115,65,0.05) 100%);
+      border-right: 2px solid rgba(152,115,65,0.3);
+      padding: 16px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 5;
+    }
+
+    .tab-item {
+      width: 134px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(250,243,227,0.9) 0%, rgba(232,212,176,0.9) 100%);
+      border: 2px solid var(--gold-brown);
+      border-radius: 8px;
+      font-size: 18px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      /* 热区: ≥60×60px 规范 */
+      min-height: 56px;
+    }
+
+    .tab-item:hover {
+      background: linear-gradient(180deg, var(--gold-brown-light) 0%, var(--gold-brown) 100%);
+      color: var(--text-white);
+      transform: translateX(2px);
+    }
+
+    .tab-item.active {
+      background: linear-gradient(180deg, var(--gold-brown) 0%, var(--gold-brown-dark) 100%);
+      color: var(--text-white);
+      border-color: var(--gold-brown-dark);
+      box-shadow:
+        0 0 12px rgba(152,115,65,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    /* 红点提示 */
+    .tab-reddot {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 12px;
+      height: 12px;
+      background: #e90f0f;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      display: none;
+    }
+
+    .tab-item.has-dot .tab-reddot {
+      display: block;
+    }
+
+    /* =============================================
+       内容区
+       ============================================= */
+    .content-area {
+      position: absolute;
+      top: var(--margin-v);
+      left: var(--tab-width);
+      right: 0;
+      bottom: var(--margin-v);
+      padding: 20px 24px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 3;
+      overflow: hidden;
+    }
+
+    /* =============================================
+       头部信息区
+       ============================================= */
+    .info-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(152,115,65,0.25);
+    }
+
+    .guild-emblem-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .guild-emblem {
+      width: 100px;
+      height: 110px;
+      position: relative;
+    }
+
+    .emblem-bg {
+      width: 100px;
+      height: 110px;
+      background: linear-gradient(180deg, #8B4A9B 0%, #5D2D6B 100%);
+      border: 3px solid var(--gold-brown);
+      border-radius: 0 0 50px 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 15px rgba(152,115,65,0.4),
+        inset 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .emblem-char {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--gold-brown);
+      text-shadow: 1px 1px 0 #3d2817;
+      line-height: 1;
+    }
+
+    .emblem-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.7);
+      margin-top: 2px;
+    }
+
+    .guild-meta {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .guild-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .guild-name {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 4px;
+    }
+
+    .guild-level {
+      font-size: 16px;
+      color: var(--text-white);
+      background: linear-gradient(135deg, var(--gold-brown) 0%, #c49a55 100%);
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    .guild-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .guild-tag {
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: rgba(152,115,65,0.12);
+      border: 1px solid rgba(152,115,65,0.3);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    .guild-tag.highlight {
+      color: var(--positive);
+      background: rgba(39,167,0,0.1);
+      border-color: rgba(39,167,0,0.3);
+    }
+
+    .guild-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .guild-leader {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .guild-leader span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* 快捷操作按钮组 */
+    .quick-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       核心指标卡片
+       ============================================= */
+    .stats-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: linear-gradient(180deg, rgba(250,243,227,0.95) 0%, rgba(240,230,210,0.95) 100%);
+      border: 2px solid rgba(152,115,65,0.4);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .stat-card.green::before  { background: linear-gradient(90deg, transparent, var(--positive), transparent); }
+    .stat-card.gold::before  { background: linear-gradient(90deg, transparent, var(--gold-brown), transparent); }
+    .stat-card.orange::before { background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+    .stat-card.purple::before { background: linear-gradient(90deg, transparent, #8B4A9B, transparent); }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .stat-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .stat-value.highlight {
+      color: var(--positive);
+    }
+
+    .stat-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .stat-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(152,115,65,0.2);
+      border-radius: 2px;
+      margin-top: 4px;
+      overflow: hidden;
+    }
+
+    .stat-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-brown), var(--accent));
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    /* =============================================
+       主内容区（双栏）
+       ============================================= */
+    .main-content {
+      flex: 1;
+      display: flex;
+      gap: 16px;
+      min-height: 0;
+    }
+
+    /* 左列 - 活动/任务 */
+    .col-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    /* 右列 - 成员 */
+    .col-right {
+      width: 380px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* =============================================
+       卡片通用样式
+       ============================================= */
+    .card {
+      background: linear-gradient(180deg, rgba(250,243,227,0.95) 0%, rgba(240,230,210,0.92) 100%);
+      border: 2px solid rgba(152,115,65,0.35);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid rgba(152,115,65,0.2);
+      background: linear-gradient(180deg, rgba(152,115,65,0.1) 0%, transparent 100%);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title-icon {
+      width: 20px;
+      height: 20px;
+      background: var(--gold-brown);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #fff;
+    }
+
+    .card-body {
+      padding: 12px 14px;
+    }
+
+    /* =============================================
+       擂鼓区域
+       ============================================= */
+    .drum-section {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .drum-widget {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .drum-orb {
+      width: 120px;
+      height: 120px;
+      background:
+        radial-gradient(circle at 35% 35%, #c49a55 0%, #8B5A2B 40%, #5D3A1A 100%);
+      border: 4px solid var(--gold-brown);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.1),
+        0 8px 24px rgba(0,0,0,0.4),
+        inset 0 0 30px rgba(0,0,0,0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      /* 热区: ≥60×60 */
+      min-width: 120px;
+      min-height: 120px;
+    }
+
+    .drum-orb:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.15),
+        0 12px 32px rgba(0,0,0,0.5),
+        inset 0 0 30px rgba(0,0,0,0.3),
+        0 0 20px rgba(152,115,65,0.3);
+    }
+
+    .drum-orb:active {
+      transform: scale(0.97);
+    }
+
+    .drum-label {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .drum-cost {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .drum-heart {
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, #FF6B6B, #c80000);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #fff;
+    }
+
+    .drum-countdown {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .drum-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .drum-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .drum-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .drum-rewards {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .drum-reward-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .reward-chip {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(152,115,65,0.1);
+      border: 1px solid rgba(152,115,65,0.3);
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* =============================================
+       今日任务
+       ============================================= */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(152,115,65,0.2);
+      border-radius: 8px;
+    }
+
+    .task-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--gold-brown-light) 0%, var(--gold-brown) 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .task-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .task-name {
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .task-progress-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 3px;
+    }
+
+    .task-bar {
+      flex: 1;
+      height: 6px;
+      background: rgba(152,115,65,0.2);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .task-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-brown) 0%, var(--accent) 100%);
+      border-radius: 3px;
+    }
+
+    .task-count {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* 任务奖励 */
+    .task-rewards-row {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .reward-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid rgba(152,115,65,0.4);
+      background: radial-gradient(circle at 40% 40%, #fff 0%, #e8d4b0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--text-secondary);
+    }
+
+    /* =============================================
+       按钮样式 (十周年规范)
+       ============================================= */
+
+    /* 一级按钮: 180×54px, 28px, 最多7字 */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--btn-primary-w);
+      min-height: var(--btn-primary-h);
+      padding: 0 20px;
+      background: linear-gradient(180deg, var(--gold-brown) 0%, var(--gold-brown-dark) 100%);
+      border: 2px solid var(--gold-brown-dark);
+      border-radius: 8px;
+      font-size: 18px;
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 600;
+      color: var(--text-white);
+      cursor: pointer;
+      box-shadow:
+        0 4px 8px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(180deg, var(--gold-brown-light) 0%, var(--gold-brown) 100%);
+      transform: translateY(-1px);
+      box-shadow:
+        0 6px 12px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    /* 二级按钮: 152×48px, 24px, 最多4字 */
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--btn-secondary-w);
+      min-height: var(--btn-secondary-h);
+      padding: 0 16px;
+      background: linear-gradient(180deg, rgba(250,243,227,0.95) 0%, rgba(232,212,176,0.95) 100%);
+      border: 2px solid var(--gold-brown);
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover {
+      background: linear-gradient(180deg, var(--gold-brown-light) 0%, var(--gold-brown) 100%);
+      color: var(--text-white);
+    }
+
+    .btn-secondary.goto {
+      background: linear-gradient(180deg, var(--gold-brown-dark) 0%, #5a4020 100%);
+      color: var(--text-primary-l);
+    }
+
+    .btn-secondary.goto:hover {
+      background: linear-gradient(180deg, var(--gold-brown) 0%, var(--gold-brown-dark) 100%);
+    }
+
+    .btn-secondary.claimed {
+      background: linear-gradient(180deg, #6B8E23 0%, #4a6b18 100%);
+      color: #fff;
+      cursor: default;
+      border-color: #4a6b18;
+    }
+
+    /* 小型按钮 (热区≥60×60规范) */
+    .btn-small {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+      min-height: 36px;
+      padding: 0 12px;
+      background: linear-gradient(180deg, var(--gold-brown) 0%, var(--gold-brown-dark) 100%);
+      border: 2px solid var(--gold-brown-dark);
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: 'Noto Serif SC', serif;
+      color: var(--text-white);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-small:hover {
+      background: linear-gradient(180deg, var(--gold-brown-light) 0%, var(--gold-brown) 100%);
+    }
+
+    /* =============================================
+       成员列表
+       ============================================= */
+    .member-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 14px 12px;
+    }
+
+    .member-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .member-list::-webkit-scrollbar-track {
+      background: rgba(152,115,65,0.1);
+      border-radius: 2px;
+    }
+
+    .member-list::-webkit-scrollbar-thumb {
+      background: var(--gold-brown);
+      border-radius: 2px;
+    }
+
+    .member-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(152,115,65,0.1);
+    }
+
+    .member-row:last-child {
+      border-bottom: none;
+    }
+
+    .member-rank {
+      width: 22px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .member-rank.top1 { color: var(--legendary); }
+    .member-rank.top2 { color: var(--epic); }
+    .member-rank.top3 { color: var(--rare); }
+
+    .member-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid rgba(152,115,65,0.3);
+      background: linear-gradient(135deg, #c49a55 0%, #8B5A2B 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .member-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .member-name {
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .member-title {
+      font-size: 11px;
+      color: var(--accent);
+      background: rgba(231,109,1,0.1);
+      border-radius: 3px;
+      padding: 0 4px;
+    }
+
+    .member-title.leader {
+      background: linear-gradient(135deg, var(--gold-brown) 0%, var(--gold-brown-dark) 100%);
+      color: #fff;
+    }
+
+    .member-stats {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .member-contrib {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .member-contrib-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .member-activity {
+      font-size: 11px;
+      color: var(--positive);
+    }
+
+    /* =============================================
+       弹窗遮罩 (层级4)
+       ============================================= */
+    .modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    /* 二确弹窗: 722×453px */
+    .modal-confirm {
+      width: 722px;
+      height: 453px;
+      background: linear-gradient(180deg, #faf3e3 0%, #f0e6d0 100%);
+      border: 3px solid var(--gold-brown);
+      border-radius: 12px;
+      box-shadow:
+        0 0 0 2px rgba(0,0,0,0.3),
+        0 20px 60px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: linear-gradient(180deg, rgba(152,115,65,0.15) 0%, transparent 100%);
+      border-bottom: 2px solid rgba(152,115,65,0.3);
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .modal-close {
+      width: 44px;
+      height: 44px;
+      background: rgba(152,115,65,0.15);
+      border: 2px solid var(--gold-brown);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--text-primary);
+      transition: all 0.15s ease;
+    }
+
+    .modal-close:hover {
+      background: var(--gold-brown);
+      color: #fff;
+    }
+
+    .modal-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      gap: 20px;
+    }
+
+    .modal-message {
+      font-size: 18px;
+      color: var(--text-primary);
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    /* =============================================
+       Toast提示 (层级5-6)
+       ============================================= */
+    .toast {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: rgba(74,52,39,0.95);
+      color: var(--text-primary-l);
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-size: 15px;
+      z-index: 200;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      border: 1px solid rgba(152,115,65,0.4);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* =============================================
+       响应式: 16:9适配
+       ============================================= */
+    @media (max-width: 1600px) {
+      .canvas {
+        transform: scale(0.9);
+        transform-origin: center center;
+      }
+    }
+
+    @media (max-width: 1400px) {
+      .canvas {
+        transform: scale(0.8);
+        transform-origin: center center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="canvas" id="guildPanel">
+
+  <!-- 层级1: 场景背景 -->
+  <div class="bg-layer"></div>
+  <div class="banner-deco"></div>
+
+  <!-- 层级3: UI层 -->
+  <!-- 顶部资源栏 -->
+  <div class="top-bar">
+    <div class="currency-bar">
+      <div class="currency-item">
+        <div class="currency-icon" style="background:linear-gradient(135deg,#FFD700,#B8860B)">金</div>
+        <span>1966</span>
+      </div>
+      <div class="currency-item">
+        <div class="currency-icon" style="background:linear-gradient(135deg,#E8C547,#9A7B2A)">宝</div>
+        <span>55万</span>
+      </div>
+      <div class="currency-item">
+        <div class="currency-icon" style="background:linear-gradient(135deg,#C9A227,#7A6218)">勋</div>
+        <span>20万</span>
+      </div>
+      <div class="currency-item">
+        <div class="currency-icon" style="background:linear-gradient(135deg,#B22222,#8B0000)">战</div>
+        <span>28410</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 左侧一级Tab栏 -->
+  <nav class="tab-nav">
+    <div class="tab-item active" data-tab="info">
+      <span>信息</span>
+      <div class="tab-reddot"></div>
+    </div>
+    <div class="tab-item" data-tab="compete">
+      <span>争霸</span>
+      <div class="tab-reddot"></div>
+    </div>
+    <div class="tab-item" data-tab="activity">
+      <span>活动</span>
+    </div>
+    <div class="tab-item" data-tab="shop">
+      <span>商店</span>
+    </div>
+    <div class="tab-item" data-tab="dynamic">
+      <span>动态</span>
+    </div>
+    <div class="tab-item" data-tab="rank">
+      <span>排名</span>
+    </div>
+    <div class="tab-item has-dot" data-tab="manage">
+      <span>管理</span>
+      <div class="tab-reddot"></div>
+    </div>
+  </nav>
+
+  <!-- 内容区 -->
+  <div class="content-area">
+
+    <!-- 头部公会信息 -->
+    <div class="info-header">
+
+      <!-- 公会徽章 -->
+      <div class="guild-emblem-wrap">
+        <div class="guild-emblem">
+          <div class="emblem-bg">
+            <div class="emblem-char">南</div>
+            <div class="emblem-sub">南墨</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 公会元信息 -->
+      <div class="guild-meta">
+        <div class="guild-title-row">
+          <div class="guild-name">南墨</div>
+          <div class="guild-level">8级</div>
+          <div class="guild-tags">
+            <div class="guild-tag highlight">新人友好</div>
+            <div class="guild-tag">休闲</div>
+            <div class="guild-tag">杭州</div>
+          </div>
+        </div>
+        <div class="guild-leader">
+          会长：<span>铜锣烧铺子</span>　在线
+        </div>
+        <div class="guild-desc">
+          欢迎萌新，氛围友好！每日活动，奖励丰厚～
+        </div>
+      </div>
+
+      <!-- 快捷操作按钮组 -->
+      <div class="quick-actions">
+        <button class="btn-secondary" onclick="showToast('已分享公会信息')">分享公会</button>
+        <button class="btn-primary" onclick="showToast('已发出邀请')" style="min-width: 160px;">邀请加入</button>
+      </div>
+    </div>
+
+    <!-- 核心指标卡片 -->
+    <div class="stats-row">
+      <div class="stat-card green">
+        <div class="stat-label">活跃度</div>
+        <div class="stat-value highlight">83%</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="width: 83%"></div></div>
+        <div class="stat-sub">高活跃</div>
+      </div>
+      <div class="stat-card gold">
+        <div class="stat-label">成员</div>
+        <div class="stat-value">15<span style="font-size:14px;color:var(--text-muted)">/50</span></div>
+        <div class="stat-sub">在线 8人</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-label">周贡献</div>
+        <div class="stat-value">2.5<span style="font-size:14px;color:var(--text-muted)">万</span></div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="width: 62%"></div></div>
+        <div class="stat-sub">排名第 12</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-label">公会战功</div>
+        <div class="stat-value">12.8<span style="font-size:14px;color:var(--text-muted)">万</span></div>
+        <div class="stat-sub">总排行 35</div>
+      </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+
+      <!-- 左列 -->
+      <div class="col-left">
+
+        <!-- 擂鼓区 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <div class="card-title-icon">&#9826;</div>
+              擂鼓台
+            </div>
+            <span style="font-size:12px;color:var(--text-muted)">每日 3 次</span>
+          </div>
+          <div class="card-body">
+            <div class="drum-section">
+              <div class="drum-widget">
+                <div class="drum-orb" onclick="showToast('擂鼓成功！+50 繁荣度')">
+                  <div class="drum-label">擂鼓</div>
+                  <div class="drum-cost">
+                    <div class="drum-heart">&#9829;</div>
+                    <span>20</span>
+                  </div>
+                </div>
+              </div>
+              <div class="drum-info">
+                <div class="drum-title">为公会繁荣助力</div>
+                <div class="drum-desc">
+                  每擂鼓一次，增加公会繁荣度50点<br>
+                  成员均享贡献奖励
+                </div>
+                <div class="drum-rewards">
+                  <span class="drum-reward-label">本次奖励</span>
+                  <div class="reward-chip">&#9830; 贡献 +10</div>
+                  <div class="reward-chip">&#9830; 红包</div>
+                </div>
+              </div>
+              <button class="btn-small" onclick="showToast('擂鼓成功！+50 繁荣度')">擂鼓</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 今日任务 -->
+        <div class="card" style="flex:1;display:flex;flex-direction:column;">
+          <div class="card-header">
+            <div class="card-title">
+              <div class="card-title-icon">&#9733;</div>
+              今日任务
+            </div>
+            <button class="btn-small" style="min-width:auto;padding:0 10px;font-size:12px;">全部</button>
+          </div>
+          <div class="card-body" style="flex:1;display:flex;flex-direction:column;gap:6px;padding:10px 14px;">
+            <div class="task-item">
+              <div class="task-icon">&#9812;</div>
+              <div class="task-info">
+                <div class="task-name">公会战获得首胜</div>
+                <div class="task-progress-row">
+                  <div class="task-bar"><div class="task-bar-fill" style="width:100%"></div></div>
+                  <div class="task-count">1/1</div>
+                </div>
+              </div>
+              <div class="task-rewards-row">
+                <div class="reward-dot">&#9670;</div>
+                <div class="reward-dot">&#9670;</div>
+              </div>
+              <button class="btn-secondary claimed" style="min-width:80px;min-height:36px;font-size:13px;">已领取</button>
+            </div>
+            <div class="task-item">
+              <div class="task-icon">&#9826;</div>
+              <div class="task-info">
+                <div class="task-name">参与擂鼓 1 次</div>
+                <div class="task-progress-row">
+                  <div class="task-bar"><div class="task-bar-fill" style="width:50%"></div></div>
+                  <div class="task-count">1/2</div>
+                </div>
+              </div>
+              <div class="task-rewards-row">
+                <div class="reward-dot">&#9670;</div>
+                <div class="reward-dot">&#9670;</div>
+                <div class="reward-dot">&#9670;</div>
+              </div>
+              <button class="btn-secondary goto" style="min-width:80px;min-height:36px;font-size:13px;">前往</button>
+            </div>
+            <div class="task-item">
+              <div class="task-icon">&#9734;</div>
+              <div class="task-info">
+                <div class="task-name">任意模式进行 3 局游戏</div>
+                <div class="task-progress-row">
+                  <div class="task-bar"><div class="task-bar-fill" style="width:33%"></div></div>
+                  <div class="task-count">1/3</div>
+                </div>
+              </div>
+              <div class="task-rewards-row">
+                <div class="reward-dot">&#9670;</div>
+                <div class="reward-dot">&#9670;</div>
+              </div>
+              <button class="btn-secondary goto" style="min-width:80px;min-height:36px;font-size:13px;">前往</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 右列：成员列表 -->
+      <div class="col-right">
+        <div class="card" style="flex:1;display:flex;flex-direction:column;overflow:hidden;">
+          <div class="card-header">
+            <div class="card-title">
+              <div class="card-title-icon">&#9813;</div>
+              成员列表
+            </div>
+            <span style="font-size:12px;color:var(--text-muted)">15 人</span>
+          </div>
+          <div class="member-list">
+            <div class="member-row">
+              <div class="member-rank top1">1</div>
+              <div class="member-avatar">&#28900;</div>
+              <div class="member-info">
+                <div class="member-name">
+                  铜锣烧铺子
+                  <div class="member-title leader">会长</div>
+                </div>
+                <div class="member-stats">
+                  <span>等级 108</span>
+                  <span>月活跃 100%</span>
+                </div>
+              </div>
+              <div class="member-contrib">
+                <div class="member-contrib-value">5.2万</div>
+                <div class="member-activity">&#9679; 在线</div>
+              </div>
+            </div>
+            <div class="member-row">
+              <div class="member-rank top2">2</div>
+              <div class="member-avatar">&#26522;</div>
+              <div class="member-info">
+                <div class="member-name">
+                  王佐之才
+                  <div class="member-title">副会长</div>
+                </div>
+                <div class="member-stats">
+                  <span>等级 98</span>
+                  <span>月活跃 92%</span>
+                </div>
+              </div>
+              <div class="member-contrib">
+                <div class="member-contrib-value">3.8万</div>
+                <div class="member-activity">&#9679; 在线</div>
+              </div>
+            </div>
+            <div class="member-row">
+              <div class="member-rank top3">3</div>
+              <div class="member-avatar">&#33707;</div>
+              <div class="member-info">
+                <div class="member-name">莫道不消魂</div>
+                <div class="member-stats">
+                  <span>等级 88</span>
+                  <span>月活跃 85%</span>
+                </div>
+              </div>
+              <div class="member-contrib">
+                <div class="member-contrib-value">2.1万</div>
+                <div class="member-activity" style="color:var(--text-muted)">&#9675; 2小时前</div>
+              </div>
+            </div>
+            <div class="member-row">
+              <div class="member-rank">4</div>
+              <div class="member-avatar">&#26753;</div>
+              <div class="member-info">
+                <div class="member-name">梁上君子</div>
+                <div class="member-stats">
+                  <span>等级 75</span>
+                  <span>月活跃 60%</span>
+                </div>
+              </div>
+              <div class="member-contrib">
+                <div class="member-contrib-value">1.5万</div>
+                <div class="member-activity" style="color:var(--text-muted)">&#9675; 昨天</div>
+              </div>
+            </div>
+            <div class="member-row">
+              <div class="member-rank">5</div>
+              <div class="member-avatar">&#38470;</div>
+              <div class="member-info">
+                <div class="member-name">雾中风景</div>
+                <div class="member-stats">
+                  <span>等级 65</span>
+                  <span>月活跃 78%</span>
+                </div>
+              </div>
+              <div class="member-contrib">
+                <div class="member-contrib-value">1.2万</div>
+                <div class="member-activity">&#9679; 在线</div>
+              </div>
+            </div>
+            <div class="member-row">
+              <div class="member-rank">6</div>
+              <div class="member-avatar">&#38889;</div>
+              <div class="member-info">
+                <div class="member-name">寒江独钓</div>
+                <div class="member-stats">
+                  <span>等级 52</span>
+                  <span>月活跃 45%</span>
+                </div>
+              </div>
+              <div class="member-contrib">
+                <div class="member-contrib-value">8000</div>
+                <div class="member-activity" style="color:var(--text-muted)">&#9675; 3天前</div>
+              </div>
+            </div>
+            <div class="member-row">
+              <div class="member-rank">7</div>
+              <div class="member-avatar">&#29577;</div>
+              <div class="member-info">
+                <div class="member-name">玉蝴蝶舞</div>
+                <div class="member-stats">
+                  <span>等级 38</span>
+                  <span>月活跃 80%</span>
+                </div>
+              </div>
+              <div class="member-contrib">
+                <div class="member-contrib-value">5200</div>
+                <div class="member-activity">&#9679; 在线</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /main-content -->
+  </div><!-- /content-area -->
+
+  <!-- 层级4: 弹窗层 - 二次确认弹窗 -->
+  <div class="modal-overlay" id="inviteModal">
+    <div class="modal-confirm">
+      <div class="modal-header">
+        <div class="modal-title">邀请加入</div>
+        <div class="modal-close" onclick="closeModal()">&#10005;</div>
+      </div>
+      <div class="modal-body">
+        <div style="font-size:48px;margin-bottom:8px;">&#128081;</div>
+        <div class="modal-message">
+          确定邀请 <strong>铜锣烧铺子</strong> 加入公会？<br>
+          对方将收到邀请通知
+        </div>
+        <div class="modal-buttons">
+          <button class="btn-secondary" onclick="closeModal()">取消</button>
+          <button class="btn-primary" onclick="confirmInvite()">确认邀请</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 层级5-6: Toast -->
+  <div class="toast" id="toast"></div>
+
+</div><!-- /canvas -->
+
+<script>
+  // Tab切换
+  document.querySelectorAll('.tab-item').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // 模态框
+  function showModal() {
+    document.getElementById('inviteModal').classList.add('show');
+  }
+  function closeModal() {
+    document.getElementById('inviteModal').classList.remove('show');
+  }
+  function confirmInvite() {
+    closeModal();
+    showToast('邀请已发送，请等待对方确认');
+  }
+
+  // Toast提示
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  }
+
+  // 点击遮罩关闭模态框
+  document.getElementById('inviteModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
+
+</body>
+</html>

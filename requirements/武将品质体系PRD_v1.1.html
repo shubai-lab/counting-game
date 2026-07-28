@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>武将品质体系 PRD v1.1</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; line-height: 1.8; color: #333; background: #f5f5f5; }
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+.cover { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 40px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3); }
+.cover h1 { font-size: 32px; font-weight: 600; margin-bottom: 20px; }
+.cover-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 14px; opacity: 0.9; }
+.cover-meta span { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; }
+.section { background: white; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section-title { font-size: 20px; font-weight: 600; color: #667eea; padding-bottom: 16px; margin-bottom: 20px; border-bottom: 2px solid #f0f0f0; }
+.section h3 { font-size: 16px; font-weight: 600; color: #444; margin: 24px 0 12px 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+th { background: #667eea; color: white; padding: 12px 16px; text-align: left; font-weight: 500; }
+td { padding: 12px 16px; border-bottom: 1px solid #eee; }
+tr:hover { background: #f8f9ff; }
+.text-center { text-align: center; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+.tag-primary { background: #667eea; color: white; }
+.tag-success { background: #52c41a; color: white; }
+.tag-warning { background: #faad14; color: white; }
+.tag-danger { background: #ff4d4f; color: white; }
+.tag-gray { background: #8c8c8c; color: white; }
+.rule-card { background: #f6ffed; border-left: 4px solid #52c41a; padding: 20px; margin: 16px 0; border-radius: 0 8px 8px 0; }
+.rule-card h4 { color: #52c41a; font-size: 15px; margin-bottom: 12px; }
+ul { padding-left: 24px; margin: 12px 0; }
+li { margin: 8px 0; }
+.conclusion-box { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 16px; }
+.footer { text-align: center; padding: 40px; color: #999; font-size: 13px; }
+.general-table-wrapper { max-height: 600px; overflow-y: auto; border: 1px solid #e8e8e8; border-radius: 8px; }
+.general-table { font-size: 13px; margin: 0; }
+.general-table th { position: sticky; top: 0; z-index: 10; }
+.tier-header { background: #f0f0f0; font-weight: 600; }
+.tier-header td { color: #667eea; padding: 8px 12px !important; }
+.general-row:hover { background: #f8f9ff !important; }
+.filter-bar { text-align: center; margin: 20px 0; padding: 16px; background: #fafafa; border-radius: 8px; }
+.filter-btn { padding: 8px 16px; margin: 5px; border: 2px solid #667eea; border-radius: 20px; cursor: pointer; background: white; color: #667eea; font-weight: 500; transition: all 0.2s; }
+.filter-btn:hover { background: #667eea; color: white; }
+.filter-btn.active { background: #667eea; color: white; }
+.stats { text-align: center; margin: 12px 0; color: #666; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="cover">
+<h1>武将品质体系 PRD</h1>
+<div class="cover-meta">
+<span>v1.1</span>
+<span>内部策划文档</span>
+<span>疏白</span>
+<span>2026-06-10</span>
+<span class="tag tag-warning">待评审</span>
+</div>
+</div>
+
+<div class="section">
+<h2 class="section-title">一、项目背景</h2>
+<h3>1.1 问题描述</h3>
+<p>项目组目前没有统一的武将品质分级标准，导致：</p>
+<ul>
+<li>定价参考不统一</li>
+<li>获取难度标注混乱</li>
+</ul>
+<h3>1.2 项目目标</h3>
+<p>建立一套与行业标准对齐的武将品质体系，核心是确定<strong>档位标准</strong>：哪些武将归哪个档。</p>
+<h3>1.3 适用范围</h3>
+<p>内部策划讨论、定价参考、获取难度标注。</p>
+</div>
+
+<div class="section">
+<h2 class="section-title">二、行业现状分析</h2>
+<h3>2.1 四款"杀类"游戏品质体系对比</h3>
+<table>
+<thead><tr><th>游戏</th><th class="text-center">档数</th><th>最高品质</th><th>次高品质</th><th>中间品质</th><th>次低品质</th><th>最低品质</th></tr></thead>
+<tbody>
+<tr><td><strong>三国杀OL</strong></td><td class="text-center">5档</td><td><span class="tag tag-danger">限定</span></td><td><span class="tag tag-warning">传说</span></td><td><span class="tag tag-primary">史诗</span></td><td><span class="tag tag-success">稀有</span></td><td><span class="tag tag-gray">普通</span></td></tr>
+<tr><td><strong>手杀</strong></td><td class="text-center">3档</td><td><span class="tag tag-primary">史诗</span></td><td><span class="tag tag-success">精品</span></td><td>-</td><td>-</td><td><span class="tag tag-gray">普通</span></td></tr>
+<tr><td><strong>英雄杀</strong></td><td class="text-center">5档</td><td><span class="tag tag-danger">五星</span></td><td><span class="tag tag-warning">四星</span></td><td><span class="tag tag-primary">三星</span></td><td><span class="tag tag-success">二星</span></td><td><span class="tag tag-gray">一星</span></td></tr>
+<tr><td><strong>名将杀</strong></td><td class="text-center">4档</td><td><span class="tag tag-danger">传说</span></td><td><span class="tag tag-warning">史诗</span></td><td><span class="tag tag-success">稀有</span></td><td><span class="tag tag-gray">普通</span></td><td>-</td></tr>
+</tbody>
+</table>
+
+<h3>2.2 价格区间对比</h3>
+<p>不同游戏的获取方式不同，以下为各品质的价格参考（统一换算为人民币）：</p>
+
+<h4>三国杀OL（100元宝 = 1元）</h4>
+<table>
+<thead><tr><th>品质</th><th class="text-center">价格区间（元宝）</th><th class="text-center">人民币</th><th>获取方式</th></tr></thead>
+<tbody>
+<tr><td><span class="tag tag-danger">限定</span></td><td class="text-center">12万~30万</td><td class="text-center">1200~3000元</td><td>大祈福、玉玺、消费活动</td></tr>
+<tr><td><span class="tag tag-warning">传说</span></td><td class="text-center">3万~12万</td><td class="text-center">300~1200元</td><td>小祈福、翻翻乐、宝珠</td></tr>
+<tr><td><span class="tag tag-primary">史诗</span></td><td class="text-center">0.6万~3万</td><td class="text-center">60~300元</td><td>将魂合成、宝珠兑换</td></tr>
+<tr><td><span class="tag tag-success">稀有</span></td><td class="text-center">0.2万~0.6万</td><td class="text-center">20~60元</td><td>灵宝商城、元宝直购</td></tr>
+<tr><td><span class="tag tag-gray">普通</span></td><td class="text-center">-</td><td class="text-center">免费</td><td>新手赠送、标准包</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2 class="section-title">三、当前数据现状</h2>
+<h3>3.1 档位分布（v36，共671个武将）</h3>
+<table>
+<thead><tr><th>品质</th><th class="text-center">数量</th><th class="text-center">占比</th></tr></thead>
+<tbody>
+<tr><td><span class="tag tag-danger">限定</span></td><td class="text-center">42</td><td class="text-center">6.3%</td></tr>
+<tr><td><span class="tag tag-warning">传说</span></td><td class="text-center">217</td><td class="text-center">32.3%</td></tr>
+<tr><td><span class="tag tag-primary">史诗</span></td><td class="text-center">134</td><td class="text-center">20.0%</td></tr>
+<tr><td><span class="tag tag-success">稀有</span></td><td class="text-center">174</td><td class="text-center">25.9%</td></tr>
+<tr><td><span class="tag tag-gray">普通</span></td><td class="text-center">104</td><td class="text-center">15.5%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="section">
+<h2 class="section-title">四、我们的档位规则</h2>
+<p>基于获取途径和价格双重维度，制定档位划分规则。</p>
+<p><strong>重要说明：</strong>武将品质判断遵循以下优先级——<em>固定档位（获取途径）&gt; 将星商城价格 &gt; 珍宝价格 &gt; 运营活动价格</em></p>
+
+<h3>4.1 档位划分规则（完整版）</h3>
+<table>
+<thead><tr><th>品质</th><th>获取途径</th><th>评级规则</th><th class="text-center">数量</th><th class="text-center">占比</th></tr></thead>
+<tbody>
+<tr><td rowspan="2"><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止</td><td>固定限定档</td><td class="text-center">2</td><td class="text-center">0.3%</td></tr>
+<tr><td>运营活动/珍宝</td><td>价格 ≥ 20万</td><td class="text-center">40</td><td class="text-center">6.0%</td></tr>
+<tr><td rowspan="2"><span class="tag tag-warning">传说</span></td><td>祈福</td><td>固定传说档</td><td class="text-center">6</td><td class="text-center">0.9%</td></tr>
+<tr><td>将星/运营活动</td><td>将星≥1万 或 价格≥10万</td><td class="text-center">211</td><td class="text-center">31.4%</td></tr>
+<tr><td rowspan="2"><span class="tag tag-primary">史诗</span></td><td>纳贤/神将任务/神武/谋定天下</td><td>固定史诗档</td><td class="text-center">51</td><td class="text-center">7.6%</td></tr>
+<tr><td>将星/运营活动</td><td>价格 1万~10万</td><td class="text-center">83</td><td class="text-center">12.4%</td></tr>
+<tr><td rowspan="2"><span class="tag tag-success">稀有</span></td><td>珍宝</td><td>珍宝 5~10万</td><td class="text-center">-</td><td class="text-center">-</td></tr>
+<tr><td>将星</td><td>将星 100~2000</td><td class="text-center">174</td><td class="text-center">25.9%</td></tr>
+<tr><td rowspan="2"><span class="tag tag-gray">普通</span></td><td>新手等活动</td><td>活动赠送武将</td><td class="text-center">-</td><td class="text-center">-</td></tr>
+<tr><td>将星</td><td>将星 &lt; 100</td><td class="text-center">104</td><td class="text-center">15.5%</td></tr>
+</tbody>
+</table>
+
+<h3>4.2 品质分布汇总</h3>
+<table>
+<thead><tr><th>品质</th><th class="text-center">数量</th><th class="text-center">占比</th></tr></thead>
+<tbody>
+<tr><td><span class="tag tag-danger">限定</span></td><td class="text-center">42</td><td class="text-center">6.3%</td></tr>
+<tr><td><span class="tag tag-warning">传说</span></td><td class="text-center">217</td><td class="text-center">32.3%</td></tr>
+<tr><td><span class="tag tag-primary">史诗</span></td><td class="text-center">134</td><td class="text-center">20.0%</td></tr>
+<tr><td><span class="tag tag-success">稀有</span></td><td class="text-center">174</td><td class="text-center">25.9%</td></tr>
+<tr><td><span class="tag tag-gray">普通</span></td><td class="text-center">104</td><td class="text-center">15.5%</td></tr>
+</tbody>
+</table>
+
+<h3>4.3 获取途径分类规则</h3>
+
+<div class="rule-card">
+<h4>武庙珍藏 / 高山仰止（固定限定档）</h4>
+<ul>
+<li>高山仰止系列 → <span class="tag tag-danger">限定</span>（固定档位，优先级最高）</li>
+</ul>
+</div>
+
+<div class="rule-card">
+<h4>祈福（固定传说档）</h4>
+<ul>
+<li>祈福武将 → <span class="tag tag-warning">传说</span>（固定档位，优先级高于价格）</li>
+</ul>
+</div>
+
+<div class="rule-card">
+<h4>纳贤 / 神将任务 / 神武 / 谋定天下（固定史诗档）</h4>
+<ul>
+<li>纳贤武将 → <span class="tag tag-primary">史诗</span>（固定档位）</li>
+<li>神将任务武将 → <span class="tag tag-primary">史诗</span>（固定档位）</li>
+<li>神武/谋定天下武将 → <span class="tag tag-primary">史诗</span>（固定档位）</li>
+</ul>
+</div>
+
+<div class="rule-card">
+<h4>将星商城（按价格分层）</h4>
+<ul>
+<li>将星价格 ≥ 1万 → <span class="tag tag-warning">传说</span></li>
+<li>将星价格 2000~9999 → <span class="tag tag-primary">史诗</span></li>
+<li>将星价格 100~1999 → <span class="tag tag-success">稀有</span></li>
+<li>将星价格 &lt; 100 → <span class="tag tag-gray">普通</span></li>
+</ul>
+</div>
+
+<div class="rule-card">
+<h4>珍宝 / 运营活动（按价格分层）</h4>
+<ul>
+<li>价格 ≥ 20万 → <span class="tag tag-danger">限定</span></li>
+<li>价格 10万~20万 → <span class="tag tag-warning">传说</span></li>
+<li>价格 1万~10万 → <span class="tag tag-primary">史诗</span></li>
+<li>价格 1001~1万 → <span class="tag tag-success">稀有</span></li>
+<li>价格 ≤ 1000 → <span class="tag tag-gray">普通</span></li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<h2 class="section-title">六、武将名单</h2>
+<p>共671个武将，基于v36数据分类。支持按档位筛选查看。</p>
+
+<div class="filter-bar">
+<button class="filter-btn active" onclick="filterTier('all')">全部</button>
+<button class="filter-btn" onclick="filterTier('限定')">限定 (42)</button>
+<button class="filter-btn" onclick="filterTier('传说')">传说 (217)</button>
+<button class="filter-btn" onclick="filterTier('史诗')">史诗 (134)</button>
+<button class="filter-btn" onclick="filterTier('稀有')">稀有 (174)</button>
+<button class="filter-btn" onclick="filterTier('普通')">普通 (104)</button>
+</div>
+<div class="stats" id="stats"></div>
+
+<div class="general-table-wrapper">
+<table class="general-table">
+<thead>
+<tr>
+<th style="min-width:100px;">武将名称</th>
+<th style="min-width:70px;">档位</th>
+<th style="min-width:120px;">划分依据</th>
+<th style="min-width:80px;">将星价格</th>
+<th style="min-width:60px;">宝玉</th>
+</tr>
+</thead>
+<tbody id="tier-限定" class="tier-section">
+<tr class="tier-header"><td colspan="5"><span class="tag tag-danger">限定</span> (42个, 6.3%)</td></tr>
+<tr class="general-row"><td>武陆逊</td><td><span class="tag tag-danger">限定</span></td><td>价格680000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>武关羽</td><td><span class="tag tag-danger">限定</span></td><td>价格880000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>武皇甫嵩</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>武陆抗</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>武张飞</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王朗</td><td><span class="tag tag-danger">限定</span></td><td>高山仰止</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>刘徽</td><td><span class="tag tag-danger">限定</span></td><td>高山仰止</td><td>2000</td><td>-</td></tr>
+<tr class="general-row"><td>管辂</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>黄舞蝶</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈登</td><td><span class="tag tag-danger">限定</span></td><td>价格500000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>夏侯玄</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘辩</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>清河公主</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹芳</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>关宁</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张奋</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>柳婒</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>董贵人</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>滕芳兰</td><td><span class="tag tag-danger">限定</span></td><td>价格300000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张瑾云</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>许靖</td><td><span class="tag tag-danger">限定</span></td><td>价格300000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>关樾</td><td><span class="tag tag-danger">限定</span></td><td>价格300000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛京</td><td><span class="tag tag-danger">限定</span></td><td>价格300000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>任婉</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>芮姬</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>柏灵筠</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙寒华</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威张辽</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威孙权</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威吕布</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威曹丕</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威董卓</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威马超</td><td><span class="tag tag-danger">限定</span></td><td>价格250000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威公孙瓒</td><td><span class="tag tag-danger">限定</span></td><td>价格250000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威马腾</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威曹彰</td><td><span class="tag tag-danger">限定</span></td><td>价格200000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威曹操</td><td><span class="tag tag-danger">限定</span></td><td>价格250000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威孙策</td><td><span class="tag tag-danger">限定</span></td><td>价格250000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威刘备</td><td><span class="tag tag-danger">限定</span></td><td>价格250000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威孙尚香</td><td><span class="tag tag-danger">限定</span></td><td>价格250000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威关银屏</td><td><span class="tag tag-danger">限定</span></td><td>价格300000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>威张星彩</td><td><span class="tag tag-danger">限定</span></td><td>价格300000</td><td>-</td><td>-</td></tr>
+</tbody>
+<tbody id="tier-传说" class="tier-section">
+<tr class="tier-header"><td colspan="5"><span class="tag tag-warning">传说</span> (217个, 32.3%)</td></tr>
+<tr class="general-row"><td>关索</td><td><span class="tag tag-warning">传说</span></td><td>祈福</td><td>10000</td><td>-</td></tr>
+<tr class="general-row"><td>赵襄</td><td><span class="tag tag-warning">传说</span></td><td>祈福</td><td>10000</td><td>-</td></tr>
+<tr class="general-row"><td>程昱</td><td><span class="tag tag-warning">传说</span></td><td>将星10000</td><td>10000</td><td>-</td></tr>
+<tr class="general-row"><td>司马徽</td><td><span class="tag tag-warning">传说</span></td><td>将星10000</td><td>10000</td><td>-</td></tr>
+<tr class="general-row"><td>鲍三娘</td><td><span class="tag tag-warning">传说</span></td><td>祈福</td><td>10000</td><td>-</td></tr>
+<tr class="general-row"><td>徐荣</td><td><span class="tag tag-warning">传说</span></td><td>祈福</td><td>10000</td><td>-</td></tr>
+<tr class="general-row"><td>曹婴</td><td><span class="tag tag-warning">传说</span></td><td>祈福</td><td>10000</td><td>-</td></tr>
+<tr class="general-row"><td>曹纯</td><td><span class="tag tag-warning">传说</span></td><td>祈福</td><td>10000</td><td>-</td></tr>
+<tr class="general-row"><td>SP甄姬</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>牛辅</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>董翓</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张昌蒲</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>崔烈</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张琪瑛</td><td><span class="tag tag-warning">传说</span></td><td>祈福</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蒲元</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>葛玄</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>许劭</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>杜夔</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>朱建平</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>雷铜</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>滕公主</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张嫙</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>夏侯令女</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蒯祺</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>庞山民</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈矫</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>秦朗</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>董昭</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马邈</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王荣</td><td><span class="tag tag-warning">传说</span></td><td>价格150000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>董承</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹豹</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吴范</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孟达</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙狼</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>赵直</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>周宣</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>笮融</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>骆统</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>程秉</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>杨彪</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>阮籍</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>钟毓</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吴质</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>朱铄</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>桓阶</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈祇</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张媱</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>全惠解</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>丁尚涴</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>袁姬</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谢灵毓</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙瑜</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>甘夫人糜夫人</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>黄权</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>霍峻</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>傅肜傅佥</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>向朗</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李丰</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>向宠</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>胡班</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>胡金定</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>凌烈</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>黄祖</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈泰</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王濬</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>杜预</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>胡遵</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>赵昂</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘晔</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>杨弘</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>桓范</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郤正</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛梦雪</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛若雪</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹宪</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>管亥</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘辟</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张楚</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张曼成</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>文鸳</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张怀</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>董絮</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>公孙度</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孟优</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP孟获</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP祝融</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>公孙修</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>木鹿大王</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>贾充</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>侯成</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>魏讽</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>庞会</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>赵统赵广</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>袁谭袁尚袁熙</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐綝</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>凌操</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘理</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>庞宏</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吉邈吉穆</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>周不疑</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>薛灵芸</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>段巧笑</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>田尚衣</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马伶俐</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>莫琼树</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹媛</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>崔令仪</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>徐妏</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>唐咨</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郑浑</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吴普</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>羊祜</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐蔡文姬</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐周妃</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐诸葛果</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐蔡邕</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐祢衡</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐大乔</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐小乔</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐邹氏</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐貂蝉</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐周瑜</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐曹植</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐曹植</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>阎象</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>朱佩兰</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>卞玥</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>徐馨</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙霸</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘衿刘佩</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>夏侯徽</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘璿</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙和</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张翼</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛均</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星曹仁</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星董卓</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星袁术</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星张昭</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星袁绍</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星张春华</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星法正</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星荀彧</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星张让</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星文丑</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星董允</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP孙策</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP张郃</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋诸葛瑾</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋蒋济</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋王凌</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋司马师</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋曹爽</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋关平</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋吕蒙</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋关羽</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋曹昂</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋张绣</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋典韦</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋胡车儿</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星孙坚</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星孙尚香</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星丁奉</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星太史慈</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星颜良</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星夏侯霸</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋程昱</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋蒋干</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋程普</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋沮授</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋陈琳</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋许攸</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋淳于琼</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋杨奉</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吕据</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陶璜</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋邓艾</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋胡烈</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋卫瓘</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋骆统</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋黄权</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋朱然</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋徐盛</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星蒋琬</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星张郃</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘懿君</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>邓晚棠</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李昭仪</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>崔芷</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>桥蕤</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>董绾</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>袁胤</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>苏越</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张裕</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>史阿</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王越</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>管宁</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>黄承彦</td><td><span class="tag tag-warning">传说</span></td><td>价格150000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>胡昭</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王烈</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孟节</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张世平</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋董承</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋曹洪</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋刘协</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋法正</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋吴懿</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋张任</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋刘璋</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>傅干</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>侯昭宁</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星张松</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>星诸葛瑾</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋马谡</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋王平</td><td><span class="tag tag-warning">传说</span></td><td>价格100000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陆文漪</td><td><span class="tag tag-warning">传说</span></td><td>价格120000</td><td>-</td><td>-</td></tr>
+</tbody>
+<tbody id="tier-史诗" class="tier-section">
+<tr class="tier-header"><td colspan="5"><span class="tag tag-primary">史诗</span> (134个, 20.0%)</td></tr>
+<tr class="general-row"><td>神姜维</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神马超</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神张飞</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神张角</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神邓艾</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神典韦</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神许褚</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神华佗</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神黄忠</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神庞统</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神钟会</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神孙权</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神曹丕</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈琳</td><td><span class="tag tag-primary">史诗</span></td><td>将星3000</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>杨修</td><td><span class="tag tag-primary">史诗</span></td><td>将星3000</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>兀突骨</td><td><span class="tag tag-primary">史诗</span></td><td>将星2000</td><td>2000</td><td>-</td></tr>
+<tr class="general-row"><td>士燮</td><td><span class="tag tag-primary">史诗</span></td><td>将星3000</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>文鸯</td><td><span class="tag tag-primary">史诗</span></td><td>将星3000</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>花鬘</td><td><span class="tag tag-primary">史诗</span></td><td>将星3000</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>皇甫嵩</td><td><span class="tag tag-primary">史诗</span></td><td>将星2000</td><td>2000</td><td>-</td></tr>
+<tr class="general-row"><td>留赞</td><td><span class="tag tag-primary">史诗</span></td><td>将星6000</td><td>6000</td><td>-</td></tr>
+<tr class="general-row"><td>SP关羽</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郭照</td><td><span class="tag tag-primary">史诗</span></td><td>将星5000</td><td>5000</td><td>-</td></tr>
+<tr class="general-row"><td>樊玉凤</td><td><span class="tag tag-primary">史诗</span></td><td>将星3000</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>阮瑀</td><td><span class="tag tag-primary">史诗</span></td><td>将星3000</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>杨婉</td><td><span class="tag tag-primary">史诗</span></td><td>将星2000</td><td>2000</td><td>-</td></tr>
+<tr class="general-row"><td>张虎</td><td><span class="tag tag-primary">史诗</span></td><td>将星2000</td><td>2000</td><td>-</td></tr>
+<tr class="general-row"><td>潘淑</td><td><span class="tag tag-primary">史诗</span></td><td>将星3000</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>吕玲绮</td><td><span class="tag tag-primary">史诗</span></td><td>将星6000</td><td>6000</td><td>-</td></tr>
+<tr class="general-row"><td>南华老仙</td><td><span class="tag tag-primary">史诗</span></td><td>将星6000</td><td>6000</td><td>-</td></tr>
+<tr class="general-row"><td>童渊</td><td><span class="tag tag-primary">史诗</span></td><td>将星2000</td><td>2000</td><td>-</td></tr>
+<tr class="general-row"><td>庞德公</td><td><span class="tag tag-primary">史诗</span></td><td>将星3000</td><td>3000</td><td>-</td></tr>
+<tr class="general-row"><td>吉平</td><td><span class="tag tag-primary">史诗</span></td><td>将星2000</td><td>2000</td><td>-</td></tr>
+<tr class="general-row"><td>李傕</td><td><span class="tag tag-primary">史诗</span></td><td>价格14000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郭汜</td><td><span class="tag tag-primary">史诗</span></td><td>价格10000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>樊稠</td><td><span class="tag tag-primary">史诗</span></td><td>价格12000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>梁兴</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>唐姬</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>冯方</td><td><span class="tag tag-primary">史诗</span></td><td>价格80000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>沙摩柯</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>忙牙长</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>许贡</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>邢道荣</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹性</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吴兰</td><td><span class="tag tag-primary">史诗</span></td><td>价格10000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙鲁育</td><td><span class="tag tag-primary">史诗</span></td><td>价格30000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>万年公主</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>荀谌</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>黄皓</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蔡瑁张允</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王桃</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王悦</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>赵嫣</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>冯熙</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>滕胤</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>尹夫人</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吕旷吕翔</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈珪</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>麴义</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>韩馥</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陶谦</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>赵忠</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张邈</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>丘力居</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹安民</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李采薇</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>严夫人</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>朱灵</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>阎柔</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>赵俨</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王威</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>穆顺</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李异谢旌</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>伏完</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>是仪</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘虞</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘巴</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吴班</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>高翔</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>秦宜禄</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>卞喜</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>文钦</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陆凯</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李婉</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>轲比能</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛尚</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>武安国</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>韩龙</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>苏飞</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谯周</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙礼</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈式</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>费曜</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>夏侯楙</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张闿</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>裴元绍</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙资刘放</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>岑昏</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙綝</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘宠骆俊</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>车胄</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>韩嵩</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马铁</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋周瑜</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋鲁肃</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋司马懿</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋贾诩</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋郭嘉</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋荀彧</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋姜维</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋陆逊</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋庞统</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋黄盖</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>徐琨</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>司马孚</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>令狐愚</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>宣公主</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>奇巧马钧</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>传械马钧</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马钧</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>裴秀</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张燕</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>伍孚</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张奂</td><td><span class="tag tag-primary">史诗</span></td><td>神将任务</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马日磾</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张勋</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>雷薄</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐就</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>田畴</td><td><span class="tag tag-primary">史诗</span></td><td>价格50000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>潘凤</td><td><span class="tag tag-primary">史诗</span></td><td>价格18000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吕范</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>华歆</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>宗预</td><td><span class="tag tag-primary">史诗</span></td><td>价格36000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>谋诸葛亮</td><td><span class="tag tag-primary">史诗</span></td><td>神武/谋定</td><td>-</td><td>-</td></tr>
+</tbody>
+<tbody id="tier-稀有" class="tier-section">
+<tr class="tier-header"><td colspan="5"><span class="tag tag-success">稀有</span> (174个, 25.9%)</td></tr>
+<tr class="general-row"><td>黄忠</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>魏延</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹仁</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>小乔</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>周泰</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张角</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>于吉</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>荀彧</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>庞统</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>卧龙诸葛</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>太史慈</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>庞德</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>颜良文丑</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>袁绍</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>徐晃</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹丕</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙坚</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>董卓</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>祝融</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孟获</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>贾诩</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>鲁肃</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张郃</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>邓艾</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>姜维</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘禅</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙策</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张昭张纮</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蔡文姬</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王平</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陆绩</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙亮</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王基</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蒯良蒯越</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>许攸</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈到</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛瞻</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>周妃</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陆抗</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郝昭</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>毌丘俭</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>袁术</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张绣</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>法正</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马谡</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>徐庶</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吴国太</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>凌统</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>徐盛</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹植</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张春华</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈宫</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>高顺</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>关兴张苞</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马岱</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>步练师</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>程普</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>韩当</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>荀攸</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王异</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>钟会</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘表</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹冲</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>满宠</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>关平</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>简雍</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘封</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>潘璋马忠</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>虞翻</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>伏皇后</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李儒</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>韩浩史涣</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈群</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吴懿</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>周仓</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张松</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙鲁班</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>朱桓</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>顾雍</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>沮授</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蔡夫人</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹叡</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹休</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>钟繇</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘谌</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>夏侯氏</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙休</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>朱治</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>公孙渊</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郭图逢纪</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吴苋</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙登</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>步骘</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹昂</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛诞</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘协</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹节</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>董允</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛瑾</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>严畯</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李典</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>司马朗</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>杜畿</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘焉</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张鲁</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙乾</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>秦宓</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>薛综</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>潘濬</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>戏志才</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郭皇后</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王粲</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蔡邕</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP孙尚香</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP徐庶</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP庞统</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP蔡文姬</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP姜维</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP黄月英</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李严</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>糜竺</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>周鲂</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>贺齐</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>文聘</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吕岱</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>刘繇</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马云騄</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>关银屏</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>祖茂</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>徐氏</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吕虔</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蹋顿</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙皓</td><td><span class="tag tag-success">稀有</span></td><td>将星1000</td><td>1000</td><td>-</td></tr>
+<tr class="general-row"><td>蒋干</td><td><span class="tag tag-success">稀有</span></td><td>将星1500</td><td>1500</td><td>-</td></tr>
+<tr class="general-row"><td>刘琦</td><td><span class="tag tag-success">稀有</span></td><td>将星500</td><td>500</td><td>-</td></tr>
+<tr class="general-row"><td>辛宪英</td><td><span class="tag tag-success">稀有</span></td><td>将星500</td><td>500</td><td>-</td></tr>
+<tr class="general-row"><td>王双</td><td><span class="tag tag-success">稀有</span></td><td>将星1000</td><td>1000</td><td>-</td></tr>
+<tr class="general-row"><td>张让</td><td><span class="tag tag-success">稀有</span></td><td>将星500</td><td>500</td><td>-</td></tr>
+<tr class="general-row"><td>何进</td><td><span class="tag tag-success">稀有</span></td><td>将星180</td><td>180</td><td>-</td></tr>
+<tr class="general-row"><td>刘宏</td><td><span class="tag tag-success">稀有</span></td><td>将星360</td><td>360</td><td>-</td></tr>
+<tr class="general-row"><td>陆郁生</td><td><span class="tag tag-success">稀有</span></td><td>将星500</td><td>500</td><td>-</td></tr>
+<tr class="general-row"><td>何晏</td><td><span class="tag tag-success">稀有</span></td><td>将星1500</td><td>1500</td><td>-</td></tr>
+<tr class="general-row"><td>杜夫人</td><td><span class="tag tag-success">稀有</span></td><td>将星1000</td><td>1000</td><td>-</td></tr>
+<tr class="general-row"><td>阚泽</td><td><span class="tag tag-success">稀有</span></td><td>将星180</td><td>180</td><td>-</td></tr>
+<tr class="general-row"><td>周夷</td><td><span class="tag tag-success">稀有</span></td><td>将星300</td><td>300</td><td>-</td></tr>
+<tr class="general-row"><td>刘永</td><td><span class="tag tag-success">稀有</span></td><td>将星1000</td><td>1000</td><td>-</td></tr>
+<tr class="general-row"><td>曹金玉</td><td><span class="tag tag-success">稀有</span></td><td>将星200</td><td>200</td><td>-</td></tr>
+<tr class="general-row"><td>SP贾诩</td><td><span class="tag tag-success">稀有</span></td><td>将星1000</td><td>1000</td><td>-</td></tr>
+<tr class="general-row"><td>祢衡</td><td><span class="tag tag-success">稀有</span></td><td>将星1000</td><td>1000</td><td>-</td></tr>
+<tr class="general-row"><td>孙翊</td><td><span class="tag tag-success">稀有</span></td><td>将星300</td><td>300</td><td>-</td></tr>
+<tr class="general-row"><td>冯妤</td><td><span class="tag tag-success">稀有</span></td><td>将星200</td><td>200</td><td>-</td></tr>
+<tr class="general-row"><td>曹华</td><td><span class="tag tag-success">稀有</span></td><td>将星200</td><td>200</td><td>-</td></tr>
+<tr class="general-row"><td>卢弈</td><td><span class="tag tag-success">稀有</span></td><td>将星300</td><td>300</td><td>-</td></tr>
+<tr class="general-row"><td>孙翎鸾</td><td><span class="tag tag-success">稀有</span></td><td>将星300</td><td>300</td><td>-</td></tr>
+<tr class="general-row"><td>曹轶</td><td><span class="tag tag-success">稀有</span></td><td>将星300</td><td>300</td><td>-</td></tr>
+<tr class="general-row"><td>庞凤衣</td><td><span class="tag tag-success">稀有</span></td><td>将星300</td><td>300</td><td>-</td></tr>
+<tr class="general-row"><td>郭缇萦</td><td><span class="tag tag-success">稀有</span></td><td>将星300</td><td>300</td><td>-</td></tr>
+<tr class="general-row"><td>张济</td><td><span class="tag tag-success">稀有</span></td><td>价格8000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>段煨</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>乐进</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马腾</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孔融</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>纪灵</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>田丰</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>何太后</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蒋琬费祎</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>臧霸</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>糜夫人</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陈武董袭</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张任</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹洪</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蒋钦</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李傕郭汜</td><td><span class="tag tag-success">稀有</span></td><td>价格6000</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>卞夫人</td><td><span class="tag tag-success">稀有</span></td><td>价格2000</td><td>-</td><td>-</td></tr>
+</tbody>
+<tbody id="tier-普通" class="tier-section">
+<tr class="tier-header"><td colspan="5"><span class="tag tag-gray">普通</span> (104个, 15.5%)</td></tr>
+<tr class="general-row"><td>刘备</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>关羽</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张飞</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛亮</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>赵云</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马超</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>黄月英</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙权</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>甘宁</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吕蒙</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>黄盖</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>周瑜</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>大乔</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>陆逊</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙尚香</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹操</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>司马懿</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>夏侯惇</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张辽</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>许褚</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郭嘉</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>甄姬</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>华佗</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吕布</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>貂蝉</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>华雄</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>夏侯渊</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>典韦</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>左慈</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>严颜</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>卢植</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神关羽</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神吕蒙</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神周瑜</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神诸葛亮</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神曹操</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神吕布</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神赵云</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神司马懿</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神刘备</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神陆逊</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神张辽</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>神甘宁</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>武诸葛亮</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>于禁</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>廖化</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹彰</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郭淮</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>朱然</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹真</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张嶷</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>全琮</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张星彩</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP庞德</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP太史慈</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>马忠</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张梁</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>公孙瓒</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛果</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>诸葛恪</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张宝</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>灵雎</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王允</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>大乔小乔</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP马超</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>夏侯霸</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>SP赵云</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>韩遂</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>朱儁</td><td><span class="tag tag-gray">普通</span></td><td>将星60</td><td>60</td><td>-</td></tr>
+<tr class="general-row"><td>董白</td><td><span class="tag tag-gray">普通</span></td><td>将星60</td><td>60</td><td>-</td></tr>
+<tr class="general-row"><td>张宁</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹髦</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>来莺儿</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张横</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张恭</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>吕凯</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>卫温诸葛直</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>卑弥呼</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>辛毗</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>伊籍</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>张温</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>李肃</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>淳于琼</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>夏侯杰</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>蔡阳</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>周善</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>邓芝</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>高览</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙茹</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>丁原</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>曹嵩</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>牛金</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>胡车儿</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>糜芳傅士仁</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>郝萌</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>孙桓</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>王昶</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>杨仪</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>严白虎</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>环怀瑾</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>甘夫人</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>丁奉</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>邹氏</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+<tr class="general-row"><td>崔琰毛玠</td><td><span class="tag tag-gray">普通</span></td><td>默认</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+</div>
+<p style="margin-top:16px; color:#666; font-size:13px;">* 完整数据请查看附件：武将评级划分/data/武将评级完整名单_v36_final.xlsx</p>
+</div>
+
+<div class="section">
+<h2 class="section-title">七、附件</h2>
+<table>
+<thead><tr><th>附件</th><th>文件名</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>A</td><td>武将评级划分/data/武将评级完整名单_v36_final.xlsx</td><td>671个武将完整列表（含品质、划分依据、将星价格）</td></tr>
+<tr><td>B</td><td>武将评级划分/data/武将评级_v36.html</td><td>武将评级可视化页面</td></tr>
+<tr><td>C</td><td>四款杀类游戏武将品质价格对照表.xlsx</td><td>行业横向对比</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="footer">
+<p>武将品质体系 PRD v1.1 | 内部策划文档</p>
+<p style="margin-top:8px;">最后更新：2026-06-10</p>
+</div>
+</div>
+
+<script>
+function filterTier(tier) {
+document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+event.target.classList.add('active');
+const sections = document.querySelectorAll('.tier-section');
+let count = 0;
+sections.forEach(section => {
+if (tier === 'all' || section.id === 'tier-' + tier) {
+section.style.display = '';
+count += section.querySelectorAll('.general-row').length;
+} else {
+section.style.display = 'none';
+}
+});
+document.getElementById('stats').textContent = tier === 'all' ? '共671个武将' : tier + '：' + count + '个武将';
+}
+</script>
+</body>
+</html>

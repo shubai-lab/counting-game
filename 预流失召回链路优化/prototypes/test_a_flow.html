@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test A 交互流程</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .font-kai { font-family: 'FZShengShiKaiShuS-DB-GB', 'FZBeiWeiKaiShu-S19_GBK', serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+    .animate-fade { animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .screen-card {
+      background: linear-gradient(135deg, #fff9f0 0%, #f5e6d3 100%);
+      border: 2px solid #ead0a3;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .screen-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(234, 208, 163, 0.4);
+    }
+    .screen-card.active {
+      border-color: #6a3c22;
+      box-shadow: 0 0 0 3px rgba(106, 60, 34, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 min-h-screen py-6">
+
+  <div class="max-w-6xl mx-auto">
+    <!-- 标题 -->
+    <h1 class="text-center text-2xl font-kai text-amber-400 mb-2">Test A：武将体验推送</h1>
+    <p class="text-center text-gray-400 mb-6 font-inter text-sm">交互流程演示</p>
+
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+
+      <!-- 左侧：流程步骤 -->
+      <div class="space-y-4">
+        <h3 class="font-kai text-white text-lg">流程步骤</h3>
+
+        <!-- Step 1 -->
+        <div class="screen-card p-4 active" onclick="goToScreen(0)">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-kai">1</div>
+            <div>
+              <div class="font-kai text-gray-800">推送弹窗</div>
+              <div class="font-inter text-xs text-gray-500">武将体验卡推送</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="screen-card p-4" onclick="goToScreen(1)">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-kai">2</div>
+            <div>
+              <div class="font-kai text-gray-800">选择武将</div>
+              <div class="font-inter text-xs text-gray-500">推将列表展示</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="screen-card p-4" onclick="goToScreen(2)">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center font-kai">3</div>
+            <div>
+              <div class="font-kai text-gray-800">进入对局</div>
+              <div class="font-inter text-xs text-gray-500">斗地主模式</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="screen-card p-4" onclick="goToScreen(3)">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center font-kai">4</div>
+            <div>
+              <div class="font-kai text-gray-800">对局进行</div>
+              <div class="font-inter text-xs text-gray-500">体验武将表现</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="screen-card p-4" onclick="goToScreen(4)">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-kai">5</div>
+            <div>
+              <div class="font-kai text-gray-800">对局结算</div>
+              <div class="font-inter text-xs text-gray-500">战斗结果展示</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="screen-card p-4" onclick="goToScreen(5)">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center font-kai">6</div>
+            <div>
+              <div class="font-kai text-gray-800">体验反馈</div>
+              <div class="font-inter text-xs text-gray-500">收集用户反馈</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 7-9 其他 -->
+        <div class="bg-gray-800 rounded-lg p-4">
+          <div class="font-kai text-gray-400 text-sm mb-2">其他界面</div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="goToScreen(6)" class="px-3 py-1 bg-gray-700 text-gray-300 rounded text-sm hover:bg-gray-600">7</button>
+            <button onclick="goToScreen(7)" class="px-3 py-1 bg-gray-700 text-gray-300 rounded text-sm hover:bg-gray-600">8</button>
+            <button onclick="goToScreen(8)" class="px-3 py-1 bg-gray-700 text-gray-300 rounded text-sm hover:bg-gray-600">9</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 中间：预览区 -->
+      <div>
+        <div class="bg-gray-800 rounded-2xl p-4">
+          <div class="flex justify-between items-center mb-4">
+            <span class="font-kai text-white" id="preview-title">屏幕 1：推送弹窗</span>
+            <span class="font-inter text-gray-400 text-sm" id="preview-index">1/9</span>
+          </div>
+          <div class="bg-gray-900 rounded-lg overflow-hidden" style="aspect-ratio: 1334/750;">
+            <canvas id="preview-canvas" width="1334" height="750" class="w-full h-full"></canvas>
+          </div>
+        </div>
+
+        <!-- 导航按钮 -->
+        <div class="flex justify-center gap-4 mt-4">
+          <button onclick="prevScreen()" class="px-6 py-2 bg-gray-700 text-white rounded-lg font-kai hover:bg-gray-600">◀ 上一页</button>
+          <button onclick="nextScreen()" class="px-6 py-2 bg-amber-500 text-gray-900 rounded-lg font-kai hover:bg-amber-400">下一页 ▶</button>
+        </div>
+      </div>
+
+      <!-- 右侧：说明 -->
+      <div class="bg-gray-800 rounded-2xl p-6">
+        <h3 class="font-kai text-white text-lg mb-4">界面说明</h3>
+        <div id="screen-desc" class="space-y-4">
+          <div class="bg-gray-700 rounded-lg p-4">
+            <div class="text-amber-400 font-kai mb-2">当前：推送弹窗</div>
+            <div class="text-gray-300 text-sm leading-relaxed">
+              <p><strong>位置：</strong>屏幕1</p>
+              <p><strong>内容：</strong>系统主动推送武将体验卡</p>
+              <p><strong>武将：</strong>张角（史诗级）</p>
+              <p><strong>奖励：</strong>胜率+15%，3天体验</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-gray-700">
+          <h4 class="font-kai text-gray-400 text-sm mb-3">核心交互</h4>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+              <span class="text-gray-300">点击"立即体验"领取武将卡</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+              <span class="text-gray-300">体验武将100%出现在推将列表</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-amber-500 rounded-full"></span>
+              <span class="text-gray-300">对局胜利可获得额外奖励</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="mt-8 text-center text-gray-500 text-sm">
+      <p>设计稿尺寸：12036×1128 | 屏幕尺寸：1334×750 | 共9个屏幕</p>
+    </div>
+  </div>
+
+  <script>
+    const screenInfo = [
+      { title: '屏幕 1：推送弹窗', desc: '<p><strong>位置：</strong>屏幕1</p><p><strong>内容：</strong>系统主动推送武将体验卡</p><p><strong>武将：</strong>张角（史诗级）</p><p><strong>奖励：</strong>胜率+15%，3天体验</p>' },
+      { title: '屏幕 2：选择武将', desc: '<p><strong>位置：</strong>屏幕2</p><p><strong>内容：</strong>推将列表展示</p><p><strong>高亮：</strong>体验武将置顶显示</p><p><strong>标签：</strong>"体验"标签标注</p>' },
+      { title: '屏幕 3：进入对局', desc: '<p><strong>位置：</strong>屏幕3</p><p><strong>内容：</strong>斗地主模式选择</p><p><strong>模式：</strong>斗地主</p><p><strong>状态：</strong>可开始对局</p>' },
+      { title: '屏幕 4：对局进行', desc: '<p><strong>位置：</strong>屏幕4</p><p><strong>内容：</strong>对局进行中</p><p><strong>武将：</strong>张角体验卡生效</p><p><strong>特效：</strong>武将光环显示</p>' },
+      { title: '屏幕 5：对局结算', desc: '<p><strong>位置：</strong>屏幕5</p><p><strong>内容：</strong>战斗结果展示</p><p><strong>结果：</strong>胜利/失败</p><p><strong>奖励：</strong>金豆+经验</p>' },
+      { title: '屏幕 6：体验反馈', desc: '<p><strong>位置：</strong>屏幕6</p><p><strong>内容：</strong>收集体验反馈</p><p><strong>选项：</strong>很棒/一般/不好</p><p><strong>目的：</strong>优化方案</p>' },
+      { title: '屏幕 7：奖励展示', desc: '<p><strong>位置：</strong>屏幕7</p><p><strong>内容：</strong>奖励详情</p><p><strong>道具：</strong>武将体验卡</p><p><strong>时效：</strong>剩余时间</p>' },
+      { title: '屏幕 8：已完成', desc: '<p><strong>位置：</strong>屏幕8</p><p><strong>内容：</strong>任务完成状态</p><p><strong>进度：</strong>全部完成</p><p><strong>提示：</strong>可继续使用</p>' },
+      { title: '屏幕 9：设置页', desc: '<p><strong>位置：</strong>屏幕9</p><p><strong>内容：</strong>推送设置</p><p><strong>开关：</strong>消息提醒</p><p><strong>说明：</strong>其他设置项</p>' }
+    ];
+
+    const canvas = document.getElementById('preview-canvas');
+    const ctx = canvas.getContext('2d');
+    let currentScreen = 0;
+    let image = null;
+
+    // 加载图片
+    function loadImage() {
+      return new Promise((resolve, reject) => {
+        image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = reject;
+        image.src = 'test a.png';
+      });
+    }
+
+    // 绘制屏幕
+    function drawScreen(index) {
+      if (!image) return;
+
+      const screenWidth = 1334;
+      const scaleX = image.width / (9 * screenWidth); // 9个屏幕
+      const srcX = index * screenWidth * scaleX;
+      const srcW = screenWidth * scaleX;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(image, srcX, 0, srcW, image.height, 0, 0, canvas.width, canvas.height);
+
+      // 更新UI
+      document.getElementById('preview-title').textContent = screenInfo[index].title;
+      document.getElementById('preview-index').textContent = `${index + 1}/9`;
+      document.getElementById('screen-desc').innerHTML = `
+        <div class="bg-gray-700 rounded-lg p-4">
+          <div class="text-amber-400 font-kai mb-2">当前：${screenInfo[index].title.split('：')[1]}</div>
+          <div class="text-gray-300 text-sm leading-relaxed">
+            ${screenInfo[index].desc}
+          </div>
+        </div>
+      `;
+
+      // 更新步骤高亮
+      const steps = document.querySelectorAll('.screen-card');
+      steps.forEach((step, i) => {
+        step.classList.remove('active');
+        if (i === index || (i > 5 && index === i)) {
+          step.classList.add('active');
+        }
+      });
+      if (index < 6) {
+        steps[index].classList.add('active');
+      }
+
+      currentScreen = index;
+    }
+
+    // 导航
+    function prevScreen() {
+      if (currentScreen > 0) {
+        drawScreen(currentScreen - 1);
+      }
+    }
+
+    function nextScreen() {
+      if (currentScreen < 8) {
+        drawScreen(currentScreen + 1);
+      }
+    }
+
+    function goToScreen(index) {
+      drawScreen(index);
+    }
+
+    // 键盘支持
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevScreen();
+      if (e.key === 'ArrowRight') nextScreen();
+    });
+
+    // 初始化
+    loadImage().then(() => {
+      drawScreen(0);
+    });
+  </script>
+
+</body>
+</html>

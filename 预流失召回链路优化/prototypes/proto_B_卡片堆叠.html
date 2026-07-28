@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原型B：卡片堆叠式</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #1a1a2e; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .phone-frame { width: 1334px; height: 750px; background: linear-gradient(180deg, #3c271c, #6a3c22); border-radius: 40px; overflow: hidden; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+
+    .layout-tag { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5); color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 14px; z-index: 100; }
+
+    /* 卡片堆叠布局 */
+    .card-stack { position: absolute; inset: 0; display: flex; flex-direction: column; }
+
+    /* 顶部 */
+    .header { padding: 30px 40px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .header-left {}
+    .main-title { font-size: 36px; color: #ead0a3; font-weight: bold; }
+    .sub-title { font-size: 18px; color: #ead0a3; opacity: 0.6; margin-top: 4px; }
+    .header-right { display: flex; gap: 15px; }
+    .day-chip { padding: 10px 20px; background: rgba(255,255,255,0.1); border-radius: 20px; color: #ead0a3; font-size: 18px; }
+    .day-chip.active { background: #ead0a3; color: #3c271c; font-weight: bold; }
+
+    /* 今日卡片 */
+    .main-card { margin: 0 40px; background: linear-gradient(135deg, #ead0a3, #d4c4a3); border-radius: 24px; padding: 30px; border: 3px solid #ead0a3; position: relative; }
+    .card-label { position: absolute; top: -12px; left: 30px; background: #6a3c22; color: #ead0a3; padding: 6px 18px; border-radius: 15px; font-size: 16px; }
+    .card-body { display: flex; align-items: center; gap: 25px; }
+    .card-img { width: 140px; height: 170px; background: #fff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+    .card-info { flex: 1; }
+    .card-name { font-size: 40px; color: #3c271c; font-weight: bold; }
+    .card-quality { font-size: 20px; color: #6a3c22; margin-top: 6px; }
+    .card-duration { font-size: 18px; color: #6a3c22; background: rgba(255,255,255,0.5); padding: 8px 16px; border-radius: 10px; display: inline-block; margin-top: 10px; }
+
+    /* 明日预告 */
+    .preview-area { padding: 25px 40px; }
+    .preview-label { font-size: 20px; color: #ead0a3; opacity: 0.6; margin-bottom: 12px; }
+    .preview-row { display: flex; gap: 20px; }
+    .preview-card { flex: 1; background: rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(234,208,163,0.3); }
+    .preview-img { width: 60px; height: 75px; background: rgba(234,208,163,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+    .preview-info {}
+    .preview-day { font-size: 16px; color: #ead0a3; opacity: 0.6; }
+    .preview-name { font-size: 22px; color: #ead0a3; font-weight: bold; margin-top: 4px; }
+
+    /* 任务 */
+    .task-area { padding: 0 40px; flex: 1; }
+    .task-box { background: rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden; }
+    .task-item { display: flex; align-items: center; justify-content: space-between; padding: 20px 25px; border-bottom: 1px solid rgba(234,208,163,0.2); }
+    .task-item:last-child { border-bottom: none; }
+    .task-info { display: flex; align-items: center; gap: 15px; }
+    .task-icon { font-size: 26px; }
+    .task-name { font-size: 22px; color: #ead0a3; }
+    .task-btn { padding: 10px 20px; background: #ead0a3; color: #3c271c; border-radius: 10px; font-size: 18px; font-weight: bold; border: none; cursor: pointer; }
+
+    /* 底部 */
+    .bottom-area { padding: 25px 40px 40px; }
+    .claim-btn { width: 100%; padding: 22px; background: linear-gradient(180deg, #ead0a3, #d4c4a3); color: #3c271c; border-radius: 16px; font-size: 32px; font-weight: bold; border: 3px solid #ead0a3; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="layout-tag">原型B：卡片堆叠式</div>
+
+    <div class="card-stack">
+      <div class="header">
+        <div class="header-left">
+          <div class="main-title">武将体验卡</div>
+          <div class="sub-title">预流失召回 · 连续3日领取</div>
+        </div>
+        <div class="header-right">
+          <div class="day-chip active">Day1</div>
+          <div class="day-chip">Day2</div>
+          <div class="day-chip">Day3</div>
+        </div>
+      </div>
+
+      <div class="main-card">
+        <div class="card-label">今日可领取</div>
+        <div class="card-body">
+          <div class="card-img">🎴</div>
+          <div class="card-info">
+            <div class="card-name">界钟会</div>
+            <div class="card-quality">传说品质</div>
+            <div class="card-duration">有效期：7天</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-area">
+        <div class="preview-label">明日预告</div>
+        <div class="preview-row">
+          <div class="preview-card">
+            <div class="preview-img">🎴</div>
+            <div class="preview-info">
+              <div class="preview-day">Day 2</div>
+              <div class="preview-name">尹夫人</div>
+            </div>
+          </div>
+          <div class="preview-card">
+            <div class="preview-img">🎴</div>
+            <div class="preview-info">
+              <div class="preview-day">Day 3</div>
+              <div class="preview-name">牛辅</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-area">
+        <div class="task-box">
+          <div class="task-item">
+            <div class="task-info">
+              <div class="task-icon">✓</div>
+              <div class="task-name">登录游戏</div>
+            </div>
+            <button class="task-btn">已完成</button>
+          </div>
+          <div class="task-item">
+            <div class="task-info">
+              <div class="task-icon">🎮</div>
+              <div class="task-name">完成任意对局1次</div>
+            </div>
+            <button class="task-btn">去完成</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-area">
+        <button class="claim-btn">领取武将卡</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

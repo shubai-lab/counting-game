@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预流失ABTest 动态交互</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 游戏规范字体 */
+    .font-kai-title { font-family: 'FZShengShiKaiShuS-B-GB', 'FZBeiWeiKaiShu-S19_GBK', serif; }
+    .font-kai-btn { font-family: 'FZShengShiKaiShuS-DB-GB', serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+
+    /* 按钮样式 */
+    .btn-primary {
+      background: linear-gradient(180deg, #ead0a3 0%, #d4b88a 100%);
+      color: #6a3c22;
+      border: 2px solid #af936c;
+      font-family: 'FZShengShiKaiShuS-DB-GB', serif;
+      font-size: 28px;
+      padding: 16px 32px;
+      border-radius: 8px;
+    }
+
+    /* 手机边框 */
+    .phone-frame {
+      width: 375px;
+      height: 812px;
+      border-radius: 40px;
+      background: #1a1a2e;
+      padding: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      background: #fff9f0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 动效 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.3s ease-out; }
+
+    /* 界面截图 */
+    .mockup-img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    /* 标签 */
+    .tab-btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-family: 'FZShengShiKaiShuS-DB-GB', serif;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: linear-gradient(180deg, #ead0a3 0%, #d4b88a 100%);
+      color: #6a3c22;
+    }
+    .tab-btn:not(.active) {
+      background: rgba(255,255,255,0.1);
+      color: #999;
+    }
+
+    /* 状态切换按钮 */
+    .state-btn {
+      padding: 8px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .state-btn.active {
+      background: #ead0a3;
+      color: #6a3c22;
+    }
+    .state-btn:not(.active) {
+      background: rgba(255,255,255,0.1);
+      color: #777;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 min-h-screen py-8">
+
+  <div class="max-w-6xl mx-auto">
+    <!-- 标题 -->
+    <h1 class="text-center text-2xl font-kai-title text-amber-400 mb-2">预流失ABTest 动态交互</h1>
+    <p class="text-center text-gray-400 mb-8 font-inter text-sm">点击下方按钮切换不同状态</p>
+
+    <!-- Tab 切换 -->
+    <div class="flex justify-center gap-4 mb-8">
+      <button class="tab-btn active" onclick="switchTab('a')">Test A<br><span class="text-xs font-inter">武将体验推送</span></button>
+      <button class="tab-btn" onclick="switchTab('b')">Test B<br><span class="text-xs font-inter">限时挑战</span></button>
+      <button class="tab-btn" onclick="switchTab('c')">Test C<br><span class="text-xs font-inter">奇遇包装</span></button>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-items-center">
+
+      <!-- 左侧：手机预览 -->
+      <div>
+        <div id="phone-preview" class="phone-frame animate-fade-in">
+          <div class="phone-screen">
+            <img id="screen-img" src="https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/ccv2%2F2026-06-04%2FMiniMax-M2.7%2F2042515755638989306%2Fbe326e1fe3018094b6505ae9ece45a964d27bf57344f9714a930e5a2dbf2016e..png"
+                 alt="预流失界面" class="w-full h-full object-contain">
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧：状态切换 -->
+      <div class="bg-gray-800 rounded-2xl p-6 min-w-[400px]">
+        <h3 class="font-kai-title text-white text-xl mb-4">状态切换</h3>
+
+        <!-- Test A 状态 -->
+        <div id="state-a" class="space-y-4">
+          <div class="text-gray-400 text-sm mb-2">Test A：武将体验推送</div>
+          <div class="flex flex-wrap gap-2">
+            <button class="state-btn active" onclick="switchState('a', 'push')">推送弹窗</button>
+            <button class="state-btn" onclick="switchState('a', 'claimed')">已领取</button>
+            <button class="state-btn" onclick="switchState('a', 'battle')">对局中</button>
+            <button class="state-btn" onclick="switchState('a', 'result')">对局结果</button>
+          </div>
+          <div class="bg-gray-700 rounded-lg p-4 mt-4">
+            <div class="text-amber-400 text-sm font-semibold mb-2">💡 说明</div>
+            <div class="text-gray-300 text-sm leading-relaxed">
+              <p><strong>推送弹窗：</strong>系统直接推送武将体验卡</p>
+              <p class="mt-2"><strong>已领取：</strong>显示剩余时间，可开始对局</p>
+              <p class="mt-2"><strong>对局中：</strong>体验武将100%出现在推将列表</p>
+              <p class="mt-2"><strong>对局结果：</strong>胜利后收集体验反馈</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test B 状态 -->
+        <div id="state-b" class="space-y-4 hidden">
+          <div class="text-gray-400 text-sm mb-2">Test B：限时挑战</div>
+          <div class="flex flex-wrap gap-2">
+            <button class="state-btn active" onclick="switchState('b', 'popup')">挑战弹窗</button>
+            <button class="state-btn" onclick="switchState('b', 'active')">挑战进行中</button>
+            <button class="state-btn" onclick="switchState('b', 'complete')">挑战完成</button>
+            <button class="state-btn" onclick="switchState('b', 'interrupt')">挑战中断</button>
+          </div>
+          <div class="bg-gray-700 rounded-lg p-4 mt-4">
+            <div class="text-amber-400 text-sm font-semibold mb-2">💡 说明</div>
+            <div class="text-gray-300 text-sm leading-relaxed">
+              <p><strong>挑战弹窗：</strong>限时3连胜挑战，展示奖励</p>
+              <p class="mt-2"><strong>挑战进行中：</strong>显示当前连胜进度</p>
+              <p class="mt-2"><strong>挑战完成：</strong>奖励发放，成就获得</p>
+              <p class="mt-2"><strong>挑战中断：</strong>连胜重置，可重新挑战</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test C 状态 -->
+        <div id="state-c" class="space-y-4 hidden">
+          <div class="text-gray-400 text-sm mb-2">Test C：奇遇包装</div>
+          <div class="flex flex-wrap gap-2">
+            <button class="state-btn active" onclick="switchState('c', 'encounter')">武将来找</button>
+            <button class="state-btn" onclick="switchState('c', 'dialog')">武将对话</button>
+            <button class="state-btn" onclick="switchState('c', 'task')">任务列表</button>
+            <button class="state-btn" onclick="switchState('c', 'reward')">奖励领取</button>
+          </div>
+          <div class="bg-gray-700 rounded-lg p-4 mt-4">
+            <div class="text-amber-400 text-sm font-semibold mb-2">💡 说明</div>
+            <div class="text-gray-300 text-sm leading-relaxed">
+              <p><strong>武将来找：</strong>武将主动出现，情感羁绊</p>
+              <p class="mt-2"><strong>武将对话：</strong>展示礼物预览，接受邀请</p>
+              <p class="mt-2"><strong>任务列表：</strong>完成任领取奖励</p>
+              <p class="mt-2"><strong>奖励领取：</strong>礼物到账，武将告别</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 差异对比 -->
+        <div class="mt-6 pt-6 border-t border-gray-700">
+          <h4 class="text-white text-lg mb-3">三种方案核心差异</h4>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-blue-900/30 rounded-lg p-3 text-center">
+              <div class="text-blue-400 font-semibold text-sm">Test A</div>
+              <div class="text-gray-400 text-xs mt-1">直接推送</div>
+              <div class="text-gray-300 text-xs mt-1">系统行为</div>
+            </div>
+            <div class="bg-orange-900/30 rounded-lg p-3 text-center">
+              <div class="text-orange-400 font-semibold text-sm">Test B</div>
+              <div class="text-gray-400 text-xs mt-1">挑战激励</div>
+              <div class="text-gray-300 text-xs mt-1">成就驱动</div>
+            </div>
+            <div class="bg-purple-900/30 rounded-lg p-3 text-center">
+              <div class="text-purple-400 font-semibold text-sm">Test C</div>
+              <div class="text-gray-400 text-xs mt-1">情感羁绊</div>
+              <div class="text-gray-300 text-xs mt-1">武将主动</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部说明 -->
+    <div class="mt-8 text-center text-gray-500 text-sm">
+      <p>基于Figma设计稿生成的交互式原型 | ABTest验证方案</p>
+    </div>
+  </div>
+
+  <script>
+    // 界面图片URL（从Figma导出）
+    const screenImages = {
+      a: 'https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/ccv2%2F2026-06-04%2FMiniMax-M2.7%2F2042515755638989306%2Fbe326e1fe3018094b6505ae9ece45a964d27bf57344f9714a930e5a2dbf2016e..png',
+      b: 'https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/ccv2%2F2026-06-04%2FMiniMax-M2.7%2F2042515755638989306%2F9ee41bc319422445ca60e971f6a72561c27141f239e4840e9c47a0bb211e2339..png',
+      c: 'https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/ccv2%2F2026-06-04%2FMiniMax-M2.7%2F2042515755638989306%2Fffd54372638874fc63c476e19363b21f906c871381da70a5f96975fba4ea4151..png'
+    };
+
+    // Tab切换
+    function switchTab(tab) {
+      // 更新Tab样式
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.closest('.tab-btn').classList.add('active');
+
+      // 更新图片
+      const img = document.getElementById('screen-img');
+      img.src = screenImages[tab];
+
+      // 更新状态区
+      document.querySelectorAll('[id^="state-"]').forEach(el => el.classList.add('hidden'));
+      document.getElementById('state-' + tab).classList.remove('hidden');
+
+      // 添加动效
+      const preview = document.getElementById('phone-preview');
+      preview.classList.remove('animate-fade-in');
+      void preview.offsetWidth; // 触发重绘
+      preview.classList.add('animate-fade-in');
+    }
+
+    // 状态切换
+    function switchState(tab, state) {
+      const container = document.getElementById('state-' + tab);
+      container.querySelectorAll('.state-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // 状态提示
+      const stateNames = {
+        a: { push: '推送弹窗', claimed: '已领取', battle: '对局中', result: '对局结果' },
+        b: { popup: '挑战弹窗', active: '挑战进行中', complete: '挑战完成', interrupt: '挑战中断' },
+        c: { encounter: '武将来找', dialog: '武将对话', task: '任务列表', reward: '奖励领取' }
+      };
+
+      console.log('切换到:', stateNames[tab][state]);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+[
+  {
+    "GeneralID": 30,
+    "Name": "曹仁",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": "神话",
+    "LevelTwoGeneralLampType": "风",
+    "InRuleType": "身份规则;欢乐规则",
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": "曹仁*魏国*caoren"
+  },
+  {
+    "GeneralID": 503,
+    "Name": "孙皓",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": "荟萃",
+    "LevelTwoGeneralLampType": "皇家贵胄",
+    "InRuleType": "身份规则;欢乐规则",
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": "孙皓*吴国*sunhao"
+  },
+  {
+    "GeneralID": 527,
+    "Name": "刘琦",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": "荟萃",
+    "LevelTwoGeneralLampType": "计将安出",
+    "InRuleType": "身份规则;欢乐规则",
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": "刘琦*群雄*liuqi"
+  },
+  {
+    "GeneralID": 2010,
+    "Name": "曹仁",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": null,
+    "LevelTwoGeneralLampType": null,
+    "InRuleType": "国战",
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": "曹仁*魏国*caoren"
+  },
+  {
+    "GeneralID": 7129,
+    "Name": "曹仁",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": null,
+    "LevelTwoGeneralLampType": null,
+    "InRuleType": null,
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": "曹仁*魏国*caoren"
+  },
+  {
+    "GeneralID": 7130,
+    "Name": "曹仁",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": null,
+    "LevelTwoGeneralLampType": null,
+    "InRuleType": null,
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": "曹仁*魏国*caoren"
+  },
+  {
+    "GeneralID": 7131,
+    "Name": "曹仁",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": null,
+    "LevelTwoGeneralLampType": null,
+    "InRuleType": null,
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": "曹仁*魏国*caoren"
+  },
+  {
+    "GeneralID": 8543,
+    "Name": "孙皓",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": null,
+    "LevelTwoGeneralLampType": null,
+    "InRuleType": null,
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": null
+  },
+  {
+    "GeneralID": 20271,
+    "Name": "孙皓",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": null,
+    "LevelTwoGeneralLampType": null,
+    "InRuleType": null,
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": null
+  },
+  {
+    "GeneralID": 20478,
+    "Name": "孙皓",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": null,
+    "LevelTwoGeneralLampType": null,
+    "InRuleType": null,
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": null
+  },
+  {
+    "GeneralID": 1600,
+    "Name": "曹仁",
+    "NamePrefix": "星",
+    "LevelOneGeneralLampType": "星河璀璨",
+    "LevelTwoGeneralLampType": "玉衡",
+    "InRuleType": "身份规则;欢乐规则",
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": "=C2351&\"*\"&E2351"
+  },
+  {
+    "GeneralID": 9500,
+    "Name": "曹仁",
+    "NamePrefix": null,
+    "LevelOneGeneralLampType": null,
+    "LevelTwoGeneralLampType": null,
+    "InRuleType": null,
+    "InRuleTypeEx": null,
+    "ShopItemId": null,
+    "Searchkey": null
+  }
+]

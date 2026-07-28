@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRD v1.0 - 预流失召回链路优化（单文件版）</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .tab-btn { color: #6b7280; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .tab-btn:hover { color: #987341; }
+    .tab-btn.active { color: #987341; border-bottom-color: #987341; }
+    .tab-wrap { display: none; }
+    .tab-wrap.active { display: block; }
+    .funnel-step { transition: all 0.2s; cursor: pointer; }
+    .funnel-step:hover { transform: scale(1.02); }
+    .group-card { transition: border-color 0.2s; }
+    .group-card:hover { border-color: #3b82f6; }
+    .mermaid svg { max-width: 100%; }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- 顶部导航 -->
+  <div class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div>
+        <h1 class="text-lg font-bold text-gray-800">预流失召回链路优化 · PRD v1.0</h1>
+        <p class="text-xs text-gray-400">项目：三国杀一将成名 · 单文件版（包含所有附件）</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab 切换 - 与标准版一致 -->
+  <div class="max-w-6xl mx-auto px-4 bg-white border-b border-gray-200 mt-4">
+    <div class="flex gap-6 overflow-x-auto">
+      <button class="tab-btn active py-3 text-sm font-medium whitespace-nowrap" onclick="switchTab('overview', this)">背景与目标</button>
+      <button class="tab-btn py-3 text-sm font-medium whitespace-nowrap" onclick="switchTab('data', this)">数据现状</button>
+      <button class="tab-btn py-3 text-sm font-medium whitespace-nowrap" onclick="switchTab('plan', this)">方案与奖励</button>
+      <button class="tab-btn py-3 text-sm font-medium whitespace-nowrap" onclick="switchTab('version', this)">版本记录</button>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 py-6">
+
+    <!-- ========== 背景与目标 ========== -->
+    <div id="tab-overview" class="tab-wrap active space-y-6">
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">一、背景与目标</h2>
+
+        <div class="mb-6">
+          <h3 class="font-semibold text-gray-700 mb-2">项目背景</h3>
+          <p class="text-gray-600 leading-relaxed">
+            三国杀一将成名当前面临<strong class="text-amber-700">日流失率偏高</strong>的问题，部分用户处于"预流失"状态——他们还未彻底流失，但活跃度已明显下滑。
+            为此，我们建立了预流失干预链路，在用户即将流失的窗口期进行召回干预，目标是将这批用户拉回并留存。
+          </p>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="font-semibold text-gray-700 mb-2">核心目标</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <div class="text-2xl font-bold text-amber-700 mb-1">降低日流失率</div>
+              <div class="text-xs text-gray-500">最终业务目标</div>
+            </div>
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div class="text-2xl font-bold text-blue-700 mb-1">提升登录转化率</div>
+              <div class="text-xs text-gray-500">环节一：触达 → 登录</div>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div class="text-2xl font-bold text-green-700 mb-1">提升任务完成率</div>
+              <div class="text-xs text-gray-500">环节二：登录 → 完成</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="font-semibold text-gray-700 mb-2">关键指标</h3>
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-50 text-left">
+                <th class="border border-gray-200 px-3 py-2 font-medium">指标</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium">定义</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">当前基准</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2">登录转化率</td>
+                <td class="border border-gray-200 px-3 py-2">推送触达 → 打开APP登录</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-amber-700 font-medium">12.1%（对照组）</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border border-gray-200 px-3 py-2">任务完成率</td>
+                <td class="border border-gray-200 px-3 py-2">登录 → 完成召回任务</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-amber-700 font-medium">55.8%（对照组）</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2">次留率</td>
+                <td class="border border-gray-200 px-3 py-2">完成任务 → 次日登录</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-amber-700 font-medium">40.3%（对照组）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-700 mb-2">用户与场景</h3>
+          <table class="w-full text-sm border-collapse">
+            <tbody>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-medium w-36">目标用户</td>
+                <td class="border border-gray-200 px-3 py-2">被圈选的预流失用户（当前约50万人/期）</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border border-gray-200 px-3 py-2 font-medium">干预时机</td>
+                <td class="border border-gray-200 px-3 py-2">用户处于预流失窗口期，尚未彻底流失</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-medium">干预方式</td>
+                <td class="border border-gray-200 px-3 py-2">APP推送 + 弹窗引导 + 任务激励</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border border-gray-200 px-3 py-2 font-medium">预期结果</td>
+                <td class="border border-gray-200 px-3 py-2">用户完成登录+对局任务，次日留存</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 三组漏斗数据 -->
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">二、三组漏斗数据</h2>
+        <p class="text-xs text-gray-400 mb-4">数据来源：预流失标签表 + logout表 + sgsnew_task_his（taskid 1311331-1311348）</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-50 text-left">
+                <th class="border border-gray-200 px-3 py-2 font-medium">组别</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">圈选用户</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">登录用户</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">登录转化率</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">完成任务</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">任务完成率</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">次留率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-blue-50">
+                <td class="border border-gray-200 px-3 py-2 font-semibold">数据部实验组</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">341,530</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">41,356</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-amber-700 font-semibold">12.1%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">23,087</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-amber-700 font-semibold">55.8%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-amber-700 font-semibold">40.3%</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-semibold">对照组</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">102,930</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">12,131</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">11.8%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">—</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">40.3%</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-semibold">算法实验组</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">61,372</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">19,905</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-green-600 font-semibold">32.4%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">6,805</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">34.2%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-red-500">39.1%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+          <p class="text-sm text-amber-800">
+            <strong>关键发现：</strong>算法实验组登录率32.4%最高，但次留率39.1%最低——原因：算法圈选了近期活跃下降用户，本身更易触达，但触达后留存质量低。数据部实验组/对照组登录率仅~12%，说明85%以上用户未被有效触达。
+          </p>
+        </div>
+      </div>
+
+      <!-- 各官阶次留率 -->
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">三、各官阶用户分布与次留率</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-50 text-left">
+                <th class="border border-gray-200 px-3 py-2 font-medium">官阶</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">人数</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">占比</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium text-right">次留率</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium">优先级</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-red-50">
+                <td class="border border-gray-200 px-3 py-2 font-semibold">骁卒</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">4,447</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">8.6%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-red-500">35.96%</td>
+                <td class="border border-gray-200 px-3 py-2 text-red-500">★★★</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-semibold">校尉</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">2,326</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">4.5%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-red-500">30.14%</td>
+                <td class="border border-gray-200 px-3 py-2 text-red-500">★★★</td>
+              </tr>
+              <tr class="bg-orange-50">
+                <td class="border border-gray-200 px-3 py-2 font-semibold">郎将</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">5,337</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">10.3%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-green-600">52.35%</td>
+                <td class="border border-gray-200 px-3 py-2 text-orange-500">★★★★</td>
+              </tr>
+              <tr class="bg-green-50">
+                <td class="border border-gray-200 px-3 py-2 font-semibold">偏将军</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">23,034</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">44.5%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-green-600">43.64%</td>
+                <td class="border border-gray-200 px-3 py-2 text-green-600">★★★★★</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-semibold">将军</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">9,240</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">17.9%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">47.86%</td>
+                <td class="border border-gray-200 px-3 py-2 text-gray-400">★★</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-semibold">国护军</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">1,424</td>
+                <td class="border border-gray-200 px-3 py-2 text-right">2.8%</td>
+                <td class="border border-gray-200 px-3 py-2 text-right text-red-600">19.52%</td>
+                <td class="border border-gray-200 px-3 py-2 text-red-600">★★★</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4 p-3 bg-gray-50 border border-gray-200 rounded-lg">
+          <p class="text-sm text-gray-600">
+            <strong>用户结构洞察：</strong>偏将军23,034人（44.5%）是最大群体，次留率43.64%；
+            骁卒+校尉合计占圈选29.9%（数据部实验组口径），但次留率最低（30-36%），是任务简化方案的主要受益群体。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 数据现状 ========== -->
+    <div id="tab-data" class="tab-wrap space-y-6">
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">数据现状分析</h2>
+
+        <div class="mb-6">
+          <h3 class="font-semibold text-gray-700 mb-3">瓶颈识别</h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+              <span class="text-red-500 text-lg mt-0.5">★★★★★</span>
+              <div>
+                <div class="font-medium text-red-800">瓶颈一：触达规模极小</div>
+                <p class="text-sm text-red-600">APP推送覆盖率当前<strong>0%</strong>，触达基数接近于零，扩大推送覆盖是最高优先级</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+              <span class="text-orange-500 text-lg mt-0.5">★★★★</span>
+              <div>
+                <div class="font-medium text-orange-800">瓶颈二：低官阶任务完成率低</div>
+                <p class="text-sm text-orange-600">骁卒+校尉+郎将占圈选74.4%，但占完成任务仅22.8%——骁卒/校尉被大量触达但完不成任务</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <span class="text-yellow-600 text-lg mt-0.5">★★★</span>
+              <div>
+                <div class="font-medium text-yellow-800">瓶颈三：国护军留存极低</div>
+                <p class="text-sm text-yellow-700">次留率仅19.52%，常规干预无效，需情感召回而非常规任务干预</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-700 mb-3">机会点</h3>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+              <span class="text-green-600 text-lg mt-0.5">★★★★★</span>
+              <div>
+                <div class="font-medium text-green-800">机会一：扩大推送覆盖</div>
+                <p class="text-sm text-green-700">覆盖50%，触达用户数翻倍</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+              <span class="text-green-600 text-lg mt-0.5">★★★★</span>
+              <div>
+                <div class="font-medium text-green-800">机会二：简化全员任务</div>
+                <p class="text-sm text-green-700">任务完成率提升，尤其是低官阶用户群体</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+              <span class="text-green-600 text-lg mt-0.5">★★★★</span>
+              <div>
+                <div class="font-medium text-green-800">机会三：武将体验卡激励</div>
+                <p class="text-sm text-green-700">提升任务吸引力，增加连续参与</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">数据需求总结</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div class="font-semibold text-green-800 mb-2">已有数据</div>
+            <ul class="text-sm text-green-700 space-y-1">
+              <li>· 三组漏斗数据（数据部实验组/对照组/算法实验组）</li>
+              <li>· 各官阶次留率（骁卒/校尉/郎将/偏将军/将军/国护军）</li>
+              <li>· sgsnew_task_his 任务完成数据</li>
+            </ul>
+          </div>
+          <div class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <div class="font-semibold text-yellow-800 mb-2">需确认 / 后续补充</div>
+            <ul class="text-sm text-yellow-700 space-y-1">
+              <li>· APP推送覆盖率精确值（预计50%）</li>
+              <li>· 弹窗展示率（需新增埋点 F3）</li>
+              <li>· 任务领取率（需新增埋点 F3）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+          <p class="text-sm text-amber-800">
+            <strong>结论：</strong>数据充分，可以进入方案设计。
+            弹窗展示率和任务领取率的缺失可作为后续优化点，不影响MVP方案设计。
+          </p>
+        </div>
+      </div>
+
+      <!-- 数据看板（内联 Chart.js） -->
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">数据可视化看板</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <!-- 数据部实验组 -->
+          <div class="bg-white rounded-xl border-2 border-gray-200 p-5 group-card">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">数据部实验组</h3>
+              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">基准</span>
+            </div>
+            <div class="space-y-3">
+              <div class="funnel-step bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">圈选用户</span>
+                  <span class="font-bold text-blue-600">341,530</span>
+                </div>
+              </div>
+              <div class="flex justify-center text-gray-400">↓</div>
+              <div class="funnel-step bg-orange-50 border border-orange-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">登录用户</span>
+                  <span class="font-bold text-orange-600">41,356</span>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="text-xs text-orange-500">转化率</span>
+                  <span class="text-xs font-bold text-orange-600">12.1%</span>
+                </div>
+              </div>
+              <div class="flex justify-center text-gray-400">↓</div>
+              <div class="funnel-step bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">完成任务</span>
+                  <span class="font-bold text-yellow-600">23,087</span>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="text-xs text-yellow-500">完成率</span>
+                  <span class="text-xs font-bold text-yellow-600">55.8%</span>
+                </div>
+              </div>
+              <div class="flex justify-center text-gray-400">↓</div>
+              <div class="funnel-step bg-green-50 border border-green-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">次留</span>
+                  <span class="font-bold text-green-600">40.3%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 对照组 -->
+          <div class="bg-white rounded-xl border-2 border-gray-200 p-5 group-card">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">对照组</h3>
+              <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">无完成数据</span>
+            </div>
+            <div class="space-y-3">
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">圈选用户</span>
+                  <span class="font-bold text-blue-600">102,930</span>
+                </div>
+              </div>
+              <div class="flex justify-center text-gray-400">↓</div>
+              <div class="bg-orange-50 border border-orange-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">登录用户</span>
+                  <span class="font-bold text-orange-600">12,131</span>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="text-xs text-orange-500">转化率</span>
+                  <span class="text-xs font-bold text-orange-600">11.8%</span>
+                </div>
+              </div>
+              <div class="flex justify-center text-gray-300">↓</div>
+              <div class="bg-gray-100 border border-gray-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-400">完成任务</span>
+                  <span class="font-bold text-gray-400">—</span>
+                </div>
+              </div>
+              <div class="flex justify-center text-gray-300">↓</div>
+              <div class="bg-green-50 border border-green-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">次留</span>
+                  <span class="font-bold text-green-600">40.3%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 算法实验组 -->
+          <div class="bg-white rounded-xl border-2 border-green-300 p-5 group-card">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="font-bold text-gray-800">算法实验组</h3>
+              <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">登录率最高</span>
+            </div>
+            <div class="space-y-3">
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">圈选用户</span>
+                  <span class="font-bold text-blue-600">61,372</span>
+                </div>
+              </div>
+              <div class="flex justify-center text-gray-400">↓</div>
+              <div class="bg-orange-50 border-2 border-orange-400 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">登录用户</span>
+                  <span class="font-bold text-orange-600">19,905</span>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="text-xs text-orange-500">转化率</span>
+                  <span class="text-xs font-bold text-orange-600 bg-orange-100 px-1 rounded">32.4%</span>
+                </div>
+              </div>
+              <div class="flex justify-center text-gray-400">↓</div>
+              <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">完成任务</span>
+                  <span class="font-bold text-yellow-600">6,805</span>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="text-xs text-yellow-500">完成率</span>
+                  <span class="text-xs font-bold text-yellow-600">34.2%</span>
+                </div>
+              </div>
+              <div class="flex justify-center text-gray-400">↓</div>
+              <div class="bg-red-50 border border-red-200 rounded-lg p-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600">次留</span>
+                  <span class="font-bold text-red-600">39.1%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 关键对比卡片 -->
+        <div class="grid grid-cols-4 gap-4 mb-6">
+          <div class="bg-white rounded-lg border p-4 text-center">
+            <div class="text-2xl font-bold text-blue-600">445,832</div>
+            <div class="text-xs text-gray-500 mt-1">总圈选用户</div>
+          </div>
+          <div class="bg-white rounded-lg border p-4 text-center">
+            <div class="text-2xl font-bold text-orange-500">73,392</div>
+            <div class="text-xs text-gray-500 mt-1">总登录用户</div>
+          </div>
+          <div class="bg-white rounded-lg border p-4 text-center">
+            <div class="text-2xl font-bold text-green-600">~40%</div>
+            <div class="text-xs text-gray-500 mt-1">加权次留率</div>
+          </div>
+          <div class="bg-white rounded-lg border p-4 text-center">
+            <div class="text-2xl font-bold text-red-600">0%</div>
+            <div class="text-xs text-gray-500 mt-1">APP推送覆盖率</div>
+            <div class="text-xs text-green-500 mt-1">→ 预计增加后50%</div>
+          </div>
+        </div>
+
+        <!-- 三组对比柱状图 -->
+        <div class="bg-white rounded-xl border p-6 mb-6">
+          <h3 class="font-bold text-gray-800 mb-4">三组关键指标对比</h3>
+          <div class="h-64">
+            <canvas id="groupCompareChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 官阶次留率图 -->
+        <div class="bg-white rounded-xl border p-6">
+          <h3 class="font-bold text-gray-800 mb-4">各官阶次留率对比</h3>
+          <div class="h-64">
+            <canvas id="guanjiaChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 方案与奖励 ========== -->
+    <div id="tab-plan" class="tab-wrap space-y-6">
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">方案设计</h2>
+
+        <div class="mb-6">
+          <h3 class="font-semibold text-gray-700 mb-3">MVP 范围（已确认）</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 bg-green-50 border-2 border-green-400 rounded-lg">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-green-500 text-white text-xs rounded font-bold">方案A</span>
+                <span class="font-semibold text-green-800">扩大APP推送覆盖 + 分层推送</span>
+              </div>
+              <p class="text-sm text-green-700">APP推送覆盖率从0%提升至50%，并根据不同等级和官阶推送差异化内容</p>
+              <p class="text-xs text-green-600 mt-1">实施难度：低 | 依赖：Push系统支持</p>
+            </div>
+            <div class="p-4 bg-blue-50 border-2 border-blue-400 rounded-lg">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-blue-500 text-white text-xs rounded font-bold">方案C</span>
+                <span class="font-semibold text-blue-800">简化全员任务 + 武将体验卡激励</span>
+              </div>
+              <p class="text-sm text-blue-700">任务简化为"登录+任意对局1次"，配武将体验卡激励</p>
+              <p class="text-xs text-blue-600 mt-1">实施难度：中 | 依赖：任务系统差异化配置</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="font-semibold text-gray-700 mb-3">暂缓方向</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-gray-400 text-white text-xs rounded font-bold">方案B</span>
+                <span class="font-medium text-gray-600">60-100级用户目标线树立</span>
+              </div>
+              <p class="text-sm text-gray-500">为60-100级用户设立专属成长目标线，引导其向上发展</p>
+            </div>
+            <div class="p-4 bg-gray-50 border border-gray-200 rounded-lg">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-gray-400 text-white text-xs rounded font-bold">方案D</span>
+                <span class="font-medium text-gray-600">国护军社交行为引导</span>
+              </div>
+              <p class="text-sm text-gray-500">国护军可能是核心用户流失加剧，需额外增加社交行为引导（如好友推荐、公会邀请等）</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <h3 class="font-semibold text-blue-800 mb-2">方案C 详细说明</h3>
+          <ul class="text-sm text-blue-700 space-y-2">
+            <li><strong>任务简化：</strong>全员任务统一为"登录 + 任意对局1次"（不分官阶）</li>
+            <li><strong>武将体验卡激励：</strong>连续3日，每日可领取武将体验卡 + 牌局奖励</li>
+            <li><strong>体验卡出现时机：</strong>首局（PVE局）100%出现</li>
+            <li><strong>体验卡有效期：</strong>7天</li>
+            <li><strong>领取方式：</strong>在单独的功能活动界面，手动领取每一日的奖励和任务奖励</li>
+            <li><strong>中断处理：</strong>Day1领卡未完成对局，Day2可正常登录领卡</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Figma 设计稿 -->
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Figma 设计稿</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p class="text-sm font-medium text-gray-600 mb-2">弹屏界面</p>
+            <img src="../弹屏界面.png" alt="弹屏界面" class="w-full rounded-lg shadow-md border cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox(this.src)">
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-600 mb-2">活动界面一</p>
+            <img src="../活动界面一.png" alt="活动界面一" class="w-full rounded-lg shadow-md border cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox(this.src)">
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-600 mb-2">活动界面二</p>
+            <img src="../活动界面二.png" alt="活动界面二" class="w-full rounded-lg shadow-md border cursor-pointer hover:opacity-90 transition-opacity" onclick="openLightbox(this.src)">
+          </div>
+        </div>
+      </div>
+
+      <!-- 图片放大查看模态框 -->
+      <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden items-center justify-center" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg">
+        <button class="absolute top-4 right-4 text-white text-3xl hover:text-gray-300" onclick="closeLightbox()">&times;</button>
+      </div>
+
+      <!-- 流程图（内联 Mermaid） -->
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">方案流程图</h2>
+
+        <h3 class="font-semibold text-gray-700 mb-3">主流程</h3>
+        <div class="mermaid">
+flowchart TD
+    subgraph SG1
+        A["数据标记"] --> B["生成名单"]
+        B --> C["每周滚动"]
+    end
+    SG1 --> D["接入推送"]
+    D --> E{"在线?"}
+    E -->|"是"| F["推送触达"]
+    E -->|"否"| G["等待"]
+    F --> H["打开APP"]
+    G --> H
+    H --> I["登录"]
+    I --> J["进界面"]
+    J --> K{"Day1?"}
+    K -->|"是"| L["领卡1"]
+    K -->|"否"| M{"Day2?"}
+    M -->|"是"| N["领卡2"]
+    M -->|"否"| O{"Day3?"}
+    O -->|"是"| P["领卡3"]
+    O -->|"否"| Q["最后一天"]
+    L --> R["体验卡到账"]
+    N --> R
+    P --> R
+    R --> S["使用体验卡"]
+    S --> T["对局"]
+    T --> U{"PVE?"}
+    U -->|"PVE"| V["首局弹窗"]
+    U -->|"PVP"| W["无弹窗"]
+    V --> X["完成1次"]
+    W --> X
+    X --> Y["领奖励"]
+    Y --> Z{"次日登录?"}
+    Z -->|"是"| AA["次留"]
+    Z -->|"否"| AB["流失"]
+    style A fill:#fef3c7,stroke:#d97706
+    style H fill:#dbeafe,stroke:#2563eb
+    style L fill:#d1fae5,stroke:#059669
+    style V fill:#d1fae5,stroke:#059669
+    style Y fill:#d1fae5,stroke:#059669
+    style AA fill:#059669,stroke:#065f46,color:#fff
+    style AB fill:#fee2e2,stroke:#dc2626
+        </div>
+
+        <h3 class="font-semibold text-gray-700 mt-6 mb-3">异常分支</h3>
+        <div class="mermaid">
+flowchart TD
+    subgraph S1
+        A["Day1领卡"] --> B["未完成退出"]
+        B --> C["卡保留7天"]
+        C --> D["Day2登录"]
+        D --> E["正常领卡2"]
+    end
+    S1 --> F{"到期前使用?"}
+    F -->|"未用"| G["卡失效"]
+    F -->|"已用"| H["卡消失"]
+    S1 --> I{"等级段?"}
+    I -->|"60级以下"| J["界钟会等"]
+    I -->|"61-100级"| K["牛辅等"]
+    I -->|"101-150级"| L["王昶等"]
+    I -->|"151级+"| M["郭照等"]
+    I -->|"国护军"| N["马伶俐等"]
+    style C fill:#fef9c3,stroke:#ca8a04
+    style G fill:#fee2e2,stroke:#dc2626
+    style N fill:#fdf4ff,stroke:#7c3aed
+        </div>
+      </div>
+
+      <!-- 奖励配置 -->
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">武将体验卡 + 牌局奖励配置</h2>
+        <p class="text-sm text-gray-500 mb-4">适用于：预流失召回链路优化 · 方案C</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-gray-50 text-left">
+                <th class="border border-gray-200 px-3 py-2 font-medium">等级段</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium">登录武将试用1</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium">登录武将试用2</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium">登录武将试用3</th>
+                <th class="border border-gray-200 px-3 py-2 font-medium">牌局奖励</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-medium">60级以下</td>
+                <td class="border border-gray-200 px-3 py-2">界钟会</td>
+                <td class="border border-gray-200 px-3 py-2">尹夫人（500符）</td>
+                <td class="border border-gray-200 px-3 py-2">牛辅（1000符）</td>
+                <td class="border border-gray-200 px-3 py-2">对应传说皮肤使用 + 角色经验</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border border-gray-200 px-3 py-2 font-medium">61-100级 郎将+偏将军</td>
+                <td class="border border-gray-200 px-3 py-2">牛辅（1000符）</td>
+                <td class="border border-gray-200 px-3 py-2">赵嫣（1500符）</td>
+                <td class="border border-gray-200 px-3 py-2">王昶（2000符）</td>
+                <td class="border border-gray-200 px-3 py-2">对应传说皮肤使用 + 朱砂</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-medium">101-150级 偏将军+将军+上将军</td>
+                <td class="border border-gray-200 px-3 py-2">王昶（2000符）</td>
+                <td class="border border-gray-200 px-3 py-2">滕公主（3000符）</td>
+                <td class="border border-gray-200 px-3 py-2">张嫙（5000符）</td>
+                <td class="border border-gray-200 px-3 py-2">对应传说皮肤使用 + 三国资源宝箱</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border border-gray-200 px-3 py-2 font-medium">151级以上 偏将军+将军+上将军</td>
+                <td class="border border-gray-200 px-3 py-2">郭照（5000符）</td>
+                <td class="border border-gray-200 px-3 py-2">张嫙（5000符）</td>
+                <td class="border border-gray-200 px-3 py-2">曹金玉（5000符）</td>
+                <td class="border border-gray-200 px-3 py-2">对应传说皮肤使用 + 三国资源宝箱</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-3 py-2 font-medium">国护军及以上</td>
+                <td class="border border-gray-200 px-3 py-2">马伶俐</td>
+                <td class="border border-gray-200 px-3 py-2">庞凤衣</td>
+                <td class="border border-gray-200 px-3 py-2">神庞统</td>
+                <td class="border border-gray-200 px-3 py-2">对应传说皮肤使用 + 金豆</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+          <p class="text-sm text-blue-800">
+            <strong>规则说明：</strong>
+            每档每日可领取1张武将体验卡（登录即领）+ 1份牌局奖励（完成对局后手动领取）。
+            武将从第1天到第3天逐渐稀缺（强度递增），牌局奖励随等级段提升资源价值。
+          </p>
+        </div>
+      </div>
+
+      <!-- 每日任务节奏 -->
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">每日任务节奏</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-center">
+            <div class="text-3xl mb-2">📲</div>
+            <div class="font-semibold text-amber-800 mb-1">Day 1 登录</div>
+            <p class="text-xs text-amber-600">打开APP → 领取武将试用卡1 + 牌局奖励入口</p>
+          </div>
+          <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg text-center">
+            <div class="text-3xl mb-2">🎮</div>
+            <div class="font-semibold text-blue-800 mb-1">Day 1 完成对局</div>
+            <p class="text-xs text-blue-600">任意对局1次（PVP/PVE）→ 武将体验卡首局100%出现</p>
+          </div>
+          <div class="p-4 bg-green-50 border border-green-200 rounded-lg text-center">
+            <div class="text-3xl mb-2">🎁</div>
+            <div class="font-semibold text-green-800 mb-1">Day 1 领取奖励</div>
+            <p class="text-xs text-green-600">活动界面手动领取牌局奖励</p>
+          </div>
+        </div>
+        <div class="mt-4 p-3 bg-gray-50 border border-gray-200 rounded-lg">
+          <p class="text-sm text-gray-600">
+            <strong>中断处理：</strong>Day1领了卡但未完成对局，Day2仍可正常登录并领取武将试用卡2。
+            体验卡有效期7天，可在活动期间内灵活使用。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 版本记录 ========== -->
+    <div id="tab-version" class="tab-wrap space-y-4">
+      <div class="bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">版本记录</h2>
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-gray-50 text-left">
+              <th class="border border-gray-200 px-3 py-2 font-medium">版本</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium">日期</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium">内容</th>
+              <th class="border border-gray-200 px-3 py-2 font-medium">状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-green-50">
+              <td class="border border-gray-200 px-3 py-2 font-semibold">v1.0</td>
+              <td class="border border-gray-200 px-3 py-2">2026-05-08</td>
+              <td class="border border-gray-200 px-3 py-2">初始版本：方案A+方案C确认，武将体验卡5档配置</td>
+              <td class="border border-gray-200 px-3 py-2 text-green-600 font-medium">当前版本</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-wrap').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tabId).classList.add('active');
+      btn.classList.add('active');
+
+      // 切换到方案与奖励Tab时，重新渲染Mermaid
+      if (tabId === 'plan') {
+        setTimeout(() => {
+          document.querySelectorAll('.mermaid').forEach(el => {
+            if (!el.querySelector('svg')) {
+              el.removeAttribute('data-processed');
+              mermaid.run({ nodes: [el] });
+            }
+          });
+        }, 100);
+      }
+    }
+
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = src;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+    }
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base',
+      themeVariables: {
+        primaryColor: '#fef3c7',
+        primaryTextColor: '#92400e',
+        primaryBorderColor: '#d97706',
+        lineColor: '#9ca3af',
+        secondaryColor: '#dbeafe',
+        tertiaryColor: '#f3f4f6',
+      },
+      flowchart: { curve: 'basis', htmlLabels: true }
+    });
+
+    // 页面加载时渲染 Mermaid
+    document.addEventListener('DOMContentLoaded', () => {
+      mermaid.run();
+    });
+
+    function initCharts() {
+      const groupCompareCtx = document.getElementById('groupCompareChart');
+      if (groupCompareCtx) {
+        new Chart(groupCompareCtx.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: ['登录转化率', '任务完成率', '次留率'],
+            datasets: [
+              { label: '数据部实验组', data: [12.1, 55.8, 40.3], backgroundColor: 'rgba(59, 130, 246, 0.7)' },
+              { label: '对照组', data: [11.8, 0, 40.3], backgroundColor: 'rgba(251, 191, 36, 0.7)' },
+              { label: '算法实验组', data: [32.4, 34.2, 39.1], backgroundColor: 'rgba(34, 197, 94, 0.7)' }
+            ]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { position: 'top' } },
+            scales: { y: { beginAtZero: true, max: 60, ticks: { callback: v => v + '%' } } }
+          }
+        });
+      }
+
+      const guanjiaCtx = document.getElementById('guanjiaChart');
+      if (guanjiaCtx) {
+        new Chart(guanjiaCtx.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: ['骁卒', '校尉', '郎将', '偏将军', '将军', '国护军'],
+            datasets: [{
+              label: '次留率',
+              data: [35.96, 30.14, 52.35, 43.64, 47.86, 19.52],
+              backgroundColor: ['rgba(239,68,68,0.7)', 'rgba(239,68,68,0.7)', 'rgba(251,191,36,0.7)', 'rgba(59,130,246,0.7)', 'rgba(34,197,94,0.7)', 'rgba(239,68,68,0.7)']
+            }]
+          },
+          options: {
+            indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { beginAtZero: true, max: 60, ticks: { callback: v => v + '%' } } }
+          }
+        });
+      }
+    }
+
+    window.addEventListener('load', initCharts);
+  </script>
+</body>
+</html>

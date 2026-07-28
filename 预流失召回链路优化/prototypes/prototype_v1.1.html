@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预流失召回链路 · 活动原型 v1.1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* 横屏容器 */
+    .landscape-frame {
+      position: relative;
+      width: 100vw;
+      height: 56.25vw;
+      max-height: 100vh;
+      max-width: 177.78vh;
+      margin: auto;
+      overflow: hidden;
+      background: #1a0e0a;
+    }
+
+    /* 设计稿图片 */
+    .proto-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 动效 */
+    .modal-enter { animation: modalIn 0.25s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .modal-exit  { animation: modalOut 0.2s ease-in forwards; }
+    @keyframes modalIn  { from{opacity:0;transform:scale(0.85)} to{opacity:1;transform:scale(1)} }
+    @keyframes modalOut { from{opacity:1;transform:scale(1)} to{opacity:0;transform:scale(0.85)} }
+    .page-slide-in { animation: pageSlideIn 0.3s ease-out forwards; }
+    @keyframes pageSlideIn { from{opacity:0} to{opacity:1} }
+    .toast { animation: toastIn 0.2s ease-out, toastOut 0.2s ease-in 1.8s forwards; }
+    @keyframes toastIn  { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes toastOut { from{opacity:1} to{opacity:0} }
+
+    /* 按钮交互区 */
+    .btn-area {
+      position: absolute;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-area:active { background: rgba(255,255,255,0.08); }
+
+    /* 可点击区域（参考线，调试用） */
+    /* 取消调试边框：去掉 border 即可 */
+    .debug-outline { outline: 1px dashed rgba(255,0,0,0.4); }
+
+    /* 弹窗遮罩 */
+    .mask {
+      background: rgba(0,0,0,0.55);
+    }
+  </style>
+</head>
+<body style="background:#000; overflow:hidden;">
+
+<!-- ================================================ -->
+<!--  横屏容器                                        -->
+<!-- ================================================ -->
+<div class="landscape-frame" id="frame">
+
+  <!-- ===== 页面1: 入局弹窗 ===== -->
+  <!-- 设计稿图1: https://.../4792c35...png -->
+  <div id="page-entry" class="absolute inset-0 z-50 page-slide-in">
+    <!-- 背景：游戏截图 -->
+    <img class="proto-bg" src="https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/ccv2%2F2026-05-08%2FMiniMax-M2.7%2F2042515755638989306%2F4792c35ddc8bf849da8d98206fa46072c3d32ebfb8c8363f8652d47e7ff3b163..png?Expires=1778317803&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=wTQtz1lA%2BEBqFgiPzy9JymwdmqE%3D" alt="入局弹窗" />
+
+    <!-- 遮罩 -->
+    <div class="absolute inset-0 mask"></div>
+
+    <!-- 弹窗主体：叠加在设计稿上 -->
+    <!-- 入局弹窗在设计稿中的大致区域 -->
+    <!-- 立即领取按钮 -->
+    <div id="entry-claim-btn" onclick="entryClaim()"
+         class="btn-area absolute debug-outline"
+         style="
+           /* 基于设计稿实际位置估算 */
+           /* 入局弹窗在屏幕中央偏右，按钮在弹窗底部 */
+           bottom: 15%;
+           left: 28%;
+           width: 18%;
+           height: 8%;
+           z-index: 60;
+         ">
+    </div>
+
+    <!-- 关闭按钮 -->
+    <button onclick="closeEntryModal()"
+            class="absolute btn-area z-[70]"
+            style="
+              top: 23.5%;
+              right: 30.5%;
+              width: 3%;
+              height: 4%;
+            ">
+    </button>
+  </div>
+
+
+  <!-- ===== 页面2: 活动主界面 ===== -->
+  <!-- 设计稿图2: https://.../8c725f4...jpeg -->
+  <div id="page-activity" class="absolute inset-0 hidden z-40">
+    <!-- 背景：活动主界面设计稿 -->
+    <img class="proto-bg" src="https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/ccv2%2F2026-05-08%2FMiniMax-M2.7%2F2042515755638989306%2F8c725f4743ac7f111b42ebf9679eb641d2f118f0a59d3b9ef671212cf623a827..jpeg?Expires=1778317803&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=TaTxaBo6wY6lgMFoK1zR%2FTQdFl8%3D" alt="活动主界面" />
+
+    <!-- 顶部导航关闭按钮 -->
+    <button onclick="closeActivity()"
+            class="absolute btn-area z-10"
+            style="
+              top: 0.8%;
+              right: 2%;
+              width: 3%;
+              height: 5%;
+            ">
+    </button>
+
+    <!-- 领取奖励按钮 -->
+    <div id="activity-claim-btn" onclick="activityClaim()"
+         class="btn-area absolute debug-outline"
+         style="
+           /* 领取按钮在活动界面中下方 */
+           bottom: 14%;
+           left: 26%;
+           width: 20%;
+           height: 8%;
+           z-index: 10;
+         ">
+    </div>
+
+    <!-- 调试按钮：模拟完成任务 -->
+    <button onclick="simulateTaskDone()" id="sim-btn"
+            class="absolute btn-area z-20"
+            style="
+              bottom: 6%;
+              left: 26%;
+              width: 20%;
+              height: 5%;
+              font-size: 0;
+            ">
+    </button>
+  </div>
+
+
+  <!-- ===== 道具获得弹窗 ===== -->
+  <div id="page-reward-modal" class="absolute inset-0 hidden z-[60] flex items-center justify-center mask">
+    <!-- 道具弹窗背景（复用入局弹窗设计稿做模糊叠加示意） -->
+    <div class="relative rounded-2xl overflow-hidden modal-enter"
+         style="
+           width: 55%;
+           max-width: 600px;
+           background: transparent;
+           z-index: 65;
+         ">
+      <!-- 这里用设计稿1的截图做示意，实际可替换为专用道具弹窗图 -->
+      <img class="w-full rounded-2xl" style="border-radius:16px; border:2px solid #c8963a; box-shadow: 0 0 40px rgba(200,150,58,0.3);"
+           src="https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/ccv2%2F2026-05-08%2FMiniMax-M2.7%2F2042515755638989306%2F4792c35ddc8bf849da8d98206fa46072c3d32ebfb8c8363f8652d47e7ff3b163..png?Expires=1778317803&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=wTQtz1lA%2BEBqFgiPzy9JymwdmqE%3D"
+           alt="获得弹窗" />
+      <!-- 确定按钮 -->
+      <div onclick="closeRewardModal()" class="btn-area"
+           style="
+             bottom: 16%;
+             left: 21%;
+             width: 16%;
+             height: 7%;
+             z-index: 66;
+           ">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== Toast ===== -->
+  <div id="toast-area" class="absolute top-4 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-2 items-center pointer-events-none" style="width:80%;"></div>
+
+</div><!-- end .landscape-frame -->
+
+
+<!-- ================================================ -->
+<!--  JavaScript                                        -->
+<!-- ================================================ -->
+<script>
+  let taskDone = false;
+
+  function closeEntryModal() {
+    const m = document.getElementById('page-entry');
+    m.classList.remove('page-slide-in');
+    m.classList.add('modal-exit');
+    setTimeout(() => { m.classList.add('hidden'); }, 200);
+  }
+
+  function entryClaim() {
+    const m = document.getElementById('page-entry');
+    m.classList.remove('page-slide-in');
+    m.classList.add('modal-exit');
+    setTimeout(() => {
+      m.classList.add('hidden');
+      const a = document.getElementById('page-activity');
+      a.classList.remove('hidden');
+      a.classList.add('page-slide-in');
+    }, 200);
+  }
+
+  function activityClaim() {
+    if (!taskDone) {
+      showToast('请先完成任务', 'warning');
+      return;
+    }
+    const m = document.getElementById('page-reward-modal');
+    m.classList.remove('hidden');
+    m.classList.add('flex');
+  }
+
+  function closeRewardModal() {
+    const m = document.getElementById('page-reward-modal');
+    const inner = m.querySelector('.modal-enter');
+    if (inner) { inner.classList.remove('modal-enter'); inner.classList.add('modal-exit'); }
+    setTimeout(() => {
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+      if (inner) { inner.classList.remove('modal-exit'); inner.classList.add('modal-enter'); }
+    }, 200);
+  }
+
+  function closeActivity() {
+    document.getElementById('page-activity').classList.add('hidden');
+    taskDone = false;
+    updateTaskUI();
+    const e = document.getElementById('page-entry');
+    e.classList.remove('hidden', 'modal-exit');
+    e.classList.add('page-slide-in');
+  }
+
+  function simulateTaskDone() {
+    taskDone = true;
+    updateTaskUI();
+    showToast('任务已完成，可以领取奖励了！', 'success');
+  }
+
+  function updateTaskUI() {
+    // 可选：根据状态改变领取按钮样式
+    const btn = document.getElementById('activity-claim-btn');
+    if (taskDone) {
+      btn.style.outline = '2px solid #c8963a';
+    } else {
+      btn.style.outline = '1px dashed rgba(255,0,0,0.4)';
+    }
+  }
+
+  function showToast(msg, type) {
+    const area = document.getElementById('toast-area');
+    const palette = {
+      success: 'background:linear-gradient(180deg,#1a4a2a,#0d2a18); border:1px solid #2a7a3a; color:#7ae89a;',
+      warning: 'background:linear-gradient(180deg,#4a3a0a,#2a2005); border:1px solid #7a6a0a; color:#e8d47a;',
+      error:   'background:linear-gradient(180deg,#4a0a0a,#2a0505); border:1px solid #7a0a0a; color:#e87a7a;',
+    };
+    const d = document.createElement('div');
+    d.className = 'toast px-5 py-2.5 rounded-xl text-sm font-bold pointer-events-auto';
+    d.style.cssText = palette[type] || palette.warning;
+    d.textContent = msg;
+    area.appendChild(d);
+    setTimeout(() => { if (d.parentNode) d.parentNode.removeChild(d); }, 2200);
+  }
+
+  updateTaskUI();
+</script>
+
+</body>
+</html>

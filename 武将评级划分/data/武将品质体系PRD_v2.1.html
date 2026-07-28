@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武将品质体系 PRD v2.1</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; line-height: 1.8; color: #333; background: #f5f5f5; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .cover { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 40px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3); }
+        .cover h1 { font-size: 32px; font-weight: 600; margin-bottom: 20px; }
+        .cover-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 14px; opacity: 0.9; }
+        .cover-meta span { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; }
+        .section { background: white; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .section-title { font-size: 20px; font-weight: 600; color: #667eea; padding-bottom: 16px; margin-bottom: 20px; border-bottom: 2px solid #f0f0f0; }
+        .section h3 { font-size: 16px; font-weight: 600; color: #444; margin: 24px 0 12px 0; }
+        .section h4 { font-size: 14px; font-weight: 600; color: #666; margin: 16px 0 8px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+        th { background: #667eea; color: white; padding: 12px 16px; text-align: left; font-weight: 500; }
+        td { padding: 12px 16px; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f8f9ff; }
+        .text-center { text-align: center; }
+        .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+        .tag-primary { background: #667eea; color: white; }
+        .tag-success { background: #52c41a; color: white; }
+        .tag-warning { background: #faad14; color: white; }
+        .tag-danger { background: #ff4d4f; color: white; }
+        .tag-gray { background: #8c8c8c; color: white; }
+        .tag-purple { background: #722ed1; color: white; }
+        .rule-card { background: #f6ffed; border-left: 4px solid #52c41a; padding: 20px; margin: 16px 0; border-radius: 0 8px 8px 0; }
+        .rule-card h4 { color: #52c41a; font-size: 15px; margin-bottom: 12px; }
+        ul { padding-left: 24px; margin: 12px 0; }
+        li { margin: 8px 0; }
+        .status-pending { color: #faad14; font-weight: 500; }
+        .conclusion-box { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 16px; }
+        .footer { text-align: center; padding: 40px; color: #999; font-size: 13px; }
+
+        /* 武将名单表格样式 */
+        .general-table-wrapper { max-height: 600px; overflow-y: auto; border: 1px solid #e8e8e8; border-radius: 8px; }
+        .general-table { font-size: 13px; margin: 0; }
+        .general-table th { position: sticky; top: 0; z-index: 10; }
+        .tier-header { background: #f0f0f0; font-weight: 600; }
+        .tier-header td { color: #667eea; padding: 8px 12px !important; }
+        .general-row:hover { background: #f8f9ff !important; }
+
+        /* 筛选器样式 */
+        .filter-bar { text-align: center; margin: 20px 0; padding: 16px; background: #fafafa; border-radius: 8px; }
+        .filter-btn { padding: 8px 16px; margin: 5px; border: 2px solid #667eea; border-radius: 20px; cursor: pointer; background: white; color: #667eea; font-weight: 500; transition: all 0.2s; }
+        .filter-btn:hover { background: #667eea; color: white; }
+        .filter-btn.active { background: #667eea; color: white; }
+        .stats { text-align: center; margin: 12px 0; color: #666; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 封面 -->
+        <div class="cover">
+            <h1>武将品质体系 PRD</h1>
+            <div class="cover-meta">
+                <span>v2.1</span>
+                <span>内部策划文档</span>
+                <span>疏白</span>
+                <span>2026-06-11</span>
+                <span class="tag tag-success">完成</span>
+            </div>
+        </div>
+
+        <!-- 一、项目背景 -->
+        <div class="section">
+            <h2 class="section-title">一、项目背景</h2>
+            <h3>1.1 问题描述</h3>
+            <p>项目组目前没有统一的武将品质分级标准，导致：</p>
+            <ul>
+                <li>定价参考不统一</li>
+                <li>获取难度标注混乱</li>
+            </ul>
+            <h3>1.2 项目目标</h3>
+            <p>建立一套与行业标准对齐的武将品质体系，核心是确定<strong>档位标准</strong>：哪些武将归哪个档。</p>
+            <h3>1.3 适用范围</h3>
+            <p>内部策划讨论、定价参考、获取难度标注。</p>
+        </div>
+
+        <!-- 二、行业现状分析 -->
+        <div class="section">
+            <h2 class="section-title">二、行业现状分析</h2>
+
+            <h3>2.1 四款"杀类"游戏品质体系对比</h3>
+            <table>
+                <thead>
+                    <tr><th>游戏</th><th class="text-center">档数</th><th>最高品质</th><th>次高品质</th><th>中间品质</th><th>次低品质</th><th>最低品质</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>三国杀OL</strong></td><td class="text-center">5档</td><td><span class="tag tag-danger">限定</span></td><td><span class="tag tag-warning">传说</span></td><td><span class="tag tag-primary">史诗</span></td><td><span class="tag tag-success">稀有</span></td><td><span class="tag tag-gray">普通</span></td></tr>
+                    <tr><td><strong>手杀</strong></td><td class="text-center">3档</td><td><span class="tag tag-primary">史诗</span></td><td><span class="tag tag-success">精品</span></td><td>-</td><td>-</td><td><span class="tag tag-gray">普通</span></td></tr>
+                    <tr><td><strong>英雄杀</strong></td><td class="text-center">5档</td><td><span class="tag tag-danger">五星</span></td><td><span class="tag tag-warning">四星</span></td><td><span class="tag tag-primary">三星</span></td><td><span class="tag tag-success">二星</span></td><td><span class="tag tag-gray">一星</span></td></tr>
+                    <tr><td><strong>名将杀</strong></td><td class="text-center">4档</td><td><span class="tag tag-danger">传说</span></td><td><span class="tag tag-warning">史诗</span></td><td><span class="tag tag-success">稀有</span></td><td><span class="tag tag-gray">普通</span></td><td>-</td></tr>
+                </tbody>
+            </table>
+
+            <h3>2.2 价格区间对比</h3>
+            <p>不同游戏的获取方式不同，以下为各品质的价格参考（统一换算为人民币）：</p>
+
+            <h4>三国杀OL（100元宝 = 1元）</h4>
+            <table>
+                <thead><tr><th>品质</th><th class="text-center">价格区间（元宝）</th><th class="text-center">人民币</th><th>获取方式</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="tag tag-danger">限定</span></td><td class="text-center">12万~30万</td><td class="text-center">1200~3000元</td><td>大祈福、玉玺、消费活动</td></tr>
+                    <tr><td><span class="tag tag-warning">传说</span></td><td class="text-center">3万~12万</td><td class="text-center">300~1200元</td><td>小祈福、翻翻乐、宝珠</td></tr>
+                    <tr><td><span class="tag tag-primary">史诗</span></td><td class="text-center">0.6万~3万</td><td class="text-center">60~300元</td><td>将魂合成、宝珠兑换</td></tr>
+                    <tr><td><span class="tag tag-success">稀有</span></td><td class="text-center">0.2万~0.6万</td><td class="text-center">20~60元</td><td>灵宝商城、元宝直购</td></tr>
+                    <tr><td><span class="tag tag-gray">普通</span></td><td class="text-center">-</td><td class="text-center">免费</td><td>新手赠送、标准包</td></tr>
+                </tbody>
+            </table>
+
+            <h3>2.3 核心结论（3条）</h3>
+            <div class="conclusion-box">
+                <table>
+                    <thead><tr><th>#</th><th>结论</th><th>说明</th></tr></thead>
+                    <tbody>
+                        <tr><td class="text-center">1</td><td><strong>行业主流是5档体系</strong></td><td>OL和英雄杀采用，英雄杀用星级替代名称</td></tr>
+                        <tr><td class="text-center">2</td><td><strong>价格跨度极大</strong></td><td>最高品质可达数千元，最低品质免费</td></tr>
+                        <tr><td class="text-center">3</td><td><strong>获取方式多元</strong></td><td>祈福/翻翻乐/将魂合成/宝珠兑换/活动等多种渠道</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 三、分类规则 v2.1 -->
+        <div class="section">
+            <h2 class="section-title">三、分类规则 v2.1</h2>
+            <p>基于获取途径和价格双重维度，制定档位划分规则：</p>
+
+            <h3>3.1 档位划分规则</h3>
+            <table>
+                <thead>
+                    <tr><th>品质</th><th>获取途径</th><th>评级规则</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止/威前缀</td><td>武庙珍藏/高山仰止；威前缀；珍宝>200,000</td></tr>
+                    <tr><td><span class="tag tag-warning">传说</span></td><td>祈福/将星高价</td><td>祈福(1004)固定；将星≥9,999；珍宝>150,000且≤200,000</td></tr>
+                    <tr><td><span class="tag tag-primary">史诗</span></td><td>纳贤/神将任务/无双上将/首充</td><td>纳贤(1001)/神将任务(5002)/无双上将；将星2,000~9,998；珍宝>100,000且≤150,000</td></tr>
+                    <tr><td><span class="tag tag-success">稀有</span></td><td>界限突破/活动大盒</td><td>界限突破(12)/活动大盒(103)；将星100~1,999；珍宝>1,000且≤100,000</td></tr>
+                    <tr><td><span class="tag tag-gray">普通</span></td><td>普通招募</td><td>普通招募(1)；珍宝≤1,000</td></tr>
+                </tbody>
+            </table>
+
+            <h3>3.2 档位分布汇总 v2.1</h3>
+            <table>
+                <thead><tr><th>品质</th><th class="text-center">数量</th><th class="text-center">占比</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="tag tag-danger">限定</span></td><td class="text-center">37</td><td class="text-center">5.5%</td></tr>
+                    <tr><td><span class="tag tag-warning">传说</span></td><td class="text-center">47</td><td class="text-center">7.0%</td></tr>
+                    <tr><td><span class="tag tag-primary">史诗</span></td><td class="text-center">48</td><td class="text-center">7.1%</td></tr>
+                    <tr><td><span class="tag tag-success">稀有</span></td><td class="text-center">293</td><td class="text-center">43.5%</td></tr>
+                    <tr><td><span class="tag tag-gray">普通</span></td><td class="text-center">248</td><td class="text-center">36.8%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 四、武将名单 -->
+        <div class="section">
+            <h2 class="section-title">四、武将名单</h2>
+            <p>共673个有效武将，基于v2.1分类规则。支持按档位筛选查看。</p>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterTier('all')">全部 (673)</button>
+                <button class="filter-btn" onclick="filterTier('限定')">限定 (37)</button>
+                <button class="filter-btn" onclick="filterTier('传说')">传说 (47)</button>
+                <button class="filter-btn" onclick="filterTier('史诗')">史诗 (48)</button>
+                <button class="filter-btn" onclick="filterTier('稀有')">稀有 (293)</button>
+                <button class="filter-btn" onclick="filterTier('普通')">普通 (248)</button>
+            </div>
+            <div class="stats" id="stats"></div>
+
+            <div class="general-table-wrapper">
+                <table class="general-table">
+                    <thead>
+                        <tr>
+                            <th style="min-width:80px;">武将ID</th>
+                            <th style="min-width:100px;">武将名称</th>
+                            <th style="min-width:80px;">档位</th>
+                            <th style="min-width:200px;">划分依据</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tier-body">
+<tr class="tier-header"><td colspan="4"><span class="tag tag-danger">限定</span> (37个)</td></tr>
+<tr class="general-row"><td>230</td><td>武诸葛亮</td><td><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止</td></tr>
+<tr class="general-row"><td>508</td><td>nan王朗</td><td><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止</td></tr>
+<tr class="general-row"><td>546</td><td>nan潘淑</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>550</td><td>nan周夷</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>559</td><td>nan孙翊</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>565</td><td>nan刘徽</td><td><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止</td></tr>
+<tr class="general-row"><td>566</td><td>nan卢弈</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>567</td><td>nan孙翎鸾</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>1232</td><td>nan滕芳兰</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>1235</td><td>nan许靖</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>231</td><td>武陆逊</td><td><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止</td></tr>
+<tr class="general-row"><td>568</td><td>nan曹轶</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>232</td><td>武关羽</td><td><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止</td></tr>
+<tr class="general-row"><td>1236</td><td>nan关樾</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>1237</td><td>nan诸葛京</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>233</td><td>武皇甫嵩</td><td><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止</td></tr>
+<tr class="general-row"><td>581</td><td>nan庞凤衣</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>2200</td><td>威张辽</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2201</td><td>威孙权</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2202</td><td>威吕布</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>234</td><td>武陆抗</td><td><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止</td></tr>
+<tr class="general-row"><td>2203</td><td>威曹丕</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2204</td><td>威董卓</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2205</td><td>威马超</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>1638</td><td>谋陆逊</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:250,000</td></tr>
+<tr class="general-row"><td>582</td><td>nan郭缇萦</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:300,000</td></tr>
+<tr class="general-row"><td>2222</td><td>威曹操</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2236</td><td>威孙尚香</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2223</td><td>威孙策</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>1639</td><td>谋庞统</td><td><span class="tag tag-danger">限定</span></td><td>珍宝价格:250,000</td></tr>
+<tr class="general-row"><td>2224</td><td>威刘备</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2206</td><td>威公孙瓒</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2237</td><td>威关银屏</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2208</td><td>威曹彰</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>2238</td><td>威张星彩</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="general-row"><td>235</td><td>武张飞</td><td><span class="tag tag-danger">限定</span></td><td>武庙/高山仰止</td></tr>
+<tr class="general-row"><td>2207</td><td>威马腾</td><td><span class="tag tag-danger">限定</span></td><td>威前缀</td></tr>
+<tr class="tier-header"><td colspan="4"><span class="tag tag-warning">传说</span> (47个)</td></tr>
+<tr class="general-row"><td>214</td><td>nan神马超</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>215</td><td>nan神张飞</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>216</td><td>nan神张角</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>217</td><td>nan神邓艾</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>500</td><td>nan关索</td><td><span class="tag tag-warning">传说</span></td><td>将星价格:9999</td></tr>
+<tr class="general-row"><td>501</td><td>nan赵襄</td><td><span class="tag tag-warning">传说</span></td><td>将星价格:9999</td></tr>
+<tr class="general-row"><td>505</td><td>nan程昱</td><td><span class="tag tag-warning">传说</span></td><td>将星价格:9999</td></tr>
+<tr class="general-row"><td>514</td><td>nan司马徽</td><td><span class="tag tag-warning">传说</span></td><td>将星价格:9999</td></tr>
+<tr class="general-row"><td>515</td><td>nan鲍三娘</td><td><span class="tag tag-warning">传说</span></td><td>将星价格:9999</td></tr>
+<tr class="general-row"><td>516</td><td>nan徐荣</td><td><span class="tag tag-warning">传说</span></td><td>将星价格:9999</td></tr>
+<tr class="general-row"><td>518</td><td>nan曹婴</td><td><span class="tag tag-warning">传说</span></td><td>将星价格:9999</td></tr>
+<tr class="general-row"><td>520</td><td>nan曹纯</td><td><span class="tag tag-warning">传说</span></td><td>将星价格:9999</td></tr>
+<tr class="general-row"><td>543</td><td>nan杨婉</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>549</td><td>nan吕玲绮</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>551</td><td>nan南华老仙</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>555</td><td>nan曹金玉</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>560</td><td>nan冯妤</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>564</td><td>nan曹华</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>704</td><td>nan张琪瑛</td><td><span class="tag tag-warning">传说</span></td><td>将星价格:9999</td></tr>
+<tr class="general-row"><td>1124</td><td>nan关宁</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1160</td><td>nan张奋</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1231</td><td>nan董贵人</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1233</td><td>nan张瑾云</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1245</td><td>nan柏灵筠</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1261</td><td>nan孙寒华</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1242</td><td>nan芮姬</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1108</td><td>nan清河公主</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>218</td><td>nan神典韦</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1630</td><td>谋周瑜</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1631</td><td>谋鲁肃</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:160,000</td></tr>
+<tr class="general-row"><td>219</td><td>nan神许褚</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1632</td><td>谋司马懿</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1109</td><td>nan曹芳</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>220</td><td>nan神华佗</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1186</td><td>nan柳婒</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>221</td><td>nan神黄忠</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>999</td><td>nan黄舞蝶</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1635</td><td>谋郭嘉</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1636</td><td>谋荀彧</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>222</td><td>nan神庞统</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1022</td><td>nan夏侯玄</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>223</td><td>nan神钟会</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1637</td><td>谋姜维</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>1238</td><td>nan任婉</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>224</td><td>nan神孙权</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>2521</td><td>谋诸葛亮</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="general-row"><td>226</td><td>nan神曹丕</td><td><span class="tag tag-warning">传说</span></td><td>珍宝价格:200,000</td></tr>
+<tr class="tier-header"><td colspan="4"><span class="tag tag-primary">史诗</span> (48个)</td></tr>
+<tr class="general-row"><td>506</td><td>nan陈琳</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>507</td><td>nan杨修</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>510</td><td>nan士燮</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>522</td><td>nan文鸯</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>525</td><td>nan花鬘</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>530</td><td>nan留赞</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:5900</td></tr>
+<tr class="general-row"><td>538</td><td>nan郭照</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:4990</td></tr>
+<tr class="general-row"><td>540</td><td>nan樊玉凤</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>541</td><td>nan阮瑀</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>556</td><td>nan庞德公</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>806</td><td>nan朱建平</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>951</td><td>nan邢道荣</td><td><span class="tag tag-primary">史诗</span></td><td>无双上将</td></tr>
+<tr class="general-row"><td>952</td><td>nan曹性</td><td><span class="tag tag-primary">史诗</span></td><td>无双上将</td></tr>
+<tr class="general-row"><td>953</td><td>nan淳于琼</td><td><span class="tag tag-primary">史诗</span></td><td>无双上将</td></tr>
+<tr class="general-row"><td>954</td><td>nan夏侯杰</td><td><span class="tag tag-primary">史诗</span></td><td>无双上将</td></tr>
+<tr class="general-row"><td>955</td><td>nan蔡阳</td><td><span class="tag tag-primary">史诗</span></td><td>无双上将</td></tr>
+<tr class="general-row"><td>956</td><td>nan周善</td><td><span class="tag tag-primary">史诗</span></td><td>无双上将</td></tr>
+<tr class="general-row"><td>1050</td><td>nan刘辩</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>1088</td><td>nan周宣</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1089</td><td>nan笮融</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1094</td><td>nan阮籍</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1150</td><td>nan陆凯</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1180</td><td>nan管亥</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1241</td><td>nan薛灵芸</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1243</td><td>nan段巧笑</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1244</td><td>nan田尚衣</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1330</td><td>乐蔡文姬</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1951</td><td>nan黄承彦</td><td><span class="tag tag-primary">史诗</span></td><td>将星价格:2999</td></tr>
+<tr class="general-row"><td>1952</td><td>nan胡昭</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>2058</td><td>nan潘凤</td><td><span class="tag tag-primary">史诗</span></td><td>无双上将</td></tr>
+<tr class="general-row"><td>1133</td><td>nan陈泰</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1224</td><td>nan乐綝</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1161</td><td>nan诸葛梦雪</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1162</td><td>nan诸葛若雪</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1246</td><td>nan马伶俐</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1226</td><td>nan刘理</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1118</td><td>nan李丰</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1247</td><td>nan莫琼树</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1338</td><td>乐貂蝉</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1339</td><td>乐周瑜</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1249</td><td>nan崔令仪</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1098</td><td>nan桓阶</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1250</td><td>nan徐妏</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1850</td><td>nan刘懿君</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>2400</td><td>nan侯昭宁</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1340</td><td>乐曹植</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>2531</td><td>nan陆文漪</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="general-row"><td>1341</td><td>乐曹植</td><td><span class="tag tag-primary">史诗</span></td><td>珍宝价格:120,000</td></tr>
+<tr class="tier-header"><td colspan="4"><span class="tag tag-success">稀有</span> (293个)</td></tr>
+<tr class="general-row"><td>503</td><td>nan孙皓</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>509</td><td>nan兀突骨</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>521</td><td>nan蒋干</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1499</td></tr>
+<tr class="general-row"><td>526</td><td>nan皇甫嵩</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>527</td><td>nan刘琦</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>528</td><td>nan辛宪英</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>529</td><td>nan王双</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>532</td><td>SP关羽</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>533</td><td>nan张让</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>535</td><td>nan何进</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:179</td></tr>
+<tr class="general-row"><td>536</td><td>nan刘宏</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>542</td><td>nan陆郁生</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>544</td><td>nan何晏</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1499</td></tr>
+<tr class="general-row"><td>545</td><td>nan张虎</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>547</td><td>nan杜夫人</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>548</td><td>nan阚泽</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:179</td></tr>
+<tr class="general-row"><td>552</td><td>nan童渊</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>554</td><td>nan刘永</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>557</td><td>SP贾诩</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>558</td><td>nan祢衡</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>563</td><td>nan吉平</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>600</td><td>nan李傕</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:139</td></tr>
+<tr class="general-row"><td>602</td><td>nan樊稠</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:119</td></tr>
+<tr class="general-row"><td>604</td><td>nan梁兴</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>605</td><td>nan唐姬</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>607</td><td>nan段煨</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>609</td><td>nan冯方</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1499</td></tr>
+<tr class="general-row"><td>610</td><td>nan牛辅</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>611</td><td>nan董翓</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>650</td><td>nan沙摩柯</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>651</td><td>nan忙牙长</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:179</td></tr>
+<tr class="general-row"><td>652</td><td>nan许贡</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:179</td></tr>
+<tr class="general-row"><td>653</td><td>nan张昌蒲</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>801</td><td>nan蒲元</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1499</td></tr>
+<tr class="general-row"><td>802</td><td>nan管辂</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>803</td><td>nan葛玄</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>804</td><td>nan许劭</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>805</td><td>nan杜夔</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>980</td><td>nan雷铜</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>981</td><td>nan吴兰</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:10,000</td></tr>
+<tr class="general-row"><td>1000</td><td>nan孙鲁育</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>1004</td><td>nan万年公主</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1005</td><td>nan荀谌</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>1006</td><td>nan陈登</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>1007</td><td>nan滕公主</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1008</td><td>nan黄皓</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:36,000</td></tr>
+<tr class="general-row"><td>1009</td><td>nan蔡瑁张允</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>1010</td><td>nan王桃</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>1011</td><td>nan王悦</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>1012</td><td>nan赵嫣</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1499</td></tr>
+<tr class="general-row"><td>1013</td><td>nan冯熙</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>1014</td><td>nan邓芝</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>1016</td><td>nan滕胤</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>1017</td><td>nan张嫙</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1018</td><td>nan夏侯令女</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>1031</td><td>nan尹夫人</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1032</td><td>nan吕旷吕翔</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:18,000</td></tr>
+<tr class="general-row"><td>1033</td><td>nan陈珪</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1034</td><td>nan陈矫</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1035</td><td>nan秦朗</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1052</td><td>nan王荣</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>1053</td><td>nan麴义</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:179</td></tr>
+<tr class="general-row"><td>1054</td><td>nan韩馥</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>1055</td><td>nan陶谦</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:179</td></tr>
+<tr class="general-row"><td>1058</td><td>nan张邈</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:179</td></tr>
+<tr class="general-row"><td>1060</td><td>nan董承</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>1065</td><td>nan丘力居</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>1071</td><td>nan曹安民</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1499</td></tr>
+<tr class="general-row"><td>1072</td><td>nan李采薇</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>1073</td><td>nan吴范</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>1075</td><td>nan严夫人</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>1076</td><td>nan朱灵</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>1077</td><td>nan阎柔</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>1078</td><td>nan赵俨</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1079</td><td>nan王威</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1080</td><td>nan穆顺</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1081</td><td>nan李异谢旌</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1082</td><td>nan伏完</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:36,000</td></tr>
+<tr class="general-row"><td>1084</td><td>nan孟达</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1085</td><td>nan是仪</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1086</td><td>nan孙狼</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1087</td><td>nan赵直</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1090</td><td>nan骆统</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1091</td><td>nan王昶</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>1092</td><td>nan程秉</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1093</td><td>nan杨彪</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1100</td><td>nan张媱</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>1101</td><td>nan刘虞</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>1102</td><td>nan全惠解</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1103</td><td>nan丁尚涴</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1104</td><td>nan袁姬</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1105</td><td>nan谢灵毓</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1107</td><td>nan甘夫人糜夫人</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1110</td><td>nan刘巴</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>1111</td><td>nan杨仪</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>1112</td><td>nan黄权</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1113</td><td>nan吴班</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1114</td><td>nan霍峻</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1115</td><td>nan傅肜傅佥</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1116</td><td>nan向朗</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1117</td><td>nan高翔</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1120</td><td>nan秦宜禄</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>1121</td><td>nan卞喜</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>1122</td><td>nan胡班</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1123</td><td>nan胡金定</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1130</td><td>nan黄祖</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>1134</td><td>nan王濬</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1135</td><td>nan杜预</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1140</td><td>nan赵昂</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>1141</td><td>nan刘晔</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1142</td><td>nan杨弘</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1151</td><td>nan李婉</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:499</td></tr>
+<tr class="general-row"><td>1152</td><td>nan轲比能</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1153</td><td>nan诸葛尚</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1154</td><td>nan武安国</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1155</td><td>nan韩龙</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1181</td><td>nan张闿</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1182</td><td>nan刘辟</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1183</td><td>nan裴元绍</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1184</td><td>nan张楚</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1185</td><td>nan张曼成</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1190</td><td>nan公孙度</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1205</td><td>nan孙资刘放</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1206</td><td>nan岑昏</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1221</td><td>nan庞会</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1222</td><td>nan赵统赵广</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1223</td><td>nan袁谭袁尚袁熙</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1225</td><td>nan凌操</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1251</td><td>nan唐咨</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1262</td><td>nan郑浑</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1301</td><td>nan羊祜</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>1900</td><td>nan马日磾</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>1901</td><td>nan张勋</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>1903</td><td>nan雷薄</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1904</td><td>nan乐就</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1905</td><td>nan桥蕤</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1906</td><td>nan董绾</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1907</td><td>nan袁胤</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1950</td><td>nan管宁</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1953</td><td>nan王烈</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1954</td><td>nan孟节</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2086</td><td>nan华歆</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>2089</td><td>nan宗预</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:359</td></tr>
+<tr class="general-row"><td>1106</td><td>nan孙瑜</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1143</td><td>nan桓范</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1144</td><td>nan郤正</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1191</td><td>nan孟优</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1207</td><td>nan孙綝</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:1999</td></tr>
+<tr class="general-row"><td>1263</td><td>nan刘宠骆俊</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1234</td><td>nan周不疑</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1136</td><td>nan文钦</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1353</td><td>nan马铁</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1351</td><td>nan车胄</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1352</td><td>nan韩嵩</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1331</td><td>乐周妃</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1036</td><td>nan董昭</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1208</td><td>nan贾充</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1020</td><td>nan蒯祺</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1021</td><td>nan庞山民</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1333</td><td>乐蔡邕</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1332</td><td>乐诸葛果</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1156</td><td>nan苏飞</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1334</td><td>乐祢衡</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1600</td><td>星曹仁</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1192</td><td>SP孟获</td><td><span class="tag tag-success">稀有</span></td><td>将星价格:990</td></tr>
+<tr class="general-row"><td>1193</td><td>SP祝融</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1157</td><td>nan谯周</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1171</td><td>nan费曜</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1159</td><td>nan陈式</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>580</td><td>SP甄姬</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1601</td><td>星董卓</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1158</td><td>nan孙礼</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1602</td><td>星袁术</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1172</td><td>nan夏侯楙</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1335</td><td>乐大乔</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1336</td><td>乐小乔</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1163</td><td>nan曹宪</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1603</td><td>星张昭</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1604</td><td>星袁绍</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1605</td><td>星张春华</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1137</td><td>nan胡遵</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1194</td><td>nan公孙修</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1640</td><td>谋蒋济</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1641</td><td>谋王凌</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1642</td><td>谋司马师</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1643</td><td>谋曹爽</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1620</td><td>SP孙策</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1670</td><td>星孙坚</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1264</td><td>nan吴普</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1633</td><td>谋诸葛瑾</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1634</td><td>谋贾诩</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1500</td><td>nan朱佩兰</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1650</td><td>谋关平</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1337</td><td>乐邹氏</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1690</td><td>nan徐琨</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1661</td><td>谋张绣</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1660</td><td>谋曹昂</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1691</td><td>nan司马孚</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1662</td><td>谋典韦</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1663</td><td>谋胡车儿</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1501</td><td>nan卞玥</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1692</td><td>nan令狐愚</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1681</td><td>谋程昱</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1671</td><td>星孙尚香</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1700</td><td>谋沮授</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1701</td><td>谋陈琳</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1606</td><td>星法正</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1187</td><td>nan文鸳</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1693</td><td>nan宣公主</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1119</td><td>nan向宠</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1607</td><td>星荀彧</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1682</td><td>谋黄盖</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1672</td><td>星丁奉</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1694</td><td>nan奇巧马钧</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1695</td><td>nan传械马钧</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1188</td><td>nan张怀</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1696</td><td>nan马钧</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1711</td><td>nan吕据</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1227</td><td>nan庞宏</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1502</td><td>nan徐馨</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1503</td><td>nan孙霸</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1698</td><td>nan裴秀</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>2300</td><td>谋董承</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1248</td><td>nan曹媛</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1209</td><td>nan侯成</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1608</td><td>星张让</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1504</td><td>nan刘衿刘佩</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2301</td><td>谋曹洪</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1609</td><td>星文丑</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1531</td><td>nan张翼</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1505</td><td>nan夏侯徽</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1095</td><td>nan钟毓</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1096</td><td>nan吴质</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2302</td><td>谋刘协</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1097</td><td>nan朱铄</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1532</td><td>nan诸葛均</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1722</td><td>nan张燕</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1724</td><td>nan伍孚</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1228</td><td>nan吉邈吉穆</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1741</td><td>谋胡烈</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1740</td><td>谋邓艾</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1725</td><td>nan张奂</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>1189</td><td>nan董絮</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1673</td><td>星太史慈</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1781</td><td>谋骆统</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1782</td><td>谋黄权</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1791</td><td>星蒋琬</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1911</td><td>nan苏越</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1712</td><td>nan陶璜</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1783</td><td>谋朱然</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1126</td><td>nan凌烈</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1674</td><td>星颜良</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1955</td><td>nan田畴</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:50,000</td></tr>
+<tr class="general-row"><td>654</td><td>nan崔烈</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1956</td><td>nan张世平</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1037</td><td>nan马邈</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1651</td><td>谋吕蒙</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1702</td><td>谋许攸</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2316</td><td>谋法正</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2317</td><td>谋吴懿</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1354</td><td>nan阎象</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1703</td><td>谋淳于琼</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1683</td><td>谋蒋干</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1792</td><td>星张郃</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2411</td><td>星张松</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2319</td><td>谋刘璋</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1210</td><td>nan魏讽</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1912</td><td>nan张裕</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1742</td><td>谋卫瓘</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1066</td><td>nan曹豹</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1853</td><td>nan崔芷</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1675</td><td>星夏侯霸</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1196</td><td>nan木鹿大王</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1610</td><td>星董允</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2500</td><td>谋马谡</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2501</td><td>谋王平</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1507</td><td>nan孙和</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1684</td><td>谋程普</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2412</td><td>星诸葛瑾</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1704</td><td>谋杨奉</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1621</td><td>SP张郃</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1506</td><td>nan刘璿</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1784</td><td>谋徐盛</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1099</td><td>nan陈祇</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2319</td><td>谋刘璋</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1066</td><td>nan曹豹</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2318</td><td>谋张任</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1913</td><td>nan史阿</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1914</td><td>nan王越</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1652</td><td>谋关羽</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1851</td><td>nan邓晚棠</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>1852</td><td>nan李昭仪</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="general-row"><td>2331</td><td>nan傅干</td><td><span class="tag tag-success">稀有</span></td><td>珍宝价格:100,000</td></tr>
+<tr class="tier-header"><td colspan="4"><span class="tag tag-gray">普通</span> (248个)</td></tr>
+<tr class="general-row"><td>1</td><td>nan刘备</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>2</td><td>nan关羽</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>3</td><td>nan张飞</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>4</td><td>nan诸葛亮</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>5</td><td>nan赵云</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>6</td><td>nan马超</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>7</td><td>nan黄月英</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>8</td><td>nan孙权</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>9</td><td>nan甘宁</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>10</td><td>nan吕蒙</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>11</td><td>nan黄盖</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>12</td><td>nan周瑜</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>13</td><td>nan大乔</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>14</td><td>nan陆逊</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>15</td><td>nan孙尚香</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>16</td><td>nan曹操</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>17</td><td>nan司马懿</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>18</td><td>nan夏侯惇</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>19</td><td>nan张辽</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>20</td><td>nan许褚</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>21</td><td>nan郭嘉</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>22</td><td>nan甄姬</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>23</td><td>nan华佗</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>24</td><td>nan吕布</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>25</td><td>nan貂蝉</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>26</td><td>nan华雄</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>27</td><td>nan黄忠</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>28</td><td>nan魏延</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>29</td><td>nan夏侯渊</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>30</td><td>nan曹仁</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>31</td><td>nan小乔</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>32</td><td>nan周泰</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>33</td><td>nan张角</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>34</td><td>nan于吉</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>35</td><td>nan典韦</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>36</td><td>nan荀彧</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>37</td><td>nan庞统</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>38</td><td>nan卧龙诸葛</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>39</td><td>nan太史慈</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>40</td><td>nan庞德</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>41</td><td>nan颜良文丑</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>42</td><td>nan袁绍</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>43</td><td>nan徐晃</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>44</td><td>nan曹丕</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>45</td><td>nan孙坚</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>46</td><td>nan董卓</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>47</td><td>nan祝融</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>48</td><td>nan孟获</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>49</td><td>nan贾诩</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>50</td><td>nan鲁肃</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>51</td><td>nan张郃</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>52</td><td>nan邓艾</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>53</td><td>nan姜维</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>54</td><td>nan刘禅</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>55</td><td>nan孙策</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>56</td><td>nan张昭张纮</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>57</td><td>nan左慈</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>58</td><td>nan蔡文姬</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>90</td><td>nan严颜</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>91</td><td>nan王平</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>92</td><td>nan陆绩</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>93</td><td>nan孙亮</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>94</td><td>nan王基</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>95</td><td>nan蒯良蒯越</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>96</td><td>nan许攸</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>97</td><td>nan卢植</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>98</td><td>nan陈到</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>99</td><td>nan诸葛瞻</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>100</td><td>nan周妃</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>101</td><td>nan陆抗</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>102</td><td>nan郝昭</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>103</td><td>nan毌丘俭</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>104</td><td>nan袁术</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>105</td><td>nan张绣</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>201</td><td>nan神关羽</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>202</td><td>nan神吕蒙</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>203</td><td>nan神周瑜</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>204</td><td>nan神诸葛亮</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>205</td><td>nan神曹操</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>206</td><td>nan神吕布</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>207</td><td>nan神赵云</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>208</td><td>nan神司马懿</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>209</td><td>nan神刘备</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>210</td><td>nan神陆逊</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>211</td><td>nan神张辽</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>212</td><td>nan神甘宁</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>213</td><td>nan神姜维</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>288</td><td>nan法正</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>289</td><td>nan马谡</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>290</td><td>nan徐庶</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>291</td><td>nan吴国太</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>292</td><td>nan凌统</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>293</td><td>nan徐盛</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>294</td><td>nan曹植</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>295</td><td>nan张春华</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>296</td><td>nan于禁</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>297</td><td>nan陈宫</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>298</td><td>nan高顺</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>299</td><td>nan关兴张苞</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>300</td><td>nan廖化</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>301</td><td>nan马岱</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>302</td><td>nan步练师</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>303</td><td>nan程普</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>304</td><td>nan韩当</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>305</td><td>nan荀攸</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>306</td><td>nan王异</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>307</td><td>nan曹彰</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>308</td><td>nan钟会</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>309</td><td>nan刘表</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>310</td><td>nan曹冲</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>311</td><td>nan郭淮</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>312</td><td>nan满宠</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>313</td><td>nan关平</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>314</td><td>nan简雍</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>315</td><td>nan刘封</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>316</td><td>nan潘璋马忠</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>317</td><td>nan虞翻</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>318</td><td>nan朱然</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>319</td><td>nan伏皇后</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>320</td><td>nan李儒</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>321</td><td>nan曹真</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>322</td><td>nan韩浩史涣</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>323</td><td>nan陈群</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>324</td><td>nan吴懿</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>325</td><td>nan周仓</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>326</td><td>nan张松</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>327</td><td>nan孙鲁班</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>328</td><td>nan朱桓</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>329</td><td>nan顾雍</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>330</td><td>nan沮授</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>331</td><td>nan蔡夫人</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>332</td><td>nan曹叡</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>333</td><td>nan曹休</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>334</td><td>nan钟繇</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>335</td><td>nan刘谌</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>336</td><td>nan夏侯氏</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>337</td><td>nan张嶷</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>338</td><td>nan孙休</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>339</td><td>nan朱治</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>340</td><td>nan全琮</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>341</td><td>nan公孙渊</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>342</td><td>nan郭图逢纪</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>400</td><td>nan张星彩</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>401</td><td>nan吴苋</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>402</td><td>nan孙登</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>403</td><td>nan步骘</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>404</td><td>nan曹昂</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>405</td><td>nan诸葛诞</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>406</td><td>nan刘协</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>407</td><td>nan曹节</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>408</td><td>nan董允</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>409</td><td>nan诸葛瑾</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>410</td><td>nan严畯</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>411</td><td>nan李典</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>412</td><td>nan司马朗</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>413</td><td>nan杜畿</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>414</td><td>nan刘焉</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>415</td><td>nan张鲁</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>416</td><td>nan孙乾</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>417</td><td>nan秦宓</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>418</td><td>nan薛综</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>419</td><td>nan潘濬</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>420</td><td>nan戏志才</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>421</td><td>nan郭皇后</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>422</td><td>nan王粲</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>423</td><td>nan蔡邕</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>424</td><td>SP孙尚香</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>425</td><td>SP徐庶</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>426</td><td>SP庞统</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:20</td></tr>
+<tr class="general-row"><td>427</td><td>SP庞德</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>428</td><td>SP蔡文姬</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>429</td><td>SP姜维</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>430</td><td>SP黄月英</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>431</td><td>SP太史慈</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>432</td><td>nan李严</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>433</td><td>nan糜竺</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>434</td><td>nan马忠</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>435</td><td>nan周鲂</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>436</td><td>nan贺齐</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>437</td><td>nan文聘</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>438</td><td>nan吕岱</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>439</td><td>nan刘繇</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>440</td><td>nan马云騄</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>441</td><td>nan关银屏</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>442</td><td>nan祖茂</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>443</td><td>nan徐氏</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>444</td><td>nan吕虔</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>445</td><td>nan张梁</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>446</td><td>nan蹋顿</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>447</td><td>nan公孙瓒</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>502</td><td>nan诸葛果</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>504</td><td>nan诸葛恪</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>511</td><td>nan张宝</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>512</td><td>nan灵雎</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>513</td><td>nan王允</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>517</td><td>nan大乔小乔</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>519</td><td>SP马超</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>523</td><td>nan夏侯霸</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>524</td><td>SP赵云</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>534</td><td>nan韩遂</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>537</td><td>nan朱儁</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>539</td><td>nan董白</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>553</td><td>nan张宁</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>561</td><td>nan曹髦</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>562</td><td>nan来莺儿</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>601</td><td>nan郭汜</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:99</td></tr>
+<tr class="general-row"><td>603</td><td>nan张济</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:79</td></tr>
+<tr class="general-row"><td>608</td><td>nan张横</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>700</td><td>nan张恭</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>701</td><td>nan吕凯</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>702</td><td>nan卫温诸葛直</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>703</td><td>nan卑弥呼</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>850</td><td>nan辛毗</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>851</td><td>nan伊籍</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>852</td><td>nan张温</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>853</td><td>nan李肃</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>1015</td><td>nan高览</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>1019</td><td>nan孙茹</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>1051</td><td>nan丁原</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>1056</td><td>nan曹嵩</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>1057</td><td>nan赵忠</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>1059</td><td>nan牛金</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>1061</td><td>nan胡车儿</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>1062</td><td>nan糜芳傅士仁</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>1074</td><td>nan郝萌</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>1083</td><td>nan孙桓</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:500</td></tr>
+<tr class="general-row"><td>2014</td><td>nan乐进</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2029</td><td>nan甘夫人</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>2044</td><td>nan丁奉</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>2054</td><td>nan马腾</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>2055</td><td>nan孔融</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>2056</td><td>nan纪灵</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2057</td><td>nan田丰</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>2059</td><td>nan邹氏</td><td><span class="tag tag-gray">普通</span></td><td>珍宝价格:1,000</td></tr>
+<tr class="general-row"><td>2060</td><td>nan何太后</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2061</td><td>nan蒋琬费祎</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>2069</td><td>nan臧霸</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2070</td><td>nan糜夫人</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2071</td><td>nan陈武董袭</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2072</td><td>nan张任</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2073</td><td>nan曹洪</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2074</td><td>nan蒋钦</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2079</td><td>nan李傕郭汜</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2082</td><td>nan卞夫人</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>2084</td><td>nan吕范</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:19</td></tr>
+<tr class="general-row"><td>2090</td><td>nan崔琰毛玠</td><td><span class="tag tag-gray">普通</span></td><td>将星价格:59</td></tr>
+<tr class="general-row"><td>1350</td><td>nan严白虎</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+<tr class="general-row"><td>1508</td><td>nan环怀瑾</td><td><span class="tag tag-gray">普通</span></td><td>普通招募</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>武将品质体系 PRD v2.1 | 疏白 | 2026-06-11</p>
+        </div>
+    </div>
+
+    <script>
+        function filterTier(tier) {
+            // 更新按钮状态
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.includes(tier) || (tier === 'all' && btn.textContent.includes('全部'))) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // 筛选显示
+            const rows = document.querySelectorAll('.tier-header, .general-row');
+            let visibleCount = 0;
+            rows.forEach(row => {
+                if (tier === 'all') {
+                    row.style.display = '';
+                    if (!row.classList.contains('tier-header')) visibleCount++;
+                } else {
+                    const isHeader = row.classList.contains('tier-header');
+                    const containsTier = row.innerHTML.includes('>' + tier + '<');
+                    if (isHeader && containsTier) {
+                        row.style.display = '';
+                    } else if (isHeader) {
+                        row.style.display = 'none';
+                    } else {
+                        row.style.display = containsTier ? '' : 'none';
+                        if (containsTier) visibleCount++;
+                    }
+                }
+            });
+
+            // 更新统计
+            document.getElementById('stats').textContent = tier === 'all' ? '显示全部 673 个武将' : '显示 ' + visibleCount + ' 个武将';
+        }
+
+        // 初始化
+        filterTier('all');
+    </script>
+</body>
+</html>

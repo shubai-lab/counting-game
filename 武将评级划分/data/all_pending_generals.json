@@ -1,0 +1,849 @@
+[
+  {
+    "id": 57,
+    "name": "左慈",
+    "lamp_type": "山",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 502,
+    "name": "诸葛果",
+    "lamp_type": "豆蔻梢头",
+    "item_price": "652,800",
+    "tier": "稀有"
+  },
+  {
+    "id": 504,
+    "name": "诸葛恪",
+    "lamp_type": "笔舌如椽",
+    "item_price": "-",
+    "tier": "史诗"
+  },
+  {
+    "id": 511,
+    "name": "张宝",
+    "lamp_type": "奇人异士",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 512,
+    "name": "灵雎",
+    "lamp_type": "豆蔻梢头",
+    "item_price": "652,800",
+    "tier": "稀有"
+  },
+  {
+    "id": 513,
+    "name": "王允",
+    "lamp_type": "计将安出",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 517,
+    "name": "大乔小乔",
+    "lamp_type": "往者可谏",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 519,
+    "name": "SP马超",
+    "lamp_type": "往者可谏",
+    "item_price": "1,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 523,
+    "name": "夏侯霸",
+    "lamp_type": "百战虎贲",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 524,
+    "name": "SP赵云",
+    "lamp_type": "往者可谏",
+    "item_price": "1,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 532,
+    "name": "SP关羽",
+    "lamp_type": "千里单骑",
+    "item_price": "1,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 534,
+    "name": "韩遂",
+    "lamp_type": "黄巾之乱",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 553,
+    "name": "张宁",
+    "lamp_type": "烽火连天",
+    "item_price": "-",
+    "tier": "史诗"
+  },
+  {
+    "id": 561,
+    "name": "曹髦",
+    "lamp_type": "皇家贵胄",
+    "item_price": "-",
+    "tier": "史诗"
+  },
+  {
+    "id": 562,
+    "name": "来莺儿",
+    "lamp_type": "锦瑟良缘",
+    "item_price": "-",
+    "tier": "史诗"
+  },
+  {
+    "id": 608,
+    "name": "张横",
+    "lamp_type": "乱武",
+    "item_price": "-",
+    "tier": "史诗"
+  },
+  {
+    "id": 654,
+    "name": "崔烈",
+    "lamp_type": "食禄尽忠",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 700,
+    "name": "张恭",
+    "lamp_type": "逐鹿",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 701,
+    "name": "吕凯",
+    "lamp_type": "逐鹿",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 702,
+    "name": "卫温诸葛直",
+    "lamp_type": "逐鹿",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 703,
+    "name": "卑弥呼",
+    "lamp_type": "逐鹿",
+    "item_price": "-",
+    "tier": "史诗"
+  },
+  {
+    "id": 804,
+    "name": "许劭",
+    "lamp_type": "黄巾之乱",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 850,
+    "name": "辛毗",
+    "lamp_type": "上兵伐谋",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 851,
+    "name": "伊籍",
+    "lamp_type": "上兵伐谋",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 852,
+    "name": "张温",
+    "lamp_type": "上兵伐谋",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 853,
+    "name": "李肃",
+    "lamp_type": "上兵伐谋",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 981,
+    "name": "吴兰",
+    "lamp_type": "百战虎贲",
+    "item_price": "10,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1004,
+    "name": "万年公主",
+    "lamp_type": "芝兰玉树",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1008,
+    "name": "黄皓",
+    "lamp_type": "绕庭之鸦",
+    "item_price": "36,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1015,
+    "name": "高览",
+    "lamp_type": "天下归心",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 1037,
+    "name": "马邈",
+    "lamp_type": "天下归心",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1051,
+    "name": "丁原",
+    "lamp_type": "诸侯伐董",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 1056,
+    "name": "曹嵩",
+    "lamp_type": "徐州风云",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 1059,
+    "name": "牛金",
+    "lamp_type": "兵临城下",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 1061,
+    "name": "胡车儿",
+    "lamp_type": "中原狼烟",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 1062,
+    "name": "糜芳傅士仁",
+    "lamp_type": "兵临城下",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 1066,
+    "name": "曹豹",
+    "lamp_type": "徐州风云",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1074,
+    "name": "郝萌",
+    "lamp_type": "虓虎悲歌",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 1081,
+    "name": "李异谢旌",
+    "lamp_type": "兵临城下",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1082,
+    "name": "伏完",
+    "lamp_type": "戚宦之争",
+    "item_price": "36,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1083,
+    "name": "孙桓",
+    "lamp_type": "兵临城下",
+    "item_price": "500",
+    "tier": "稀有"
+  },
+  {
+    "id": 1084,
+    "name": "孟达",
+    "lamp_type": "兵临城下",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1085,
+    "name": "是仪",
+    "lamp_type": "兵临城下",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1086,
+    "name": "孙狼",
+    "lamp_type": "兵临城下",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1092,
+    "name": "程秉",
+    "lamp_type": "笔舌如椽",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1099,
+    "name": "陈祇",
+    "lamp_type": "笔舌如椽",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1104,
+    "name": "袁姬",
+    "lamp_type": "皇家贵胄",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1108,
+    "name": "清河公主",
+    "lamp_type": "皇家贵胄",
+    "item_price": "200,000",
+    "tier": "传说"
+  },
+  {
+    "id": 1113,
+    "name": "吴班",
+    "lamp_type": "匡鼎炎汉",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1115,
+    "name": "傅肜傅佥",
+    "lamp_type": "匡鼎炎汉",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 1117,
+    "name": "高翔",
+    "lamp_type": "匡鼎炎汉",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1119,
+    "name": "向宠",
+    "lamp_type": "匡鼎炎汉",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1124,
+    "name": "关宁",
+    "lamp_type": "千里单骑",
+    "item_price": "200,000",
+    "tier": "传说"
+  },
+  {
+    "id": 1136,
+    "name": "文钦",
+    "lamp_type": "百战虎贲",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1137,
+    "name": "胡遵",
+    "lamp_type": "百战虎贲",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1143,
+    "name": "桓范",
+    "lamp_type": "计将安出",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1181,
+    "name": "张闿",
+    "lamp_type": "太平甲子",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1182,
+    "name": "刘辟",
+    "lamp_type": "太平甲子",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1183,
+    "name": "裴元绍",
+    "lamp_type": "太平甲子",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1188,
+    "name": "张怀",
+    "lamp_type": "锦瑟良缘",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1189,
+    "name": "董絮",
+    "lamp_type": "锦瑟良缘",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1196,
+    "name": "木鹿大王",
+    "lamp_type": "异军突起",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1205,
+    "name": "孙资刘放",
+    "lamp_type": "绕庭之鸦",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1206,
+    "name": "岑昏",
+    "lamp_type": "绕庭之鸦",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1208,
+    "name": "贾充",
+    "lamp_type": "绕庭之鸦",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1209,
+    "name": "侯成",
+    "lamp_type": "天下归心",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1210,
+    "name": "魏讽",
+    "lamp_type": "绕庭之鸦",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1221,
+    "name": "庞会",
+    "lamp_type": "芝兰玉树",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1234,
+    "name": "周不疑",
+    "lamp_type": "钟灵毓秀",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1242,
+    "name": "芮姬",
+    "lamp_type": "豆蔻梢头",
+    "item_price": "200,000",
+    "tier": "传说"
+  },
+  {
+    "id": 1251,
+    "name": "唐咨",
+    "lamp_type": "天下归心",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1261,
+    "name": "孙寒华",
+    "lamp_type": "悬壶济世",
+    "item_price": "200,000",
+    "tier": "传说"
+  },
+  {
+    "id": 1263,
+    "name": "刘宠骆俊",
+    "lamp_type": "悬壶济世",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1340,
+    "name": "乐曹植",
+    "lamp_type": "正音雅乐",
+    "item_price": "120,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1341,
+    "name": "乐曹植",
+    "lamp_type": "正音雅乐",
+    "item_price": "-",
+    "tier": "史诗"
+  },
+  {
+    "id": 1350,
+    "name": "严白虎",
+    "lamp_type": "群雄伺动",
+    "item_price": "-",
+    "tier": "稀有"
+  },
+  {
+    "id": 1351,
+    "name": "车胄",
+    "lamp_type": "群雄伺动",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1352,
+    "name": "韩嵩",
+    "lamp_type": "群雄伺动",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1354,
+    "name": "阎象",
+    "lamp_type": "群雄伺动",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1506,
+    "name": "刘璿",
+    "lamp_type": "皇家贵胄",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1507,
+    "name": "孙和",
+    "lamp_type": "皇家贵胄",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1508,
+    "name": "环怀瑾",
+    "lamp_type": "皇家贵胄",
+    "item_price": "-",
+    "tier": "史诗"
+  },
+  {
+    "id": 1531,
+    "name": "张翼",
+    "lamp_type": "匡鼎炎汉",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1610,
+    "name": "星董允",
+    "lamp_type": "玉衡",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1620,
+    "name": "SP孙策",
+    "lamp_type": "往者可谏",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1621,
+    "name": "SP张郃",
+    "lamp_type": "往者可谏",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1641,
+    "name": "谋王凌",
+    "lamp_type": "冢虎狼顾",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1652,
+    "name": "谋关羽",
+    "lamp_type": "子敬邀刀",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1660,
+    "name": "谋曹昂",
+    "lamp_type": "毒士鸩计",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1675,
+    "name": "星夏侯霸",
+    "lamp_type": "开阳",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1684,
+    "name": "谋程普",
+    "lamp_type": "周郎将计",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1694,
+    "name": "奇巧马钧",
+    "lamp_type": "一将成名2023",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1695,
+    "name": "传械马钧",
+    "lamp_type": "一将成名2023",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1703,
+    "name": "谋淳于琼",
+    "lamp_type": "奇佐论胜",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1704,
+    "name": "谋杨奉",
+    "lamp_type": "奇佐论胜",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1711,
+    "name": "吕据",
+    "lamp_type": "百战虎贲",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1712,
+    "name": "陶璜",
+    "lamp_type": "百战虎贲",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1741,
+    "name": "谋胡烈",
+    "lamp_type": "幼麟绝战",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1742,
+    "name": "谋卫瓘",
+    "lamp_type": "幼麟绝战",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1781,
+    "name": "谋骆统",
+    "lamp_type": "伯言绽火",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1784,
+    "name": "谋徐盛",
+    "lamp_type": "伯言绽火",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1851,
+    "name": "邓晚棠",
+    "lamp_type": "锦瑟良缘",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1852,
+    "name": "李昭仪",
+    "lamp_type": "锦瑟良缘",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1853,
+    "name": "崔芷",
+    "lamp_type": "锦瑟良缘",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1904,
+    "name": "乐就",
+    "lamp_type": "代汉涂高",
+    "item_price": "50,000",
+    "tier": "稀有"
+  },
+  {
+    "id": 1905,
+    "name": "桥蕤",
+    "lamp_type": "代汉涂高",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1911,
+    "name": "苏越",
+    "lamp_type": "奇人异士",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1912,
+    "name": "张裕",
+    "lamp_type": "奇人异士",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1913,
+    "name": "史阿",
+    "lamp_type": "奇人异士",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1914,
+    "name": "王越",
+    "lamp_type": "奇人异士",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1950,
+    "name": "管宁",
+    "lamp_type": "江湖之远",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 1954,
+    "name": "孟节",
+    "lamp_type": "江湖之远",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 2029,
+    "name": "甘夫人",
+    "lamp_type": "皇家贵胄",
+    "item_price": "-",
+    "tier": "普通"
+  },
+  {
+    "id": 2300,
+    "name": "谋董承",
+    "lamp_type": "王佐倡义",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 2316,
+    "name": "谋法正",
+    "lamp_type": "凤雏溯攻",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 2318,
+    "name": "谋张任",
+    "lamp_type": "凤雏溯攻",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 2331,
+    "name": "傅干",
+    "lamp_type": "笔舌如椽",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 2412,
+    "name": "星诸葛瑾",
+    "lamp_type": "天璇",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 2500,
+    "name": "谋马谡",
+    "lamp_type": "武侯定南",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 2501,
+    "name": "谋王平",
+    "lamp_type": "武侯定南",
+    "item_price": "100,000",
+    "tier": "史诗"
+  },
+  {
+    "id": 2531,
+    "name": "陆文漪",
+    "lamp_type": "豆蔻梢头",
+    "item_price": "120,000",
+    "tier": "史诗"
+  }
+]
